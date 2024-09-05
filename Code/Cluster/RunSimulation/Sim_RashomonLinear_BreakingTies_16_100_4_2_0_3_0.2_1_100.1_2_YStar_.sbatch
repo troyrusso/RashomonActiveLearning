@@ -10,7 +10,7 @@
 #SBATCH --mail-user=simondn@uw.edu
 
 cd ~/RashomonActiveLearning
-module load R
+module load R/4.2.2-foss-2022b
 Rscript Code/functions/Main/RunSimulation.R \
     --job_name Sim_RashomonLinear_BreakingTies_16_100_4_2_0_3_0.2_1_100.1_2_YStar_\
     --seed 16\

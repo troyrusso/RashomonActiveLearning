@@ -53,7 +53,7 @@ for (i in 1:nrow(ParameterVector)) {
       "#SBATCH --mail-user=simondn@uw.edu",
       "",
       "cd ~/RashomonActiveLearning",
-      "module load R",
+      "module load R/4.2.2-foss-2022b",
       "Rscript Code/functions/Main/RunSimulation.R \\",
       
      paste("    --job_name ", job_name, "\\", sep=""),
