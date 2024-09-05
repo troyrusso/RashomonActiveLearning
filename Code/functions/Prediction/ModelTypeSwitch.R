@@ -115,8 +115,8 @@ ModelTypeSwitchFunc = function(TrainingSet,
          RashomonProfile = RashomonProfileFunc(TrainingSet, CovariateList, LabelName, RashomonParameters)
          TrainingPredictedLabels = RashomonProfile$TrainingPredictedLabels
          TrainingLabelProbabilities = NULL
-         # Model = RashomonProfile$RashomonMakeObjects
-         Model = NULL
+         Model = RashomonProfile$RashomonMakeObjects
+         # Model = NULL
          RashomonModelLosses = RashomonProfile$RashomonLosses
          
          # PredictionDifference = abs(TrainingPredictedLabels - data.frame(TrainingSet)[,LabelName])
@@ -125,7 +125,7 @@ ModelTypeSwitchFunc = function(TrainingSet,
          RashomonProfile = RashomonProfileFunc(TrainingSet, CovariateList, LabelName, RashomonParameters)
          TrainingPredictedLabels = RashomonProfile$TrainingPredictedLabels[,1]
          TrainingLabelProbabilities = NULL
-         # Model = RashomonProfile$RashomonMakeObjects
+         Model = RashomonProfile$RashomonMakeObjects
          Model = NULL
          RashomonModelLosses = RashomonProfile$RashomonLosses[1]
          

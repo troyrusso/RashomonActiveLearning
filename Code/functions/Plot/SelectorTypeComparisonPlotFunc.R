@@ -36,17 +36,17 @@ SelectorTypeComparisonPlotFunc = function(SimulationType1,
                             paste0(SimulationType2$SelectorType, SimulationType2$ModelType),
                             "iter")
   JointErrors = pivot_longer(JointErrors, -c(iter))
-  colnames(JointErrors) = c("iter", "SelectorType", "value")
+  colnames(JointErrors) = c("iter", "Method", "value")
   
   JointErrors = JointErrors %>%
-    mutate(SelectorType = case_when(SelectorType == "BreakingTiesFactorial" ~ "Vanilla",
-                                    SelectorType == "BreakingTiesRashomonLinear" ~ "Rashomon"))
+    mutate(Method = case_when(Method == "BreakingTiesFactorial" ~ "Without Rashomon",
+                                    Method == "BreakingTiesRashomonLinear" ~ "Rashomon-weighted"))
   
   # Stop Iter Line
   # JointStopIter = c(SimulationType1$StopIter,SimulationType1$SelectorType,
   #                   SimulationType2$StopIter,SimulationType2$SelectorType) %>%
   #   matrix(nrow = 2, ncol = 2, byrow = TRUE)
-  # colnames(JointStopIter) = c("StopIter", "SelectorType")
+  # colnames(JointStopIter) = c("StopIter", "Method")
   # JointStopIter$StopIter = as.numeric(JointStopIter$StopIter)
   
   ### Plot ###
@@ -54,7 +54,7 @@ SelectorTypeComparisonPlotFunc = function(SimulationType1,
     
     ## Lines ##
     geom_line(data = JointErrors,
-              mapping = aes(x = iter, y = value, linetype = SelectorType)) + 
+              mapping = aes(x = iter, y = value, linetype = Method)) + 
     
     ## Iteration Stop Line ##
     geom_vline(xintercept = StopIter1,
@@ -66,7 +66,7 @@ SelectorTypeComparisonPlotFunc = function(SimulationType1,
                linetype = "dashed") + 
     
     ## Aesthetics ##
-    scale_x_continuous(breaks = c(seq(xlower,xupper, 100), 
+    scale_x_continuous(breaks = c(seq(xlower,xupper, 50), 
                                   StopIter1,
                                   StopIter2, 
                                   SimulationType1$InitialTrainingSetN),
@@ -74,7 +74,8 @@ SelectorTypeComparisonPlotFunc = function(SimulationType1,
     xlab("Number of annotated observations") +
     # ylab("Test Set Error") +
     ylab("Training Set Error") +
-    ggtitle("Simulation") +
+    # ggtitle("Simulation") +
+    theme(legend.position = c(0.9,0.9)) +
     theme(plot.title = element_text(size = 15, hjust = 0.5))
   
   return(ErrorScatterPlot)

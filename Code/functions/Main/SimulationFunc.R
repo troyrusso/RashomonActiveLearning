@@ -79,18 +79,18 @@ SimulationFunc = function(dat,
       RashomonProfile = ModelTypeSwitchResults$RashomonProfile
       TestSet = TrainingSet                                                                # DELETE LATER
       TestPredictedLabels = ModelTypeSwitchResults$TrainingPredictedLabels
-      PredictionDifference = (TestPredictedLabels - data.frame(TestSet)[,LabelName])^2
+      PredictionDifference = abs(TestPredictedLabels - data.frame(TestSet)[,LabelName])
       if(length(RashomonModelLosses) ==1){
         DifferenceTimesLosses= PredictionDifference * RashomonModelLosses
         LabelProbabilities = DifferenceTimesLosses
+        Error[iter] = mean(TestPredictedLabels - TestSet$YStar)^2
         }else if(length(RashomonModelLosses) >=1){
         DifferenceTimesLosses= PredictionDifference %*%  diag(RashomonModelLosses)
         LabelProbabilities = rowSums(DifferenceTimesLosses)
+        Error[iter] = mean(TestPredictedLabels[,1] - TestSet$YStar)^2
         }
     
-      # Error[iter] = mean(TestPredictedLabels - TestSet$YStar)^2             # How is "error" measured? This is over the entire Rashomon set.
-      Error[iter] = RashomonModelLosses[1]
-      ClassError[iter,] = tapply(X = 1:length(TestSet$Y),                          # Likewise with class error - over the whole Rashomon set.
+      ClassError[iter,] = tapply(X = 1:length(TestSet$Y), 
                           INDEX = TestSet$Y, 
                           FUN = function(i) mean((TestPredictedLabels[i] - TestSet$YStar[i])^2)) %>%
         as.vector

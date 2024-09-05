@@ -50,8 +50,8 @@ if(exists("directory")){
 ```{r}
 ### Input ###
 # seed = 1234567890
-seed = 1
-N = 1000
+seed = 10
+N = 375
 K = 4
 NClass = 2
 # ClassProportion = c(3/5, 2/5)
@@ -93,10 +93,10 @@ SelectorN = 1
 
 ```{r}
 # ModelType = "Linear"
-ModelType = "RashomonLinear"
-# ModelType = "Factorial"
-# SelectorType = "BreakingTies"
-# iter=1
+# ModelType = "RashomonLinear"
+ModelType = "Factorial"
+SelectorType = "BreakingTies"
+iter=1
 ``` 
 
 ```{r}
@@ -129,22 +129,22 @@ SimulationFunc(dat = dat,
 ## Visualize
 
 ```{r}
-saveRDS(list(SimResultsBreakingTiesFactorial = SimResultsBreakingTiesFactorial,
-             SimResultsBreakingTiesRashomon = SimResultsBreakingTiesRashomon,
-             Parameters = list(seed = seed,
-                               N = N,
-                               K = K,
-                               NClass = NClass,
-                               ClassProportion = ClassProportion,
-                               CovCorrVal = CovCorrVal,
-                               TestProportion = TestProportion,
-                               SelectorN = SelectorN,
-                               InitialN = InitialN,
-                               NBins = NBins,
-                               RashomonParameters = RashomonParameters)),
-        file = paste0(directory,"SimulationResults_Seed",seed,".RDS"))
+# saveRDS(list(SimResultsBreakingTiesFactorial = SimResultsBreakingTiesFactorial,
+#              SimResultsBreakingTiesRashomon = SimResultsBreakingTiesRashomon,
+#              Parameters = list(seed = seed,
+#                                N = N,
+#                                K = K,
+#                                NClass = NClass,
+#                                ClassProportion = ClassProportion,
+#                                CovCorrVal = CovCorrVal,
+#                                TestProportion = TestProportion,
+#                                SelectorN = SelectorN,
+#                                InitialN = InitialN,
+#                                NBins = NBins,
+#                                RashomonParameters = RashomonParameters)),
+#         file = paste0(directory,"Results/SimulationResults_Seed",seed,".RDS"))
 
-test<- readRDS(paste0(directory,"SimulationResults_Seed",seed,".RDS"))
+# test<- readRDS(paste0(directory,"SimulationResults_Seed",seed,".RDS"))
 ```
 
 
@@ -199,10 +199,10 @@ SelectorTypeComparisonPlotFunc(SimulationType1 = SimResults1,
 ```
 
 ```{r}
-ClassErrorPlot2
-ClassErrorPlot1
-ALPlot1
-ALPlot2
+# ClassErrorPlot2
+# ClassErrorPlot1
+# ALPlot1
+# ALPlot2
 SelectorTypeComparisonPlot
 ```
 
