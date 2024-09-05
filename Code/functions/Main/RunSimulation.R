@@ -2,6 +2,10 @@
 ### Inputs:
 ### Output:
 
+### Library Directory ###
+.libPaths("/homes/simondn/Rlibs")
+
+
 # Set Up
 ## Libraries
 library(MASS)
@@ -14,6 +18,8 @@ library(nnet)
 library(RcppAlgos)  #TVA
 library(optparse)   #parse
 library(data.table) #TVA
+
+
 
 ## Rm. Var.
 rm(list=ls())
