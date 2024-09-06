@@ -9,7 +9,7 @@ SelectorTypeSwitchFunc = function(ModelType,
                                   TrainingSet, 
                                   CandidateSet, 
                                   CovariateList,
-                                  LabelProbabilities){
+                                  DeltaMetric){
   switch(SelectorType,
          Random = {
            SelectorDataSets = RandomSelectorFunc(SelectorN = SelectorN,
@@ -17,7 +17,7 @@ SelectorTypeSwitchFunc = function(ModelType,
                                                  CandidateSet = CandidateSet)},
          BreakingTies = {
            SelectorDataSets = BreakingTiesSelectorFunc(ModelType = ModelType,
-                                                       LabelProbabilities = LabelProbabilities,
+                                                       DeltaMetric = DeltaMetric,
                                                        TestSet = TestSet,
                                                        TrainingSet = TrainingSet,
                                                        CandidateSet = CandidateSet,

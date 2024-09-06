@@ -19,12 +19,12 @@ ModelTypeSwitchFunc = function(TrainingSet,
          Model = glm(FMLA, 
                      data = TrainingSet,
                      family = "binomial")
-         TrainingLabelProbabilities = as.matrix(predict(Model, 
+         DeltaMetric = as.matrix(predict(Model, 
                                                 newdata = TrainingSet, 
                                                 type = "response"))
-         TrainingLabelProbabilities = cbind(ID = as.numeric(rownames(TrainingLabelProbabilities)),
-                                    Class1 = TrainingLabelProbabilities[,1],
-                                    Class2 = 1-TrainingLabelProbabilities[,1])
+         DeltaMetric = cbind(ID = as.numeric(rownames(DeltaMetric)),
+                                    Class1 = DeltaMetric[,1],
+                                    Class2 = 1-DeltaMetric[,1])
          TrainingPredictedLabels = 1*(predict(Model, 
                                               newdata = TrainingSet, 
                                               type = "response")>0.5)
@@ -46,21 +46,21 @@ ModelTypeSwitchFunc = function(TrainingSet,
                         family = "binomial",
                         intercept = FALSE)
          
-         TrainingLabelProbabilities = predict(Model,
+         DeltaMetric = predict(Model,
                                       newx = as.matrix(TrainingSet[,CovariateList]),
                                       s = MinLambda,
                                       type = "response")
-         TrainingLabelProbabilities = cbind(ID = as.numeric(rownames(TrainingLabelProbabilities)),
-                                            TrainingLabelProbabilities)
-         TrainingPredictedLabels = (ifelse(TrainingLabelProbabilities > 0.5,1,0))%>% as.factor
-         colnames(TrainingLabelProbabilities) = c("ID", paste0("Class", 1:(ncol(TrainingLabelProbabilities)-1)))
+         DeltaMetric = cbind(ID = as.numeric(rownames(DeltaMetric)),
+                                            DeltaMetric)
+         TrainingPredictedLabels = (ifelse(DeltaMetric > 0.5,1,0))%>% as.factor
+         colnames(DeltaMetric) = c("ID", paste0("Class", 1:(ncol(DeltaMetric)-1)))
        },
        Multinomial = {
          # Model and Prediction #
          Model = nnet::multinom(formula = FMLA, 
                                 data = TrainingSet,
                                 trace = FALSE)
-         TrainingLabelProbabilities = predict(Model,
+         DeltaMetric = predict(Model,
                                               newdata = TrainingSet,
                                               type = "prob")
          TrainingPredictedLabels = predict(Model,
@@ -82,13 +82,13 @@ ModelTypeSwitchFunc = function(TrainingSet,
                         lambda = MinLambda,
                         family = "multinomial",
                         intercept = FALSE)
-         TrainingLabelProbabilities = predict(Model,
+         DeltaMetric = predict(Model,
                                               newx = as.matrix(TrainingSet[, CovariateList]),
                                               s = MinLambda,
                                               type = "response")[,,]
-         TrainingLabelProbabilities =  cbind(ID = as.numeric(rownames(TrainingLabelProbabilities)),
-                                             TrainingLabelProbabilities)
-         colnames(TrainingLabelProbabilities) = c("ID", paste0("Class", 1:(ncol(TrainingLabelProbabilities)-1)))
+         DeltaMetric =  cbind(ID = as.numeric(rownames(DeltaMetric)),
+                                             DeltaMetric)
+         colnames(DeltaMetric) = c("ID", paste0("Class", 1:(ncol(DeltaMetric)-1)))
          
          TrainingPredictedLabels = predict(Model,
                                            newx = as.matrix(TrainingSet[, CovariateList]),
@@ -98,7 +98,7 @@ ModelTypeSwitchFunc = function(TrainingSet,
        RandomForest = {
          Model = randomForest::randomForest(formula = FMLA, 
                                             data = TrainingSet)
-         TrainingLabelProbabilities = predict(Model, 
+         DeltaMetric = predict(Model, 
                                               TrainingSet, 
                                               type = "prob")
          TrainingPredictedLabels = predict(Model, 
@@ -109,12 +109,12 @@ ModelTypeSwitchFunc = function(TrainingSet,
          Model = lm(FMLA, data = TrainingSet)
          ModelPrediction = predict(Model, se.fit =TRUE, data = TraininSet)
          TrainingPredictedLabels = ModelPrediction$fit
-         TrainingLabelProbabilities = ModelPrediction$se.fit
+         DeltaMetric = ModelPrediction$se.fit
        },
        RashomonLinear = {
          RashomonProfile = RashomonProfileFunc(TrainingSet, CovariateList, LabelName, RashomonParameters)
          TrainingPredictedLabels = RashomonProfile$TrainingPredictedLabels
-         TrainingLabelProbabilities = NULL
+         DeltaMetric = NULL
          Model = RashomonProfile$RashomonMakeObjects
          # Model = NULL
          RashomonModelLosses = RashomonProfile$RashomonLosses
@@ -124,11 +124,10 @@ ModelTypeSwitchFunc = function(TrainingSet,
        Factorial = {
          RashomonProfile = RashomonProfileFunc(TrainingSet, CovariateList, LabelName, RashomonParameters)
          TrainingPredictedLabels = RashomonProfile$TrainingPredictedLabels[,1]
-         TrainingLabelProbabilities = NULL
+         DeltaMetric = NULL
          Model = RashomonProfile$RashomonMakeObjects
-         Model = NULL
          RashomonModelLosses = RashomonProfile$RashomonLosses[1]
-         
+  
          # PredictionDifference = abs(TrainingPredictedLabels - data.frame(TrainingSet)[,LabelName])
        },
        
@@ -137,7 +136,7 @@ ModelTypeSwitchFunc = function(TrainingSet,
   
   ReturnList = list(Model = Model,
                     TrainingPredictedLabels = TrainingPredictedLabels,
-                    TrainingLabelProbabilities = TrainingLabelProbabilities)
+                    DeltaMetric = DeltaMetric)
   if(ModelType %in% c("RashomonLinear", "Factorial")){
     ReturnList = c(ReturnList, 
                    RashomonModelLosses = list(RashomonModelLosses),

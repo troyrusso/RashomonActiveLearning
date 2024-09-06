@@ -52,6 +52,7 @@ if(exists("directory")){
 # seed = 1234567890
 seed = 10
 N = 375
+# N = 100
 K = 4
 NClass = 2
 # ClassProportion = c(3/5, 2/5)
@@ -98,6 +99,43 @@ ModelType = "Factorial"
 SelectorType = "BreakingTies"
 iter=1
 ``` 
+
+
+```{r}
+# ### Parameters ###
+#   N = nrow(dat)
+#   M = length(CovariateList)
+#   K = RashomonParameters$K
+#   NBins = RashomonParameters$NBins
+# 
+#   ### Rashomon Profiles ###
+#   NewDat = assign_universal_label(dat, arm_cols = CovariateList)
+#   StartTime = Sys.time()
+#   aggregate_rashomon_profiles(NewDat,                                  # TrainingSetTrainingData
+#                               value = LabelName,                       # Response names
+#                               arm_cols = CovariateList,                # Covariate names
+#                               M = length(CovariateList),               # Number of covariates
+#                               H = RashomonParameters$H,                # Maximum number of pools/splits
+#                               R = RashomonParameters$R,                # Bins of each arm (assume 0 exists)
+#                               reg = RashomonParameters$reg,            # Penalty on the splits
+#                               theta = RashomonParameters$theta,        # Threshold; determine relative to best model
+#                               inactive = RashomonParameters$inactive
+#                               ) -> RashomonProfiles  # Losses will always be the last one - (active arms)
+#   RashomonSetTime = Sys.time() - StartTime
+#   RashomonSetNum = length(RashomonProfiles[[1]])
+#   RashomonMakeObjects = make_rashomon_objects(RashomonProfiles)
+#    ### Rashomon Loss ###
+#   RashomonLosses = RashomonProfiles[[2]][[length(RashomonProfiles[[2]])]]$losses
+# 
+#   ### Rashomon Prediction ###
+#   TrainingPredictedLabels = sapply(1:RashomonSetNum,  function(x) predict(RashomonMakeObjects[[x]], NewDat$universal_label))
+
+```
+
+```{r}
+# mean((TrainingPredictedLabels[,1] - dat$YStar)^2) #0.5 something
+```
+
 
 ```{r}
 SimulationFunc(dat = dat,
@@ -204,6 +242,16 @@ SelectorTypeComparisonPlotFunc(SimulationType1 = SimResults1,
 # ALPlot1
 # ALPlot2
 SelectorTypeComparisonPlot
+```
+```{r}
+HistoryTable = cbind(SimResults1$SelectedObservationHistory,
+                     SimResults2$SelectedObservationHistory) 
+colnames(HistoryTable) = c("Naive", "Rashomon")
+HistoryTable
+```
+```{r}
+plot(SimResults1$DeltaMetricVec, type = "l")
+plot(SimResults2$DeltaMetricVec, type = "l")
 ```
 
 

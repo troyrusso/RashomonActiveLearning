@@ -35,13 +35,14 @@ SimulationFunc = function(dat,
     matrix(nrow = MaxIterationN,
            ncol = nrow(TestSet))
   colnames(TestSetPrediction) = rownames(TestSet)
-  Error = numeric(MaxIterationN)
-  ClassError = matrix(nrow = MaxIterationN,
+  ErrorVec = numeric(MaxIterationN)
+  ClassErrorVec = matrix(nrow = MaxIterationN,
                       ncol = NClass)
-  colnames(ClassError) = paste0("Class", 1:NClass)
+  colnames(ClassErrorVec) = paste0("Class", 1:NClass)
   SelectedObservationHistory = numeric(MaxIterationN * SelectorN) %>%
     matrix(nrow = MaxIterationN,
            ncol = SelectorN)
+  DeltaMetricVec = ErrorVec
 
   ### Progress Bar ###
   pb = txtProgressBar(min = 0, 
@@ -77,20 +78,22 @@ SimulationFunc = function(dat,
     ### START FOR NOW - LOOK THIS SHIT OVER HAHAHAHA ;-; .-. D: ###
       RashomonModelLosses = ModelTypeSwitchResults$RashomonModelLosses
       RashomonProfile = ModelTypeSwitchResults$RashomonProfile
-      TestSet = TrainingSet                                                                # DELETE LATER
+      TestSet = TrainingSet                                                                
       TestPredictedLabels = ModelTypeSwitchResults$TrainingPredictedLabels
-      PredictionDifference = abs(TestPredictedLabels - data.frame(TestSet)[,LabelName])
+      PredictionDifference = (TestPredictedLabels - data.frame(TestSet)[,LabelName])^2
       if(length(RashomonModelLosses) ==1){
         DifferenceTimesLosses= PredictionDifference * RashomonModelLosses
-        LabelProbabilities = DifferenceTimesLosses
-        Error[iter] = mean(TestPredictedLabels - TestSet$YStar)^2
-        }else if(length(RashomonModelLosses) >=1){
+        DeltaMetric = DifferenceTimesLosses
+        ErrorVec[iter] = mean((TestPredictedLabels - TestSet$YStar)^2)
+        DeltaMetricVec[iter] = max(DeltaMetric)
+        }else if(length(RashomonModelLosses) > 1){
         DifferenceTimesLosses= PredictionDifference %*%  diag(RashomonModelLosses)
-        LabelProbabilities = rowSums(DifferenceTimesLosses)
-        Error[iter] = mean(TestPredictedLabels[,1] - TestSet$YStar)^2
+        DeltaMetric = rowSums(DifferenceTimesLosses)
+        ErrorVec[iter] = mean((TestPredictedLabels[,1] - TestSet$YStar)^2)
+        DeltaMetricVec[iter] = max(DeltaMetric)
         }
     
-      ClassError[iter,] = tapply(X = 1:length(TestSet$Y), 
+      ClassErrorVec[iter,] = tapply(X = 1:length(TestSet$Y), 
                           INDEX = TestSet$Y, 
                           FUN = function(i) mean((TestPredictedLabels[i] - TestSet$YStar[i])^2)) %>%
         as.vector
@@ -98,19 +101,19 @@ SimulationFunc = function(dat,
     }else if(!ModelType %in% c("RashomonLinear", "Factorial")){                                               # DELETE LATER
       TestErrorResults = TestErrorFunction(Model, ModelType, TestSet, CovariateList, LabelName)
       TestSetPrediction[iter ,] = TestErrorResults$TestPredictedLabels
-      LabelProbabilities = TestErrorResults$TestPredictedProbabilities
-      Error[iter] = TestErrorResults$Error
+      DeltaMetric = TestErrorResults$TestPredictedProbabilities
+      ErrorVec[iter] = TestErrorResults$Error
       ClassError[iter,] = TestErrorResults$ClassError
       }
     ### END FOR NOW ###    TestSetPrediction[iter ,] = TestErrorResults$TestPredictedLabels
     
     # TestErrorResults = TestErrorFunction(Model, ModelType, TestSet, CovariateList, LabelName)
     # TestSetPrediction[iter ,] = TestErrorResults$TestPredictedLabels
-    # LabelProbabilities = TestErrorResults$TestPredictedProbabilities
-    # Error[iter] = TestErrorResults$Error
-    # ClassError[iter,] = TestErrorResults$ClassError
+    # DeltaMetric = TestErrorResults$TestPredictedProbabilities
+    # ErrorVec[iter] = TestErrorResults$Error
+    # ClassErrorVec[iter,] = TestErrorResults$ClassError
     
-    # print(paste0("[Iter ", iter, "] Loss: ", Error[iter]))
+    # print(paste0("[Iter ", iter, "] Loss: ", ErrorVec[iter]))
     
 
     ### Selector ###
@@ -121,7 +124,7 @@ SimulationFunc = function(dat,
                                               TrainingSet = TrainingSet, 
                                               CandidateSet = CandidateSet,
                                               CovariateList = CovariateList,
-                                              LabelProbabilities = LabelProbabilities)
+                                              DeltaMetric = DeltaMetric)
     ### Set Mutation ###
     TrainingSet = SelectorDataSets$TrainingSet
     CandidateSet = SelectorDataSets$CandidateSet
@@ -134,8 +137,9 @@ SimulationFunc = function(dat,
   run_time = end_time - start_time
 
   return(list(ModelList = ModelList,
-              Error = Error,
-              ClassError = ClassError,
+              ErrorVec = ErrorVec,
+              DeltaMetricVec = DeltaMetricVec,
+              ClassErrorVec = ClassErrorVec,
               SelectorType = SelectorType,
               ModelType = ModelType,
               TestSet = TestSet,

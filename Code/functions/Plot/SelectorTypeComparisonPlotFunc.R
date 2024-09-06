@@ -39,7 +39,7 @@ SelectorTypeComparisonPlotFunc = function(SimulationType1,
   colnames(JointErrors) = c("iter", "Method", "value")
   
   JointErrors = JointErrors %>%
-    mutate(Method = case_when(Method == "BreakingTiesFactorial" ~ "Without Rashomon",
+    mutate(Method = case_when(Method == "BreakingTiesFactorial" ~ "Naive",
                                     Method == "BreakingTiesRashomonLinear" ~ "Rashomon-weighted"))
   
   # Stop Iter Line
@@ -75,7 +75,7 @@ SelectorTypeComparisonPlotFunc = function(SimulationType1,
     # ylab("Test Set Error") +
     ylab("Training Set Error") +
     # ggtitle("Simulation") +
-    theme(legend.position = c(0.9,0.9)) +
+    # theme(legend.position = c(0.9,0.9)) +
     theme(plot.title = element_text(size = 15, hjust = 0.5))
   
   return(ErrorScatterPlot)

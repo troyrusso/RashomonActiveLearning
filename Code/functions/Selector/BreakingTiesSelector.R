@@ -2,7 +2,7 @@
 ### Inputs:
 ### Output:
 
-BreakingTiesSelectorFunc = function(LabelProbabilities, 
+BreakingTiesSelectorFunc = function(DeltaMetric, 
                                     TestSet, 
                                     TrainingSet, 
                                     CandidateSet, 
@@ -24,7 +24,7 @@ BreakingTiesSelectorFunc = function(LabelProbabilities,
   }else{
   
   ### Most Uncertain Observation ###
-    MostUncertainObs = MostUncertainObservationsFunc(LabelProbabilities = LabelProbabilities, 
+    MostUncertainObs = MostUncertainObservationsFunc(DeltaMetric = DeltaMetric, 
                                                      TestSet = TestSet, 
                                                      CandidateSet = CandidateSet,
                                                      CovariateList,
