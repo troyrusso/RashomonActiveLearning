@@ -12,8 +12,9 @@ RashomonProfileFunc = function(dat, CovariateList, LabelName, RashomonParameters
   
   ### Rashomon Profiles ###
   NewDat = assign_universal_label(dat, arm_cols = CovariateList)
+  # NewDat$Y = as.numeric(NewDat$Y)
   StartTime = Sys.time()
-  aggregate_rashomon_profiles(NewDat,                                  # TrainingSetTrainingData
+  aggregate_rashomon_profiles(data.frame(NewDat),                                  # TrainingSetTrainingData
                               value = LabelName,                       # Response names
                               arm_cols = CovariateList,                # Covariate names
                               M = length(CovariateList),               # Number of covariates
@@ -31,6 +32,7 @@ RashomonProfileFunc = function(dat, CovariateList, LabelName, RashomonParameters
   RashomonLosses = RashomonProfiles[[2]][[length(RashomonProfiles[[2]])]]$losses
 
   ### Rashomon Prediction ###
+  
   TrainingPredictedLabels = sapply(1:RashomonSetNum,  function(x) predict(RashomonMakeObjects[[x]], NewDat$universal_label))
   WholeSetTime = Sys.time() - StartTime
   

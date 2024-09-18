@@ -19,6 +19,7 @@ SimulationFunc = function(dat,
   TrainingIndices = sample(seq_len(nrow(dat)), size = nrow(dat) - TestSize)
   TestSet = dat[-TrainingIndices,]
   dat = dat[TrainingIndices,]
+  # dat$Y = as.numeric(dat$Y)
 
   ### Random Start ###
   RandomStart = RandomStartFunc(InitialN=InitialN, dat=dat)
@@ -80,17 +81,20 @@ SimulationFunc = function(dat,
       RashomonProfile = ModelTypeSwitchResults$RashomonProfile
       TestSet = TrainingSet                                                                
       TestPredictedLabels = ModelTypeSwitchResults$TrainingPredictedLabels
-      PredictionDifference = (TestPredictedLabels - data.frame(TestSet)[,LabelName])^2
+      # PredictionDifference = (TestPredictedLabels - data.frame(TestSet)[,LabelName])^2
+      
       if(length(RashomonModelLosses) ==1){
+        PredictionDifference = (TestPredictedLabels - data.frame(TestSet)[,LabelName])^2
         DifferenceTimesLosses= PredictionDifference * RashomonModelLosses
         DeltaMetric = DifferenceTimesLosses
-        ErrorVec[iter] = mean((TestPredictedLabels - TestSet$YStar)^2)
+        ErrorVec[iter] = mean(PredictionDifference)
         DeltaMetricVec[iter] = max(DeltaMetric)
         }else if(length(RashomonModelLosses) > 1){
-        DifferenceTimesLosses= PredictionDifference %*%  diag(RashomonModelLosses)
-        DeltaMetric = rowSums(DifferenceTimesLosses)
-        ErrorVec[iter] = mean((TestPredictedLabels[,1] - TestSet$YStar)^2)
-        DeltaMetricVec[iter] = max(DeltaMetric)
+          PredictionDifference = (TestPredictedLabels - data.frame(TestSet)[,LabelName])^2
+          DifferenceTimesLosses= PredictionDifference %*%  diag(RashomonModelLosses)
+          DeltaMetric = max(rowSums(DifferenceTimesLosses))
+          ErrorVec[iter] = mean((TestPredictedLabels[,1] - data.frame(TestSet)[,LabelName])^2)
+          DeltaMetricVec[iter] = max(DeltaMetric)
         }
     
       ClassErrorVec[iter,] = tapply(X = 1:length(TestSet$Y), 
