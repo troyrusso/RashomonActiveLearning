@@ -32,10 +32,10 @@ SimulationFunc = function(dat,
   MaxIterationN = ceiling(nrow(CandidateSet)/SelectorN)
   ModelList = vector('list', MaxIterationN)
   NClass = length(unique(TestSet$Y))
-  TestSetPrediction = numeric(MaxIterationN * nrow(TestSet)) %>% 
+  DeltaMetricVec = numeric(MaxIterationN * nrow(TestSet)) %>% 
     matrix(nrow = MaxIterationN,
            ncol = nrow(TestSet))
-  colnames(TestSetPrediction) = rownames(TestSet)
+  colnames(DeltaMetricVec) = rownames(TestSet)
   ErrorVec = numeric(MaxIterationN)
   ClassErrorVec = matrix(nrow = MaxIterationN,
                       ncol = NClass)
@@ -43,7 +43,9 @@ SimulationFunc = function(dat,
   SelectedObservationHistory = numeric(MaxIterationN * SelectorN) %>%
     matrix(nrow = MaxIterationN,
            ncol = SelectorN)
-  DeltaMetricVec = ErrorVec
+  if(ModelType == "RashomonLinear"){
+    TestSetPrediction = vector(mode = "list", length = MaxIterationN)
+  }else if(ModelType != "RashomonLinear"){TestSetPrediction = DeltaMetricVec}
 
   ### Progress Bar ###
   pb = txtProgressBar(min = 0, 
@@ -56,8 +58,6 @@ SimulationFunc = function(dat,
   ### Simulation ###
   for(iter in 1:MaxIterationN){
 
-    # print(iter)
-    
     ## Progress Bar ##
     setTxtProgressBar(pb, iter)
     
@@ -73,53 +73,25 @@ SimulationFunc = function(dat,
     
     ### Rashomon or not ###
     if(ModelType %in% c("RashomonLinear", "Factorial")){
-
-    ### Error and Stopping Criteria ### 
-    
-    ### START FOR NOW - LOOK THIS SHIT OVER HAHAHAHA ;-; .-. D: ###
       RashomonModelLosses = ModelTypeSwitchResults$RashomonModelLosses
       RashomonProfile = ModelTypeSwitchResults$RashomonProfile
-      TestSet = TrainingSet                                                                
-      TestPredictedLabels = ModelTypeSwitchResults$TrainingPredictedLabels
-      # PredictionDifference = (TestPredictedLabels - data.frame(TestSet)[,LabelName])^2
-      
-      if(length(RashomonModelLosses) ==1){
-        PredictionDifference = (TestPredictedLabels - data.frame(TestSet)[,LabelName])^2
-        DifferenceTimesLosses= PredictionDifference * RashomonModelLosses
-        DeltaMetric = DifferenceTimesLosses
-        ErrorVec[iter] = mean(PredictionDifference)
-        DeltaMetricVec[iter] = max(DeltaMetric)
-        }else if(length(RashomonModelLosses) > 1){
-          PredictionDifference = (TestPredictedLabels - data.frame(TestSet)[,LabelName])^2
-          DifferenceTimesLosses= PredictionDifference %*%  diag(RashomonModelLosses)
-          DeltaMetric = max(rowSums(DifferenceTimesLosses))
-          ErrorVec[iter] = mean((TestPredictedLabels[,1] - data.frame(TestSet)[,LabelName])^2)
-          DeltaMetricVec[iter] = max(DeltaMetric)
-        }
+      RashomonParameters$RashomonModelLosses = RashomonModelLosses
+    }
     
-      ClassErrorVec[iter,] = tapply(X = 1:length(TestSet$Y), 
-                          INDEX = TestSet$Y, 
-                          FUN = function(i) mean((TestPredictedLabels[i] - TestSet$YStar[i])^2)) %>%
-        as.vector
-      
-    }else if(!ModelType %in% c("RashomonLinear", "Factorial")){                                               # DELETE LATER
-      TestErrorResults = TestErrorFunction(Model, ModelType, TestSet, CovariateList, LabelName)
-      TestSetPrediction[iter ,] = TestErrorResults$TestPredictedLabels
-      DeltaMetric = TestErrorResults$TestPredictedProbabilities
-      ErrorVec[iter] = TestErrorResults$Error
-      ClassError[iter,] = TestErrorResults$ClassError
-      }
-    ### END FOR NOW ###    TestSetPrediction[iter ,] = TestErrorResults$TestPredictedLabels
+    ### Error and Stopping Criteria ### 
+    TestErrorResults = TestErrorFunction(Model, 
+                                         ModelType, 
+                                         TestSet, 
+                                         CovariateList, 
+                                         LabelName, 
+                                         RashomonParameters)
+    if(ModelType == "RashomonLinear"){
+      TestSetPrediction[[iter]] = TestErrorResults$TestPredictedLabels
+    }else if(ModelType != "RashomonLinear"){TestSetPrediction[iter ,] = TestErrorResults$TestPredictedLabels}
+    DeltaMetricVec[iter,] = TestErrorResults$DeltaMetric
+    ErrorVec[iter] = TestErrorResults$Error
+    ClassErrorVec[iter,] = TestErrorResults$ClassError
     
-    # TestErrorResults = TestErrorFunction(Model, ModelType, TestSet, CovariateList, LabelName)
-    # TestSetPrediction[iter ,] = TestErrorResults$TestPredictedLabels
-    # DeltaMetric = TestErrorResults$TestPredictedProbabilities
-    # ErrorVec[iter] = TestErrorResults$Error
-    # ClassErrorVec[iter,] = TestErrorResults$ClassError
-    
-    # print(paste0("[Iter ", iter, "] Loss: ", ErrorVec[iter]))
-    
-
     ### Selector ###
     SelectorDataSets = SelectorTypeSwitchFunc(ModelType = ModelType,
                                               SelectorType = SelectorType, 
@@ -128,12 +100,12 @@ SimulationFunc = function(dat,
                                               TrainingSet = TrainingSet, 
                                               CandidateSet = CandidateSet,
                                               CovariateList = CovariateList,
-                                              DeltaMetric = DeltaMetric)
+                                              DeltaMetric = DeltaMetricVec[iter,])
     ### Set Mutation ###
     TrainingSet = SelectorDataSets$TrainingSet
     CandidateSet = SelectorDataSets$CandidateSet
     SelectedObservationHistory[iter,] = SelectorDataSets$SelectedObservationID
-      }
+  }
   
   ### System Time ###
   close(pb)

@@ -33,8 +33,14 @@ RashomonProfileFunc = function(dat, CovariateList, LabelName, RashomonParameters
 
   ### Rashomon Prediction ###
   
-  TrainingPredictedLabels = sapply(1:RashomonSetNum,  function(x) predict(RashomonMakeObjects[[x]], NewDat$universal_label))
-  WholeSetTime = Sys.time() - StartTime
+  LabeledData = prep_data(data.frame(dat), 
+                          CovariateList, 
+                          LabelName, 
+                          RashomonParameters$R, 
+                          drop_unobserved_combinations = TRUE)
+  TrainingPredictedLabels = sapply(X = 1:RashomonSetNum, 
+                                   FUN = function(x) predict(RashomonMakeObjects[[x]], LabeledData$universal_label))
+    WholeSetTime = Sys.time() - StartTime
   
   ### Return ###
   return(list(RashomonSetNum = RashomonSetNum,

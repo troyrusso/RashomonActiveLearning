@@ -92,7 +92,7 @@ RashomonParameters = list(K = K,
                           H = Inf,                           # Maximum number of pools/splits
                           R = NBins+1,                       # Bins of each arm (assume 0 exists)
                           reg = 0.1,                         # Penalty on the splits
-                          theta = 3,                         # Threshold; determine relative to best model
+                          theta = 2,                         # Threshold; determine relative to best model
                           inactive = 0)
 ```
 
@@ -104,66 +104,11 @@ SelectorN = 1
 
 ```{r}
 # ModelType = "Linear"
-ModelType = "RashomonLinear"
-# ModelType = "Factorial"
+# ModelType = "RashomonLinear"
+ModelType = "Factorial"
 SelectorType = "BreakingTies"
 iter=1
 ``` 
-
-```{r}
-### Parameters ###
-N = nrow(dat)
-M = length(CovariateList)
-K = RashomonParameters$K
-NBins = RashomonParameters$NBins
-
-### Rashomon Profiles ###
-NewDat = assign_universal_label(dat, arm_cols = CovariateList)
-NewDat$Y = as.numeric(NewDat$Y)
-StartTime = Sys.time()
-aggregate_rashomon_profiles(data.frame(NewDat),                                  # TrainingSetTrainingData
-                            value = LabelName,                       # Response names
-                            arm_cols = CovariateList,                # Covariate names
-                            M = length(CovariateList),               # Number of covariates
-                            H = RashomonParameters$H,                # Maximum number of pools/splits
-                            R = RashomonParameters$R,                # Bins of each arm (assume 0 exists)
-                            reg = RashomonParameters$reg,            # Penalty on the splits
-                            theta = RashomonParameters$theta,        # Threshold; determine relative to best model
-                            inactive = RashomonParameters$inactive
-                            ) -> RashomonProfiles  # Losses will always be the last one - (active arms)
-RashomonSetTime = Sys.time() - StartTime
-RashomonSetNum = length(RashomonProfiles[[1]])
-RashomonMakeObjects = make_rashomon_objects(RashomonProfiles)
-
- ### Rashomon Loss ###
-RashomonLosses = RashomonProfiles[[2]][[length(RashomonProfiles[[2]])]]$losses
-
-### Rashomon Prediction ###
-
-##
-label_data <- prep_data(data.frame(dat), CovariateList, LabelName, RashomonParameters$R, drop_unobserved_combinations = FALSE)
-predict(RashomonMakeObjects[[1]], label_data$universal_label)
-##
-
-TrainingPredictedLabels = sapply(1:RashomonSetNum,  function(x) predict(RashomonMakeObjects, 
-                                                                        NewDat$universal_label, 
-                                                                        model_id = x))
-TrainingPredictedLabels = round(TrainingPredictedLabels)
-
-# for(i in 1:RashomonSetNum){
-#   table(TrainingPredictedLabels[,i]) %>% print()
-# }
-
-for(i in 1:RashomonSetNum){
-  mean(TrainingPredictedLabels[,i] == NewDat$Y) %>% print
-}
-
-```
-
-```{r}
-# mean((TrainingPredictedLabels[,1] - dat$YStar)^2) #0.5 something
-```
-
 
 ```{r}
 SimulationFunc(dat = dat,
@@ -214,41 +159,41 @@ saveRDS(list(SimResultsBreakingTiesFactorial = SimResultsBreakingTiesFactorial,
 ```
 
 ```{r}
-saveRDS(list(SimResults = SimResultsBreakingTiesFactorial,
-             Parameters = list(seed = seed,
-                               N = N,
-                               K = K,
-                               NClass = NClass,
-                               ClassProportion = ClassProportion,
-                               CovCorrVal = CovCorrVal,
-                               TestProportion = TestProportion,
-                               SelectorN = SelectorN,
-                               InitialN = InitialN,
-                               NBins = NBins,
-                               RashomonParameters = RashomonParameters)), 
-        file = paste0(directory,"Results/NaiveResults_Seed",seed,".RDS"))
-
-
-
-saveRDS(list(SimResults = SimResultsBreakingTiesRashomon,
-             Parameters = list(seed = seed,
-                               N = N,
-                               K = K,
-                               NClass = NClass,
-                               ClassProportion = ClassProportion,
-                               CovCorrVal = CovCorrVal,
-                               TestProportion = TestProportion,
-                               SelectorN = SelectorN,
-                               InitialN = InitialN,
-                               NBins = NBins,
-                               RashomonParameters = RashomonParameters)), 
-        file = paste0(directory,"Results/RashomonResults_Seed",seed,".RDS"))
+# saveRDS(list(SimResults = SimResultsBreakingTiesFactorial,
+#              Parameters = list(seed = seed,
+#                                N = N,
+#                                K = K,
+#                                NClass = NClass,
+#                                ClassProportion = ClassProportion,
+#                                CovCorrVal = CovCorrVal,
+#                                TestProportion = TestProportion,
+#                                SelectorN = SelectorN,
+#                                InitialN = InitialN,
+#                                NBins = NBins,
+#                                RashomonParameters = RashomonParameters)), 
+#         file = paste0(directory,"Results/NaiveResults_Seed",seed,".RDS"))
+# 
+# 
+# 
+# saveRDS(list(SimResults = SimResultsBreakingTiesRashomon,
+#              Parameters = list(seed = seed,
+#                                N = N,
+#                                K = K,
+#                                NClass = NClass,
+#                                ClassProportion = ClassProportion,
+#                                CovCorrVal = CovCorrVal,
+#                                TestProportion = TestProportion,
+#                                SelectorN = SelectorN,
+#                                InitialN = InitialN,
+#                                NBins = NBins,
+#                                RashomonParameters = RashomonParameters)), 
+#         file = paste0(directory,"Results/RashomonResults_Seed",seed,".RDS"))
 ```
 
 
 ```{r}
-LoadSimResults1 = readRDS(paste0(directory,"Results/RashomonResults_Seed10.RDS"))
-LoadSimResults2 = readRDS(paste0(directory,"Results/NaiveResults_Seed10.RDS"))
+# LoadSimResults1 = readRDS(paste0(directory,"Results/RashomonResults_Seed10.RDS"))
+# LoadSimResults2 = readRDS(paste0(directory,"Results/NaiveResults_Seed10.RDS"))
 SimResults1 = LoadSimResults1$SimResults
 SimResults2 = LoadSimResults2$SimResults
 

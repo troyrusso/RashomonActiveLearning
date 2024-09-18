@@ -127,7 +127,6 @@ ModelTypeSwitchFunc = function(TrainingSet,
          DeltaMetric = NULL
          Model = RashomonProfile$RashomonMakeObjects
          RashomonModelLosses = RashomonProfile$RashomonLosses[1]
-  
          # PredictionDifference = abs(TrainingPredictedLabels - data.frame(TrainingSet)[,LabelName])
        },
        
