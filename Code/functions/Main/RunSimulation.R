@@ -15,9 +15,10 @@ library(dplyr)
 library(class)
 library(glmnet)
 library(nnet)
-library(RcppAlgos)  #TVA
-library(optparse)   #parse
 library(data.table) #TVA
+library(optparse)   #parse
+
+library(RcppAlgos)  #TVA
 
 
 
