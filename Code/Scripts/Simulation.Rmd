@@ -38,6 +38,7 @@ library(rashomontva) #TVA
 ```{r}
 # devtools::install_github("Garrett-Allen/rashomon-tva-R")
 ```
+
 ```{r}
 # library(rashomontva)
 ```
@@ -59,10 +60,9 @@ if(exists("directory")){
 
 ```{r}
 ### Input ###
-# seed = 1234567890
-seed = 10
-# N = 375
-N = 100
+seed = 1
+N = 300
+# N = 100
 K = 4
 NClass = 2
 # ClassProportion = c(3/5, 2/5)
@@ -92,7 +92,7 @@ RashomonParameters = list(K = K,
                           H = Inf,                           # Maximum number of pools/splits
                           R = NBins+1,                       # Bins of each arm (assume 0 exists)
                           reg = 0.1,                         # Penalty on the splits
-                          theta = 2,                         # Threshold; determine relative to best model
+                          theta = 3,                         # Threshold; determine relative to best model
                           inactive = 0)
 ```
 
@@ -103,12 +103,17 @@ SelectorN = 1
 ```
 
 ```{r}
-# ModelType = "Linear"
-# ModelType = "RashomonLinear"
-ModelType = "Factorial"
-SelectorType = "BreakingTies"
-iter=1
-``` 
+SimulationFunc(dat = dat,
+               LabelName = LabelName,
+               CovariateList = CovariateList,
+               TestProportion = TestProportion,
+               SelectorType = "Random",
+               SelectorN = SelectorN,
+               ModelType = "Factorial",
+               InitialN = InitialN,
+               RashomonParameters = RashomonParameters,
+               seed = seed) -> SimResultsBreakingTiesRandom
+```
 
 ```{r}
 SimulationFunc(dat = dat,
@@ -138,11 +143,8 @@ SimulationFunc(dat = dat,
 ```
 
 ## Visualize
-
 ```{r}
-saveRDS(list(SimResultsBreakingTiesFactorial = SimResultsBreakingTiesFactorial,
-             SimResultsBreakingTiesRashomon = SimResultsBreakingTiesRashomon,
-             Parameters = list(seed = seed,
+SimResultsBreakingTiesFactorial$Parameters = list(seed = seed,
                                N = N,
                                K = K,
                                NClass = NClass,
@@ -152,59 +154,59 @@ saveRDS(list(SimResultsBreakingTiesFactorial = SimResultsBreakingTiesFactorial,
                                SelectorN = SelectorN,
                                InitialN = InitialN,
                                NBins = NBins,
-                               RashomonParameters = RashomonParameters)),
-        file = paste0(directory,"Results/SimulationResults_Seed",seed,".rds"))
+                               RashomonParameters = RashomonParameters)
+SimResultsBreakingTiesRashomon$Parameters = list(seed = seed,
+                               N = N,
+                               K = K,
+                               NClass = NClass,
+                               ClassProportion = ClassProportion,
+                               CovCorrVal = CovCorrVal,
+                               TestProportion = TestProportion,
+                               SelectorN = SelectorN,
+                               InitialN = InitialN,
+                               NBins = NBins,
+                               RashomonParameters = RashomonParameters)
+SimResultsBreakingTiesRandom$Parameters = list(seed = seed,
+                               N = N,
+                               K = K,
+                               NClass = NClass,
+                               ClassProportion = ClassProportion,
+                               CovCorrVal = CovCorrVal,
+                               TestProportion = TestProportion,
+                               SelectorN = SelectorN,
+                               InitialN = InitialN,
+                               NBins = NBins,
+                               RashomonParameters = RashomonParameters)
 
-# test<- readRDS("/Users/simondn/Documents/RashomonActiveLearning/Results/THISWORKS.rds")
+### Save Results and Parameters ###
+
+# Save the object to the specified path
+save(SimResultsBreakingTiesFactorial, 
+     file = paste0(directory,"Results/NaiveResults_Seed",seed,".RData"))
+save(SimResultsBreakingTiesRashomon, 
+     file = paste0(directory,"Results/RashomonResults_Seed",seed,".RData"))
+save(SimResultsBreakingTiesRandom, 
+     file = paste0(directory,"Results/RandomResults_Seed",seed,".RData"))
 ```
 
 ```{r}
-# saveRDS(list(SimResults = SimResultsBreakingTiesFactorial,
-#              Parameters = list(seed = seed,
-#                                N = N,
-#                                K = K,
-#                                NClass = NClass,
-#                                ClassProportion = ClassProportion,
-#                                CovCorrVal = CovCorrVal,
-#                                TestProportion = TestProportion,
-#                                SelectorN = SelectorN,
-#                                InitialN = InitialN,
-#                                NBins = NBins,
-#                                RashomonParameters = RashomonParameters)), 
-#         file = paste0(directory,"Results/NaiveResults_Seed",seed,".RDS"))
-# 
-# 
-# 
-# saveRDS(list(SimResults = SimResultsBreakingTiesRashomon,
-#              Parameters = list(seed = seed,
-#                                N = N,
-#                                K = K,
-#                                NClass = NClass,
-#                                ClassProportion = ClassProportion,
-#                                CovCorrVal = CovCorrVal,
-#                                TestProportion = TestProportion,
-#                                SelectorN = SelectorN,
-#                                InitialN = InitialN,
-#                                NBins = NBins,
-#                                RashomonParameters = RashomonParameters)), 
-#         file = paste0(directory,"Results/RashomonResults_Seed",seed,".RDS"))
-```
+### Load Data ###
+load("/Users/simondn/Documents/RashomonActiveLearning/Results/NaiveResults_Seed1.RData")
+load("/Users/simondn/Documents/RashomonActiveLearning/Results/RashomonResults_Seed1.RData")
+load("/Users/simondn/Documents/RashomonActiveLearning/Results/RandomResults_Seed1.RData")
 
+### Assign ###
+SimResults1 = SimResultsBreakingTiesFactorial
+SimResults2 = SimResultsBreakingTiesRashomon
+SimResults3 = SimResultsBreakingTiesRandom
 
-```{r}
-# LoadSimResults1 = readRDS(paste0(directory,"Results/RashomonResults_Seed10.RDS"))
-# LoadSimResults2 = readRDS(paste0(directory,"Results/NaiveResults_Seed10.RDS"))
-SimResults1 = LoadSimResults1$SimResults
-SimResults2 = LoadSimResults2$SimResults
-
-```
-
-```{r}
 TestSetPredictions1 = SimResults1$TestSetPrediction
 TestSetPredictions2 = SimResults2$TestSetPrediction
+TestSetPredictions3 = SimResults3$TestSetPrediction
 
 ModelList1 = SimResults1$ModelList
 ModelList2 = SimResults2$ModelList
+ModelList3 = SimResults3$ModelList
 ```
 
 ```{r}
@@ -221,6 +223,11 @@ StopIter2 = StoppingCriteriaFunc(SimResults2,
                                  VarThreshold = VarThreshold,
                                  TailN = TailN)
 
+StopIter3 = StoppingCriteriaFunc(SimResults3,
+                                 ErrorThreshold = ErrorThreshold,
+                                 VarThreshold = VarThreshold,
+                                 TailN = TailN)
+
 ### Plots ###
 xupper = NULL
 
@@ -228,6 +235,8 @@ ClassErrorPlotFunc(SimulationResults = SimResults1,
                    xupper = xupper) -> ClassErrorPlot1
 ClassErrorPlotFunc(SimulationResults = SimResults2,
                    xupper = xupper) -> ClassErrorPlot2
+ClassErrorPlotFunc(SimulationResults = SimResults3,
+                   xupper = xupper) -> ClassErrorPlot3
 
 ActiveLearningPlotFunc(SimResults = SimResults1,
                        StopIter = StopIter1,
@@ -237,28 +246,34 @@ ActiveLearningPlotFunc(SimResults = SimResults2,
                        StopIter = StopIter2,
                        xupper = xupper) -> ALPlot2
 
+ActiveLearningPlotFunc(SimResults = SimResults3,
+                       StopIter = StopIter3,
+                       xupper = xupper) -> ALPlot3
+
 SelectorTypeComparisonPlotFunc(SimulationType1 = SimResults1,
                                SimulationType2 = SimResults2,
                                StopIter1 = StopIter1,
                                StopIter2 = StopIter2,
-                               xupper = xupper) -> SelectorTypeComparisonPlot
+                               xupper = xupper) -> SelectorTypeComparisonPlot2
+
+SelectorTypeComparisonPlotFunc3(SimulationType1 = SimResults1,
+                               SimulationType2 = SimResults2,
+                               SimulationType3 = SimResults3,
+                               StopIter1 = StopIter1,
+                               StopIter2 = StopIter2,
+                               StopIter3 = StopIter3,
+                               xupper = xupper) -> SelectorTypeComparisonPlot3
 ```
 
 ```{r}
-# ClassErrorPlot2
-# ClassErrorPlot1
-# ALPlot1
-# ALPlot2
-SelectorTypeComparisonPlot
+ClassErrorPlot2
+ClassErrorPlot1
+ALPlot1
+ALPlot2
+SelectorTypeComparisonPlot2
+SelectorTypeComparisonPlot3
 ```
 
-```{r}
-```
-
-
-```{r}
-(cbind(1:length(SimResults1$ErrorVec), abs(SimResults1$ErrorVec - SimResults2$ErrorVec)<1e-3))
-```
 
 
 

@@ -72,10 +72,9 @@ SelectorTypeComparisonPlotFunc = function(SimulationType1,
                                   SimulationType1$InitialTrainingSetN),
                        lim = c(xlower, xupper))    +
     xlab("Number of annotated observations") +
-    # ylab("Test Set Error") +
-    ylab("Training Set Error") +
+    ylab("Test Set Error") +
     # ggtitle("Simulation") +
-    theme(legend.position = c(0.3,0.9)) +
+    theme(legend.position = c(0.8,0.8)) +
     theme(plot.title = element_text(size = 15, hjust = 0.5))
   
   return(ErrorScatterPlot)

@@ -41,12 +41,12 @@ rm(list=ls())
 ## Functions
 
 ```{r}
-rm(list=ls())
 directory = "/Users/simondn/Documents/RashomonActiveLearning/"
 
 if(exists("directory")){
-  source(paste0(directory,"Code/functions/Main/LoadFunctions.R"))
+  source(paste0(directory,"Code/functions/Auxiliary/LoadFunctions.R"))
   }else if(!exists("directory")){source("Code/functions/Main/LoadFunctions.R")}
+
 ```
 
 # Generate Data
@@ -84,131 +84,79 @@ dat = dat %>% mutate(Duration = ntile(Duration, NBins),
                                        Age = ntile(Age, NBins))
 ```
 
-```{r}
-### Rashomon Profiles ###
-ColArms = c("Duration",
-            "Amount", 
-            "InstallmentRatePercentage", 
-            "ResidenceDuration", 
-            "Age", 
-            "NumberExistingCredits",
-            "NumberPeopleMaintenance", 
-            "Telephone",
-            "ForeignWorker")
-NewDat = assign_universal_label(dat, arm_cols = ColArms)
-aggregate_rashomon_profiles(NewDat,                               # Data
-                            value = "Y",                       # Response names
-                            arm_cols = ColArms,                # Covariate names
-                            M = length(ColArms),               # Number of covariates
-                            H = Inf,                           # Maximum number of pools/splits
-                            R = (1+c(3,3,4,4,3,4,2,2,2)),
-                            reg = 1,                           # Penalty on the splits
-                            theta = 30,                         # Threshold; determine relative to best model
-                            inactive = 0) -> RashomonProfiles  # Losses will always be the last one - (active arms)
-```
-
-
-```{r}
-RashomonProfile = RashomonProfileFunc(dat, K, NBins)
-RashomonSetNum = RashomonProfile$RashomonSetNum
-RashomonLosses = RashomonProfile$RashomonLosses
-PredictionObsModel = RashomonProfile$PredictionObsModel
-PredictionObsModelRounded = RashomonProfile$PredictionObsModelRounded
-RashomonSetTime = RashomonProfile$RashomonSetTime
-WholeSetTime = RashomonProfile$WholeSetTime
-dat = data.frame(dat)
-
-for(col in 1:ncol(PredictionObsModel)){
-   table(PredictionObsModel[,col]) %>% print()
-   table(PredictionObsModelRounded[,col]) %>% print()
-}
-```
-
-
 
 # Inputs
 ```{r}
 ### Input ###
+LabelName = "Y"
+SelectorN = 1
 seed = 1
 TestProportion = 0.2
 SelectorN = 1
 InitialN = 10
-ModelType = "Logistic" #Supported Types: Logistic, LASSO, Multinomial, MultinomLASSO, RandomForest
 NBins = 3
+
+CovariateList = c("Duration",
+                  "Amount",
+                  "InstallmentRatePercentage",
+                  "ResidenceDuration",
+                  "Age",
+                  "NumberExistingCredits",
+                  "NumberPeopleMaintenance",
+                  "Telephone",
+                  "ForeignWorker")
+RashomonParameters = list(K = K, 
+                          NBins = NBins,
+                          H = Inf,                           # Maximum number of pools/splits
+                          R = NBins+1,                       # Bins of each arm (assume 0 exists)
+                          reg = 0.1,                         # Penalty on the splits
+                          theta = 3,                         # Threshold; determine relative to best model
+                          inactive = 0)
 ```
 
 ## Algorithm
-
 ```{r}
 SimulationFunc(dat = dat,
+               LabelName = LabelName,
+               CovariateList = CovariateList,
                TestProportion = TestProportion,
                SelectorType = "Random",
                SelectorN = SelectorN,
-               ModelType = ModelType,
+               ModelType = "Factorial",
                InitialN = InitialN,
-               seed = seed) -> SimResultsRandom
+               RashomonParameters = RashomonParameters,
+               seed = seed) -> SimResultsBreakingTiesRandom
+```
 
+```{r}
 SimulationFunc(dat = dat,
+               LabelName = LabelName,
+               CovariateList = CovariateList,
                TestProportion = TestProportion,
                SelectorType = "BreakingTies",
                SelectorN = SelectorN,
-               ModelType = ModelType,
+               ModelType = "Factorial",
                InitialN = InitialN,
-               seed = seed) -> SimResultsBreakingTies
-
+               RashomonParameters = RashomonParameters,
+               seed = seed) -> SimResultsBreakingTiesFactorial
 ```
 
+```{r}
+SimulationFunc(dat = dat,
+               LabelName = LabelName,
+               CovariateList = CovariateList,
+               TestProportion = TestProportion,
+               SelectorType = "BreakingTies",
+               SelectorN = SelectorN,
+               ModelType = "RashomonLinear",
+               InitialN = InitialN,
+               RashomonParameters = RashomonParameters,
+               seed = seed) -> SimResultsBreakingTiesRashomon
+
+```
 
 ## Visualize
 
-```{r}
-TestSetPredictionsRandom = SimResultsRandom$TestSetPrediction
-TestSetPredictionsBreakingTies = SimResultsBreakingTies$TestSetPrediction
-
-ModelListRandom = SimResultsRandom$ModelList
-ModelListBreakingTies = SimResultsBreakingTies$ModelList
-```
-
-
-```{r}
-### Stop Iter ###
-TailN = 10
-VarThreshold = 0.2
-ErrorThreshold = 0.3
-StopIterRandom = StoppingCriteriaFunc(SimResultsRandom, 
-                                      ErrorThreshold = ErrorThreshold,
-                                      VarThreshold = VarThreshold, 
-                                      TailN = TailN)
-StopIterBreakingTies = StoppingCriteriaFunc(SimResultsBreakingTies, 
-                                            ErrorThreshold = ErrorThreshold,
-                                            VarThreshold = VarThreshold, 
-                                            TailN = TailN)
-
-### Plots ###
-xupper =NULL
-ActiveLearningPlotFunc(Error = SimResultsRandom$Error,
-                       StopIter = StopIterRandom,
-                       SelectorType = SimResultsRandom$SelectorType,
-                       InitialTrainingSetN = SimResultsRandom$InitialTrainingSetN,
-                       xupper = xupper) -> RandomPlot
-
-ActiveLearningPlotFunc(Error = SimResultsBreakingTies$Error,
-                       StopIter = StopIterBreakingTies,
-                       SelectorType = SimResultsBreakingTies$SelectorType,
-                       InitialTrainingSetN = SimResultsBreakingTies$InitialTrainingSetN,
-                       xupper = xupper) -> BreakingTiesPlot
-
-SelectorTypeComparisonPlotFunc(SimulationType1 = SimResultsRandom,
-                               SimulationType2 = SimResultsBreakingTies,
-                               StopIter1 = StopIterRandom,
-                               StopIter2 = StopIterBreakingTies,
-                               xupper = xupper) -> SelectorTypeComparisonPlot
-
-ClassErrorPlotFunc(SimulationResults = SimResultsBreakingTies,
-                   xupper = xupper) -> ClassErrorPlotBreakingTies
-ClassErrorPlotFunc(SimulationResults = SimResultsRandom,
-                   xupper = xupper) -> ClassErrorPlotRandom
-```
 
 
 ```{r}

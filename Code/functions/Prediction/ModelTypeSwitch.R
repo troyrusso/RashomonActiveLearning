@@ -116,18 +116,14 @@ ModelTypeSwitchFunc = function(TrainingSet,
          TrainingPredictedLabels = RashomonProfile$TrainingPredictedLabels
          DeltaMetric = NULL
          Model = RashomonProfile$RashomonMakeObjects
-         # Model = NULL
          RashomonModelLosses = RashomonProfile$RashomonLosses
-         
-         # PredictionDifference = abs(TrainingPredictedLabels - data.frame(TrainingSet)[,LabelName])
-       },
+                },
        Factorial = {
          RashomonProfile = RashomonProfileFunc(TrainingSet, CovariateList, LabelName, RashomonParameters)
          TrainingPredictedLabels = RashomonProfile$TrainingPredictedLabels[,1]
          DeltaMetric = NULL
          Model = RashomonProfile$RashomonMakeObjects
          RashomonModelLosses = RashomonProfile$RashomonLosses[1]
-         # PredictionDifference = abs(TrainingPredictedLabels - data.frame(TrainingSet)[,LabelName])
        },
        
   )
