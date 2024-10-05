@@ -21,7 +21,7 @@ RashomonProfileFunc = function(dat, CovariateList, LabelName, RashomonParameters
                               H = RashomonParameters$H,                # Maximum number of pools/splits
                               R = RashomonParameters$R,                # Bins of each arm (assume 0 exists)
                               reg = RashomonParameters$reg,            # Penalty on the splits
-                              theta = RashomonParameters$theta,        # Threshold; determine relative to best model
+                              theta = RashomonParameters$theta,        # Threshold
                               inactive = RashomonParameters$inactive
                               ) -> RashomonProfiles  # Losses will always be the last one - (active arms)
   RashomonSetTime = Sys.time() - StartTime

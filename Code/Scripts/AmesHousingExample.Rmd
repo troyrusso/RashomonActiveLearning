@@ -1,0 +1,188 @@
+---
+title: "German Credit Example"
+author: "Simon Dovan Nguyen"
+date: "`r Sys.Date()`"
+output:
+  pdf_document:
+    toc: yes
+  html_document:
+    toc: yes
+    toc_float: yes
+    toc_collapsed: yes
+    theme: lumen
+    css: assets/styles.css
+---
+
+# Set Up
+
+## Notes
+
+## Libr.
+
+```{r message=FALSE, warning=FALSE}
+library(MASS) 
+library(tidyverse)
+library(ggplot2) 
+library(dplyr)
+library(class)
+library(glmnet)
+library(nnet)
+library(RcppAlgos)   #TVA
+library(data.table)  #TVA
+library(rashomontva) #TVA
+```
+
+## Rm. Var.
+
+```{r}
+rm(list=ls())
+```
+
+## Functions
+
+```{r}
+directory = "/Users/simondn/Documents/RashomonActiveLearning/"
+
+if(exists("directory")){
+  source(paste0(directory,"Code/functions/Auxiliary/LoadFunctions.R"))
+  }else if(!exists("directory")){source("Code/functions/Main/LoadFunctions.R")}
+
+```
+
+# Generate Data
+
+## Data
+```{r}
+dat = read.csv(paste0(directory,"Data/AmesHousing.csv"))
+dat = dat %>% 
+  mutate(ID = 1:nrow(dat)) %>%
+  select(ID,
+         SalePrice,
+         Overall.Qual,
+         Gr.Liv.Area,
+         Garage.Cars,
+         Year.Built) %>%
+  rename(OverallQuality = Overall.Qual,
+         LivingArea = Gr.Liv.Area,
+         Cars = Garage.Cars,
+         YearBuilt = Year.Built) %>%
+  mutate(LivingArea = as.factor(case_when(LivingArea <= 1126 ~ 1,
+                                LivingArea > 1126 & LivingArea <= 1743 ~ 2,
+                                LivingArea > 1743 ~ 3)),
+         YearBuilt = as.factor(case_when(YearBuilt <= 1953 ~ 1,
+                                YearBuilt > 1953 & YearBuilt <= 1977 ~ 2,
+                                YearBuilt > 1977 ~ 3))) %>%
+  na.omit
+```
+
+
+# Inputs
+```{r}
+### Input ###
+LabelName = "SalePrice"
+SelectorN = 1
+seed = 1
+TestProportion = 0.2
+SelectorN = 1
+InitialN = 10
+CovariateList = c("OverallQuality",
+                  # "LivingArea",
+                  # "Cars",
+                  "YearBuilt"
+                  )
+RashomonParameters = list(H = Inf,                # Maximum number of pools/splits
+                          R = c(11,4),         # Bins of each arm (assume 0 exists)
+                          reg = 0.1,              # Penalty on the splits
+                          theta = 4000000000,              # Threshold; determine relative to best model
+                          inactive = 0)
+```
+
+
+### Rashomon Test
+
+```{r}
+# ### Parameters ###
+# N = nrow(dat)
+# M = length(CovariateList)
+# K = RashomonParameters$K
+# NBins = RashomonParameters$NBins
+# 
+# ### Rashomon Profiles ###
+# NewDat = assign_universal_label(dat, arm_cols = CovariateList)
+# # NewDat$Y = as.numeric(NewDat$Y)
+# StartTime = Sys.time()
+# aggregate_rashomon_profiles(data.frame(NewDat),                 # TrainingSetTrainingData
+#                             value = LabelName,                  # Response names
+#                             arm_cols = CovariateList,           # Covariate names
+#                             M = length(CovariateList),          # Number of covariates
+#                             H = RashomonParameters$H,           # Maximum number of pools/splits
+#                             R = RashomonParameters$R,           # Bins of each arm (assume 0 exists)
+#                             reg = RashomonParameters$reg,       # Penalty on the splits
+#                             theta = RashomonParameters$theta,   # Threshold
+#                             inactive = RashomonParameters$inactive
+#                             ) -> RashomonProfiles  # Losses will always be the last one - (active arms)
+# RashomonSetTime = Sys.time() - StartTime
+# RashomonSetNum = length(RashomonProfiles[[1]])
+# RashomonMakeObjects = make_rashomon_objects(RashomonProfiles)
+```
+
+
+```{r}
+SelectorType = "BreakingTies"
+ModelType = "RashomonLinear"
+iter=1
+```
+
+## Algorithm
+```{r}
+SimulationFunc(dat = dat,
+               LabelName = LabelName,
+               CovariateList = CovariateList,
+               TestProportion = TestProportion,
+               SelectorType = "Random",
+               SelectorN = SelectorN,
+               ModelType = "Factorial",
+               InitialN = InitialN,
+               RashomonParameters = RashomonParameters,
+               seed = seed) -> SimResultsBreakingTiesRandom
+```
+
+```{r}
+SimulationFunc(dat = dat,
+               LabelName = LabelName,
+               CovariateList = CovariateList,
+               TestProportion = TestProportion,
+               SelectorType = "BreakingTies",
+               SelectorN = SelectorN,
+               ModelType = "Factorial",
+               InitialN = InitialN,
+               RashomonParameters = RashomonParameters,
+               seed = seed) -> SimResultsBreakingTiesFactorial
+```
+
+```{r}
+SimulationFunc(dat = dat,
+               LabelName = LabelName,
+               CovariateList = CovariateList,
+               TestProportion = TestProportion,
+               SelectorType = "BreakingTies",
+               SelectorN = SelectorN,
+               ModelType = "RashomonLinear",
+               InitialN = InitialN,
+               RashomonParameters = RashomonParameters,
+               seed = seed) -> SimResultsBreakingTiesRashomon
+
+```
+
+## Visualize
+
+
+
+```{r}
+# ClassErrorPlotBreakingTies
+# ClassErrorPlotRandom
+# RandomPlot
+# BreakingTiesPlot
+SelectorTypeComparisonPlot
+```
+

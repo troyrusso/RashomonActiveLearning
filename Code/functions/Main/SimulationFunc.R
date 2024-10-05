@@ -31,15 +31,14 @@ SimulationFunc = function(dat,
   ### Set Up ###
   MaxIterationN = ceiling(nrow(CandidateSet)/SelectorN)
   ModelList = vector('list', MaxIterationN)
-  NClass = length(unique(TestSet$Y))
+  # NClass = length(unique(TestSet$Y))
   DeltaMetricVec = numeric(MaxIterationN * nrow(TestSet)) %>% 
     matrix(nrow = MaxIterationN,
            ncol = nrow(TestSet))
   colnames(DeltaMetricVec) = rownames(TestSet)
   ErrorVec = numeric(MaxIterationN)
-  ClassErrorVec = matrix(nrow = MaxIterationN,
-                      ncol = NClass)
-  colnames(ClassErrorVec) = paste0("Class", 1:NClass)
+  # ClassErrorVec = matrix(nrow = MaxIterationN,ncol = NClass)
+  # colnames(ClassErrorVec) = paste0("Class", 1:NClass)
   SelectedObservationHistory = numeric(MaxIterationN * SelectorN) %>%
     matrix(nrow = MaxIterationN,
            ncol = SelectorN)
@@ -67,7 +66,8 @@ SimulationFunc = function(dat,
                                                  CovariateList, 
                                                  ModelType,
                                                  RashomonParameters = RashomonParameters)
-    TrainingSet = data.frame(TrainingSet)[, c("ID", "Y", "YStar", paste0("X",1:length(CovariateList)))]
+    # TrainingSet = data.frame(TrainingSet)[, c("ID", "Y", "YStar", paste0("X",1:length(CovariateList)))]
+    TrainingSet = data.frame(TrainingSet)
     Model = ModelTypeSwitchResults$Model
     ModelList[[iter]] = Model
     
@@ -90,7 +90,7 @@ SimulationFunc = function(dat,
     }else if(ModelType != "RashomonLinear"){TestSetPrediction[iter ,] = TestErrorResults$TestPredictedLabels}
     DeltaMetricVec[iter,] = TestErrorResults$DeltaMetric
     ErrorVec[iter] = TestErrorResults$Error
-    ClassErrorVec[iter,] = TestErrorResults$ClassError
+    # ClassErrorVec[iter,] = TestErrorResults$ClassError
     
     ### Selector ###
     SelectorDataSets = SelectorTypeSwitchFunc(ModelType = ModelType,
@@ -115,7 +115,7 @@ SimulationFunc = function(dat,
   return(list(ModelList = ModelList,
               ErrorVec = ErrorVec,
               DeltaMetricVec = DeltaMetricVec,
-              ClassErrorVec = ClassErrorVec,
+              # ClassErrorVec = ClassErrorVec,
               SelectorType = SelectorType,
               ModelType = ModelType,
               TestSet = TestSet,
