@@ -3,8 +3,7 @@
 ### Output:
 
 ### Library Directory ###
-.libPaths("/homes/simondn/Rlibs")
-
+# .libPaths("/homes/simondn/Rlibs")
 
 # Set Up
 ## Libraries
