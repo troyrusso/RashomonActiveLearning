@@ -4,7 +4,7 @@
 
 ### Library Directory ###
 # .libPaths("/homes/simondn/Rlibs")
-.libPaths("~/Rlibs/x86_64-pc-linux-gnu/4.2.2")
+# .libPaths("~/Rlibs/x86_64-pc-linux-gnu/4.2.2")
 
 # Set Up
 ## Libraries

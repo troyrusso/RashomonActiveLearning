@@ -46,13 +46,6 @@ SelectorTypeComparisonPlotFunc3 = function(SimulationType1,
                               Method == "BreakingTiesRashomonLinear" ~ "Rashomon-weighted",
                               Method == "RandomFactorial" ~ "Random"))
   
-  # Stop Iter Line
-  # JointStopIter = c(SimulationType1$StopIter,SimulationType1$SelectorType,
-  #                   SimulationType2$StopIter,SimulationType2$SelectorType) %>%
-  #   matrix(nrow = 2, ncol = 2, byrow = TRUE)
-  # colnames(JointStopIter) = c("StopIter", "Method")
-  # JointStopIter$StopIter = as.numeric(JointStopIter$StopIter)
-  
   ### Plot ###
   ErrorScatterPlot = ggplot() +
     

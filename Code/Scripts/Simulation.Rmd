@@ -142,7 +142,7 @@ SimulationFunc(dat = dat,
 
 ```
 
-## Visualize
+## Save
 ```{r}
 SimResultsBreakingTiesFactorial$Parameters = list(seed = seed,
                                N = N,
