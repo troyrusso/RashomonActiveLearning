@@ -95,7 +95,7 @@ TestErrorFunction = function(Model,
            PredictionDifference = (TestPredictedLabels - data.frame(TestSet)[,LabelName])^2
            DifferenceTimesLosses= PredictionDifference * RashomonParameters$RashomonModelLosses[1]
            DeltaMetric = DifferenceTimesLosses
-           Error = mean(PredictionDifference)
+           Error = mean(PredictionDifference, na.rm = TRUE)
            ClassError = tapply(X = 1:length(TestSet$Y), # Class Error
                         INDEX = TestSet$Y, 
                         FUN = function(i) mean((TestPredictedLabels[i] - TestSet$YStar[i])^2)) %>%

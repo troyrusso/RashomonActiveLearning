@@ -40,10 +40,11 @@ SimulationFunc = function(dat,
   # ClassErrorVec = matrix(nrow = MaxIterationN,ncol = NClass)
   # colnames(ClassErrorVec) = paste0("Class", 1:NClass)
   SelectedObservationHistory = numeric(MaxIterationN * SelectorN) %>%
-    matrix(nrow = MaxIterationN,
+    matrix(nrow = MaxIterationN, 
            ncol = SelectorN)
   if(ModelType == "RashomonLinear"){
     TestSetPrediction = vector(mode = "list", length = MaxIterationN)
+    RashomonSetNumList = numeric(length = MaxIterationN)
   }else if(ModelType != "RashomonLinear"){TestSetPrediction = DeltaMetricVec}
 
   ### Progress Bar ###
@@ -87,6 +88,7 @@ SimulationFunc = function(dat,
                                          RashomonParameters)
     if(ModelType == "RashomonLinear"){
       TestSetPrediction[[iter]] = TestErrorResults$TestPredictedLabels
+      RashomonSetNumList[iter] = ModelTypeSwitchResults$RashomonSetNum
     }else if(ModelType != "RashomonLinear"){TestSetPrediction[iter ,] = TestErrorResults$TestPredictedLabels}
     DeltaMetricVec[iter,] = TestErrorResults$DeltaMetric
     ErrorVec[iter] = TestErrorResults$Error
@@ -111,18 +113,26 @@ SimulationFunc = function(dat,
   close(pb)
   end_time = Sys.time()
   run_time = end_time - start_time
-
-  return(list(ModelList = ModelList,
-              ErrorVec = ErrorVec,
-              DeltaMetricVec = DeltaMetricVec,
-              # ClassErrorVec = ClassErrorVec,
-              SelectorType = SelectorType,
-              ModelType = ModelType,
-              TestSet = TestSet,
-              TestSetPrediction = TestSetPrediction,
-              InitialTrainingSetN = InitialTrainingSetN,
-              InitialCandidateSetN = InitialCandidateSetN,
-              SelectedObservationHistory = SelectedObservationHistory,
-              run_time = run_time))
+  
+  ### Return ###
+  ReturnList = list(ModelList = ModelList,
+                    ErrorVec = ErrorVec,
+                    DeltaMetricVec = DeltaMetricVec,
+                    # ClassErrorVec = ClassErrorVec,
+                    SelectorType = SelectorType,
+                    ModelType = ModelType,
+                    TestSet = TestSet,
+                    TestSetPrediction = TestSetPrediction,
+                    InitialTrainingSetN = InitialTrainingSetN,
+                    InitialCandidateSetN = InitialCandidateSetN,
+                    SelectedObservationHistory = SelectedObservationHistory,
+                    run_time = run_time)
+  
+  if(ModelType %in% c("RashomonLinear")){
+    ReturnList = c(ReturnList, 
+                        RashomonSetNumList = list(RashomonSetNumList)
+    )}
+  
+  return(ReturnList)
 }
 

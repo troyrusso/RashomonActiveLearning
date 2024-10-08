@@ -135,7 +135,8 @@ ModelTypeSwitchFunc = function(TrainingSet,
   if(ModelType %in% c("RashomonLinear", "Factorial")){
     ReturnList = c(ReturnList, 
                    RashomonModelLosses = list(RashomonModelLosses),
-                   RashomonProfile = list(RashomonProfile$RashomonMakeObjects)
+                   RashomonProfile = list(RashomonProfile$RashomonMakeObjects),
+                   RashomonSetNum = RashomonProfile$RashomonSetNum
                    )}
   
   return(ReturnList)
