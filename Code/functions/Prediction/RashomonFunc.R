@@ -25,25 +25,32 @@ RashomonProfileFunc = function(dat, CovariateList, LabelName, RashomonParameters
                               inactive = RashomonParameters$inactive
                               ) -> RashomonProfiles  # Losses will always be the last one - (active arms)
   RashomonSetTime = Sys.time() - StartTime
-  RashomonSetNum = length(RashomonProfiles[[1]])
+  RashomonSetNumOriginal = length(RashomonProfiles[[1]])
   RashomonMakeObjects = make_rashomon_objects(RashomonProfiles)
   
   ### Rashomon Loss ###
   RashomonLosses = RashomonProfiles[[2]][[length(RashomonProfiles[[2]])]]$losses
 
   ### Rashomon Prediction ###
-  
   LabeledData = prep_data(data.frame(dat), 
                           CovariateList, 
                           LabelName, 
                           RashomonParameters$R, 
                           drop_unobserved_combinations = TRUE)
-  TrainingPredictedLabels = sapply(X = 1:RashomonSetNum, 
+  TrainingPredictedLabels = sapply(X = 1:RashomonSetNumOriginal, 
                                    FUN = function(x) predict(RashomonMakeObjects[[x]], LabeledData$universal_label))
     WholeSetTime = Sys.time() - StartTime
+    
+  ### Limit Rashomon Model Numbers ###
+    if(length(RashomonLosses) > RashomonParameters$RashomonModelNumLimit & !is.na(RashomonParameters$RashomonModelNumLimit)){
+      RashomonLosses = RashomonLosses[1:RashomonParameters$RashomonModelNumLimit]
+      RashomonMakeObjects = RashomonMakeObjects[1:RashomonParameters$RashomonModelNumLimit]
+      TrainingPredictedLabels = TrainingPredictedLabels[,1:RashomonParameters$RashomonModelNumLimit]
+    }
   
   ### Return ###
-  return(list(RashomonSetNum = RashomonSetNum,
+  return(list(RashomonSetNumOriginal = RashomonSetNumOriginal,
+              RashomonSetNumUsed = length(RashomonLosses),
               RashomonLosses = RashomonLosses,
               RashomonMakeObjects = RashomonMakeObjects,
               TrainingPredictedLabels = TrainingPredictedLabels,

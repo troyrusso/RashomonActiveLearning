@@ -92,8 +92,9 @@ RashomonParameters = list(K = K,
                           H = Inf,                           # Maximum number of pools/splits
                           R = NBins+1,                       # Bins of each arm (assume 0 exists)
                           reg = 0.1,                         # Penalty on the splits
-                          theta = 2,                         # Threshold; determine relative to best model
-                          inactive = 0)
+                          theta = 4,                         # Threshold; determine relative to best model
+                          inactive = 0,
+                          RashomonModelNumLimit = 10)
 ```
 
 ## Algorithm

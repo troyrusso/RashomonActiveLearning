@@ -44,7 +44,10 @@ SimulationFunc = function(dat,
            ncol = SelectorN)
   if(ModelType == "RashomonLinear"){
     TestSetPrediction = vector(mode = "list", length = MaxIterationN)
-    RashomonSetNumList = numeric(length = MaxIterationN)
+    RashomonSetNumList = numeric(length = MaxIterationN*2) %>% 
+      matrix(nrow = MaxIterationN,
+             ncol =2)
+    colnames(RashomonSetNumList) = c("RawNumberofRPSModels", "UsedNumberofRPSModels")
   }else if(ModelType != "RashomonLinear"){TestSetPrediction = DeltaMetricVec}
 
   ### Progress Bar ###
@@ -88,7 +91,8 @@ SimulationFunc = function(dat,
                                          RashomonParameters)
     if(ModelType == "RashomonLinear"){
       TestSetPrediction[[iter]] = TestErrorResults$TestPredictedLabels
-      RashomonSetNumList[iter] = ModelTypeSwitchResults$RashomonSetNum
+      RashomonSetNumList[iter,] = c(ModelTypeSwitchResults$RashomonSetNumOriginal,
+                                    ModelTypeSwitchResults$RashomonSetNumUsed)
     }else if(ModelType != "RashomonLinear"){TestSetPrediction[iter ,] = TestErrorResults$TestPredictedLabels}
     DeltaMetricVec[iter,] = TestErrorResults$DeltaMetric
     ErrorVec[iter] = TestErrorResults$Error

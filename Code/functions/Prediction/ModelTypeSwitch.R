@@ -136,8 +136,9 @@ ModelTypeSwitchFunc = function(TrainingSet,
     ReturnList = c(ReturnList, 
                    RashomonModelLosses = list(RashomonModelLosses),
                    RashomonProfile = list(RashomonProfile$RashomonMakeObjects),
-                   RashomonSetNum = RashomonProfile$RashomonSetNum
-                   )}
+                   RashomonSetNumOriginal = RashomonProfile$RashomonSetNumOriginal,
+                   RashomonSetNumUsed = RashomonProfile$RashomonSetNumUsed
+    )}
   
   return(ReturnList)
   }
