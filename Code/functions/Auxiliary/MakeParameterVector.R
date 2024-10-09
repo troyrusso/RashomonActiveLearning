@@ -74,7 +74,7 @@ Simulation_Combinations = ExpandGridCombinations %>%
                          TestProportion, "_",
                          SelectorN, "_",
                          InitialN, 
-                         ".rds"))
+                         ".RData"))
 write.csv(Simulation_Combinations, file = paste0(dir,"ParameterVectorALL.csv"))
 
 

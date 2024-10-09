@@ -181,7 +181,6 @@ SimulationFunc(dat = dat,
 # 
 # ### Save Results and Parameters ###
 # 
-# # Save the object to the specified path
 # save(SimResultsBreakingTiesFactorial, 
 #      file = paste0(directory,"Results/NaiveResults_Seed",seed,".RData"))
 # save(SimResultsBreakingTiesRashomon, 

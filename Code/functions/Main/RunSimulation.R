@@ -101,5 +101,19 @@ SimulationFunc(dat = dat,
                RashomonParameters = RashomonParameters,
                seed = seed) -> SimulationResults
 
-saveRDS(SimulationResults,Output)
+### Save ###
+SimulationResults$Parameters = list(seed = seed,
+                                                  N = N,
+                                                  K = K,
+                                                  NClass = NClass,
+                                                  ClassProportion = ClassProportion,
+                                                  CovCorrVal = CovCorrVal,
+                                                  TestProportion = TestProportion,
+                                                  SelectorN = SelectorN,
+                                                  InitialN = InitialN,
+                                                  NBins = NBins,
+                                                  RashomonParameters = RashomonParameters)
+save(SimResultsBreakingTiesFactorial,
+     file = paste0(directory,"Results/NaiveResults_Seed",seed,".RData"))
+
 
