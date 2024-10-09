@@ -69,7 +69,7 @@ InitialN = args$InitialN
 reg = args$reg
 theta = args$theta
 LabelName = args$LabelName
-output = args$Output
+output = args$output
 
 ### Generate Data ###
 set.seed(seed)
