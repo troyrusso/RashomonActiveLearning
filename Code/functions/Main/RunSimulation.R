@@ -19,7 +19,6 @@ library(data.table) #TVA
 library(optparse)   #parse
 library(RcppAlgos)  #TVA
 
-
 ## Rm. Var.
 rm(list=ls())
 
