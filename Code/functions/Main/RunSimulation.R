@@ -113,7 +113,6 @@ SimulationResults$Parameters = list(seed = seed,
                                                   InitialN = InitialN,
                                                   NBins = NBins,
                                                   RashomonParameters = RashomonParameters)
-save(SimResultsBreakingTiesFactorial,
-     file = paste0(directory,"Results/NaiveResults_Seed",seed,".RData"))
+save(SimulationResults, file = Output)
 
 
