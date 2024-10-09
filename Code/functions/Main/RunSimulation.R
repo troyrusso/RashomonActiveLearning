@@ -18,6 +18,7 @@ library(nnet)
 library(data.table) #TVA
 library(optparse)   #parse
 library(RcppAlgos)  #TVA
+library(rashomontva) #TVA
 
 ## Rm. Var.
 rm(list=ls())

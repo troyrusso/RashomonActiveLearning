@@ -36,7 +36,7 @@ library(rashomontva) #TVA
 
 
 ```{r}
-# devtools::install_github("Garrett-Allen/rashomon-tva-R")
+devtools::install_github("Garrett-Allen/rashomon-tva-R")
 ```
 
 ```{r}
