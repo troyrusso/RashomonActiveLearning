@@ -69,7 +69,7 @@ InitialN = args$InitialN
 reg = args$reg
 theta = args$theta
 LabelName = args$LabelName
-Output = args$Output
+output = args$Output
 
 ### Generate Data ###
 set.seed(seed)
@@ -113,6 +113,10 @@ SimulationResults$Parameters = list(seed = seed,
                                                   InitialN = InitialN,
                                                   NBins = NBins,
                                                   RashomonParameters = RashomonParameters)
-save(SimulationResults, file = Output)
+save(SimulationResults, file = output)
+
+
+
+
 
 
