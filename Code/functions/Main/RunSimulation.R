@@ -31,6 +31,7 @@ if(exists("directory")){
 
 ## Parser ###
 option_list = list(
+  make_option(c("--job_name"), type = "character", default = NULL, help = "Job Name", metavar = "integer"),
   make_option(c("--seed"), type = "integer", default = 1, help = "seed", metavar = "integer"),
   make_option(c("--ModelType"), type = "character", default = "Logistic", help = "Predictor model type", metavar = "character"),
   make_option(c("--SelectorType"), type = "character", default = "Random", help = "Selector type", metavar = "character"),
