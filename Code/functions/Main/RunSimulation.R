@@ -47,7 +47,7 @@ option_list = list(
   make_option(c("--reg"), type = "numeric", default = 0.1, help = "Penalty on the splits", metavar = "numeric"),
   make_option(c("--theta"), type = "numeric", default = 2, help = "Rashomon Threshold", metavar = "numeric"),
   make_option(c("--LabelName"), type = "character", default = "Y", help = "Y or YStar", metavar = "character"),
-  make_option(c("--Output"), type = "character", default = NULL, help = "Path to store", metavar = "character")
+  make_option(c("--output"), type = "character", default = NULL, help = "Path to store", metavar = "character")
 )
 arg.parser = OptionParser(option_list = option_list)
 args = parse_args(arg.parser)
