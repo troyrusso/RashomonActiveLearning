@@ -43,7 +43,7 @@ ExpandGridCombinations = expand.grid(seed = seq(1,20),
                                      LabelName = "YStar")
 
 ### Filter out RashomonLinear_Random ###
-FilteredGridCombinations <- ExpandGridCombinations[!(ExpandGridCombinations$ModelType == "RashomonLinear" & 
+ExpandGridCombinations <- ExpandGridCombinations[!(ExpandGridCombinations$ModelType == "RashomonLinear" & 
                                                        ExpandGridCombinations$SelectorType == "Random"), ]
 
 

@@ -75,6 +75,7 @@ dat = dat %>%
                   Credit = (Credit-mean(Credit))/sd(Credit)
          )
 dat = na.omit(dat)
+# write.csv(dat, paste0(directory,"Data/GermanCreditDataProcessed.csv") )
 ```
 
 ```{r}

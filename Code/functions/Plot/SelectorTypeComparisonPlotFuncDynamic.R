@@ -26,9 +26,9 @@ SelectorTypeComparisonPlotFuncDynamic <- function(..., xlower = NULL, xupper = N
     # Lines
     geom_line(data = JointErrors, mapping = aes(x = iter, y = value, color = Method)) + 
     
-    # xticks
-    scale_x_continuous(breaks = c(seq(xlower,xupper, 50), 10),
-                       lim = c(xlower, xupper)) + 
+    # Assuming xlower and xupper are correctly defined as single numeric values
+    scale_x_continuous(breaks = c(seq(xlower, xupper, 50), 10, xupper)) +
+   
     
     # Aesthetics
     xlab("Number of annotated observations") +

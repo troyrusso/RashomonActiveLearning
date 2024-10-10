@@ -1,6 +1,7 @@
 ### Directory ###
 rm(list=ls())
 directory = "/Users/simondn/Documents/RashomonActiveLearning/Results"
+source("/Users/simondn/Documents/RashomonActiveLearning/Code/functions/Plot/SelectorTypeComparisonPlotFuncDynamic.R")
 
 ### Auxiliary Function ###
 AddRowToMatrix = function(StorageMatrix, NewRow){
@@ -19,10 +20,31 @@ RDataFiles_RashomonBreakingTies = list.files(path = directory,
                                               pattern = "RashomonLinear_BreakingTies.*\\.RData$", 
                                               full.names = TRUE)
 
+### 10 Rashomon Set ###
+RDataFiles_FactorialRandom_Short = RDataFiles_FactorialRandom[!grepl("25_\\.RData$", 
+                                                                     RDataFiles_FactorialRandom)]
+RDataFiles_FactorialBreakingTies_Short = RDataFiles_FactorialBreakingTies[!grepl("25_\\.RData$", 
+                                                                                 RDataFiles_FactorialBreakingTies)]
+RDataFiles_RashomonBreakingTies_Short = RDataFiles_RashomonBreakingTies[!grepl("25_\\.RData$", 
+                                                                               RDataFiles_RashomonBreakingTies)]
+
+### 25 Rashomon Set ###
+# RDataFiles_FactorialRandom_Long = RDataFiles_FactorialRandom[grepl("25_\\.RData$", 
+#                                                                      RDataFiles_FactorialRandom)]
+# RDataFiles_FactorialBreakingTies_Long = RDataFiles_FactorialBreakingTies[grepl("25_\\.RData$", 
+#                                                                                  RDataFiles_FactorialBreakingTies)]
+# RDataFiles_RashomonBreakingTies_Long = RDataFiles_RashomonBreakingTies[grepl("25_\\.RData$", 
+                                                                               # RDataFiles_RashomonBreakingTies)]
+
+### CHOOSE ###
+RDataFiles_FactorialRandom_DO = RDataFiles_FactorialRandom_Short
+RDataFiles_FactorialBreakingTies_DO = RDataFiles_FactorialBreakingTies_Short
+RDataFiles_RashomonBreakingTies_DO = RDataFiles_RashomonBreakingTies_Short
+
 ### Validation ###
-LengthVar = var(c(length(RDataFiles_FactorialRandom), 
-                  length(RDataFiles_FactorialBreakingTies), 
-                  length(RDataFiles_RashomonBreakingTies)))
+LengthVar = var(c(length(RDataFiles_FactorialRandom_DO), 
+                  length(RDataFiles_FactorialBreakingTies_DO), 
+                  length(RDataFiles_RashomonBreakingTies_DO)))
 if(LengthVar!=0){warning("Result lenghts are not all the same.")}
 
 ### Set Up ###
@@ -39,30 +61,31 @@ ErrorVec_RashomonBreakingTies = matrix(ncol = 0, nrow = 0)
 
 ### Progress Bar ###
 pb = txtProgressBar(min = 0, 
-                    max = length(RDataFiles_FactorialRandom),
+                    max = length(RDataFiles_FactorialRandom_DO),
                     style = 3,  
                     width = 50,
                     char = "=")
 ### Loop ###
-for (i in 1:length(RDataFiles_FactorialRandom)) {
+for (i in 1:length(RDataFiles_FactorialRandom_DO)) {
   
   ## Progress Bar ##
   setTxtProgressBar(pb, i)
+  print(i)
 
   ## Random ##
-  load(RDataFiles_FactorialRandom[i])
+  load(RDataFiles_FactorialRandom_DO[i])
   SimulationResultsList_FactorialRandom[[paste0("SimulationResults_", i)]] = SimulationResults
   ErrorVec_FactorialRandom = AddRowToMatrix(ErrorVec_FactorialRandom,SimulationResults$ErrorVec)
   rm(SimulationResults)
   
   ## Factorial ##
-  load(RDataFiles_FactorialBreakingTies[i])
+  load(RDataFiles_FactorialBreakingTies_DO[i])
   SimulationResultsList_FactorialBreakingTies[[paste0("SimulationResults_", i)]] = SimulationResults
   ErrorVec_FactorialBreakingTies = AddRowToMatrix(ErrorVec_FactorialBreakingTies,SimulationResults$ErrorVec)
   rm(SimulationResults)
   
   ## Rashomon ##
-  load(RDataFiles_RashomonBreakingTies[i])
+  load(RDataFiles_RashomonBreakingTies_DO[i])
   SimulationResultsList_RashomonBreakingTies[[paste0("SimulationResults_", i)]] = SimulationResults
   ErrorVec_RashomonBreakingTies = AddRowToMatrix(ErrorVec_RashomonBreakingTies,SimulationResults$ErrorVec)
   rm(SimulationResults)
@@ -78,15 +101,19 @@ plot(MeanErrorVec_FactorialBreakingTies)
 plot(MeanErrorVec_RashomonBreakingTies)
 
 Plot2 <- SelectorTypeComparisonPlotFuncDynamic(
-  # MeanErrorVec_FactorialRandom = MeanErrorVec_FactorialRandom,
-  MeanErrorVec_FactorialBreakingTies = MeanErrorVec_FactorialBreakingTies,
-  MeanErrorVec_RashomonBreakingTies = MeanErrorVec_RashomonBreakingTies
+  # Random = MeanErrorVec_FactorialRandom,
+  Naive = MeanErrorVec_FactorialBreakingTies,
+  `Rashomon-Weighted` = MeanErrorVec_RashomonBreakingTies,
+  xlower =0,
+  xupper = 230
 )
 
 Plot3 <- SelectorTypeComparisonPlotFuncDynamic(
-  MeanErrorVec_FactorialRandom = MeanErrorVec_FactorialRandom,
-  MeanErrorVec_FactorialBreakingTies = MeanErrorVec_FactorialBreakingTies,
-  MeanErrorVec_RashomonBreakingTies = MeanErrorVec_RashomonBreakingTies
+  Random = MeanErrorVec_FactorialRandom,
+  Naive = MeanErrorVec_FactorialBreakingTies,
+  `Rashomon-Weighted` = MeanErrorVec_RashomonBreakingTies,
+  xlower = 0,
+  xupper = 230
 )
 
 Plot2

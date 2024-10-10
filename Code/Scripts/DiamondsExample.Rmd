@@ -90,6 +90,7 @@ dat = dat %>%
          price = (price-mean(price))/sd(price)
          ) %>%
   dplyr::select(ID, price, carat, cut, color, clarity)
+# write.csv(dat, paste0(directory,"Data/DiamondsDataProcessed.csv") )s
 ```
 
 ```{r}

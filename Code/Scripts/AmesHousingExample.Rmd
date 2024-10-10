@@ -75,6 +75,8 @@ dat = dat %>%
                                 YearBuilt > 1977 ~ 3)),
          SalePrice = (SalePrice-mean(SalePrice))/sd(SalePrice)) %>%
   na.omit
+
+# write.csv(dat, paste0(directory,"Data/AmesHousingDataProcessed.csv") )
 ```
 
 ```{r}
@@ -94,12 +96,12 @@ TestProportion = 0.2
 SelectorN = 1
 InitialN = 10
 CovariateList = c("OverallQuality",
-                  # "LivingArea",
+                  "LivingArea",
                   # "Cars",
                   "YearBuilt"
                   )
 RashomonParameters = list(H = Inf,                # Maximum number of pools/splits
-                          R = c(11,4),         # Bins of each arm (assume 0 exists)
+                          R = c(11,4,4),         # Bins of each arm (assume 0 exists)
                           reg = 0.1,              # Penalty on the splits
                           theta = 1.8,              # Threshold; determine relative to best model
                           inactive = 0,
