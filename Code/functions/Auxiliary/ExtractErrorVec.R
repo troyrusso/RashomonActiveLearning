@@ -89,6 +89,7 @@ Plot3 <- SelectorTypeComparisonPlotFuncDynamic(
   MeanErrorVec_RashomonBreakingTies = MeanErrorVec_RashomonBreakingTies
 )
 
+Plot2
 Plot3
 
 
