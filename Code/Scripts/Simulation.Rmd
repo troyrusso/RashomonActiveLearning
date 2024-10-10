@@ -91,10 +91,10 @@ TrueBetas = DGPResults$TrueBetas
 CovariateList = c("X1", "X2", "X3", "X4")
 RashomonParameters = list(K = K, 
                           NBins = NBins,
-                          H = Inf,                           # Maximum number of pools/splits
-                          R = NBins+1,                       # Bins of each arm (assume 0 exists)
-                          reg = 0.1,                         # Penalty on the splits
-                          theta = 4,                         # Threshold; determine relative to best model
+                          H = Inf,              # Maximum number of pools/splits
+                          R = NBins+1,          # Bins of each arm (assume 0 exists)
+                          reg = 0.1,            # Penalty on the splits
+                          theta = 4,            # Threshold; determine relative to best model
                           inactive = 0,
                           RashomonModelNumLimit = 10)
 ```

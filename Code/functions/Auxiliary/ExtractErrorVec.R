@@ -39,7 +39,7 @@ ErrorVec_RashomonBreakingTies = matrix(ncol = 0, nrow = 0)
 
 ### Progress Bar ###
 pb = txtProgressBar(min = 0, 
-                    max = MaxIterationN,
+                    max = length(RDataFiles_FactorialRandom),
                     style = 3,  
                     width = 50,
                     char = "=")
@@ -47,7 +47,7 @@ pb = txtProgressBar(min = 0,
 for (i in 1:length(RDataFiles_FactorialRandom)) {
   
   ## Progress Bar ##
-  setTxtProgressBar(pb, iter)
+  setTxtProgressBar(pb, i)
 
   ## Random ##
   load(RDataFiles_FactorialRandom[i])

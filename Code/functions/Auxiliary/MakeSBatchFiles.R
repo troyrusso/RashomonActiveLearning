@@ -23,6 +23,7 @@ for (i in 1:nrow(ParameterVector)) {
   InitialN = ParameterVector[i, "InitialN"]
   reg = ParameterVector[i, "reg"]
   theta = ParameterVector[i, "theta"]
+  RashomonModelNumLimit = ParameterVector[i, "RashomonModelNumLimit"]
   LabelName = ParameterVector[i, "LabelName"]
   output = ParameterVector[i, "Output"]
   
@@ -70,6 +71,7 @@ for (i in 1:nrow(ParameterVector)) {
      paste("    --InitialN ", InitialN, "\\", sep=""),
      paste("    --reg ", reg, "\\", sep=""),
      paste("    --theta ", theta, "\\", sep=""),
+     paste("    --RashomonModelNumLimit ", RashomonModelNumLimit, "\\", sep=""),
      paste("    --LabelName ", LabelName, "\\", sep=""),
      paste("    --output ", output, "\\", sep="")
       

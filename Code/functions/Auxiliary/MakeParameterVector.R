@@ -39,7 +39,13 @@ ExpandGridCombinations = expand.grid(seed = seq(1:20),
                                      InitialN = c(10),
                                      reg = c(0.1),
                                      theta = 2,
+                                     RashomonModelNumLimit = c(10),
                                      LabelName = "YStar")
+
+### Filter out RashomonLinear_Random ###
+FilteredGridCombinations <- ExpandGridCombinations[!(ExpandGridCombinations$ModelType == "RashomonLinear" & 
+                                                       ExpandGridCombinations$SelectorType == "Random"), ]
+
 
 ### Run SLURM Simulations ###
 Simulation_Combinations = ExpandGridCombinations %>%
@@ -58,6 +64,7 @@ Simulation_Combinations = ExpandGridCombinations %>%
                           InitialN, "_",
                           reg, "_",
                           theta, "_",
+                          RashomonModelNumLimit, "_",
                           LabelName),
          Output = paste0("Results/",
                          seed, "_",
@@ -71,7 +78,10 @@ Simulation_Combinations = ExpandGridCombinations %>%
                          NBins, "_",
                          TestProportion, "_",
                          SelectorN, "_",
-                         InitialN, 
+                         InitialN, "_", 
+                         reg, "_",
+                         theta, "_",
+                         RashomonModelNumLimit, "_",
                          ".RData"))
 write.csv(Simulation_Combinations, file = paste0(dir,"ParameterVectorALL.csv"))
 

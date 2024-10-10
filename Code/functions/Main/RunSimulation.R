@@ -47,6 +47,7 @@ option_list = list(
   make_option(c("--InitialN"), type = "numeric", default = 1, help = "Initial number of classes", metavar = "numeric"),
   make_option(c("--reg"), type = "numeric", default = 0.1, help = "Penalty on the splits", metavar = "numeric"),
   make_option(c("--theta"), type = "numeric", default = 3, help = "Rashomon Threshold", metavar = "numeric"),
+  make_option(c("--RashomonModelNumLimit"), type = "numeric", default = 10, help = "Max Rashomon number", metavar = "numeric"),
   make_option(c("--LabelName"), type = "character", default = "Y", help = "Y or YStar", metavar = "character"),
   make_option(c("--output"), type = "character", default = NULL, help = "Path to store", metavar = "character")
 )
@@ -67,6 +68,7 @@ SelectorN = args$SelectorN
 InitialN = args$InitialN
 reg = args$reg
 theta = args$theta
+RashomonModelNumLimit = args$RashomonModelNumLimit
 LabelName = args$LabelName
 output = args$output
 
@@ -86,7 +88,7 @@ RashomonParameters = list(K = K,
                           reg = 0.1,                         # Penalty on the splits
                           theta = 4,                         # Threshold; determine relative to best model
                           inactive = 0,
-                          RashomonModelNumLimit = 10)
+                          RashomonModelNumLimit = RashomonModelNumLimit)
 
 ### Simulation ###
 SimulationFunc(dat = dat,
