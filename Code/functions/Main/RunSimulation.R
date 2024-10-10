@@ -46,7 +46,7 @@ option_list = list(
   make_option(c("--SelectorN"), type = "numeric", default = 1, help = "Number of observations to query", metavar = "numeric"),
   make_option(c("--InitialN"), type = "numeric", default = 1, help = "Initial number of classes", metavar = "numeric"),
   make_option(c("--reg"), type = "numeric", default = 0.1, help = "Penalty on the splits", metavar = "numeric"),
-  make_option(c("--theta"), type = "numeric", default = 4, help = "Rashomon Threshold", metavar = "numeric"),
+  make_option(c("--theta"), type = "numeric", default = 3, help = "Rashomon Threshold", metavar = "numeric"),
   make_option(c("--LabelName"), type = "character", default = "Y", help = "Y or YStar", metavar = "character"),
   make_option(c("--output"), type = "character", default = NULL, help = "Path to store", metavar = "character")
 )
