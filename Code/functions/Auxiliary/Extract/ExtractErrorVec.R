@@ -96,9 +96,11 @@ MeanErrorVec_FactorialRandom = colMeans(ErrorVec_FactorialRandom)
 MeanErrorVec_FactorialBreakingTies = colMeans(ErrorVec_FactorialBreakingTies)
 MeanErrorVec_RashomonBreakingTies = colMeans(ErrorVec_RashomonBreakingTies)
 
-save(MeanErrorVec_FactorialRandom, output)
-save(MeanErrorVec_FactorialBreakingTies, output)
-save(MeanErrorVec_RashomonBreakingTies, output)
+print(output)
+
+save(MeanErrorVec_FactorialRandom, file=output)
+save(MeanErrorVec_FactorialBreakingTies, file=output)
+save(MeanErrorVec_RashomonBreakingTies, file= output)
 
 
 
