@@ -7,6 +7,8 @@ library(optparse)   #parse
 
 ## Parser ###
 option_list = list(
+  make_option(c("--JobName"), type = "character", default = NULL, help = "Job Name", metavar = "integer"),
+  make_option(c("--RashomonModelNumLimit"), type = "numeric", default = 10, help = "Max Rashomon number", metavar = "numeric"),
   make_option(c("--RashomonModelNumLimit"), type = "numeric", default = 10, help = "Max Rashomon number", metavar = "numeric"),
   make_option(c("--output"), type = "character", default = NULL, help = "Path to store", metavar = "character")
 )
