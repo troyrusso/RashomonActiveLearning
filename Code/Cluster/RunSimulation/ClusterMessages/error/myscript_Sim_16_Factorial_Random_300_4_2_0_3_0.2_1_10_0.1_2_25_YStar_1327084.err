@@ -38,3 +38,5 @@ Warning messages:
 1: replacing previous import ‘data.table::last’ by ‘dplyr::last’ when loading ‘rashomontva’ 
 2: replacing previous import ‘data.table::first’ by ‘dplyr::first’ when loading ‘rashomontva’ 
 3: replacing previous import ‘data.table::between’ by ‘dplyr::between’ when loading ‘rashomontva’ 
+/var/spool/slurmd/job1327084/slurm_script: line 33: 56201 Killed                  Rscript Code/functions/Main/RunSimulation.R --job_name Sim_16_Factorial_Random_300_4_2_0_3_0.2_1_10_0.1_2_25_YStar --seed 16 --ModelType Factorial --SelectorType Random --N 300 --K 4 --NClass 2 --CovCorrVal 0 --NBins 3 --TestProportion 0.2 --SelectorN 1 --InitialN 10 --reg 0.1 --theta 2 --RashomonModelNumLimit 25 --LabelName YStar --output Results/16_Factorial_Random_300_4_2_0_3_0.2_1_10_0.1_2_25_.RData
+slurmstepd: error: Detected 1 oom_kill event in StepId=1327084.batch. Some of the step tasks have been OOM Killed.
