@@ -86,10 +86,18 @@ dat = dat %>%
                                     clarity == "VVS1" ~ 7,
                                     clarity == "IF" ~   8),
                           ordered = TRUE),
-         ID = 1:nrow(dat)
+         ID = 1:nrow(dat),
+         price = (price-mean(price))/sd(price)
          ) %>%
-  select(ID, price, carat, cut, color, clarity)
+  dplyr::select(ID, price, carat, cut, color, clarity)
 ```
+
+```{r}
+Model = lm(price ~ carat + cut + color + clarity, data = dat)
+PredictedValues = predict(Model)
+mean((PredictedValues- dat$price)^2)
+```
+
 
 
 # Inputs
@@ -107,7 +115,7 @@ CovariateList = c("carat",
 RashomonParameters = list(H = Inf,                # Maximum number of pools/splits
                           R = c(5,6,7),         # Bins of each arm (assume 0 exists)
                           reg = 0.1,              # Penalty on the splits
-                          theta = 5e6,     # Threshold
+                          theta = 0.1,     # Threshold
                           inactive = 0)
 BigDat = dat
 dat = dat[sample(1:nrow(dat), 100),]
@@ -140,6 +148,7 @@ RashomonSetTime = Sys.time() - StartTime
 RashomonSetNum = length(RashomonProfiles[[1]])
 RashomonMakeObjects = make_rashomon_objects(RashomonProfiles)
 ```
+
 
 
 ```{r}

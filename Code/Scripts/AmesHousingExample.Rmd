@@ -56,7 +56,7 @@ if(exists("directory")){
 dat = read.csv(paste0(directory,"Data/AmesHousing.csv"))
 dat = dat %>% 
   mutate(ID = 1:nrow(dat)) %>%
-  select(ID,
+  dplyr::select(ID,
          SalePrice,
          Overall.Qual,
          Gr.Liv.Area,
@@ -68,11 +68,19 @@ dat = dat %>%
          YearBuilt = Year.Built) %>%
   mutate(LivingArea = as.factor(case_when(LivingArea <= 1126 ~ 1,
                                 LivingArea > 1126 & LivingArea <= 1743 ~ 2,
-                                LivingArea > 1743 ~ 3)),
+                                LivingArea > 1743 ~ 3))
+         ,
          YearBuilt = as.factor(case_when(YearBuilt <= 1953 ~ 1,
                                 YearBuilt > 1953 & YearBuilt <= 1977 ~ 2,
-                                YearBuilt > 1977 ~ 3))) %>%
+                                YearBuilt > 1977 ~ 3)),
+         SalePrice = (SalePrice-mean(SalePrice))/sd(SalePrice)) %>%
   na.omit
+```
+
+```{r}
+Model = lm(SalePrice ~ OverallQuality + LivingArea, data = dat)
+PredictedValues = predict(Model)
+mean((PredictedValues- dat$SalePrice)^2)
 ```
 
 
@@ -93,13 +101,12 @@ CovariateList = c("OverallQuality",
 RashomonParameters = list(H = Inf,                # Maximum number of pools/splits
                           R = c(11,4),         # Bins of each arm (assume 0 exists)
                           reg = 0.1,              # Penalty on the splits
-                          theta = 4000000000,              # Threshold; determine relative to best model
-                          inactive = 0)
+                          theta = 1.8,              # Threshold; determine relative to best model
+                          inactive = 0,
+                          RashomonModelNumLimit = 10)
 ```
 
-
 ### Rashomon Test
-
 ```{r}
 # ### Parameters ###
 # N = nrow(dat)
@@ -175,9 +182,6 @@ SimulationFunc(dat = dat,
 ```
 
 ## Visualize
-
-
-
 ```{r}
 # ClassErrorPlotBreakingTies
 # ClassErrorPlotRandom

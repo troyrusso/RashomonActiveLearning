@@ -71,10 +71,17 @@ dat = dat %>%
          Checkings = as.factor(case_when(Checkings == "little" ~ 1,
                                          Checkings == "moderate" ~ 2,
                                          Checkings == "rich" ~ 3,
-                                         Checkings == "quite rich" ~ 4)))
+                                         Checkings == "quite rich" ~ 4)),
+                  Credit = (Credit-mean(Credit))/sd(Credit)
+         )
 dat = na.omit(dat)
 ```
 
+```{r}
+Model = lm(Credit ~ Sex + Job + Housing + Savings, data = dat)
+PredictedValues = predict(Model)
+mean((PredictedValues- dat$Credit)^2)
+```
 
 # Inputs
 ```{r}
@@ -92,58 +99,36 @@ CovariateList = c("Sex",
 RashomonParameters = list(H = Inf,                # Maximum number of pools/splits
                           R = c(3,5,4,5),         # Bins of each arm (assume 0 exists)
                           reg = 0.1,              # Penalty on the splits
-                          theta = 8000000,              # Threshold; determine relative to best model
-                          inactive = 0)
+                          theta = 2,              # Threshold; determine relative to best model
+                          inactive = 0,
+                          RashomonModelNumLimit = 10)
 ```
-
-
 
 
 ### Rashomon Test
 ```{r}
-### Parameters ###
-N = nrow(dat)
-M = length(CovariateList)
-K = RashomonParameters$K
-
-### Rashomon Profiles ###
-NewDat = assign_universal_label(dat, arm_cols = CovariateList)
-StartTime = Sys.time()
-aggregate_rashomon_profiles(data.frame(NewDat),                 # TrainingSetTrainingData
-                            value = LabelName,                  # Response names
-                            arm_cols = CovariateList,           # Covariate names
-                            M = length(CovariateList),          # Number of covariates
-                            H = RashomonParameters$H,           # Maximum number of pools/splits
-                            R = RashomonParameters$R,           # Bins of each arm (assume 0 exists)
-                            reg = RashomonParameters$reg,       # Penalty on the splits
-                            theta = RashomonParameters$theta,   # Threshold
-                            inactive = RashomonParameters$inactive
-                            ) -> RashomonProfiles  # Losses will always be the last one - (active arms)
-RashomonSetTime = Sys.time() - StartTime
-RashomonSetNum = length(RashomonProfiles[[1]])
-RashomonMakeObjects = make_rashomon_objects(RashomonProfiles)
+# ### Parameters ###
+# N = nrow(dat)
+# M = length(CovariateList)
+# K = RashomonParameters$K
+# 
+# ### Rashomon Profiles ###
+# NewDat = assign_universal_label(dat, arm_cols = CovariateList)
+# StartTime = Sys.time()
+# aggregate_rashomon_profiles(data.frame(NewDat),                 # TrainingSetTrainingData
+#                             value = LabelName,                  # Response names
+#                             arm_cols = CovariateList,           # Covariate names
+#                             M = length(CovariateList),          # Number of covariates
+#                             H = RashomonParameters$H,           # Maximum number of pools/splits
+#                             R = RashomonParameters$R,           # Bins of each arm (assume 0 exists)
+#                             reg = RashomonParameters$reg,       # Penalty on the splits
+#                             theta = RashomonParameters$theta,   # Threshold
+#                             inactive = RashomonParameters$inactive
+#                             ) -> RashomonProfiles  # Losses will always be the last one - (active arms)
+# RashomonSetTime = Sys.time() - StartTime
+# RashomonSetNum = length(RashomonProfiles[[1]])
+# RashomonMakeObjects = make_rashomon_objects(RashomonProfiles)
 ```
-
-
-```{r}
-SelectorType = "Random"
-ModelType = "Factorial"
-iter=1
-```
-
-```{r}
-aggregate_rashomon_profiles(data.frame(dat),                                  # TrainingSetTrainingData
-                              value = LabelName,                       # Response names
-                              arm_cols = CovariateList,                # Covariate names
-                              M = length(CovariateList),               # Number of covariates
-                              H = RashomonParameters$H,                # Maximum number of pools/splits
-                              R = RashomonParameters$R,                # Bins of each arm (assume 0 exists)
-                              reg = RashomonParameters$reg,            # Penalty on the splits
-                              theta = RashomonParameters$theta,        # Threshold; determine relative to best model
-                              inactive = RashomonParameters$inactive
-                              )
-```
-
 
 ## Algorithm
 ```{r}
@@ -187,8 +172,6 @@ SimulationFunc(dat = dat,
 ```
 
 ## Visualize
-
-
 
 ```{r}
 # ClassErrorPlotBreakingTies
