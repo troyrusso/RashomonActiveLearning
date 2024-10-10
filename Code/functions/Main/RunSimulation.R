@@ -60,7 +60,6 @@ SelectorType = args$SelectorType
 N = args$N
 K = args$K
 NClass = args$NClass
-# ClassProportion = args$ClassProportion
 CovCorrVal = args$CovCorrVal
 NBins = args$NBins
 TestProportion = args$TestProportion
@@ -73,7 +72,7 @@ output = args$output
 
 ### Generate Data ###
 set.seed(seed)
-DGPResults = GenerateDataFunc(N, K, NClass, ClassProportion, CovCorrVal, NBins = NBins)
+DGPResults = GenerateDataFunc(N, K, NClass, CovCorrVal, NBins = NBins)
 dat = DGPResults$dat
 TrueBetas = DGPResults$TrueBetas
 

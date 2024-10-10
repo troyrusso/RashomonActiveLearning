@@ -55,7 +55,7 @@ Simulation_Combinations = ExpandGridCombinations %>%
                           NBins, "_",
                           TestProportion, "_",
                           SelectorN, "_",
-                          InitialN,
+                          InitialN, "_",
                           reg, "_",
                           theta, "_",
                           LabelName),

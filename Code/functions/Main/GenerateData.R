@@ -11,7 +11,7 @@
 ### Notes:
 #### Should replace be TRUE
 
-GenerateDataFunc = function(N, K, NClass, ClassProportion, CovCorrVal, NBins = NA){
+GenerateDataFunc = function(N, K, NClass, CovCorrVal, NBins = NA){
   
   ### Validations ###
   # if(length(ClassProportion) != NClass){

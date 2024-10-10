@@ -60,18 +60,20 @@ if(exists("directory")){
 
 ```{r}
 ### Input ###
-seed = 1
+seed = 14
+# ModelType
+# SelectorType
 N = 300
-# N = 100
 K = 4
 NClass = 2
-# ClassProportion = c(3/5, 2/5)
-ClassProportion = rep(1/NClass, NClass)
 CovCorrVal = 0
+NBins = 3
 TestProportion = 0.2
 SelectorN = 1
 InitialN = 10
-NBins = 3
+# reg 
+# theta
+# Label Name
 ```
 
 ```{r}
@@ -79,7 +81,7 @@ NBins = 3
 set.seed(seed)
 
 ### Data ###
-DGPResults = GenerateDataFunc(N, K, NClass, ClassProportion, CovCorrVal, NBins = NBins)
+DGPResults = GenerateDataFunc(N, K, NClass, CovCorrVal, NBins = NBins)
 dat = DGPResults$dat
 TrueBetas = DGPResults$TrueBetas
 # dat$Y = as.numeric(dat$Y)
