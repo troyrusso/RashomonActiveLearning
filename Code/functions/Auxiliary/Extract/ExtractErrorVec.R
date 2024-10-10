@@ -1,14 +1,14 @@
 ### Set Up ###
 rm(list=ls())
-directory = "Results"
-# directory = "/Users/simondn/Documents/RashomonActiveLearning/Results"
+directory = "Results/SimulationRaw"
+# directory = "/Users/simondn/Documents/RashomonActiveLearning/Results/SimulationRaw"
 library(optparse)   #parse
   
 
 ## Parser ###
 option_list = list(
   make_option(c("--JobName"), type = "character", default = NULL, help = "Job Name", metavar = "integer"),
-  make_option(c("--RashomonModelNumLimit"), type = "numeric", default = 10, help = "Max Rashomon number", metavar = "numeric"),
+  make_option(c("--RashomonModelNumLimit"), type = "numeric", default = NULL, help = "Max Rashomon number", metavar = "numeric"),
   make_option(c("--output"), type = "character", default = NULL, help = "Path to store", metavar = "character")
 )
 arg.parser = OptionParser(option_list = option_list)
