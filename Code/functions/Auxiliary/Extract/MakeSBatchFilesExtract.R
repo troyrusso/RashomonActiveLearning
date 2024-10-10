@@ -34,7 +34,7 @@ for (i in 1:nrow(Simulation_Combinations)) {
       "#SBATCH --partition short",
       "#SBATCH --ntasks 1",
       "#SBATCH --time 11:59:00",
-      "#SBATCH --mem-per-cpu=3000",
+      "#SBATCH --mem-per-cpu=30000",
       paste("#SBATCH -o ClusterMessages/out/myscript_", 
             JobName, 
             "_%j.out", 

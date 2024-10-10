@@ -3,7 +3,7 @@
 #SBATCH --partition short
 #SBATCH --ntasks 1
 #SBATCH --time 11:59:00
-#SBATCH --mem-per-cpu=3000
+#SBATCH --mem-per-cpu=30000
 #SBATCH -o ClusterMessages/out/myscript_Extract_25_%j.out
 #SBATCH -e ClusterMessages/error/myscript_Extract_25_%j.err
 #SBATCH --mail-type=ALL
