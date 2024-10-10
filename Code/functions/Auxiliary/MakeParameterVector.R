@@ -25,7 +25,7 @@ dir = paste0("/Users/simondn/Documents/RashomonActiveLearning/Code/Cluster/")
 # Output = args$Output
 
 
-ExpandGridCombinations = expand.grid(seed = seq(1:20),
+ExpandGridCombinations = expand.grid(seed = seq(21,30),
                                      ModelType = c("Factorial", "RashomonLinear"),
                                      SelectorType = c("Random", "BreakingTies"),
                                      N = c(300),
