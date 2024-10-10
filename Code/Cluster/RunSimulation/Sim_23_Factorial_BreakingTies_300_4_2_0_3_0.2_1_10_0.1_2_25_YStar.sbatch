@@ -3,7 +3,7 @@
 #SBATCH --partition short
 #SBATCH --ntasks 1
 #SBATCH --time 11:59:00
-#SBATCH --mem-per-cpu=1000
+#SBATCH --mem-per-cpu=2000
 #SBATCH -o ClusterMessages/out/myscript_Sim_23_Factorial_BreakingTies_300_4_2_0_3_0.2_1_10_0.1_2_25_YStar_%j.out
 #SBATCH -e ClusterMessages/error/myscript_Sim_23_Factorial_BreakingTies_300_4_2_0_3_0.2_1_10_0.1_2_25_YStar_%j.err
 #SBATCH --mail-type=ALL
