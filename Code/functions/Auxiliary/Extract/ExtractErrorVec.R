@@ -65,9 +65,8 @@ pb = txtProgressBar(min = 0,
                     width = 50,
                     char = "=")
 ### Loop ###
-# for (i in 1:length(RDataFiles_FactorialRandom)) {
-for (i in 1:5) {
-    
+for (i in 1:length(RDataFiles_FactorialRandom)) {
+
   ## Progress Bar ##
   setTxtProgressBar(pb, i)
   print(i)
