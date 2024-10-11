@@ -96,7 +96,6 @@ SimulationFunc(dat = dat[1:15,],
 
 ### Save ###
 SimulationResults$Parameters = list(seed = seed,
-                                    dat = DataSetInput,
                                     TestProportion = TestProportion,
                                     SelectorN = SelectorN,
                                     InitialN = InitialN,
