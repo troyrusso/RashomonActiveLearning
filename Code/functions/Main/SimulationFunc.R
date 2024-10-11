@@ -12,7 +12,7 @@ SimulationFunc = function(dat,
   set.seed(seed)
   
   ### Validation ###
-  ValidationFunc(dat, SelectorType, ModelType)
+  # ValidationFunc(dat, SelectorType, ModelType)
   
   ### Train Test Split ###
   TestSize = floor(TestProportion * nrow(dat))

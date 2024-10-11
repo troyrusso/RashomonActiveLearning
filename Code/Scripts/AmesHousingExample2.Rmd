@@ -88,7 +88,7 @@ mean((PredictedValues- dat$SalePrice)^2)
 
 # Inputs
 ```{r}
-dat = dat[sample(nrow(dat), 100),]
+# dat = dat[sample(nrow(dat), 100),]
 ### Input ###
 LabelName = "SalePrice"
 SelectorN = 1
@@ -104,7 +104,7 @@ CovariateList = c("OverallQuality",
 RashomonParameters = list(H = Inf,                # Maximum number of pools/splits
                           R = c(11,4),         # Bins of each arm (assume 0 exists)
                           reg = 0.1,              # Penalty on the splits
-                        theta = 1,              # Threshold; determine relative to best model
+                          theta = 1,              # Threshold; determine relative to best model
                           inactive = 0,
                           RashomonModelNumLimit = 10)
 ```

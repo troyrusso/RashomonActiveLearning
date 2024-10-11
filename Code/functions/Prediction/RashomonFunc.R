@@ -42,7 +42,7 @@ RashomonProfileFunc = function(dat, CovariateList, LabelName, RashomonParameters
     WholeSetTime = Sys.time() - StartTime
     
   ### Limit Rashomon Model Numbers ###
-    if(length(RashomonLosses) > RashomonParameters$RashomonModelNumLimit & !is.na(RashomonParameters$RashomonModelNumLimit)){
+    if(RashomonSetNumOriginal > RashomonParameters$RashomonModelNumLimit & !is.na(RashomonParameters$RashomonModelNumLimit)){
       RashomonLosses = RashomonLosses[1:RashomonParameters$RashomonModelNumLimit]
       RashomonMakeObjects = RashomonMakeObjects[1:RashomonParameters$RashomonModelNumLimit]
       TrainingPredictedLabels = TrainingPredictedLabels[,1:RashomonParameters$RashomonModelNumLimit]
