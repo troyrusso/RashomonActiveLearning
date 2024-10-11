@@ -22,4 +22,4 @@ Rscript Code/functions/Main/RunHousingSimulations.R \
     --reg 0.1\
     --theta 2\
     --RashomonModelNumLimit 10\
-    --output Results/SimulationRaw41_Factorial_Random_0.2_1_10_0.1_2_10_.RData\
+    --output Results/EmpiricalRaw/41_Factorial_Random_0.2_1_10_0.1_2_10_.RData\

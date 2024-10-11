@@ -5,7 +5,7 @@
 # Read CSV file
 rm(list=ls())
 dir = paste0("/Users/simondn/Documents/RashomonActiveLearning/Code/Cluster/")
-ParameterVector <- read.csv(paste0(dir,"/ParameterVectorEmpirical.csv"))
+ParameterVector <- read.csv(paste0(dir,"ParameterVectorEMPIRICAL.csv"))
 
 # Loop through each row
 for (i in 1:nrow(ParameterVector)) {

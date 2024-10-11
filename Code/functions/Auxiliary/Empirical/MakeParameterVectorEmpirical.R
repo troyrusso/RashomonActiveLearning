@@ -36,7 +36,7 @@ Simulation_Combinations = ExpandGridCombinations %>%
                           theta, "_",
                           RashomonModelNumLimit, "_",
                           LabelName),
-         Output = paste0("Results/SimulationRaw",
+         Output = paste0("Results/EmpiricalRaw/",
                          seed, "_",
                          ModelType, "_",
                          SelectorType, "_",

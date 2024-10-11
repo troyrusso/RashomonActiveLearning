@@ -22,4 +22,4 @@ Rscript Code/functions/Main/RunHousingSimulations.R \
     --reg 0.1\
     --theta 2\
     --RashomonModelNumLimit 10\
-    --output Results/SimulationRaw26_RashomonLinear_BreakingTies_0.2_1_10_0.1_2_10_.RData\
+    --output Results/EmpiricalRaw/26_RashomonLinear_BreakingTies_0.2_1_10_0.1_2_10_.RData\
