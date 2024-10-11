@@ -123,8 +123,6 @@ dat = dat[sample(1:nrow(dat), 100),]
 ```
 
 
-
-
 ### Rashomon Test
 ```{r}
 ### Parameters ###
