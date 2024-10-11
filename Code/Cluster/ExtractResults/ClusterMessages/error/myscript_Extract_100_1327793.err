@@ -1,0 +1,2 @@
+/var/spool/slurmd/job1327793/slurm_script: line 19: 3393234 Killed                  Rscript Code/functions/Auxiliary/Extract/ExtractErrorVec.R --JobName Extract_100 --RashomonModelNumLimit 100 --output Results/Extracted100.RData
+slurmstepd: error: Detected 1 oom_kill event in StepId=1327793.batch. Some of the step tasks have been OOM Killed.
