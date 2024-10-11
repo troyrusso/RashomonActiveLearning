@@ -1,7 +1,7 @@
 ### Set Up ###
 rm(list=ls())
-directory = "Results/SimulationRaw"
-# directory = "/Users/simondn/Documents/RashomonActiveLearning/Results/SimulationRaw"
+directory = "Results/EmpiricalRaw"
+# directory = "/Users/simondn/Documents/RashomonActiveLearning/Results/EmpiricalRaw"
 library(optparse)   #parse
   
 

@@ -36,12 +36,9 @@ library(rashomontva) #TVA
 
 
 ```{r}
-devtools::install_github("Garrett-Allen/rashomon-tva-R")
+# devtools::install_github("Garrett-Allen/rashomon-tva-R")
 ```
 
-```{r}
-# library(rashomontva)
-```
 
 
 ## Load Functions
@@ -277,6 +274,36 @@ SelectorTypeComparisonPlot3
 ```
 
 
+
+```{r}
+load("/Users/simondn/Documents/RashomonActiveLearning/Results/Extracted10.RData")
+Rashomon10Results = OutputVector
+rm(OutputVector)
+load("/Users/simondn/Documents/RashomonActiveLearning/Results/Extracted25.RData")
+Rashomon25Results = OutputVector
+rm(OutputVector)
+load("/Users/simondn/Documents/RashomonActiveLearning/Results/Extracted100.RData")
+Rashomon100Results = OutputVector
+rm(OutputVector)
+```
+
+```{r}
+# SelectorTypeComparisonPlotFuncDynamic(Random = Rashomon10Results$MeanErrorVec_FactorialRandom,
+#                                       Naive = Rashomon10Results$MeanErrorVec_FactorialBreakingTies,
+#                                       `Rashomon-weighted` = Rashomon10Results$MeanErrorVec_RashomonBreakingTies) -> Plot3_10
+# SelectorTypeComparisonPlotFuncDynamic(Random = Rashomon25Results$MeanErrorVec_FactorialRandom,
+#                                       Naive = Rashomon25Results$MeanErrorVec_FactorialBreakingTies,
+#                                       `Rashomon-weighted` = Rashomon25Results$MeanErrorVec_RashomonBreakingTies) -> Plot3_25
+# SelectorTypeComparisonPlotFuncDynamic(Random = Rashomon100Results$MeanErrorVec_FactorialRandom,
+#                                       Naive = Rashomon100Results$MeanErrorVec_FactorialBreakingTies,
+#                                       `Rashomon-weighted` = Rashomon100Results$MeanErrorVec_RashomonBreakingTies) -> Plot3_100
+# SelectorTypeComparisonPlotFuncDynamic(Naive = Rashomon10Results$MeanErrorVec_FactorialBreakingTies,
+#                                       `Rashomon-weighted` = Rashomon10Results$MeanErrorVec_RashomonBreakingTies) -> Plot2_10
+# SelectorTypeComparisonPlotFuncDynamic(Naive = Rashomon25Results$MeanErrorVec_FactorialBreakingTies,
+#                                       `Rashomon-weighted` = Rashomon25Results$MeanErrorVec_RashomonBreakingTies) -> Plot2_25
+# SelectorTypeComparisonPlotFuncDynamic(Naive = Rashomon100Results$MeanErrorVec_FactorialBreakingTies,
+#                                       `Rashomon-weighted` = Rashomon100Results$MeanErrorVec_RashomonBreakingTies) -> Plot2_100
+```
 
 
 
