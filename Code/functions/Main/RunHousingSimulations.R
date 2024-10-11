@@ -81,9 +81,11 @@ RashomonParameters = list(H = Inf,                           # Maximum number of
                           theta = theta,                         # Threshold; determine relative to best model
                           inactive = 0,
                           RashomonModelNumLimit = RashomonModelNumLimit)
+### Reduce Dat ###
+dat = dat[1:100,]
 
 ### Simulation ###
-SimulationFunc(dat = dat[1:15,],
+SimulationFunc(dat = dat,
                LabelName = LabelName,
                CovariateList = CovariateList,
                TestProportion = TestProportion,
@@ -99,7 +101,6 @@ SimulationResults$Parameters = list(seed = seed,
                                     TestProportion = TestProportion,
                                     SelectorN = SelectorN,
                                     InitialN = InitialN,
-                                    NBins = NBins,
                                     RashomonParameters = RashomonParameters)
 save(SimulationResults, file = output)
 
