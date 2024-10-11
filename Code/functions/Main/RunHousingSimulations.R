@@ -82,7 +82,7 @@ RashomonParameters = list(H = Inf,                           # Maximum number of
                           inactive = 0,
                           RashomonModelNumLimit = RashomonModelNumLimit)
 ### Reduce Dat ###
-dat = dat[1:100,]
+dat = dat[1:50,]
 
 ### Simulation ###
 SimulationFunc(dat = dat,
