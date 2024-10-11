@@ -20,7 +20,7 @@ library(rashomontva) #TVA
 rm(list=ls())
 
 ## My Functions
-directory = "/Users/simondn/Documents/RashomonActiveLearning/"
+# directory = "/Users/simondn/Documents/RashomonActiveLearning/"
 
 if(exists("directory")){
   source(paste0(directory,"Code/functions/Auxiliary/LoadFunctions.R"))
@@ -30,7 +30,6 @@ if(exists("directory")){
 option_list = list(
   make_option(c("--job_name"), type = "character", default = NULL, help = "Job Name", metavar = "integer"),
   make_option(c("--seed"), type = "integer", default = 1, help = "seed", metavar = "integer"),
-  make_option(c("--DataSetInput"), type = "character", default = NULL, help = "Data Set", metavar = "character"),
   make_option(c("--ModelType"), type = "character", default = "Logistic", help = "Predictor model type", metavar = "character"),
   make_option(c("--SelectorType"), type = "character", default = "Random", help = "Selector type", metavar = "character"),
   make_option(c("--TestProportion"), type = "numeric", default = 0.2, help = "Test set proportion", metavar = "numeric"),
