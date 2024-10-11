@@ -83,7 +83,7 @@ RashomonParameters = list(H = Inf,                           # Maximum number of
                           RashomonModelNumLimit = RashomonModelNumLimit)
 
 ### Simulation ###
-SimulationFunc(dat = dat[1:12,],
+SimulationFunc(dat = dat[1:15,],
                LabelName = LabelName,
                CovariateList = CovariateList,
                TestProportion = TestProportion,
