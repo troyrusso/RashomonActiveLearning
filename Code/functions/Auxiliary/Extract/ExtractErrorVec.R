@@ -97,13 +97,11 @@ MeanErrorVec_RashomonBreakingTies = colMeans(ErrorVec_RashomonBreakingTies)
 
 print(output)
 
-save(MeanErrorVec_FactorialRandom, file=output)
-save(MeanErrorVec_FactorialBreakingTies, file=output)
-save(MeanErrorVec_RashomonBreakingTies, file= output)
+list(MeanErrorVec_FactorialRandom = MeanErrorVec_FactorialRandom,
+     MeanErrorVec_FactorialBreakingTies = MeanErrorVec_FactorialBreakingTies,
+     MeanErrorVec_RashomonBreakingTies = MeanErrorVec_RashomonBreakingTies) -> OutputVector
 
-
-
-
+save(OutputVector, file= output)
 
 
 

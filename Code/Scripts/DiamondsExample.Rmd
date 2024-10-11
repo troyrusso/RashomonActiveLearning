@@ -116,10 +116,10 @@ CovariateList = c("carat",
 RashomonParameters = list(H = Inf,                # Maximum number of pools/splits
                           R = c(5,6,7),         # Bins of each arm (assume 0 exists)
                           reg = 0.1,              # Penalty on the splits
-                          theta = 0.1,     # Threshold
+                          theta = 1,     # Threshold
                           inactive = 0)
-BigDat = dat
-dat = dat[sample(1:nrow(dat), 100),]
+# BigDat = dat
+# dat = dat[sample(1:nrow(dat), 100),]
 ```
 
 

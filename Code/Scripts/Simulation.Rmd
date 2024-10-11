@@ -60,7 +60,7 @@ if(exists("directory")){
 
 ```{r}
 ### Input ###
-seed = 14
+seed = 1
 # ModelType
 # SelectorType
 N = 300
