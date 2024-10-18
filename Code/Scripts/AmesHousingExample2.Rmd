@@ -79,13 +79,6 @@ dat = dat %>%
 # write.csv(dat, paste0(directory,"Data/AmesHousingDataProcessed.csv") )
 ```
 
-```{r}
-Model = lm(SalePrice ~ OverallQuality + LivingArea, data = dat)
-PredictedValues = predict(Model)
-mean((PredictedValues- dat$SalePrice)^2)
-```
-
-
 # Inputs
 ```{r}
 # dat = dat[sample(nrow(dat), 100),]
@@ -103,6 +96,7 @@ CovariateList = c("OverallQuality",
                   )
 RashomonParameters = list(H = Inf,                # Maximum number of pools/splits
                           R = c(11,4),         # Bins of each arm (assume 0 exists)
+                          # R = c(11,4,6,4),         # Bins of each arm (assume 0 exists)
                           reg = 0.1,              # Penalty on the splits
                           theta = 1,              # Threshold; determine relative to best model
                           inactive = 0,

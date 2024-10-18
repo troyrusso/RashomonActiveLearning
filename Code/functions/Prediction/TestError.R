@@ -110,7 +110,7 @@ TestErrorFunction = function(Model,
   #                       INDEX = TestSet$Y, 
   #                       FUN = function(i) mean(TestPredictedLabels[i] != TestSet$Y[i])) %>%
   #     as.vector
-  }
+  # }
   
   return(list(Error = Error,
               ClassError = ClassError,
