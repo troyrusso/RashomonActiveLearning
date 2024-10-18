@@ -58,6 +58,11 @@ ErrorVec_FactorialRandom = matrix(ncol= 0, nrow = 0)
 ErrorVec_FactorialBreakingTies = matrix(ncol= 0, nrow = 0)
 ErrorVec_RashomonBreakingTies = matrix(ncol = 0, nrow = 0)
 
+### Run Times ###
+RunTimeRandom = c()
+RunTimeFactorial = c()
+RunTimeRashomon = c()
+
 ### Progress Bar ###
 pb = txtProgressBar(min = 0, 
                     max = length(RDataFiles_FactorialRandom),
@@ -76,28 +81,50 @@ for (i in 1:length(RDataFiles_FactorialRandom)) {
   SimulationResultsList_FactorialRandom[[paste0("SimulationResults_", i)]] = SimulationResults
   ErrorVec_FactorialRandom = AddRowToMatrix(ErrorVec_FactorialRandom,SimulationResults$ErrorVec)
   rm(SimulationResults)
+  RunTimeRandom = c(RunTimeRandom, SimulationResults$run_time)
   
   ## Factorial ##
   load(RDataFiles_FactorialBreakingTies[i])
   SimulationResultsList_FactorialBreakingTies[[paste0("SimulationResults_", i)]] = SimulationResults
   ErrorVec_FactorialBreakingTies = AddRowToMatrix(ErrorVec_FactorialBreakingTies,SimulationResults$ErrorVec)
   rm(SimulationResults)
+  RunTimeFactorial = c(RunTimeFactorial, SimulationResults$run_time)
   
   ## Rashomon ##
   load(RDataFiles_RashomonBreakingTies[i])
   SimulationResultsList_RashomonBreakingTies[[paste0("SimulationResults_", i)]] = SimulationResults
   ErrorVec_RashomonBreakingTies = AddRowToMatrix(ErrorVec_RashomonBreakingTies,SimulationResults$ErrorVec)
   rm(SimulationResults)
+  RunTimeRashomon = c(RunTimeRashomon, SimulationResults$run_time)
   }
 
-### Get Mean ###
+### All Error Vectors ###
+AllErrorVectors = list(ErrorVec_FactorialRandom,
+                       ErrorVec_FactorialBreakingTies,
+                       ErrorVec_RashomonBreakingTies)
+### Get Mean Error ###
 MeanErrorVec_FactorialRandom = colMeans(ErrorVec_FactorialRandom)
 MeanErrorVec_FactorialBreakingTies = colMeans(ErrorVec_FactorialBreakingTies)
 MeanErrorVec_RashomonBreakingTies = colMeans(ErrorVec_RashomonBreakingTies)
 
 list(MeanErrorVec_FactorialRandom = MeanErrorVec_FactorialRandom,
      MeanErrorVec_FactorialBreakingTies = MeanErrorVec_FactorialBreakingTies,
-     MeanErrorVec_RashomonBreakingTies = MeanErrorVec_RashomonBreakingTies) -> OutputVector
+     MeanErrorVec_RashomonBreakingTies = MeanErrorVec_RashomonBreakingTies) -> MeanOutputVector
+
+### Run Time ###
+AllRunTimes = list(RunTimeRandom = RunTimeRandom,
+                   RunTimeFactorial = RunTimeFactorial,
+                   RunTimeRashomon = RunTimeRashomon)
+
+MeanRunTimes = list(MeanRunTimeRandom = mean(RunTimeRandom),
+                    MeanRunTimeFactorial = mean(RunTimeFactorial),
+                    MeanRunTimeRashomon = mean(RunTimeRashomon))
+
+### Output Vector ###
+OutputVector = list(AllErrorVectors = AllErrorVectors,
+                    MeanOutputVector = MeanOutputVector,
+                    AllRunTimes = AllRunTimes,
+                    MeanRunTimes)
 
 save(OutputVector, file= output)
 

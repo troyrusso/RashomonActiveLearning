@@ -103,13 +103,13 @@ TestErrorFunction = function(Model,
            }
   )
   
-  ### Error ###
-  if(!(ModelType %in% c("Factorial","RashomonLinear"))){
-    Error = mean(TestPredictedLabels != TestSet$Y) # Overall Error
-    ClassError = tapply(X = 1:length(TestSet$Y), # Class Error
-                        INDEX = TestSet$Y, 
-                        FUN = function(i) mean(TestPredictedLabels[i] != TestSet$Y[i])) %>%
-      as.vector
+  #### Error ###
+  # if(!(ModelType %in% c("Factorial","RashomonLinear"))){
+  #   Error = mean(TestPredictedLabels != TestSet$Y) # Overall Error
+  #   ClassError = tapply(X = 1:length(TestSet$Y), # Class Error
+  #                       INDEX = TestSet$Y, 
+  #                       FUN = function(i) mean(TestPredictedLabels[i] != TestSet$Y[i])) %>%
+  #     as.vector
   }
   
   return(list(Error = Error,
