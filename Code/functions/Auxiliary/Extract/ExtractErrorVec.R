@@ -1,9 +1,8 @@
 ### Set Up ###
 rm(list=ls())
 directory = "Results/SimulationRaw"
-# directory = "/Users/simondn/Documents/RashomonActiveLearning/Results/SimulationRaw"
+# directory = "/Users/simondn/Documents/RashomonActiveLearning/Results/SimulationRaw/"
 library(optparse)   #parse
-  
 
 ## Parser ###
 option_list = list(
@@ -58,6 +57,10 @@ ErrorVec_FactorialRandom = matrix(ncol= 0, nrow = 0)
 ErrorVec_FactorialBreakingTies = matrix(ncol= 0, nrow = 0)
 ErrorVec_RashomonBreakingTies = matrix(ncol = 0, nrow = 0)
 
+### Run Times ###
+RunTimeRandom = c()
+RunTimeFactorial = c()
+RunTimeRashomon = c()
 ### Progress Bar ###
 pb = txtProgressBar(min = 0, 
                     max = length(RDataFiles_FactorialRandom),
@@ -70,26 +73,28 @@ for (i in 1:length(RDataFiles_FactorialRandom)) {
   ## Progress Bar ##
   setTxtProgressBar(pb, i)
   print(i)
-
+  
   ## Random ##
   load(RDataFiles_FactorialRandom[i])
   SimulationResultsList_FactorialRandom[[paste0("SimulationResults_", i)]] = SimulationResults
   ErrorVec_FactorialRandom = AddRowToMatrix(ErrorVec_FactorialRandom,SimulationResults$ErrorVec)
+  RunTimeRandom = c(RunTimeRandom, SimulationResults$run_time)
   rm(SimulationResults)
   
   ## Factorial ##
   load(RDataFiles_FactorialBreakingTies[i])
   SimulationResultsList_FactorialBreakingTies[[paste0("SimulationResults_", i)]] = SimulationResults
   ErrorVec_FactorialBreakingTies = AddRowToMatrix(ErrorVec_FactorialBreakingTies,SimulationResults$ErrorVec)
+  RunTimeFactorial = c(RunTimeFactorial, SimulationResults$run_time)
   rm(SimulationResults)
   
   ## Rashomon ##
   load(RDataFiles_RashomonBreakingTies[i])
   SimulationResultsList_RashomonBreakingTies[[paste0("SimulationResults_", i)]] = SimulationResults
   ErrorVec_RashomonBreakingTies = AddRowToMatrix(ErrorVec_RashomonBreakingTies,SimulationResults$ErrorVec)
+  RunTimeRashomon = c(RunTimeRashomon, SimulationResults$run_time)
   rm(SimulationResults)
   }
-
 
 ### All Error Vectors ###
 AllErrorVectors = list(ErrorVec_FactorialRandom,
@@ -117,7 +122,7 @@ MeanRunTimes = list(MeanRunTimeRandom = mean(RunTimeRandom),
 OutputVector = list(AllErrorVectors = AllErrorVectors,
                     MeanOutputVector = MeanOutputVector,
                     AllRunTimes = AllRunTimes,
-                    MeanRunTimes)
+                    MeanRunTimes = MeanRunTimes)
 
 save(OutputVector, file= output)
 

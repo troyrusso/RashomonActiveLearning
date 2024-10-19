@@ -80,22 +80,22 @@ for (i in 1:length(RDataFiles_FactorialRandom)) {
   load(RDataFiles_FactorialRandom[i])
   SimulationResultsList_FactorialRandom[[paste0("SimulationResults_", i)]] = SimulationResults
   ErrorVec_FactorialRandom = AddRowToMatrix(ErrorVec_FactorialRandom,SimulationResults$ErrorVec)
-  rm(SimulationResults)
   RunTimeRandom = c(RunTimeRandom, SimulationResults$run_time)
-  
+  rm(SimulationResults)
+
   ## Factorial ##
   load(RDataFiles_FactorialBreakingTies[i])
   SimulationResultsList_FactorialBreakingTies[[paste0("SimulationResults_", i)]] = SimulationResults
   ErrorVec_FactorialBreakingTies = AddRowToMatrix(ErrorVec_FactorialBreakingTies,SimulationResults$ErrorVec)
-  rm(SimulationResults)
   RunTimeFactorial = c(RunTimeFactorial, SimulationResults$run_time)
-  
+  rm(SimulationResults)
+
   ## Rashomon ##
   load(RDataFiles_RashomonBreakingTies[i])
   SimulationResultsList_RashomonBreakingTies[[paste0("SimulationResults_", i)]] = SimulationResults
   ErrorVec_RashomonBreakingTies = AddRowToMatrix(ErrorVec_RashomonBreakingTies,SimulationResults$ErrorVec)
-  rm(SimulationResults)
   RunTimeRashomon = c(RunTimeRashomon, SimulationResults$run_time)
+  rm(SimulationResults)
   }
 
 ### All Error Vectors ###
