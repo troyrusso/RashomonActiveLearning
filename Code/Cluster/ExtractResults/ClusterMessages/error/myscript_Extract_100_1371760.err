@@ -1,0 +1,3 @@
+Error in txtProgressBar(min = 0, max = length(RDataFiles_FactorialRandom),  : 
+  must have 'max' > 'min'
+Execution halted
