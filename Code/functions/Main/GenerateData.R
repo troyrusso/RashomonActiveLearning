@@ -52,12 +52,12 @@ GenerateDataFunc = function(N, K, NClass, CovCorrVal, NBins = NA){
   if(!is.na(NBins)){
     X = apply(X, MARGIN = 2, FUN = function(x) ntile(x, NBins))
     }
-  
 
   
   ### Probabilities ###
   Logit = X %*% t(TrueBetas)
-  YStar = Logit + rnorm(n = NClass*N, mean = 0, sd = 1)
+  epsilon = rnorm(n = NClass*N, mean = 0, sd = 1)
+  YStar = Logit + epsilon
   
   Logit = cbind(0, Logit)
   Probs = exp(Logit)/rowSums(exp(Logit))
@@ -66,7 +66,7 @@ GenerateDataFunc = function(N, K, NClass, CovCorrVal, NBins = NA){
   Y = apply(Probs, 1, function(p) sample(1:NClass, size = 1, prob = p)) - 1
   
   ### Preliminary Data Set ###
-  PrelimDat = data.frame(Y = as.factor(Y), YStar = YStar, X = X)
+  PrelimDat = data.frame(Y = as.factor(Y), YStar = YStar, epsilon = epsilon, X = X)
   
   ### Class Proportion ###
   NClassSamples = round(N * ClassProportion)
@@ -74,13 +74,16 @@ GenerateDataFunc = function(N, K, NClass, CovCorrVal, NBins = NA){
   IndicesList = lapply(X = 0:(NClass-1),
                        FUN = function(c) sample(x = rownames(PrelimDat[PrelimDat$Y == c, ]),
                                                 size = NClassSamples[c+1],
-                                                replace = TRUE))                 #### SHOULD THIS BE TRUE
+                                                replace = TRUE)) 
   dat = cbind(ID = 1:N,PrelimDat[unlist(IndicesList), ])
-  colnames(dat) = c("ID", "Y", "YStar", paste0("X", 1:K))
+  
+  ### Add Useless Covariate ###
+  dat = cbind(dat, sample(1:NBins, size = nrow(dat),replace = TRUE))
+  colnames(dat) = c("ID", "Y", "YStar", "epsilon", paste0("X", 1:(K+1)))
   rownames(dat) = dat$ID
   
   ### Return ###
   return(list(dat = dat,
               TrueBetas = TrueBetas,
-              noise = dat$epsilon))
+              noise = epsilon))
 }

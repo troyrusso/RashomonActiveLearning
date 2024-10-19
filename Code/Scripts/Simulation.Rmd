@@ -61,7 +61,7 @@ seed = 1
 # ModelType
 # SelectorType
 N = 300
-K = 4
+K = 3
 NClass = 2
 CovCorrVal = 0
 NBins = 3

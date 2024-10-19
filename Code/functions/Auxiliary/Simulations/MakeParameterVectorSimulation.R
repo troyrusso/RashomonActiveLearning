@@ -7,29 +7,11 @@ library(tidyverse)
 rm(list=ls())
 dir = paste0("/Users/simondn/Documents/RashomonActiveLearning/Code/Cluster/")
 
-# seed = args$seed
-# N = args$N
-# K = args$K
-# NClass = args$NClass
-# # ClassProportion = args$ClassProportion
-# CovCorrVal = args$CovCorrVal
-# NBins = args$NBins
-# ModelType = args$ModelType
-# SelectorType = args$SelectorType
-# TestProportion = args$TestProportion
-# SelectorN = args$SelectorN
-# InitialN = args$InitialN
-# reg = args$reg
-# theta = args$theta
-# LabelName = args$LabelName
-# Output = args$Output
-
-
 ExpandGridCombinations = expand.grid(seed = seq(1:50),
                                      ModelType = c("Factorial", "RashomonLinear"),
                                      SelectorType = c("Random", "BreakingTies"),
                                      N = c(300),
-                                     K = c(4),
+                                     K = c(3),
                                      NClass = c(2),
                                      # ClassProportion = c(NA),
                                      CovCorrVal = c(0),
@@ -42,10 +24,11 @@ ExpandGridCombinations = expand.grid(seed = seq(1:50),
                                      RashomonModelNumLimit = c(10, 25, 100),
                                      LabelName = "YStar")
 
-### Filter out RashomonLinear_Random ###
-ExpandGridCombinations <- ExpandGridCombinations[!(ExpandGridCombinations$ModelType == "RashomonLinear" & 
-                                                       ExpandGridCombinations$SelectorType == "Random"), ]
-
+### Delete Extra Sbatch ###
+ExpandGridCombinations = ExpandGridCombinations %>%
+  filter(!(ModelType == "RashomonLinear" & SelectorType == "Random")) %>%  # Case 1
+  filter(!(ModelType == "Factorial" & RashomonModelNumLimit != 10)) %>%    # Case 2
+  filter(!(SelectorType == "Random" & RashomonModelNumLimit != 10))          # Case 3
 
 ### Run SLURM Simulations ###
 Simulation_Combinations = ExpandGridCombinations %>%
