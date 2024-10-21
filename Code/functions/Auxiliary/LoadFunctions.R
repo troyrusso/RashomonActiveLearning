@@ -16,8 +16,6 @@ if(exists("directory")){
   
   source(paste0(directory,"Code/functions/Plot/ActiveLearningPlot.R"))
   source(paste0(directory,"Code/functions/Plot/ClassErrorPlot.R"))
-  source(paste0(directory,"Code/functions/Plot/SelectorTypeComparisonPlotFunc.R"))
-  source(paste0(directory,"Code/functions/Plot/SelectorTypeComparisonPlotFunc3.R"))
   source(paste0(directory,"Code/functions/Plot/SelectorTypeComparisonPlotFuncDynamic.R"))
 
   source(paste0(directory,"Code/functions/Main/GenerateData.R"))
@@ -47,14 +45,12 @@ if(exists("directory")){
   
   source("Code/functions/Plot/ActiveLearningPlot.R")
   source("Code/functions/Plot/ClassErrorPlot.R")
-  source("Code/functions/Plot/SelectorTypeComparisonPlotFunc.R")
-  source("Code/functions/Plot/SelectorTypeComparisonPlotFunc3.R")
+  source("Code/functions/Plot/SelectorTypeComparisonPlotFuncDynamic.R")
   
   source("Code/functions/Main/GenerateData.R")
   source("Code/functions/Prediction/RashomonFunc.R")
   source("Code/functions/Main/SimulationFunc.R")
-  source("Code/functions/Plot/SelectorTypeComparisonPlotFuncDynamic.R")
-  
+
   # source("rashomon-tva-R-main/R/aggregate.R")
   # source("rashomon-tva-R-main/R/count.R")
   # source("rashomon-tva-R-main/R/find_rashomon_set.R")

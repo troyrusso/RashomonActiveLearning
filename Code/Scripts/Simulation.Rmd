@@ -62,7 +62,7 @@ SelectorN = 1
 seed = 1
 # ModelType
 # SelectorType
-N = 300
+N = 50
 K = 3
 NClass = 2
 CovCorrVal = 0
@@ -140,58 +140,7 @@ SimulationFunc(dat = dat,
 
 ```
 
-## Save
 ```{r}
-# SimResultsBreakingTiesFactorial$Parameters = list(seed = seed,
-#                                N = N,
-#                                K = K,
-#                                NClass = NClass,
-#                                ClassProportion = ClassProportion,
-#                                CovCorrVal = CovCorrVal,
-#                                TestProportion = TestProportion,
-#                                SelectorN = SelectorN,
-#                                InitialN = InitialN,
-#                                NBins = NBins,
-#                                RashomonParameters = RashomonParameters)
-# SimResultsBreakingTiesRashomon$Parameters = list(seed = seed,
-#                                N = N,
-#                                K = K,
-#                                NClass = NClass,
-#                                ClassProportion = ClassProportion,
-#                                CovCorrVal = CovCorrVal,
-#                                TestProportion = TestProportion,
-#                                SelectorN = SelectorN,
-#                                InitialN = InitialN,
-#                                NBins = NBins,
-#                                RashomonParameters = RashomonParameters)
-# SimResultsBreakingTiesRandom$Parameters = list(seed = seed,
-#                                N = N,
-#                                K = K,
-#                                NClass = NClass,
-#                                ClassProportion = ClassProportion,
-#                                CovCorrVal = CovCorrVal,
-#                                TestProportion = TestProportion,
-#                                SelectorN = SelectorN,
-#                                InitialN = InitialN,
-#                                NBins = NBins,
-#                                RashomonParameters = RashomonParameters)
-# 
-# ### Save Results and Parameters ###
-# 
-# save(SimResultsBreakingTiesFactorial, 
-#      file = paste0(directory,"Results/NaiveResults_Seed",seed,".RData"))
-# save(SimResultsBreakingTiesRashomon, 
-#      file = paste0(directory,"Results/RashomonResults_Seed",seed,".RData"))
-# save(SimResultsBreakingTiesRandom, 
-#      file = paste0(directory,"Results/RandomResults_Seed",seed,".RData"))
-```
-
-```{r}
-### Load Data ###
-# load("/Users/simondn/Documents/RashomonActiveLearning/Results/NaiveResults_Seed1.RData")
-# load("/Users/simondn/Documents/RashomonActiveLearning/Results/RashomonResults_Seed1.RData")
-# load("/Users/simondn/Documents/RashomonActiveLearning/Results/RandomResults_Seed1.RData")
-
 ### Assign ###
 SimResults1 = SimResultsBreakingTiesFactorial
 SimResults2 = SimResultsBreakingTiesRashomon
@@ -211,6 +160,7 @@ ModelList3 = SimResults3$ModelList
 TailN = 10
 VarThreshold = 0.2
 ErrorThreshold = 0
+xupper = NULL
 StopIter1 = StoppingCriteriaFunc(SimResults1,
                                  ErrorThreshold = ErrorThreshold,
                                  VarThreshold = VarThreshold,
@@ -226,15 +176,6 @@ StopIter3 = StoppingCriteriaFunc(SimResults3,
                                  TailN = TailN)
 
 ### Plots ###
-xupper = NULL
-
-# ClassErrorPlotFunc(SimulationResults = SimResults1,
-#                    xupper = xupper) -> ClassErrorPlot1
-# ClassErrorPlotFunc(SimulationResults = SimResults2,
-#                    xupper = xupper) -> ClassErrorPlot2
-# ClassErrorPlotFunc(SimulationResults = SimResults3,
-#                    xupper = xupper) -> ClassErrorPlot3
-
 ActiveLearningPlotFunc(SimResults = SimResults1,
                        StopIter = StopIter1,
                        xupper = xupper) -> ALPlot1
@@ -247,19 +188,10 @@ ActiveLearningPlotFunc(SimResults = SimResults3,
                        StopIter = StopIter3,
                        xupper = xupper) -> ALPlot3
 
-SelectorTypeComparisonPlotFunc(SimulationType1 = SimResults1,
-                               SimulationType2 = SimResults2,
-                               StopIter1 = StopIter1,
-                               StopIter2 = StopIter2,
-                               xupper = xupper) -> SelectorTypeComparisonPlot2
+SelectorTypeComparisonPlotFunc(Naive = SimResultsBreakingTiesFactorial$ErrorVec,
+                               Rashomon = SimResultsBreakingTiesRashomon$ErrorVec,
+                               Random = SimResultsBreakingTiesRandom$ErrorVec) -> SelectorTypeComparisonPlot2
 
-SelectorTypeComparisonPlotFunc3(SimulationType1 = SimResults1,
-                               SimulationType2 = SimResults2,
-                               SimulationType3 = SimResults3,
-                               StopIter1 = StopIter1,
-                               StopIter2 = StopIter2,
-                               StopIter3 = StopIter3,
-                               xupper = xupper) -> SelectorTypeComparisonPlot3
 ```
 
 ```{r}
@@ -270,48 +202,5 @@ ALPlot2
 SelectorTypeComparisonPlot2
 SelectorTypeComparisonPlot3
 ```
-
-
-
-```{r}
-load("/Users/simondn/Documents/RashomonActiveLearning/Results/ExtractedEmpirical10.RData")
-Rashomon10Results = OutputVector
-rm(OutputVector)
-load("/Users/simondn/Documents/RashomonActiveLearning/Results/ExtractedEmpirical25.RData")
-Rashomon25Results = OutputVector
-rm(OutputVector)
-load("/Users/simondn/Documents/RashomonActiveLearning/Results/ExtractedEmpirical100.RData")
-Rashomon100Results = OutputVector
-rm(OutputVector)
-```
-
-```{r}
-SelectorTypeComparisonPlotFuncDynamic(Random = Rashomon10Results$MeanErrorVec_FactorialRandom,
-                                      Naive = Rashomon10Results$MeanErrorVec_FactorialBreakingTies,
-                                      `Rashomon-weighted` = Rashomon10Results$MeanErrorVec_RashomonBreakingTies) -> Plot3_10
-SelectorTypeComparisonPlotFuncDynamic(Random = Rashomon25Results$MeanErrorVec_FactorialRandom,
-                                      Naive = Rashomon25Results$MeanErrorVec_FactorialBreakingTies,
-                                      `Rashomon-weighted` = Rashomon25Results$MeanErrorVec_RashomonBreakingTies) -> Plot3_25
-SelectorTypeComparisonPlotFuncDynamic(Random = Rashomon100Results$MeanErrorVec_FactorialRandom,
-                                      Naive = Rashomon100Results$MeanErrorVec_FactorialBreakingTies,
-                                      `Rashomon-weighted` = Rashomon100Results$MeanErrorVec_RashomonBreakingTies) -> Plot3_100
-SelectorTypeComparisonPlotFuncDynamic(Naive = Rashomon10Results$MeanErrorVec_FactorialBreakingTies,
-                                      `Rashomon-weighted` = Rashomon10Results$MeanErrorVec_RashomonBreakingTies) -> Plot2_10
-SelectorTypeComparisonPlotFuncDynamic(Naive = Rashomon25Results$MeanErrorVec_FactorialBreakingTies,
-                                      `Rashomon-weighted` = Rashomon25Results$MeanErrorVec_RashomonBreakingTies) -> Plot2_25
-SelectorTypeComparisonPlotFuncDynamic(Naive = Rashomon100Results$MeanErrorVec_FactorialBreakingTies,
-                                      `Rashomon-weighted` = Rashomon100Results$MeanErrorVec_RashomonBreakingTies) -> Plot2_100
-```
-
-```{r}
-Plot3_10
-```
-
-```{r}
-Plot2_10
-Plot2_25
-Plot2_100
-```
-
 
 

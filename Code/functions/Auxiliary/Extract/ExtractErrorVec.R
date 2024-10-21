@@ -1,7 +1,7 @@
 ### Set Up ###
 rm(list=ls())
-# directory = "Results/SimulationRaw"
-directory = "/Users/simondn/Documents/RashomonActiveLearning/Results/SimulationRaw/"
+directory = "Results/SimulationRaw"
+# directory = "/Users/simondn/Documents/RashomonActiveLearning/Results/SimulationRaw/"
 library(optparse)   #parse
 
 ## Parser ###
@@ -125,7 +125,11 @@ OutputVector = list(AllErrorVectors = AllErrorVectors,
                     AllRunTimes = AllRunTimes,
                     MeanRunTimes = MeanRunTimes)
 
-# save(OutputVector, file= output)
+input_list = list(MeanErrorVec_FactorialRandom,
+                                      MeanErrorVec_FactorialBreakingTies,
+                                      MeanErrorVec_RashomonBreakingTies)
+
+save(OutputVector, file= output)
 
 
 

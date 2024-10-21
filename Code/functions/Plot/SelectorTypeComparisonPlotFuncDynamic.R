@@ -1,4 +1,4 @@
-SelectorTypeComparisonPlotFuncDynamic <- function(..., xlower = NULL, xupper = NULL) {
+SelectorTypeComparisonPlotFunc <- function(...) {
   
   # Capture the list of input vectors and their names
   input_list <- list(...)
@@ -7,8 +7,8 @@ SelectorTypeComparisonPlotFuncDynamic <- function(..., xlower = NULL, xupper = N
   var_names <- names(input_list)
   
   # Set x-axis limits
-  if(is.null(xlower)) { xlower = 0 }
-  if(is.null(xupper)) { xupper = 10 + length(input_list[[1]]) }
+  xlower = 0
+  xupper = 10 + length(input_list[[1]])
   
   # Error Lines: combine all vectors into a data frame
   JointErrors <- data.frame(do.call(cbind, input_list))
