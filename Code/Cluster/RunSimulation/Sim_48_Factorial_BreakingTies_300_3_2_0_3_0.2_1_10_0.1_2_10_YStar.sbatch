@@ -28,4 +28,4 @@ Rscript Code/functions/Main/RunSimulation.R \
     --theta 2\
     --RashomonModelNumLimit 10\
     --LabelName YStar\
-    --output Results/EmpiricalRaw/48_Factorial_BreakingTies_300_3_2_0_3_0.2_1_10_0.1_2_10_.RData\
+    --output Results/SimulationRaw/48_Factorial_BreakingTies_300_3_2_0_3_0.2_1_10_0.1_2_10_.RData\

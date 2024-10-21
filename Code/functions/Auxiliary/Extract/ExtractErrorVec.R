@@ -1,7 +1,7 @@
 ### Set Up ###
 rm(list=ls())
-directory = "Results/SimulationRaw"
-# directory = "/Users/simondn/Documents/RashomonActiveLearning/Results/SimulationRaw/"
+# directory = "Results/SimulationRaw"
+directory = "/Users/simondn/Documents/RashomonActiveLearning/Results/SimulationRaw/"
 library(optparse)   #parse
 
 ## Parser ###
@@ -13,6 +13,7 @@ option_list = list(
 arg.parser = OptionParser(option_list = option_list)
 args = parse_args(arg.parser)
 RashomonModelNumLimit = args$RashomonModelNumLimit
+RashomonModelNumLimit = 10
 output = args$output
 
 ### Auxiliary Function ###
@@ -124,7 +125,7 @@ OutputVector = list(AllErrorVectors = AllErrorVectors,
                     AllRunTimes = AllRunTimes,
                     MeanRunTimes = MeanRunTimes)
 
-save(OutputVector, file= output)
+# save(OutputVector, file= output)
 
 
 
