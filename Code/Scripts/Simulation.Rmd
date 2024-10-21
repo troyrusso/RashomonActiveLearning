@@ -57,6 +57,8 @@ if(exists("directory")){
 
 ```{r}
 ### Input ###
+LabelName = "YStar"
+SelectorN = 1
 seed = 1
 # ModelType
 # SelectorType
@@ -97,10 +99,6 @@ RashomonParameters = list(K = K,
 ```
 
 ## Algorithm
-```{r}
-LabelName = "YStar"
-SelectorN = 1
-```
 
 ```{r}
 SimulationFunc(dat = dat,
