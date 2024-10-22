@@ -32,23 +32,23 @@ if(exists("directory")){
 
 ## Parser ###
 option_list = list(
-  make_option(c("--job_name"), type = "character", default = NULL, help = "Job Name", metavar = "integer"),
-  make_option(c("--seed"), type = "integer", default = NULL, help = NULL, metavar = "integer"),
-  make_option(c("--ModelType"), type = "character", default = NULL, help = "Predictor model type", metavar = "character"),
-  make_option(c("--SelectorType"), type = "character", default = NULL, help = "Selector type", metavar = "character"),
-  make_option(c("--N"), type = "integer", default = NULL, help = "Number of observations", metavar = "integer"),
-  make_option(c("--K"), type = "integer", default = NULL, help = "Number of covariates", metavar = "integer"),
-  make_option(c("--NClass"), type = "integer", default = NULL, help = "Number of classes", metavar = "integer"),
-  make_option(c("--CovCorrVal"), type = "numeric", default = NULL, help = "Correlation between covariate 1 and 2", metavar = "numeric"),
-  make_option(c("--NBins"), type = "numeric", default = NULL, help = "Discretizes data into NBins.", metavar = "numeric"),
-  make_option(c("--TestProportion"), type = "numeric", default = NULL, help = "Test set proportion", metavar = "numeric"),
-  make_option(c("--SelectorN"), type = "numeric", default = NULL, help = "Number of observations to query", metavar = "numeric"),
-  make_option(c("--InitialN"), type = "numeric", default = NULL, help = "Initial number of classes", metavar = "numeric"),
-  make_option(c("--reg"), type = "numeric", default = NULL, help = "Penalty on the splits", metavar = "numeric"),
-  make_option(c("--theta"), type = "numeric", default = NULL, help = "Rashomon Threshold", metavar = "numeric"),
-  make_option(c("--RashomonModelNumLimit"), type = "numeric", default = NULL, help = "Max Rashomon number", metavar = "numeric"),
-  make_option(c("--LabelName"), type = "character", default = NULL, help = "Y or YStar", metavar = "character"),
-  make_option(c("--output"), type = "character", default = NULL, help = "Path to store", metavar = "character")
+  make_option(c("--job_name"), type = "character", default = "Bad", help = "Job Name", metavar = "integer"),
+  make_option(c("--seed"), type = "integer", default = 69, help = "Seed", metavar = "integer"),
+  make_option(c("--ModelType"), type = "character", default = "Bad", help = "Predictor model type", metavar = "character"),
+  make_option(c("--SelectorType"), type = "character", default = "Bad", help = "Selector type", metavar = "character"),
+  make_option(c("--N"), type = "integer", default = 69, help = "Number of observations", metavar = "integer"),
+  make_option(c("--K"), type = "integer", default = 69, help = "Number of covariates", metavar = "integer"),
+  make_option(c("--NClass"), type = "integer", default = 69, help = "Number of classes", metavar = "integer"),
+  make_option(c("--CovCorrVal"), type = "numeric", default = 69, help = "Correlation between covariate 1 and 2", metavar = "numeric"),
+  make_option(c("--NBins"), type = "numeric", default = 69, help = "Discretizes data into NBins.", metavar = "numeric"),
+  make_option(c("--TestProportion"), type = "numeric", default = 69, help = "Test set proportion", metavar = "numeric"),
+  make_option(c("--SelectorN"), type = "numeric", default = 69, help = "Number of observations to query", metavar = "numeric"),
+  make_option(c("--InitialN"), type = "numeric", default = 69, help = "Initial number of classes", metavar = "numeric"),
+  make_option(c("--reg"), type = "numeric", default = 69, help = "Penalty on the splits", metavar = "numeric"),
+  make_option(c("--theta"), type = "numeric", default = 69, help = "Rashomon Threshold", metavar = "numeric"),
+  make_option(c("--RashomonModelNumLimit"), type = "numeric", default = 69, help = "Max Rashomon number", metavar = "numeric"),
+  make_option(c("--LabelName"), type = "character", default = "Bad", help = "Y or YStar", metavar = "character"),
+  make_option(c("--output"), type = "character", default = "Bad", help = "Path to store", metavar = "character")
 )
 arg.parser = OptionParser(option_list = option_list)
 args = parse_args(arg.parser)
@@ -70,6 +70,23 @@ theta = args$theta
 RashomonModelNumLimit = args$RashomonModelNumLimit
 LabelName = args$LabelName
 output = args$output
+
+if(seed == 69){print("seed is Bad")}
+if(ModelType == "Bad"){print("ModelType is Bad")}
+if(SelectorType == "Bad"){print("SelectorType is Bad")}
+if(N == 69){print("N is Bad")}
+if(K == 69){print("K is Bad")}
+if(NClass == 69){print("NClass is Bad")}
+if(CovCorrVal == 69){print("CovCorrVal is Bad")}
+if(NBins == 69){print("NBins is Bad")}
+if(TestProportion == 69){print("TestProportion is Bad")}
+if(SelectorN == 69){print("SelectorN is Bad")}
+if(InitialN == 69){print("InitialN is Bad")}
+if(reg == 69){print("reg is Bad")}
+if(theta == 69){print("theta is Bad")}
+if(RashomonModelNumLimit == 69){print("RashomonModelNumLimit is Bad")}
+if(LabelName == "Bad"){print("LabelName is Bad")}
+if(output == "Bad"){print("output is Bad")}
 
 ### Generate Data ###
 set.seed(seed)
