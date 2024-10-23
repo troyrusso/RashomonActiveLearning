@@ -1,7 +1,7 @@
 ### Set Up ###
 rm(list=ls())
 directory = "Results/SimulationRaw"
-# directory = "/Users/simondn/Documents/RashomonActiveLearning/Results/SimulationRaw/"
+directory = "/Users/simondn/Documents/RashomonActiveLearning/Results/SimulationRaw/"
 library(optparse)   #parse
 
 ## Parser ###
@@ -64,30 +64,30 @@ RunTimeFactorial = c()
 RunTimeRashomon = c()
 ### Progress Bar ###
 pb = txtProgressBar(min = 0, 
-                    max = length(RDataFiles_FactorialRandom),
+                    max = 50,
                     style = 3,  
                     width = 50,
                     char = "=")
 ### Loop ###
-for (i in 1:length(RDataFiles_FactorialRandom)) {
+for (i in 1:50) {
 
   ## Progress Bar ##
   setTxtProgressBar(pb, i)
   print(i)
   
-  ## Random ##
-  load(RDataFiles_FactorialRandom[i])
-  SimulationResultsList_FactorialRandom[[paste0("SimulationResults_", i)]] = SimulationResults
-  ErrorVec_FactorialRandom = AddRowToMatrix(ErrorVec_FactorialRandom,SimulationResults$ErrorVec)
-  RunTimeRandom = c(RunTimeRandom, SimulationResults$run_time)
-  rm(SimulationResults)
-  
-  ## Factorial ##
-  load(RDataFiles_FactorialBreakingTies[i])
-  SimulationResultsList_FactorialBreakingTies[[paste0("SimulationResults_", i)]] = SimulationResults
-  ErrorVec_FactorialBreakingTies = AddRowToMatrix(ErrorVec_FactorialBreakingTies,SimulationResults$ErrorVec)
-  RunTimeFactorial = c(RunTimeFactorial, SimulationResults$run_time)
-  rm(SimulationResults)
+  # ## Random ##
+  # load(RDataFiles_FactorialRandom[i])
+  # SimulationResultsList_FactorialRandom[[paste0("SimulationResults_", i)]] = SimulationResults
+  # ErrorVec_FactorialRandom = AddRowToMatrix(ErrorVec_FactorialRandom,SimulationResults$ErrorVec)
+  # RunTimeRandom = c(RunTimeRandom, SimulationResults$run_time)
+  # rm(SimulationResults)
+  # 
+  # ## Factorial ##
+  # load(RDataFiles_FactorialBreakingTies[i])
+  # SimulationResultsList_FactorialBreakingTies[[paste0("SimulationResults_", i)]] = SimulationResults
+  # ErrorVec_FactorialBreakingTies = AddRowToMatrix(ErrorVec_FactorialBreakingTies,SimulationResults$ErrorVec)
+  # RunTimeFactorial = c(RunTimeFactorial, SimulationResults$run_time)
+  # rm(SimulationResults)
   
   ## Rashomon ##
   load(RDataFiles_RashomonBreakingTies[i])
