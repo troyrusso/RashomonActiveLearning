@@ -98,9 +98,9 @@ for (i in 1:50) {
   }
 
 ### All Error Vectors ###
-AllErrorVectors = list(ErrorVec_FactorialRandom,
-                       ErrorVec_FactorialBreakingTies,
-                       ErrorVec_RashomonBreakingTies)
+AllErrorVectors = list(ErrorVec_FactorialRandom = ErrorVec_FactorialRandom,
+                       ErrorVec_FactorialBreakingTies = ErrorVec_FactorialBreakingTies,
+                       ErrorVec_RashomonBreakingTies = ErrorVec_RashomonBreakingTies)
 ### Get Mean Error ###
 MeanErrorVec_FactorialRandom = colMeans(ErrorVec_FactorialRandom)
 MeanErrorVec_FactorialBreakingTies = colMeans(ErrorVec_FactorialBreakingTies)

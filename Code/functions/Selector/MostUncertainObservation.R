@@ -11,7 +11,7 @@ MostUncertainObservationsFunc = function(DeltaMetric,
   if(ModelType %in% c("Linear","RashomonLinear", "Factorial")){
     TestSet = cbind(TestSet, DeltaMetric)
     IDRec = arrange(TestSet, desc(DeltaMetric))$ID[1]
-    MostUncertainObs = data.frame(TestSet)[TestSet$ID %in% IDRec, CovariateList]
+    MostUncertainObs = data.frame(TestSet)[TestSet$ID %in% IDRec, c("ID", CovariateList)]
   }else if(!(ModelType %in% c("Linear","RashomonLinear", "Factorial"))){
     ProbMax1 = apply(X = DeltaMetric[, setdiff(colnames(DeltaMetric), "ID")], 
                      MARGIN = 1, 
@@ -23,7 +23,8 @@ MostUncertainObservationsFunc = function(DeltaMetric,
     IDRec = arrange(TestSet, BreakingTiesProb)$ID[1]
     MostUncertainObs = TestSet[TestSet$ID %in% IDRec, CovariateList]
   }
-  return(MostUncertainObs)
+  return(list(MostUncertainObsCovariates = MostUncertainObs,
+              MostUncertainObsID = IDRec))
   
 }
   

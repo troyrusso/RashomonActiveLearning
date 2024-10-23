@@ -34,13 +34,6 @@ library(data.table)  #TVA
 library(rashomontva) #TVA
 ```
 
-
-```{r}
-# devtools::install_github("Garrett-Allen/rashomon-tva-R")
-```
-
-
-
 ## Load Functions
 
 ```{r}
@@ -57,22 +50,16 @@ if(exists("directory")){
 
 ```{r}
 ### Input ###
-LabelName = "YStar"
+LabelName = "Y"
 SelectorN = 1
 seed = 1
-# ModelType
-# SelectorType
 N = 50
 K = 3
-NClass = 2
 CovCorrVal = 0
 NBins = 3
 TestProportion = 0.2
 SelectorN = 1
 InitialN = 10
-# reg 
-# theta
-# Label Name
 ```
 
 ```{r}
@@ -80,10 +67,10 @@ InitialN = 10
 set.seed(seed)
 
 ### Data ###
-DGPResults = GenerateDataFunc(N, K, NClass, CovCorrVal, NBins = NBins)
+DGPResults = GenerateDataFunc(N, K, CovCorrVal, NBins = NBins)
 dat = DGPResults$dat
 TrueBetas = DGPResults$TrueBetas
-# dat$Y = as.numeric(dat$Y)
+Noise = dat$epsilon
 ```
 
 ```{r}
@@ -96,10 +83,13 @@ RashomonParameters = list(K = K,
                           theta = 4,            # Threshold; determine relative to best model
                           inactive = 0,
                           RashomonModelNumLimit = 10)
+
+SelectorType = "BreakingTies"
+ModelType = "RashomonLinear"
+iter=1
 ```
 
 ## Algorithm
-
 ```{r}
 SimulationFunc(dat = dat,
                LabelName = LabelName,
@@ -137,7 +127,6 @@ SimulationFunc(dat = dat,
                InitialN = InitialN,
                RashomonParameters = RashomonParameters,
                seed = seed) -> SimResultsBreakingTiesRashomon
-
 ```
 
 ```{r}
@@ -156,51 +145,14 @@ ModelList3 = SimResults3$ModelList
 ```
 
 ```{r}
-### Stop Iter ###
-TailN = 10
-VarThreshold = 0.2
-ErrorThreshold = 0
-xupper = NULL
-StopIter1 = StoppingCriteriaFunc(SimResults1,
-                                 ErrorThreshold = ErrorThreshold,
-                                 VarThreshold = VarThreshold,
-                                 TailN = TailN)
-StopIter2 = StoppingCriteriaFunc(SimResults2,
-                                 ErrorThreshold = ErrorThreshold,
-                                 VarThreshold = VarThreshold,
-                                 TailN = TailN)
-
-StopIter3 = StoppingCriteriaFunc(SimResults3,
-                                 ErrorThreshold = ErrorThreshold,
-                                 VarThreshold = VarThreshold,
-                                 TailN = TailN)
-
-### Plots ###
-ActiveLearningPlotFunc(SimResults = SimResults1,
-                       StopIter = StopIter1,
-                       xupper = xupper) -> ALPlot1
-
-ActiveLearningPlotFunc(SimResults = SimResults2,
-                       StopIter = StopIter2,
-                       xupper = xupper) -> ALPlot2
-
-ActiveLearningPlotFunc(SimResults = SimResults3,
-                       StopIter = StopIter3,
-                       xupper = xupper) -> ALPlot3
-
 SelectorTypeComparisonPlotFunc(Naive = SimResultsBreakingTiesFactorial$ErrorVec,
                                Rashomon = SimResultsBreakingTiesRashomon$ErrorVec,
-                               Random = SimResultsBreakingTiesRandom$ErrorVec) -> SelectorTypeComparisonPlot2
+                               Random = SimResultsBreakingTiesRandom$ErrorVec) -> SelectorTypeComparisonPlot
 
 ```
 
 ```{r}
-# ClassErrorPlot2
-# ClassErrorPlot1
-ALPlot1
-ALPlot2
-SelectorTypeComparisonPlot2
-SelectorTypeComparisonPlot3
+SelectorTypeComparisonPlot
 ```
 
 

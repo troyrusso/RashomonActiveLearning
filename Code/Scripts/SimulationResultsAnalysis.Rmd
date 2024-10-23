@@ -1,0 +1,70 @@
+---
+title: "SimulationResults Analysis"
+author: "Simon Dovan Nguyen"
+date: "`r Sys.Date()`"
+output:
+  pdf_document:
+    toc: yes
+  html_document:
+    toc: yes
+    toc_float: yes
+    toc_collapsed: yes
+    theme: lumen
+    css: assets/styles.css
+---
+
+# Set Up
+
+## Notes
+
+## Libr.
+
+```{r message=FALSE, warning=FALSE}
+library(MASS) 
+library(tidyverse)
+library(ggplot2) 
+library(dplyr)
+library(class)
+library(glmnet)
+library(nnet)
+library(RcppAlgos)   #TVA
+library(data.table)  #TVA
+library(rashomontva) #TVA
+```
+
+## Load Functions
+
+```{r}
+### Set Up ###
+rm(list=ls())
+directory = "/Users/simondn/Documents/RashomonActiveLearning/"
+
+### Load Functions ###
+if(exists("directory")){
+  source(paste0(directory,"Code/functions/Auxiliary/LoadFunctions.R"))
+  }else if(!exists("directory")){source("Code/functions/Main/LoadFunctions.R")}
+
+### Load Data ###
+# save(OutputVector, file= "/Users/simondn/Documents/RashomonActiveLearning/Results/PreliminarResults.RData")
+# load("/Users/simondn/Documents/RashomonActiveLearning/Results/PreliminarResults.RData")
+
+```
+
+```{r}
+SelectorTypeComparisonPlotFunc(OutputVector$MeanOutputVector)
+
+input_list = list(Random = OutputVector$AllErrorVectors$ErrorVec_FactorialRandom,
+                  Naive = OutputVector$AllErrorVectors$ErrorVec_FactorialBreakingTies,
+                  Rashomon = OutputVector$AllErrorVectors$ErrorVec_RashomonBreakingTies)
+
+SelectorTypeComparisonPlotFunc(Random = OutputVector$AllErrorVectors$ErrorVec_FactorialRandom,
+                               Naive = OutputVector$AllErrorVectors$ErrorVec_FactorialBreakingTies,
+                               Rashomon = OutputVector$AllErrorVectors$ErrorVec_RashomonBreakingTies) ->PlotOct23
+```
+
+
+
+
+
+
+

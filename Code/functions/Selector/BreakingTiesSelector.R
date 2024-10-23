@@ -24,12 +24,14 @@ BreakingTiesSelectorFunc = function(DeltaMetric,
   }else{
   
   ### Most Uncertain Observation ###
-    MostUncertainObs = MostUncertainObservationsFunc(DeltaMetric = DeltaMetric, 
+    MostUncertainObsResults = MostUncertainObservationsFunc(DeltaMetric = DeltaMetric, 
                                                      TestSet = TestSet, 
                                                      CandidateSet = CandidateSet,
                                                      CovariateList,
                                                      ModelType = ModelType)
-  
+    MostUncertainObsID = MostUncertainObsResults$MostUncertainObsID
+    MostUncertainObs = MostUncertainObsResults$MostUncertainObsCovariates
+    
   ### Distance Metric###
     
     ## Norm ##
@@ -57,16 +59,23 @@ BreakingTiesSelectorFunc = function(DeltaMetric,
   ## Set Distance ##
   DistanceMetric = NormDistance
   CandidateSet$DistanceMetric = DistanceMetric
+  CandidateSet$YDifference = abs(CandidateSet$Y - filter(TestSet, ID == MostUncertainObsID)$Y)
 
   ### Matched Candidate Data ###
-  MatchedCandidateRowNum = (sort(CandidateSet$DistanceMetric,index.return = TRUE)$ix)[1:SelectorN]
-  SelectedObservation = CandidateSet[MatchedCandidateRowNum,]
-  
+  ### If there are more than 1 candidate observations that have the same factorial design, 
+  ### choose the candidate observation with the most different response Y than the
+  ### most uncertain test observation.
+  SelectedObservation = CandidateSet[order(CandidateSet[,"DistanceMetric"], 
+                                              -CandidateSet[,"YDifference"]), ][1:SelectorN,]
+  SelectedObservationID = SelectedObservation$ID
+
   ### Set Mutation ###
   TrainingSet = rbind(data.frame(TrainingSet)[, setdiff(names(TrainingSet), c("BreakingTiesProb"))], 
-                      SelectedObservation[, setdiff(names(SelectedObservation), c("DistanceMetric"))])
+                      SelectedObservation[, setdiff(names(SelectedObservation), c("DistanceMetric", "YDifference"))])
   
-  CandidateSet = CandidateSet[!(CandidateSet$ID %in% SelectedObservation$ID), setdiff(names(CandidateSet), c("DistanceMetric"))]
+  CandidateSet = CandidateSet[!(CandidateSet$ID %in% SelectedObservation$ID), 
+                              setdiff(names(CandidateSet), c("DistanceMetric",
+                                                             "YDifference"))]
   
   return(list(TrainingSet = TrainingSet,
               CandidateSet = CandidateSet,

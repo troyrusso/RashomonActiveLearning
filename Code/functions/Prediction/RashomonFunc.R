@@ -12,7 +12,6 @@ RashomonProfileFunc = function(dat, CovariateList, LabelName, RashomonParameters
   
   ### Rashomon Profiles ###
   NewDat = assign_universal_label(dat, arm_cols = CovariateList)
-  # NewDat$Y = as.numeric(NewDat$Y)
   StartTime = Sys.time()
   aggregate_rashomon_profiles(data.frame(NewDat),                                  # TrainingSetTrainingData
                               value = LabelName,                       # Response names

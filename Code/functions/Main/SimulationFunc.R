@@ -12,7 +12,7 @@ SimulationFunc = function(dat,
   set.seed(seed)
   
   ### Validation ###
-  # ValidationFunc(dat, SelectorType, ModelType)
+  ValidationFunc(dat, SelectorType, ModelType)
   
   ### Train Test Split ###
   TestSize = floor(TestProportion * nrow(dat))
@@ -31,14 +31,11 @@ SimulationFunc = function(dat,
   ### Set Up ###
   MaxIterationN = ceiling(nrow(CandidateSet)/SelectorN)
   ModelList = vector('list', MaxIterationN)
-  # NClass = length(unique(TestSet$Y))
   DeltaMetricVec = numeric(MaxIterationN * nrow(TestSet)) %>% 
     matrix(nrow = MaxIterationN,
            ncol = nrow(TestSet))
   colnames(DeltaMetricVec) = rownames(TestSet)
   ErrorVec = numeric(MaxIterationN)
-  # ClassErrorVec = matrix(nrow = MaxIterationN,ncol = NClass)
-  # colnames(ClassErrorVec) = paste0("Class", 1:NClass)
   SelectedObservationHistory = numeric(MaxIterationN * SelectorN) %>%
     matrix(nrow = MaxIterationN, 
            ncol = SelectorN)
@@ -70,7 +67,6 @@ SimulationFunc = function(dat,
                                                  CovariateList, 
                                                  ModelType,
                                                  RashomonParameters = RashomonParameters)
-    # TrainingSet = data.frame(TrainingSet)[, c("ID", "Y", "YStar", paste0("X",1:length(CovariateList)))]
     TrainingSet = data.frame(TrainingSet)
     Model = ModelTypeSwitchResults$Model
     ModelList[[iter]] = Model
@@ -93,11 +89,11 @@ SimulationFunc = function(dat,
       TestSetPrediction[[iter]] = TestErrorResults$TestPredictedLabels
       RashomonSetNumList[iter,] = c(ModelTypeSwitchResults$RashomonSetNumOriginal,
                                     ModelTypeSwitchResults$RashomonSetNumUsed)
-    }else if(ModelType != "RashomonLinear"){TestSetPrediction[iter ,] = TestErrorResults$TestPredictedLabels}
+    }else if(ModelType != "RashomonLinear"){
+      TestSetPrediction[iter ,] = TestErrorResults$TestPredictedLabels}
     DeltaMetricVec[iter,] = TestErrorResults$DeltaMetric
     ErrorVec[iter] = TestErrorResults$Error
-    # ClassErrorVec[iter,] = TestErrorResults$ClassError
-    
+
     ### Selector ###
     SelectorDataSets = SelectorTypeSwitchFunc(ModelType = ModelType,
                                               SelectorType = SelectorType, 

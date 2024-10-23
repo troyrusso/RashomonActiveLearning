@@ -90,13 +90,12 @@ if(output == "Bad"){print("output is Bad")}
 
 ### Generate Data ###
 set.seed(seed)
-DGPResults = GenerateDataFunc(N, K, NClass, CovCorrVal, NBins = NBins)
+DGPResults = GenerateDataFunc(N, K, CovCorrVal, NBins = NBins)
 dat = DGPResults$dat
 TrueBetas = DGPResults$TrueBetas
 
 ### Set Up ###
 CovariateList = paste0("X", 1:K)
-ClassProportion = rep(1/NClass, NClass)
 RashomonParameters = list(K = K, 
                           NBins = NBins,
                           H = Inf,                           # Maximum number of pools/splits
@@ -122,8 +121,6 @@ SimulationFunc(dat = dat,
 SimulationResults$Parameters = list(seed = seed,
                                                   N = N,
                                                   K = K,
-                                                  NClass = NClass,
-                                                  ClassProportion = ClassProportion,
                                                   CovCorrVal = CovCorrVal,
                                                   TestProportion = TestProportion,
                                                   SelectorN = SelectorN,
