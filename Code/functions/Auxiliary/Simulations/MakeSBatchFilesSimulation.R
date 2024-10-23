@@ -15,7 +15,6 @@ for (i in 1:nrow(ParameterVector)) {
   SelectorType = ParameterVector[i, "SelectorType"]
   N = ParameterVector[i, "N"]
   K = ParameterVector[i, "K"]
-  NClass = ParameterVector[i, "NClass"]
   CovCorrVal = ParameterVector[i, "CovCorrVal"]
   NBins = ParameterVector[i, "NBins"]
   TestProportion = ParameterVector[i, "TestProportion"]
@@ -63,7 +62,6 @@ for (i in 1:nrow(ParameterVector)) {
      paste("    --SelectorType ", SelectorType, "\\", sep=""),
      paste("    --N ", N, "\\", sep=""),
      paste("    --K ", K, "\\", sep=""),
-     paste("    --NClass ", NClass, "\\", sep=""),
      paste("    --CovCorrVal ", CovCorrVal, "\\", sep=""),
      paste("    --NBins ", NBins, "\\", sep=""),
      paste("    --TestProportion ", TestProportion, "\\", sep=""),

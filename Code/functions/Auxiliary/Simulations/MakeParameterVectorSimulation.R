@@ -12,17 +12,15 @@ ExpandGridCombinations = expand.grid(seed = seq(1:50),
                                      SelectorType = c("Random", "BreakingTies"),
                                      N = c(300),
                                      K = c(3),
-                                     NClass = c(2),
-                                     # ClassProportion = c(NA),
                                      CovCorrVal = c(0),
-                                     NBins = c(3),
+                                     NBins = c(4),
                                      TestProportion = c(0.2),
                                      SelectorN = c(1),
                                      InitialN = c(10),
                                      reg = c(0.1),
                                      theta = 2,
                                      RashomonModelNumLimit = c(10, 25, 100),
-                                     LabelName = "YStar")
+                                     LabelName = "Y")
 
 ### Delete Extra Sbatch ###
 ExpandGridCombinations = ExpandGridCombinations %>%
@@ -38,8 +36,6 @@ Simulation_Combinations = ExpandGridCombinations %>%
                           SelectorType, "_",
                           N, "_",
                           K, "_",
-                          NClass, "_",
-                          # ClassProportion, "_",
                           CovCorrVal, "_",
                           NBins, "_",
                           TestProportion, "_",
@@ -55,8 +51,6 @@ Simulation_Combinations = ExpandGridCombinations %>%
                          SelectorType, "_",
                          N, "_",
                          K, "_",
-                         NClass, "_",
-                         # ClassProportion, "_",
                          CovCorrVal, "_",
                          NBins, "_",
                          TestProportion, "_",

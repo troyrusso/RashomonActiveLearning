@@ -38,7 +38,6 @@ option_list = list(
   make_option(c("--SelectorType"), type = "character", default = "Bad", help = "Selector type", metavar = "character"),
   make_option(c("--N"), type = "integer", default = 69, help = "Number of observations", metavar = "integer"),
   make_option(c("--K"), type = "integer", default = 69, help = "Number of covariates", metavar = "integer"),
-  make_option(c("--NClass"), type = "integer", default = 69, help = "Number of classes", metavar = "integer"),
   make_option(c("--CovCorrVal"), type = "numeric", default = 69, help = "Correlation between covariate 1 and 2", metavar = "numeric"),
   make_option(c("--NBins"), type = "numeric", default = 69, help = "Discretizes data into NBins.", metavar = "numeric"),
   make_option(c("--TestProportion"), type = "numeric", default = 69, help = "Test set proportion", metavar = "numeric"),
@@ -59,7 +58,6 @@ ModelType = args$ModelType
 SelectorType = args$SelectorType
 N = args$N
 K = args$K
-NClass = args$NClass
 CovCorrVal = args$CovCorrVal
 NBins = args$NBins
 TestProportion = args$TestProportion
@@ -76,7 +74,6 @@ if(ModelType == "Bad"){print("ModelType is Bad")}
 if(SelectorType == "Bad"){print("SelectorType is Bad")}
 if(N == 69){print("N is Bad")}
 if(K == 69){print("K is Bad")}
-if(NClass == 69){print("NClass is Bad")}
 if(CovCorrVal == 69){print("CovCorrVal is Bad")}
 if(NBins == 69){print("NBins is Bad")}
 if(TestProportion == 69){print("TestProportion is Bad")}
@@ -119,14 +116,14 @@ SimulationFunc(dat = dat,
 
 ### Save ###
 SimulationResults$Parameters = list(seed = seed,
-                                                  N = N,
-                                                  K = K,
-                                                  CovCorrVal = CovCorrVal,
-                                                  TestProportion = TestProportion,
-                                                  SelectorN = SelectorN,
-                                                  InitialN = InitialN,
-                                                  NBins = NBins,
-                                                  RashomonParameters = RashomonParameters)
+                                    N = N,
+                                    K = K,
+                                    CovCorrVal = CovCorrVal,
+                                    TestProportion = TestProportion,
+                                    SelectorN = SelectorN,
+                                    InitialN = InitialN,
+                                    NBins = NBins,
+                                    RashomonParameters = RashomonParameters)
 save(SimulationResults, file = output)
 
 
