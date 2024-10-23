@@ -26,8 +26,6 @@ for (i in 1:nrow(ParameterVector)) {
   LabelName = ParameterVector[i, "LabelName"]
   output = ParameterVector[i, "Output"]
   
-
-  
   # Create .sbatch file for the current simulation
   sbatch_file <- file(paste0(dir,
                              "/RunSimulation/",
