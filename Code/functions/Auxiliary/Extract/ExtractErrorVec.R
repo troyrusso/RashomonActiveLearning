@@ -32,7 +32,7 @@ if(Method == "RashomonLinear_BreakingTies"){
 }
 
 ### Set Up ###
-SimulationResultsList = list()
+# SimulationResultsList = list()
 ErrorVec = matrix(ncol= 0, nrow = 0)
 RunTime = c()
 
@@ -51,7 +51,7 @@ for (i in 1:length(RDataFiles)) {
   
   ## Load Data ##
   load(paste0(directory,RDataFiles[i]))
-  SimulationResultsList[[paste0("SimulationResults_", i)]] = SimulationResults
+  # SimulationResultsList[[paste0("SimulationResults_", i)]] = SimulationResults
   ErrorVec = AddRowToMatrix(ErrorVec,SimulationResults$ErrorVec)
   RunTime = c(RunTime, SimulationResults$run_time)
   rm(SimulationResults)
@@ -59,8 +59,7 @@ for (i in 1:length(RDataFiles)) {
 
 
 ### Output Vector ###
-OutputVector = list(SimulationResultsList = SimulationResultsList,
-                    ErrorVec = ErrorVec,
+OutputVector = list(ErrorVec = ErrorVec,
                     RunTime = RunTime)
 
 save(OutputVector, file= output)
