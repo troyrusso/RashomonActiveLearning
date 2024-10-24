@@ -7,7 +7,7 @@ library(tidyverse)
 rm(list=ls())
 dir = paste0("/Users/simondn/Documents/RashomonActiveLearning/Code/Cluster/")
 
-ExpandGridCombinations = expand.grid(seed = seq(1:50),
+ExpandGridCombinations = expand.grid(seed = seq(51,100),
                                      ModelType = c("Factorial", "RashomonLinear"),
                                      SelectorType = c("Random", "BreakingTies"),
                                      N = c(300),
