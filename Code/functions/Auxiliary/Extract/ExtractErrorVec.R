@@ -1,6 +1,6 @@
 ### Set Up ###
 rm(list=ls())
-directory = "Results/SimulationRaw"
+directory = "Results/SimulationRaw/"
 # directory = "/Users/simondn/Documents/RashomonActiveLearning/Results/SimulationRaw/"       ### DELETE ###
 library(optparse)   #parse
 
