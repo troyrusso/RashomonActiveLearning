@@ -87,6 +87,20 @@ Plot10
 Plot25
 Plot100
 ```
+```{r}
+SelectorTypeComparisonPlotFuncConfidenceBands(Naive = NaiveOutputVector$ErrorVec,
+                                              Rashomon10 = Rashmon10OutputVector$ErrorVec) -> Plot10_Two
 
+SelectorTypeComparisonPlotFuncConfidenceBands(Naive = NaiveOutputVector$ErrorVec,
+                                              Rashomon25 = Rashmon25OutputVector$ErrorVec) -> Plot25_Two
 
+SelectorTypeComparisonPlotFuncConfidenceBands(Naive = NaiveOutputVector$ErrorVec,
+                                              Rashomon100 = Rashmon100OutputVector$ErrorVec) -> Plot100_Two
+```
+
+```{r}
+Plot10_Two
+Plot25_Two
+Plot100_Two
+```
 
