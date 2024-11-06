@@ -15,4 +15,4 @@ Rscript Code/functions/Auxiliary/Extract/ExtractErrorVec_Vanilla.R \
     --JobName Extract_Random\
     --K 3\
     --Method Random\
-    --output Results/Extracted/Simulations/Extracted_Naive.RData\
+    --output Results/Extracted/Simulations/VanillaRandom3.RData\

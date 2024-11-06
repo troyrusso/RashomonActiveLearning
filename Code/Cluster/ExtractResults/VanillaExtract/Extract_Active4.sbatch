@@ -15,4 +15,4 @@ Rscript Code/functions/Auxiliary/Extract/ExtractErrorVec_Vanilla.R \
     --JobName Extract_BT\
     --K 4\
     --Method BreakingTies\
-    --output Results/Extracted/Simulations/Extracted_Naive.RData\
+    --output Results/Extracted/Simulations/VanillaActive4.RData\
