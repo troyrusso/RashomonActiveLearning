@@ -45,62 +45,61 @@ if(exists("directory")){
   }else if(!exists("directory")){source("Code/functions/Main/LoadFunctions.R")}
 
 ### Load Data ###
-load(paste0(directory, "Results/Extracted/Simulations/Extracted_Random.RData"))
-RandomOutputVector = OutputVector
-
-load(paste0(directory, "Results/Extracted/Simulations/Extracted_Naive.RData"))
-NaiveOutputVector = OutputVector
-
-load(paste0(directory, "Results/Extracted/Simulations/Extracted_RAAAL_10.RData"))
-Rashmon10OutputVector = OutputVector
-
-load(paste0(directory, "Results/Extracted/Simulations/Extracted_RAAAL_25.RData"))
-Rashmon25OutputVector = OutputVector
-
-load(paste0(directory, "Results/Extracted/Simulations/Extracted_RAAAL_100.RData"))
-Rashmon100OutputVector = OutputVector
+load(paste0(directory, "Results/Extracted/Simulations/VanillaActive3.RData"))
+Results_Active3 = OutputVector
+rm(OutputVector)
+load(paste0(directory, "Results/Extracted/Simulations/VanillaActive4.RData"))
+Results_Active4 = OutputVector
+rm(OutputVector)
+load(paste0(directory, "Results/Extracted/Simulations/VanillaActive5.RData"))
+Results_Active5 = OutputVector
+rm(OutputVector)
+load(paste0(directory, "Results/Extracted/Simulations/VanillaActive6.RData"))
+Results_Active6 = OutputVector
+rm(OutputVector)
+load(paste0(directory, "Results/Extracted/Simulations/VanillaRandom3.RData"))
+Results_Random3 = OutputVector
+rm(OutputVector)
+load(paste0(directory, "Results/Extracted/Simulations/VanillaRandom4.RData"))
+Results_Random4 = OutputVector
+rm(OutputVector)
+load(paste0(directory, "Results/Extracted/Simulations/VanillaRandom5.RData"))
+Results_Random5 = OutputVector
+rm(OutputVector)
+load(paste0(directory, "Results/Extracted/Simulations/VanillaRandom6.RData"))
+Results_Random6 = OutputVector
 
 rm(OutputVector)
 ```
 
 ```{r}
-SelectorTypeComparisonPlotFuncConfidenceBands(Random = RandomOutputVector$ErrorVec,
-                                              Naive = NaiveOutputVector$ErrorVec,
-                                              Rashomon10 = Rashmon10OutputVector$ErrorVec) -> Plot10
+SelectorTypeComparisonPlotFuncConfidenceBands(Random = Results_Random3$ErrorVec,
+                                              Active = Results_Active3$ErrorVec) -> Plot3
 
-SelectorTypeComparisonPlotFuncConfidenceBands(Random = RandomOutputVector$ErrorVec,
-                                              Naive = NaiveOutputVector$ErrorVec,
-                                              Rashomon25 = Rashmon25OutputVector$ErrorVec) -> Plot25
+SelectorTypeComparisonPlotFuncConfidenceBands(Random = Results_Random4$ErrorVec,
+                                              Active = Results_Active4$ErrorVec) -> Plot4
 
-SelectorTypeComparisonPlotFuncConfidenceBands(Random = RandomOutputVector$ErrorVec,
-                                              Naive = NaiveOutputVector$ErrorVec,
-                                              Rashomon100 = Rashmon100OutputVector$ErrorVec) -> Plot100
+SelectorTypeComparisonPlotFuncConfidenceBands(Random = Results_Random5$ErrorVec,
+                                              Active = Results_Active5$ErrorVec) -> Plot5
 
-
-```
-
-
-
-
-```{r}
-Plot10
-Plot25
-Plot100
-```
-```{r}
-SelectorTypeComparisonPlotFuncConfidenceBands(Naive = NaiveOutputVector$ErrorVec,
-                                              Rashomon10 = Rashmon10OutputVector$ErrorVec) -> Plot10_Two
-
-SelectorTypeComparisonPlotFuncConfidenceBands(Naive = NaiveOutputVector$ErrorVec,
-                                              Rashomon25 = Rashmon25OutputVector$ErrorVec) -> Plot25_Two
-
-SelectorTypeComparisonPlotFuncConfidenceBands(Naive = NaiveOutputVector$ErrorVec,
-                                              Rashomon100 = Rashmon100OutputVector$ErrorVec) -> Plot100_Two
+SelectorTypeComparisonPlotFuncConfidenceBands(Random = Results_Random6$ErrorVec,
+                                              Active = Results_Active6$ErrorVec) -> Plot6
 ```
 
 ```{r}
-Plot10_Two
-Plot25_Two
-Plot100_Two
+Plot3 = Plot3 + labs(title = "3 useful covariates & 1 useless covariate")
+Plot4 = Plot4 + labs(title = "4 useful covariates & 1 useless covariate")
+Plot5 = Plot5 + labs(title = "5 useful covariates & 1 useless covariate")
+Plot6 = Plot6 + labs(title = "6 useful covariates & 1 useless covariate")
 ```
+
+```{r}
+Plot3 + xlim(0,500)
+Plot4 + xlim(0,500)
+Plot5 + xlim(0,500)
+Plot6 + xlim(0,500)
+```
+
+
+
 
