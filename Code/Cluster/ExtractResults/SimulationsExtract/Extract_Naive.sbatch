@@ -11,7 +11,7 @@
 
 cd ~/RashomonActiveLearning
 module load R/4.2.2-foss-2022b
-Rscript Code/functions/Auxiliary/Extract/ExtractErrorVec.R \
+Rscript Code/functions/Auxiliary/Extract/ExtractErrorVec_Simulation.R \
     --JobName Extract_Naive\
     --RashomonModelNumLimit NULL\
     --Method Factorial_BreakingTies\

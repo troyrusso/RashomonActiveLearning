@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name Extract_RAAAL_25
+#SBATCH --job-name Extract_Random
 #SBATCH --partition short
 #SBATCH --ntasks 1
 #SBATCH --time 11:59:00
@@ -11,8 +11,8 @@
 
 cd ~/RashomonActiveLearning
 module load R/4.2.2-foss-2022b
-Rscript Code/functions/Auxiliary/Extract/ExtractErrorVec_Simulation.R \
-    --JobName Extract_RAAAL_25\
-    --RashomonModelNumLimit 25\
-    --Method RashomonLinear_BreakingTies\
-    --output Results/Extracted/Simulations/Extracted_RAAAL_25.RData\
+Rscript Code/functions/Auxiliary/Extract/ExtractErrorVec_Vanilla.R \
+    --JobName Extract_Random\
+    --K 5\
+    --Method Random\
+    --output Results/Extracted/Simulations/Extracted_Naive.RData\
