@@ -13,6 +13,7 @@ cd ~/RashomonActiveLearning
 module load R/4.2.2-foss-2022b
 Rscript Code/functions/Auxiliary/Extract/ExtractErrorVec_Vanilla.R \
     --JobName Extract_BT\
-    --K 6\
     --Method BreakingTies\
+    --N 500\
+    --K 6\
     --output Results/Extracted/Simulations/VanillaActive6.RData\

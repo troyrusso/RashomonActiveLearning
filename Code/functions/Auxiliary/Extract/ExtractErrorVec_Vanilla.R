@@ -8,14 +8,16 @@ library(optparse)   #parse
 ## Parser ###
 option_list = list(
   make_option(c("--JobName"), type = "character", default = NULL, help = "Job Name", metavar = "integer"),
-  make_option(c("--K"), type = "numeric", default = NULL, help = "NumberOfCovariate", metavar = "numeric"),
   make_option(c("--Method"), type = "character", default = NULL, help = "Random/Naive/Rashomon", metavar = "numeric"),
+  make_option(c("--N"), type = "numeric", default = NULL, help = "Number of Observations", metavar = "numeric"),
+  make_option(c("--K"), type = "numeric", default = NULL, help = "NumberOfCovariate", metavar = "numeric"),
   make_option(c("--output"), type = "character", default = NULL, help = "Path to store", metavar = "character")
 )
 arg.parser = OptionParser(option_list = option_list)
 args = parse_args(arg.parser)
-K = args$K
 Method = args$Method
+N = args$N
+K = args$K
 output = args$output
 
 ### Auxiliary Function ###
@@ -27,7 +29,7 @@ AddRowToMatrix = function(StorageMatrix, NewRow){
 ### Data ###
 RDataFiles = list.files(path = directory,
                         pattern = ".*\\.RData$")
-RDataFiles = RDataFiles[grepl(Method, RDataFiles) & grepl(paste0("_", K, "_"), RDataFiles)]
+RDataFiles = RDataFiles[grepl(paste0(Method,"_",N,"_", K, "_"), RDataFiles)]
 
 
 ### Set Up ###
