@@ -26,10 +26,7 @@ AddRowToMatrix = function(StorageMatrix, NewRow){
 
 ### Data ###
 RDataFiles = list.files(path = directory,
-                        pattern = paste0(Method, ".*\\.RData$"))
-
-RDataFiles = RDataFiles[grepl(paste0(K,"_\\.RData$"), 
-                              RDataFiles)]
+                        pattern = ".*\\.RData$")
 RDataFiles = RDataFiles[grepl(Method, RDataFiles) & grepl(paste0("_", K, "_"), RDataFiles)]
 
 
