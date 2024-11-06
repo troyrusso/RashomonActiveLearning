@@ -9,47 +9,45 @@ TestErrorFunction = function(Model,
                              LabelName, 
                              RashomonParameters){
   
-  ### Set Up ###
-  NClass = length(unique(TestSet$Y))
-  ClassError = numeric(NClass)
-  
   ### Switch ###
   switch(ModelType,
          Logistic = {
            DeltaMetric = as.matrix(predict(Model, 
-                                                          newdata = TestSet, 
-                                                          type = "response"))
+                                           newdata = TestSet, 
+                                           type = "response"))
            TestPredictedLabels = 1*(predict(Model, 
                                             newdata = TestSet, 
                                             type = "response")>0.5)
            DeltaMetric = cbind(ID = as.numeric(rownames(DeltaMetric)),
                                               Class1 = DeltaMetric[,1], 
                                               Class2 = 1-DeltaMetric[,1])
+           Error = mean(data.frame(TestSet)[,LabelName] != TestPredictedLabels)
          },
          LASSO = {
            DeltaMetric = predict(Model,
-                                                newx = as.matrix(TestSet[, CovariateList]),
-                                                type = "response")
+                                 newx = as.matrix(TestSet[, CovariateList]),
+                                 type = "response")
            TestPredictedLabels = ifelse(DeltaMetric > 0.5,1,0)
            
            DeltaMetric = cbind(ID = as.numeric(rownames(DeltaMetric)),
                                               Class1 = DeltaMetric[,1], 
                                               Class2 = 1-DeltaMetric[,1])
+           Error = mean(data.frame(TestSet)[,LabelName] != TestPredictedLabels)
          },
          Multinomial = {
-           DeltaMetric = predict(Model,
-                                                newdata = TestSet,
-                                                type = "prob")
-           TestPredictedLabels = predict(Model,
-                                         newdata = TestSet)
+           DeltaMetric = predict(Model, newdata = TestSet, type = "prob")
+           TestPredictedLabels = predict(Model, newdata = TestSet)
+           Error = mean(data.frame(TestSet)[,LabelName] != TestPredictedLabels)
          },
          MultinomLASSO = {
            DeltaMetric = predict(Model,
-                                                newx = as.matrix(TestSet[, CovariateList]),
-                                                type = "response")[,,]
+                                 newx = as.matrix(TestSet[, CovariateList]),
+                                 type = "response")[,,]
            TestPredictedLabels = predict(Model,
                                          newx = as.matrix(TestSet[, CovariateList]),
                                          type = "class") %>% as.factor
+           Error = mean(data.frame(TestSet)[,LabelName] != TestPredictedLabels)
+           
          },
          RandomForest = {
            TestPredictedLabels = predict(Model, TestSet)
@@ -57,11 +55,13 @@ TestErrorFunction = function(Model,
            DeltaMetric = cbind(ID = as.numeric(rownames(DeltaMetric)),
                                               Class1 = DeltaMetric[,1], 
                                               Class2 = 1-DeltaMetric[,1])
+           Error = mean(data.frame(TestSet)[,LabelName] != TestPredictedLabels)
          },
          Linear = {
            ModelPrediction = predict(Model, newdata = TestSet, se.fit = TRUE)
            TestPredictedLabels = ModelPrediction$fit
            DeltaMetric = ModelPrediction$se.fit
+           Error = mean((data.frame(TestSet)[,LabelName] - TestPredictedLabels)^2)
          },
          RashomonLinear = {
            RashomonSetNum = length(Model)

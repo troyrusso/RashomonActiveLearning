@@ -53,8 +53,8 @@ if(exists("directory")){
 LabelName = "Y"
 SelectorN = 1
 seed = 1
-N = 50
-K = 3
+N = 500
+K = 6
 CovCorrVal = 0
 NBins = 3
 TestProportion = 0.2
@@ -83,13 +83,50 @@ RashomonParameters = list(K = K,
                           theta = 4,            # Threshold; determine relative to best model
                           inactive = 0,
                           RashomonModelNumLimit = 10)
-
-SelectorType = "BreakingTies"
-ModelType = "RashomonLinear"
-iter=1
 ```
 
 ## Algorithm
+```{r}
+# SimulationFunc(dat = dat,
+#                LabelName = LabelName,
+#                CovariateList = CovariateList,
+#                TestProportion = TestProportion,
+#                SelectorType = "Random",
+#                SelectorN = SelectorN,
+#                ModelType = "Factorial",
+#                InitialN = InitialN,
+#                RashomonParameters = RashomonParameters,
+#                seed = seed) -> SimResultsBreakingTiesRandom
+```
+
+```{r}
+# SimulationFunc(dat = dat,
+#                LabelName = LabelName,
+#                CovariateList = CovariateList,
+#                TestProportion = TestProportion,
+#                SelectorType = "BreakingTies",
+#                SelectorN = SelectorN,
+#                ModelType = "Factorial",
+#                InitialN = InitialN,
+#                RashomonParameters = RashomonParameters,
+#                seed = seed) -> SimResultsBreakingTiesFactorial
+```
+
+```{r}
+# SimulationFunc(dat = dat,
+#                LabelName = LabelName,
+#                CovariateList = CovariateList,
+#                TestProportion = TestProportion,
+#                SelectorType = "BreakingTies",
+#                SelectorN = SelectorN,
+#                ModelType = "RashomonLinear",
+#                InitialN = InitialN,
+#                RashomonParameters = RashomonParameters,
+#                seed = seed) -> SimResultsBreakingTiesRashomon
+```
+
+
+
 ```{r}
 SimulationFunc(dat = dat,
                LabelName = LabelName,
@@ -97,10 +134,10 @@ SimulationFunc(dat = dat,
                TestProportion = TestProportion,
                SelectorType = "Random",
                SelectorN = SelectorN,
-               ModelType = "Factorial",
+               ModelType = "Linear",
                InitialN = InitialN,
                RashomonParameters = RashomonParameters,
-               seed = seed) -> SimResultsBreakingTiesRandom
+               seed = seed) -> SimResults1
 ```
 
 ```{r}
@@ -110,45 +147,27 @@ SimulationFunc(dat = dat,
                TestProportion = TestProportion,
                SelectorType = "BreakingTies",
                SelectorN = SelectorN,
-               ModelType = "Factorial",
+               ModelType = "Linear",
                InitialN = InitialN,
                RashomonParameters = RashomonParameters,
-               seed = seed) -> SimResultsBreakingTiesFactorial
+               seed = seed) -> SimResults2
 ```
 
 ```{r}
-SimulationFunc(dat = dat,
-               LabelName = LabelName,
-               CovariateList = CovariateList,
-               TestProportion = TestProportion,
-               SelectorType = "BreakingTies",
-               SelectorN = SelectorN,
-               ModelType = "RashomonLinear",
-               InitialN = InitialN,
-               RashomonParameters = RashomonParameters,
-               seed = seed) -> SimResultsBreakingTiesRashomon
-```
+SelectorTypeComparisonPlotFunc(Random = SimResults1$ErrorVec,
+                               Active = SimResults2$ErrorVec) + labs(title = paste0("With ", K, " useful covariates and 1 useless covariate")) -> VanillaRashomonActiveLearningPlot
 
-```{r}
-### Assign ###
-SimResults1 = SimResultsBreakingTiesFactorial
-SimResults2 = SimResultsBreakingTiesRashomon
-SimResults3 = SimResultsBreakingTiesRandom
+ggsave(plot = VanillaRashomonActiveLearningPlot,
+       filename = paste0("/Users/simondn/Documents/RashomonActiveLearning/Presentations/Nov5Update/PlotCovariate_",
+                         K,".png"))
 
-TestSetPredictions1 = SimResults1$TestSetPrediction
-TestSetPredictions2 = SimResults2$TestSetPrediction
-TestSetPredictions3 = SimResults3$TestSetPrediction
 
-ModelList1 = SimResults1$ModelList
-ModelList2 = SimResults2$ModelList
-ModelList3 = SimResults3$ModelList
 ```
 
 ```{r}
 SelectorTypeComparisonPlotFunc(Naive = SimResultsBreakingTiesFactorial$ErrorVec,
                                Rashomon = SimResultsBreakingTiesRashomon$ErrorVec,
                                Random = SimResultsBreakingTiesRandom$ErrorVec) -> SelectorTypeComparisonPlot
-
 ```
 
 ```{r}
