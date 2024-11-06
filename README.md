@@ -1,6 +1,8 @@
 # Rashomon Restricted Ambiguity Averse Active Learning (RRAA-AL)
 
-The following repository is in construction.
+🚧 This repository is currently under construction. 🚧
+
+Updates are ongoing as part of iterative version control and management.
 
 ## Abstract
 Collecting labeled data for training machine learning models is often costly and time-consuming. Active learning addresses these constraints by adaptively and strategically selecting the most informative observations for labeling. However, the current active learning literature does not account for model ambiguity and the possibility that several near-optimal models may fit the data well, a phenomenon termed the Rashomon Effect. When selecting the most informative candidate observation for labelling, the Rashomon Effect may suggest different candidate observations. Which observation, then, should an analyst query?
