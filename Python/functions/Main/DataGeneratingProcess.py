@@ -14,6 +14,8 @@ def DataGeneratingProcess(N, K):
 
     ### Generate Response ###
     Y = np.apply_along_axis(lambda x: RFunc(x).sum(), 1, X)
+    Y = (Y- np.mean(Y))/np.std(Y)
+    Y = Y + np.random.normal(0,1,N)
 
     ### Generate df Frame ###
     df = pd.DataFrame(X, columns = [f'X{i+1}' for i in range(K)])
