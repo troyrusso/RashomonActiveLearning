@@ -23,22 +23,14 @@ def GSyFunction(df_Train, df_Candidate, Model, distance = "euclidean"):  ### NOT
 
     ### Calculate the prediction of df_Train_n ###
     Predictions = Model.predict(df_Candidate.loc[:, df_Candidate.columns != "Y"])
-    print("Line 1 good")
 
     ### Calculate the difference between f(x_n) and y_m ###
-    d_nmY = cdist(df_Train["Y"].values.reshape(-1,1), Predictions.reshape(-1,1), metric = distance)
-    print("Line 2 good")
+    d_nmY = cdist(Predictions.reshape(-1,1), df_Train["Y"].values.reshape(-1,1), metric = distance)
 
     ### Return the index of the furthest error ###
     d_nY = d_nmY.min(axis=1)
-    print("Line 3 good")
-
     MaxRowNumber = np.argmax(d_nY)
-    print("Line 4 good")
-
     IndexRecommendation = df_Candidate.iloc[[MaxRowNumber]].index[0]
-    print("Line 5 good")
-
 
     return(IndexRecommendation)
     
@@ -51,7 +43,7 @@ def iGSFunction(df_Train, df_Candidate, Model, distance = "euclidean"):
 
     ### GSy ###
     Predictions = Model.predict(df_Candidate.loc[:, df_Candidate.columns != "Y"])
-    d_nmY = cdist(df_Train["Y"].values.reshape(-1,1), Predictions.reshape(-1,1), metric = distance)
+    d_nmY = cdist(Predictions.reshape(-1,1), df_Train["Y"].values.reshape(-1,1), metric = distance)
     d_nY = d_nmY.min(axis=1)
 
     ### iGS ###
