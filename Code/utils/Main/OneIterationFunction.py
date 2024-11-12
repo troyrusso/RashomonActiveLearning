@@ -58,4 +58,4 @@ def OneIterationFunction(DataFileInput,
                                                                 ModelType = ModelType, 
                                                                 ModelArgs = ModelArgsFiltered
                                                                 )
-    return ErrorVec, SelectedObservationHistory
+    return pd.DataFrame(ErrorVec), pd.DataFrame(SelectedObservationHistory)
