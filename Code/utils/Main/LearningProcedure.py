@@ -1,8 +1,11 @@
 ### Import functions ###
 from utils.Main import *
 from utils.Selector import *
+from utils.Auxiliary import *
 from utils.Prediction import *
+import pandas as pd
 
+### Function ###
 def LearningProcedure(df_Train, 
                          df_Test, 
                          df_Candidate, 
@@ -16,7 +19,7 @@ def LearningProcedure(df_Train,
     SelectedObservationHistory = []
 
     ### Algorithm
-    for i in range(0, len(df_Candidate)):
+    for i in range(len(df_Candidate)):
 
         ### Prediction Model ###
         Model = ModelType(**ModelArgs)
@@ -42,6 +45,7 @@ def LearningProcedure(df_Train,
         ### Update SelectorArgs and ModelArgs ###                                     # NOTE: THIS IS NOT DYNAMIC
         if "df_Train" in ModelArgs.keys(): ModelArgs['df_Train'] = df_Train
         if "df_Train" in SelectorArgs.keys(): SelectorArgs['df_Train'] = df_Train
-        if "df_Candidate" in SelectorArgs.keys(): SelectorArgs['df_Candidate'] = df_Candidate            
+        if "df_Candidate" in SelectorArgs.keys(): SelectorArgs['df_Candidate'] = df_Candidate      
 
+    ### RETURN ###
     return ErrorVec, SelectedObservationHistory
