@@ -29,14 +29,19 @@ def OneIterationFunction(DataFileInput,
     ErrorVec = []
     SelectedObservationHistory = []
 
+    print("Good 1")
+
     ### Generate Data ###
     if(DataFileInput == "Simulate"):
         df = DataGeneratingProcess(**DataArgs)
     else:
         df = LoadData(DataFileInput)
 
+    print("Good 2")
+
     ### Train Test Candidate Split
     df_Train, df_Test, df_Candidate = TrainTestCandidateSplit(df, TestProportion, CandidateProportion)
+    print("Good 3")
 
 
     ### Selector Arguments ###
@@ -44,10 +49,12 @@ def OneIterationFunction(DataFileInput,
     SelectorArgs["df_Candidate"] = df_Candidate
     SelectorArgs["Model"] = ModelType
     SelectorArgsFiltered = FilterArguments(SelectorType, SelectorArgs)
+    print("Good 4")
 
     ### Model Arguments ###
     ModelArgs['df_Train'] = df_Train
     ModelArgsFiltered = FilterArguments(ModelType, ModelArgs)
+    print("Good 5")
     
     ### Learning Process ###
     ErrorVec, SelectedObservationHistory = LearningProcedure(df_Train = df_Train, 
@@ -58,6 +65,8 @@ def OneIterationFunction(DataFileInput,
                                                                 ModelType = ModelType, 
                                                                 ModelArgs = ModelArgsFiltered
                                                                 )
+        print("Good 6")
+    
     SimulationParameters = {"DataFileInput" : str(DataFileInput),
                             "Seed" : str(Seed),
                             "TestProportion" : str(TestProportion),
