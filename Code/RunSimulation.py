@@ -1,6 +1,7 @@
 ### Import Packages ###
 import ast
 import argparse
+import json
 import numpy as np
 import math as math
 import pandas as pd
@@ -49,9 +50,9 @@ ErrorVec, HistoryVec, SimulationParameters = OneIterationFunction(DataFileInput 
                                                 CandidateProportion = ParameterVector.iloc[args.CandidateProportion],
                                                 SelectorType = globals().get(ParameterVector.iloc[args.SelectorType], None), 
                                                 ModelType = globals().get(ParameterVector.iloc[args.ModelType], None), 
-                                                DataArgs = ast.literal_eval(ParameterVector.iloc[args.DataArgs]),
-                                                SelectorArgs = ast.literal_eval(ParameterVector.iloc[args.SelectorArgs].replace("[","").replace("]","")),
-                                                ModelArgs = ast.literal_eval(ParameterVector.iloc[args.ModelArgs])
+                                                DataArgs = json.loads(ParameterVector.iloc[args.DataArgs]),
+                                                SelectorArgs = json.loads(ParameterVector.iloc[args.SelectorArgs].replace("[","").replace("]","")),
+                                                ModelArgs = json.loads(ParameterVector.iloc[args.ModelArgs])
                                                 )
 
 ### Save Error Vec ###
