@@ -40,21 +40,21 @@ parser.add_argument("--Output", type=str, default="-1", help="Simulation case nu
 args = parser.parse_args()
 
 print("Loaded correctly")
-# ### Set Up ###
-# ErrorVecSimulation = []
-# HistoryVecSimulation = []
+### Set Up ###
+ErrorVecSimulation = []
+HistoryVecSimulation = []
 
-# ### Run Code ###
-# ErrorVec, HistoryVec, SimulationParameters = OneIterationFunction(DataFileInput = ParameterVector.iloc[args.Data],
-#                                                 Seed = ParameterVector.iloc[args.Seed],
-#                                                 TestProportion = ParameterVector.iloc[args.TestProportion],
-#                                                 CandidateProportion = ParameterVector.iloc[args.CandidateProportion],
-#                                                 SelectorType = globals().get(ParameterVector.iloc[args.SelectorType], None), 
-#                                                 ModelType = globals().get(ParameterVector.iloc[args.ModelType], None), 
-#                                                 DataArgs = json.loads(ParameterVector.iloc[args.DataArgs]),
-#                                                 SelectorArgs = json.loads(ParameterVector.iloc[args.SelectorArgs].replace("[","").replace("]","")),
-#                                                 ModelArgs = json.loads(ParameterVector.iloc[args.ModelArgs])
-#                                                 )
+### Run Code ###
+ErrorVec, HistoryVec, SimulationParameters = OneIterationFunction(DataFileInput = ParameterVector.iloc[args.Data],
+                                                Seed = ParameterVector.iloc[args.Seed],
+                                                TestProportion = ParameterVector.iloc[args.TestProportion],
+                                                CandidateProportion = ParameterVector.iloc[args.CandidateProportion],
+                                                SelectorType = globals().get(ParameterVector.iloc[args.SelectorType], None), 
+                                                ModelType = globals().get(ParameterVector.iloc[args.ModelType], None), 
+                                                DataArgs = json.loads(ParameterVector.iloc[args.DataArgs]),
+                                                SelectorArgs = json.loads(ParameterVector.iloc[args.SelectorArgs].replace("[","").replace("]","")),
+                                                ModelArgs = json.loads(ParameterVector.iloc[args.ModelArgs])
+                                                )
 
-# ### Save Error Vec ###
-# ErrorVec.to_csv(os.path.join(SaveDirectory, str(args.ModelArgs.Output)), index = False)
+### Save Error Vec ###
+ErrorVec.to_csv(os.path.join(SaveDirectory, str(args.ModelArgs.Output)), index = False)
