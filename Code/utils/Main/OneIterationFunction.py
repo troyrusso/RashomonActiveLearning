@@ -6,11 +6,14 @@ import random as random
 import matplotlib.pyplot as plt
 from scipy.spatial.distance import cdist
 
+print("Good -1")
+
 ### Import functions ###
 from utils.Main import *
 from utils.Selector import *
 from utils.Auxiliary import *
 from utils.Prediction import *
+print("Good 0")
 
 ### Function ###
 def OneIterationFunction(DataFileInput,
@@ -65,7 +68,7 @@ def OneIterationFunction(DataFileInput,
                                                                 ModelType = ModelType, 
                                                                 ModelArgs = ModelArgsFiltered
                                                                 )
-        print("Good 6")
+    print("Good 6")
     
     SimulationParameters = {"DataFileInput" : str(DataFileInput),
                             "Seed" : str(Seed),
