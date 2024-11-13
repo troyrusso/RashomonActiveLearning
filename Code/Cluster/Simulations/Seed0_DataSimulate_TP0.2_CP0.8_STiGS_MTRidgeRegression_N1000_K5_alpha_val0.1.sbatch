@@ -22,4 +22,4 @@ Rscript Code/RunSimulation.py \
     --DataArgs {'N': 1000, 'K': 5} \
     --SelectorArgs [{'df_Candidate': 'df_Candidate'}] \
     --ModelArgs {'alpha_val': 0.1} \
-    --Output Simulate/Seed0_DataSimulate_TP0.2_CP0.8_STiGS_MTRidgeRegression_N1000_K5_alpha_val0.1.pkl
+    --Output /Seed0_DataSimulate_TP0.2_CP0.8_STiGS_MTRidgeRegression_N1000_K5_alpha_val0.1.csv

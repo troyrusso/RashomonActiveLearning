@@ -58,4 +58,14 @@ def OneIterationFunction(DataFileInput,
                                                                 ModelType = ModelType, 
                                                                 ModelArgs = ModelArgsFiltered
                                                                 )
-    return pd.DataFrame(ErrorVec), pd.DataFrame(SelectedObservationHistory)
+    SimulationParameters = {"DataFileInput" : str(DataFileInput),
+                            "Seed" : str(Seed),
+                            "TestProportion" : str(TestProportion),
+                            "CandidateProportion" : str(CandidateProportion),
+                            "SelectorType" : str(SelectorType),
+                            "ModelType" : str(ModelType),
+                            "DataArgs" : str(DataArgs),
+                            "SelectorArgs" : str(SelectorArgs),
+                            "ModelArgs" : str(ModelArgs)}
+
+    return pd.DataFrame(ErrorVec), pd.DataFrame(SelectedObservationHistory), SimulationParameters

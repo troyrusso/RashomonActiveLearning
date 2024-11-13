@@ -25,6 +25,7 @@ def LearningProcedure(df_Train,
         Model = ModelType(**ModelArgs)
         if "Model" in SelectorArgs.keys(): SelectorArgs['Model'] = Model            # NOTE: THIS IS NOT DYNAMIC
 
+        ### Current Error ###
         CurrentError = TestErrorFunction(Model, df_Test)
         ErrorVec.append(CurrentError)
 
@@ -32,11 +33,6 @@ def LearningProcedure(df_Train,
         QueryObservationIndex = SelectorType(**SelectorArgs)
         QueryObservation = df_Candidate.loc[[QueryObservationIndex]] # or should this be iloc
         SelectedObservationHistory.append(QueryObservationIndex)
-
-        # print("Iteration: ", i, "| QueryIndex: ", QueryObservationIndex, "| Inclusion: ", QueryObservationIndex in df_Candidate.index)
-        # print(df_Train)
-        # print(df_Candidate)
-        # print("---")
         
         ### Update Train and Candidate Sets ###
         df_Train = pd.concat([df_Train, QueryObservation])

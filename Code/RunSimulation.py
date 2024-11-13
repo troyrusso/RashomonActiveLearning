@@ -43,7 +43,7 @@ ErrorVecSimulation = []
 HistoryVecSimulation = []
 
 ### Run Code ###
-ErrorVec, HistoryVec = OneIterationFunction(DataFileInput = ParameterVector.iloc[args.Data],
+ErrorVec, HistoryVec, SimulationParameters = OneIterationFunction(DataFileInput = ParameterVector.iloc[args.Data],
                                                 Seed = ParameterVector.iloc[args.Seed],
                                                 TestProportion = ParameterVector.iloc[args.TestProportion],
                                                 CandidateProportion = ParameterVector.iloc[args.CandidateProportion],
@@ -55,4 +55,4 @@ ErrorVec, HistoryVec = OneIterationFunction(DataFileInput = ParameterVector.iloc
                                                 )
 
 ### Save Error Vec ###
-ErrorVec.to_csv(os.path.join(SaveDirectory, str(args.ModelArgs.Output)))
+ErrorVec.to_csv(os.path.join(SaveDirectory, str(args.ModelArgs.Output)), index = False)
