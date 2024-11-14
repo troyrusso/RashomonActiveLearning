@@ -56,8 +56,8 @@ Data/ComboDrugGrowth_Nov2017.csv
 .DS_Store
 
 # Ignore documents folder
-documents/
+**/documents/
 
 # Ignore ResearchUpdates folder
-ResearchUpdates/
+**/ResearchUpdates/
 
