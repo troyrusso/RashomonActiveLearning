@@ -31,7 +31,7 @@ def OneIterationFunction(DataFileInput,
 
     print("Good seed!")
 
-    np.random.seed(Seed)
+    np.random.seed(int(Seed))
 
     print("Bad seed?")
 
