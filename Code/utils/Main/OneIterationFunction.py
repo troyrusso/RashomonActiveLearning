@@ -38,6 +38,7 @@ def OneIterationFunction(DataFileInput,
         df = LoadData(DataFileInput)
 
     ### Train Test Candidate Split
+    from utils.Main import TrainTestCandidateSplit
     df_Train, df_Test, df_Candidate = TrainTestCandidateSplit(df, TestProportion, CandidateProportion)
 
     ### Selector Arguments ###
