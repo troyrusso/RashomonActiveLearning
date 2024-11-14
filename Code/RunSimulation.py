@@ -17,7 +17,6 @@ from utils.Prediction import *
 
 ### Get Directory ###
 cwd = os.getcwd()
-# ParentDirectory = os.path.abspath(os.path.join(cwd, ".."))
 SaveDirectory = os.path.join(cwd, "Results")
 
 # Set up argument parser
