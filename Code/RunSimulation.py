@@ -56,5 +56,6 @@ ErrorVec, HistoryVec, SimulationParameters = OneIterationFunction(DataFileInput 
                                                 )
 
 ### Save Error Vec ###
-print(SaveDirectory)
-ErrorVec.to_csv(os.path.join(SaveDirectory, str(args.Output)), index = False)
+# print(SaveDirectory)
+# ErrorVec.to_csv(os.path.join(SaveDirectory, str(args.Output)), index = False) ### SaveDirectory does not work
+ErrorVec.to_csv(os.path.join("/homes/simondn/RashomonActiveLearning/Results/", str(args.Output)), index = False)
