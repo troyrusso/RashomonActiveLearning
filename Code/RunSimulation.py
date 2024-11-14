@@ -57,5 +57,5 @@ SimulationResults = OneIterationFunction(DataFileInput = args.Data,
 with open(os.path.join(SaveDirectory, str(args.Output)), 'wb') as f:
     pickle.dump(SimulationResults, f)
     
-SimulationResults.to_csv(os.path.join(SaveDirectory, str(args.Output)), index = False) ### SaveDirectory does not work
+# SimulationResults.to_csv(os.path.join(SaveDirectory, str(args.Output)), index = False) ### SaveDirectory does not work
 # SimulationResults.to_csv(os.path.join("Results/Simulate", str(args.Output)), index = False)
