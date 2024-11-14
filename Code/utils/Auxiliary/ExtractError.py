@@ -18,7 +18,7 @@ print("Chunk 2 good!")
 ### Set Up  ###
 cwd = os.getcwd()
 ResultsDirectory = os.path.join(cwd, "Results")
-SaveDirectory = os.path.join(args.ResultsDirectory, args.DataType, "ProcessedResults")
+SaveDirectory = os.path.join(ResultsDirectory, args.DataType, "ProcessedResults")
 print("Chunk 3 good!")
 
 #### Construct Directory ###
