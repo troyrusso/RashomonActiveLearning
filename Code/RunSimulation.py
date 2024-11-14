@@ -16,9 +16,9 @@ from utils.Auxiliary import *
 from utils.Prediction import *
 
 ### Get Directory ###
-# cwd = os.getcwd()
+cwd = os.getcwd()
 # ParentDirectory = os.path.abspath(os.path.join(cwd, ".."))
-# SaveDirectory = os.path.join(ParentDirectory, "Results")
+SaveDirectory = os.path.join(cwd, "Results")
 
 # Set up argument parser
 parser = argparse.ArgumentParser(description="Parse command line arguments for job parameters")
@@ -40,7 +40,7 @@ ErrorVecSimulation = []
 HistoryVecSimulation = []
 
 ### Run Code ###
-ErrorVec, HistoryVec, SimulationParameters = OneIterationFunction(DataFileInput = args.Data,
+SimulationResults = OneIterationFunction(DataFileInput = args.Data,
                                                 Seed = int(args.Seed),
                                                 TestProportion = float(args.TestProportion),
                                                 CandidateProportion = float(args.CandidateProportion),
@@ -53,5 +53,9 @@ ErrorVec, HistoryVec, SimulationParameters = OneIterationFunction(DataFileInput 
 
 ### Save Error Vec ###
 # print(SaveDirectory)
-# ErrorVec.to_csv(os.path.join(SaveDirectory, str(args.Output)), index = False) ### SaveDirectory does not work
-ErrorVec.to_csv(os.path.join("Results/Simulate", str(args.Output)), index = False)
+
+with open(os.path.join(SaveDirectory, str(args.Output)), 'wb') as f:
+    pickle.dump(SimulationResults, f)
+    
+ErrorVec.to_csv(os.path.join(SaveDirectory, str(args.Output)), index = False) ### SaveDirectory does not work
+# ErrorVec.to_csv(os.path.join("Results/Simulate", str(args.Output)), index = False)

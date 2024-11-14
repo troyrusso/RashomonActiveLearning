@@ -22,4 +22,4 @@ python Code/RunSimulation.py \
     --DataArgs '{"N": 1000, "K": 5}' \
     --SelectorArgs '{"df_Candidate": "df_Candidate"}' \
     --ModelArgs '{"alpha_val": 0.1}' \
-    --Output /Seed99_DataSimulate_TP0.2_CP0.8_STGSx_MTLinearRegression.csv
+    --Output /Seed99_DataSimulate_TP0.2_CP0.8_STGSx_MTLinearRegression.pkl

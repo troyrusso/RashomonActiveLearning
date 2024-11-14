@@ -1,5 +1,6 @@
 ### Import packages ###
 import numpy as np
+import time
 import math as math
 import pandas as pd
 import random as random
@@ -22,6 +23,9 @@ def OneIterationFunction(DataFileInput,
                          DataArgs,
                          SelectorArgs,
                          ModelArgs):
+    
+    ### Run Time ###
+    StartTime = time.time()
 
     ### Set Up ###
     random.seed(Seed)
@@ -71,5 +75,14 @@ def OneIterationFunction(DataFileInput,
                             "DataArgs" : str(DataArgs),
                             "SelectorArgs" : str(SelectorArgs),
                             "ModelArgs" : str(ModelArgs)}
+    
+    ElapsedTime = StartTime - time.time()
 
-    return pd.DataFrame(ErrorVec), pd.DataFrame(SelectedObservationHistory), SimulationParameters
+    ### Return Dictionary ###
+    SimulationResults = {"ErrorVec" : pd.DataFrame(ErrorVec),
+                             "SelectionHistory" : pd.DataFrame(SelectedObservationHistory),
+                             "SimulationParameters" : SimulationParameters,
+                             "ElapsedTime" : ElapsedTime}
+
+
+    return SimulationResults
