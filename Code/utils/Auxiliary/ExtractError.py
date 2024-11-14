@@ -6,17 +6,6 @@ import argparse
 import pandas as pd
 print("Chunk 1 good!")
 
-### Set Up  ###
-cwd = os.getcwd()
-ResultsDirectory = os.path.join(cwd, "Results")
-SaveDirectory = os.path.join(ResultsDirectory, DataType, ProcessedResults)
-print("Chunk 2 good!")
-
-### Get Directory ###
-cwd = os.getcwd()
-SaveDirectory = os.path.join(cwd, "Results")
-print("Chunk 3 good!")
-
 ### Parser ###
 parser = argparse.ArgumentParser(description="Parse command line arguments for job parameters")
 parser.add_argument("--ResultsDirectory", type=str, default="-1", help="Results Directory.")
@@ -24,6 +13,17 @@ parser.add_argument("--DataType", type=str, default="-1", help="DataType.")
 parser.add_argument("--SelectorType", type=str, default="-1", help="SelectorType.")
 parser.add_argument("--ModelType", type=str, default="-1", help="ModelType.")
 args = parser.parse_args()
+print("Chunk 2 good!")
+
+### Set Up  ###
+cwd = os.getcwd()
+ResultsDirectory = os.path.join(cwd, "Results")
+SaveDirectory = os.path.join(ResultsDirectory, DataType, ProcessedResults)
+print("Chunk 3 good!")
+
+### Get Directory ###
+cwd = os.getcwd()
+SaveDirectory = os.path.join(cwd, "Results")
 print("Chunk 4 good!")
 
 #### Construct Directory ###
