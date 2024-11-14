@@ -6,14 +6,11 @@ import random as random
 import matplotlib.pyplot as plt
 from scipy.spatial.distance import cdist
 
-print("Good -1")
-
 ### Import functions ###
 from utils.Main import *
 from utils.Selector import *
 from utils.Auxiliary import *
 from utils.Prediction import *
-print("Good 0")
 
 ### Function ###
 def OneIterationFunction(DataFileInput,
@@ -28,15 +25,12 @@ def OneIterationFunction(DataFileInput,
 
     ### Set Up ###
     random.seed(Seed)
-
-    print("Good seed!")
-
     np.random.seed(int(Seed))
-
-    print("Bad seed?")
-
     ErrorVec = []
     SelectedObservationHistory = []
+
+    from utils.Main import DataGeneratingProcess
+    print(dir(utils.Main))
 
     ### Generate Data ###
     if(DataFileInput == "Simulate"):
