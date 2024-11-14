@@ -30,7 +30,6 @@ def OneIterationFunction(DataFileInput,
     SelectedObservationHistory = []
 
     from utils.Main import DataGeneratingProcess
-    print(dir(utils.Main))
 
     ### Generate Data ###
     if(DataFileInput == "Simulate"):
