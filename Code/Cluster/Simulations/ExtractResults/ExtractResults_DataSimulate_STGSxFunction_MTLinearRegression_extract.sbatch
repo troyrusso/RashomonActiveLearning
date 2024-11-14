@@ -11,8 +11,8 @@
 
 cd ~/RashomonActiveLearning
 module load Python
-python Code/utils/Auxiliary/ExtractError.py \
+python Code/ExtractError.py \
     --ResultsDirectory /Users/simondn/Documents/RashomonActiveLearning/Code/Cluster/Simulations/ExtractResults \
-    --DataType ['Simulate'] \
+    --DataType Simulate \
     --SelectorType GSxFunction \
     --ModelType LinearRegression \

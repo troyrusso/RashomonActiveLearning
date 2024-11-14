@@ -13,6 +13,6 @@ cd ~/RashomonActiveLearning
 module load Python
 python Code/ExtractError.py \
     --ResultsDirectory /Users/simondn/Documents/RashomonActiveLearning/Code/Cluster/Simulations/ExtractResults \
-    --DataType ['Simulate'] \
+    --DataType Simulate \
     --SelectorType GSxFunction \
     --ModelType RidgeRegression \
