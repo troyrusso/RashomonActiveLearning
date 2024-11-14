@@ -21,5 +21,5 @@ python Code/RunSimulation.py \
     --ModelType RidgeRegressionFunction \
     --DataArgs '{"N": 1000, "K": 5}' \
     --SelectorArgs '{"df_Candidate": "df_Candidate"}' \
-    --ModelArgs '{"alpha_val": 0.1}' \
+    --ModelArgs '{"alpha_val": 0.1, "n_estimators": 100, "Seed": 1}' \
     --Output /Seed40_DataSimulate_TP0.2_CP0.8_STGSx_MTRidgeRegression.pkl
