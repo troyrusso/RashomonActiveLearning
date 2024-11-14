@@ -25,7 +25,7 @@ def OneIterationFunction(DataFileInput,
 
     ### Set Up ###
     random.seed(Seed)
-    np.random.seed(int(Seed))
+    np.random.seed(Seed)
     ErrorVec = []
     SelectedObservationHistory = []
 
@@ -42,7 +42,6 @@ def OneIterationFunction(DataFileInput,
     ### Train Test Candidate Split
     df_Train, df_Test, df_Candidate = TrainTestCandidateSplit(df, TestProportion, CandidateProportion)
     print("Good 3")
-
 
     ### Selector Arguments ###
     SelectorArgs["df_Train"] = df_Test
