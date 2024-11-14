@@ -22,7 +22,7 @@ SaveDirectory = os.path.join(ResultsDirectory, args.DataType, "ProcessedResults"
 print("Chunk 3 good!")
 
 #### Construct Directory ###
-Directory = os.path.join(args.ResultsDirectory, args.DataType, args.ModelType)
+Directory = os.path.join(ResultsDirectory, args.DataType, args.ModelType)
 print("Chunk 4 good!")
 
 ### Initialize ###
