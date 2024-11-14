@@ -46,8 +46,8 @@ HistoryVecSimulation = []
 ### Run Code ###
 ErrorVec, HistoryVec, SimulationParameters = OneIterationFunction(DataFileInput = args.Data,
                                                 Seed = int(args.Seed),
-                                                TestProportion = int(args.TestProportion),
-                                                CandidateProportion = int(args.CandidateProportion),
+                                                TestProportion = float(args.TestProportion),
+                                                CandidateProportion = float(args.CandidateProportion),
                                                 SelectorType = globals().get(args.SelectorType, None), 
                                                 ModelType = globals().get(args.ModelType, None), 
                                                 DataArgs = json.loads(args.DataArgs),
