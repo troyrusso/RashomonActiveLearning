@@ -56,4 +56,4 @@ ErrorVec, HistoryVec, SimulationParameters = OneIterationFunction(DataFileInput 
                                                 )
 
 ### Save Error Vec ###
-ErrorVec.to_csv(os.path.join(SaveDirectory, str(args.ModelArgs.Output)), index = False)
+ErrorVec.to_csv(os.path.join(SaveDirectory, str(args.Output)), index = False)
