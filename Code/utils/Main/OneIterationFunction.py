@@ -28,11 +28,15 @@ def OneIterationFunction(DataFileInput,
 
     ### Set Up ###
     random.seed(Seed)
+
+    print("Good seed!")
+
     np.random.seed(Seed)
+
+    print("Bad seed?")
+
     ErrorVec = []
     SelectedObservationHistory = []
-
-    print("Good 1")
 
     ### Generate Data ###
     if(DataFileInput == "Simulate"):

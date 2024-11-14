@@ -39,8 +39,6 @@ parser.add_argument("--ModelArgs", type=str, default="-1", help="Simulation case
 parser.add_argument("--Output", type=str, default="-1", help="Simulation case number.")
 args = parser.parse_args()
 
-print("Loaded correctly")
-
 ### Set Up ###
 ErrorVecSimulation = []
 HistoryVecSimulation = []
