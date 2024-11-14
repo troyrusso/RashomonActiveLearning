@@ -16,9 +16,9 @@ from utils.Auxiliary import *
 from utils.Prediction import *
 
 ### Get Directory ###
-cwd = os.getcwd()
-ParentDirectory = os.path.abspath(os.path.join(cwd, ".."))
-SaveDirectory = os.path.join(ParentDirectory, "Results")
+# cwd = os.getcwd()
+# ParentDirectory = os.path.abspath(os.path.join(cwd, ".."))
+# SaveDirectory = os.path.join(ParentDirectory, "Results")
 
 
 # ### Get Parameters ###
@@ -58,4 +58,4 @@ ErrorVec, HistoryVec, SimulationParameters = OneIterationFunction(DataFileInput 
 ### Save Error Vec ###
 # print(SaveDirectory)
 # ErrorVec.to_csv(os.path.join(SaveDirectory, str(args.Output)), index = False) ### SaveDirectory does not work
-ErrorVec.to_csv(os.path.join("/homes/simondn/RashomonActiveLearning/Results/", str(args.Output)), index = False)
+ErrorVec.to_csv(os.path.join("Results/Simulate", str(args.Output)), index = False)

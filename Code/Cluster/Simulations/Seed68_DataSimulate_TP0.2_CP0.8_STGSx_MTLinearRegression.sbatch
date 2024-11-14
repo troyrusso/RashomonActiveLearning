@@ -9,9 +9,9 @@
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=simondn@uw.edu
 
-cd ~/RashomonActiveLearning/Code
+cd ~/RashomonActiveLearning
 module load Python
-python RunSimulation.py \
+python Code/RunSimulation.py \
     --JobName Seed68_DataSimulate_TP0.2_CP0.8_STGSx_MTLinearRegression \
     --Seed 68 \
     --Data Simulate \
