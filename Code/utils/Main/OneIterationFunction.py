@@ -56,6 +56,7 @@ def OneIterationFunction(DataFileInput,
     print("Good 5")
     
     ### Learning Process ###
+    from utils.Main import LearningProcedure
     ErrorVec, SelectedObservationHistory = LearningProcedure(df_Train = df_Train, 
                                                                 df_Test = df_Test, 
                                                                 df_Candidate = df_Candidate, 
