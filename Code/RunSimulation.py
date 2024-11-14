@@ -20,10 +20,6 @@ from utils.Prediction import *
 # ParentDirectory = os.path.abspath(os.path.join(cwd, ".."))
 # SaveDirectory = os.path.join(ParentDirectory, "Results")
 
-
-# ### Get Parameters ###
-# ParameterVector = pd.read_csv(os.path.join(ParentDirectory, "Data", "raw", "ParameterVectorSimulations.csv"))
-
 # Set up argument parser
 parser = argparse.ArgumentParser(description="Parse command line arguments for job parameters")
 parser.add_argument("--JobName", type=str, default="-1", help="Simulation case number.")
