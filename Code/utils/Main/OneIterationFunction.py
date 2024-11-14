@@ -73,14 +73,15 @@ def OneIterationFunction(DataFileInput,
                             "SelectorType" : str(SelectorType),
                             "ModelType" : str(ModelType),
                             "DataArgs" : str(DataArgs),
-                            "SelectorArgs" : str(SelectorArgs),
-                            "ModelArgs" : str(ModelArgs)}
+                            # "SelectorArgs" : str(SelectorArgs),
+                            "ModelArgs" : str(ModelArgs_dict.pop('df_Train', None))
+                            }
     
-    ElapsedTime = StartTime - time.time()
+    ElapsedTime = time.time() - StartTime
 
     ### Return Dictionary ###
-    SimulationResults = {"ErrorVec" : pd.DataFrame(ErrorVec),
-                             "SelectionHistory" : pd.DataFrame(SelectedObservationHistory),
+    SimulationResults = {"ErrorVec" : pd.DataFrame(ErrorVec, columns =["Error"]),
+                             "SelectionHistory" : pd.DataFrame(SelectedObservationHistory, coluns = "ObservationID"),
                              "SimulationParameters" : SimulationParameters,
                              "ElapsedTime" : ElapsedTime}
 

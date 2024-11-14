@@ -51,11 +51,6 @@ SimulationResults = OneIterationFunction(DataFileInput = args.Data,
                                                 ModelArgs = json.loads(args.ModelArgs)
                                                 )
 
-### Save Error Vec ###
-# print(SaveDirectory)
-
+### Save Simulation Results ###
 with open(os.path.join(SaveDirectory, str(args.Output)), 'wb') as f:
     pickle.dump(SimulationResults, f)
-    
-# SimulationResults.to_csv(os.path.join(SaveDirectory, str(args.Output)), index = False) ### SaveDirectory does not work
-# SimulationResults.to_csv(os.path.join("Results/Simulate", str(args.Output)), index = False)
