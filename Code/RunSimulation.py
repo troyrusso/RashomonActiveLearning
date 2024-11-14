@@ -21,8 +21,8 @@ ParentDirectory = os.path.abspath(os.path.join(cwd, ".."))
 SaveDirectory = os.path.join(ParentDirectory, "Results")
 
 
-### Get Parameters ###
-ParameterVector = pd.read_csv(os.path.join(ParentDirectory, "Data", "raw", "ParameterVectorSimulations.csv"))
+# ### Get Parameters ###
+# ParameterVector = pd.read_csv(os.path.join(ParentDirectory, "Data", "raw", "ParameterVectorSimulations.csv"))
 
 # Set up argument parser
 parser = argparse.ArgumentParser(description="Parse command line arguments for job parameters")
@@ -40,20 +40,21 @@ parser.add_argument("--Output", type=str, default="-1", help="Simulation case nu
 args = parser.parse_args()
 
 print("Loaded correctly")
+
 ### Set Up ###
 ErrorVecSimulation = []
 HistoryVecSimulation = []
 
 ### Run Code ###
-ErrorVec, HistoryVec, SimulationParameters = OneIterationFunction(DataFileInput = ParameterVector.iloc[args.Data],
-                                                Seed = ParameterVector.iloc[args.Seed],
-                                                TestProportion = ParameterVector.iloc[args.TestProportion],
-                                                CandidateProportion = ParameterVector.iloc[args.CandidateProportion],
-                                                SelectorType = globals().get(ParameterVector.iloc[args.SelectorType], None), 
-                                                ModelType = globals().get(ParameterVector.iloc[args.ModelType], None), 
-                                                DataArgs = json.loads(ParameterVector.iloc[args.DataArgs]),
-                                                SelectorArgs = json.loads(ParameterVector.iloc[args.SelectorArgs].replace("[","").replace("]","")),
-                                                ModelArgs = json.loads(ParameterVector.iloc[args.ModelArgs])
+ErrorVec, HistoryVec, SimulationParameters = OneIterationFunction(DataFileInput = args.Data,
+                                                Seed = args.Seed,
+                                                TestProportion = args.TestProportion,
+                                                CandidateProportion = args.CandidateProportion,
+                                                SelectorType = globals().get(args.SelectorType, None), 
+                                                ModelType = globals().get(args.ModelType, None), 
+                                                DataArgs = json.loads(args.DataArgs),
+                                                SelectorArgs = json.loads(args.SelectorArgs.replace("[","").replace("]","")),
+                                                ModelArgs = json.loads(args.ModelArgs)
                                                 )
 
 ### Save Error Vec ###
