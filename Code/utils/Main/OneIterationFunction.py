@@ -81,7 +81,7 @@ def OneIterationFunction(DataFileInput,
 
     ### Return Dictionary ###
     SimulationResults = {"ErrorVec" : pd.DataFrame(ErrorVec, columns =["Error"]),
-                             "SelectionHistory" : pd.DataFrame(SelectedObservationHistory, columns = "ObservationID"),
+                             "SelectionHistory" : pd.DataFrame(SelectedObservationHistory, columns = ["ObservationID"]),
                              "SimulationParameters" : SimulationParameters,
                              "ElapsedTime" : ElapsedTime}
 
