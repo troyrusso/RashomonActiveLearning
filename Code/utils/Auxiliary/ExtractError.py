@@ -8,7 +8,7 @@ print("Chunk 1 good!")
 
 ### Parser ###
 parser = argparse.ArgumentParser(description="Parse command line arguments for job parameters")
-parser.add_argument("--ResultsDirectory", type=str, default="-1", help="Results Directory.")
+# parser.add_argument("--ResultsDirectory", type=str, default="-1", help="Results Directory.")
 parser.add_argument("--DataType", type=str, default="-1", help="DataType.")
 parser.add_argument("--SelectorType", type=str, default="-1", help="SelectorType.")
 parser.add_argument("--ModelType", type=str, default="-1", help="ModelType.")
@@ -18,21 +18,16 @@ print("Chunk 2 good!")
 ### Set Up  ###
 cwd = os.getcwd()
 ResultsDirectory = os.path.join(cwd, "Results")
-SaveDirectory = os.path.join(ResultsDirectory, DataType, ProcessedResults)
+SaveDirectory = os.path.join(args.ResultsDirectory, args.DataType, "ProcessedResults")
 print("Chunk 3 good!")
-
-### Get Directory ###
-cwd = os.getcwd()
-SaveDirectory = os.path.join(cwd, "Results")
-print("Chunk 4 good!")
 
 #### Construct Directory ###
 Directory = os.path.join(args.ResultsDirectory, args.DataType, args.ModelType)
-print("Chunk 5 good!")
+print("Chunk 4 good!")
 
 ### Initialize ###
 AllSelectorMethodErrors = {}
-print("Chunk 6 good!")
+print("Chunk 5 good!")
 
 ### Iterate over directory files ###
 for FileName in os.listdir(Directory):
@@ -60,13 +55,13 @@ for FileName in os.listdir(Directory):
                 ### Append ###
                 AllSelectorMethodErrors[file_SelectorType] = pd.concat([AllSelectorMethodErrors[file_SelectorType], ErrorVector], 
                                                                         ignore_index=True)
-print("Chunk 7 good!")
+print("Chunk 6 good!")
 
 #### Save to CSV ###
 for file_SelectorType, df in AllSelectorMethodErrors.items():
     csv_file = os.path.join(SaveDirectory, f"{file_SelectorType}_ErrorVec.csv")
     df.to_csv(csv_file, index=False)
     print(f"Saved {file_SelectorType}_ErrorVec.csv")
-print("Chunk 8 good!")
+print("Chunk 7 good!")
 print("yaaaayyyy!!!!!")
 
