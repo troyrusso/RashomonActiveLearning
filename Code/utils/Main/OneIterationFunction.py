@@ -74,7 +74,7 @@ def OneIterationFunction(DataFileInput,
                             "ModelType" : str(ModelType),
                             "DataArgs" : str(DataArgs),
                             # "SelectorArgs" : str(SelectorArgs),
-                            "ModelArgs" : str(ModelArgs_dict.pop('df_Train', None))
+                            "ModelArgs" : str(ModelArgsFiltered.pop('df_Train', None))
                             }
     
     ElapsedTime = time.time() - StartTime
