@@ -13,5 +13,5 @@ cd ~/RashomonActiveLearning
 module load Python
 python Code/utils/Auxiliary/ExtractError.py \
     --DataType CPS \
-    --SelectorType ['PassiveLearning', 'GSx', 'GSy', 'iGS'] \
+    --SelectorType '["PassiveLearning", "GSx", "GSy", "iGS"]' \
     --ModelType RidgeRegression \

@@ -13,5 +13,5 @@ cd ~/RashomonActiveLearning
 module load Python
 python Code/utils/Auxiliary/ExtractError.py \
     --DataType Simulate \
-    --SelectorType ['PassiveLearning', 'GSx', 'GSy', 'iGS'] \
+    --SelectorType '["PassiveLearning", "GSx", "GSy", "iGS"]' \
     --ModelType LinearRegression \
