@@ -17,6 +17,7 @@ cwd = os.getcwd()
 ResultsDirectory = os.path.join(cwd, "Results", args.DataType, args.ModelType,)
 SaveDirectory = os.path.join(ResultsDirectory, "ProcessedResults")
 AllSelectorMethodErrors = {selector: [] for selector in args.SelectorType}
+args = parser.parse_args()
 
 #### Construct Directory ###
 Directory = os.path.join(ResultsDirectory, "Raw")
