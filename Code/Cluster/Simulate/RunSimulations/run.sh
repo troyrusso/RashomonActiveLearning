@@ -1,4 +1,4 @@
-for file in ./sbatch*
+for file in ./*sbatch
 do
 	sbatch "$file"
 done
