@@ -10,6 +10,7 @@ def LoadData(filename):
 
     ### File Path ###
     filepath = os.path.join(HomeDirectory, "Data","processed",filename +".pkl")
+    print("THIS IS THE DIRECTORY: " + str(filepath))
     with open(filepath, 'rb') as file:
         data = pickle.load(file).dropna()
     return data
