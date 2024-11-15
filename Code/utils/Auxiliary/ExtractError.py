@@ -5,7 +5,6 @@ import pickle
 import argparse
 import numpy as np
 import pandas as pd
-print("Chunk 1 good!")
 
 # Manually define parser
 parser = argparse.ArgumentParser(description="Your script description here")
@@ -17,19 +16,12 @@ parser.add_argument("--ModelType", type=str, help="An example string argument")
 cwd = os.getcwd()
 ResultsDirectory = os.path.join(cwd, "Results", args.DataType, args.ModelType,)
 SaveDirectory = os.path.join(ResultsDirectory, "ProcessedResults")
-print("Chunk 3 good!")
+AllSelectorMethodErrors = {selector: [] for selector in args.SelectorType}
 
 #### Construct Directory ###
 Directory = os.path.join(ResultsDirectory, "Raw")
-print("Chunk 4 good!")
-
-### Initialize ###
-AllSelectorMethodErrors = {}
-print("Chunk 5 good!")
 
 ### Iterate over directory files ###
-AllSelectorMethodErrors = {selector: [] for selector in args.SelectorType}
-
 for SelectorTypeIteration in args.SelectorType:
     for FileName in os.listdir(Directory):
         if FileName.endswith(".pkl"):
@@ -56,15 +48,9 @@ for SelectorTypeIteration in args.SelectorType:
                     ### Append ### 
                     AllSelectorMethodErrors[SelectorTypeIteration].append(ErrorVector)
     AllSelectorMethodErrors[SelectorTypeIteration] = pd.DataFrame(np.array(AllSelectorMethodErrors[SelectorTypeIteration]).squeeze())
-    print("Chunk 6 good!")
 
 #### Save to CSV ###
 for file_SelectorType, df in AllSelectorMethodErrors.items():
-    print("preparing to save this shit")
     csv_file = os.path.join(SaveDirectory, f"{file_SelectorType}_ErrorVec.csv")
     df.to_csv(csv_file, index=False, header= False)
-    print(f"Saved {file_SelectorType}_ErrorVec.csv")
-    print("did this shit save")
-print("Chunk 7 good!")
-print("yaaaayyyy!!!!!")
 
