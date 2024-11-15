@@ -24,13 +24,12 @@ args = argparse.Namespace(DataType = "Simulate",
 cwd = os.getcwd()
 # cwd = "/Users/simondn/Documents/RashomonActiveLearning/"
 
-
 ResultsDirectory = os.path.join(cwd, "Results")
 SaveDirectory = os.path.join(ResultsDirectory, args.DataType, "ProcessedResults")
 print("Chunk 3 good!")
 
 #### Construct Directory ###
-Directory = os.path.join(ResultsDirectory, args.DataType, args.ModelType)
+Directory = os.path.join(ResultsDirectory, args.DataType, args.ModelType, "Raw")
 print("Chunk 4 good!")
 
 ### Initialize ###

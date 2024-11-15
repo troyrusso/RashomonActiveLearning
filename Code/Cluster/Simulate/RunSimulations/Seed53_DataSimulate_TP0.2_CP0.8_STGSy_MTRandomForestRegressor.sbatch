@@ -22,4 +22,4 @@ python Code/RunSimulation.py \
     --DataArgs '{"N": 1000, "K": 5}' \
     --SelectorArgs '{"df_Candidate": "df_Candidate"}' \
     --ModelArgs '{"alpha_val": 0.1, "n_estimators": 100, "Seed": 1}' \
-    --Output Simulate/RandomForestRegressor/Seed53_DataSimulate_TP0.2_CP0.8_STGSy_MTRandomForestRegressor.pkl
+    --Output Simulate/RandomForestRegressor/Raw/Seed53_DataSimulate_TP0.2_CP0.8_STGSy_MTRandomForestRegressor.pkl

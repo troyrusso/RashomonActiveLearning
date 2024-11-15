@@ -22,4 +22,4 @@ python Code/RunSimulation.py \
     --DataArgs '{"N": 1000, "K": 5}' \
     --SelectorArgs '{"df_Candidate": "df_Candidate"}' \
     --ModelArgs '{"alpha_val": 0.1, "n_estimators": 100, "Seed": 1}' \
-    --Output Simulate/LinearRegression/Seed20_DataSimulate_TP0.2_CP0.8_STPassiveLearning_MTLinearRegression.pkl
+    --Output Simulate/LinearRegression/Raw/Seed20_DataSimulate_TP0.2_CP0.8_STPassiveLearning_MTLinearRegression.pkl
