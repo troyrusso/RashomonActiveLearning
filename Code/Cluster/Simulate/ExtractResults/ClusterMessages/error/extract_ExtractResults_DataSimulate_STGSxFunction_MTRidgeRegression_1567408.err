@@ -1,0 +1,3 @@
+usage: ExtractError.py [-h] [--DataType DATATYPE]
+                       [--SelectorType SELECTORTYPE] [--ModelType MODELTYPE]
+ExtractError.py: error: unrecognized arguments: --ResultsDirectory /Users/simondn/Documents/RashomonActiveLearning/Code/Cluster/Simulations/ExtractResults
