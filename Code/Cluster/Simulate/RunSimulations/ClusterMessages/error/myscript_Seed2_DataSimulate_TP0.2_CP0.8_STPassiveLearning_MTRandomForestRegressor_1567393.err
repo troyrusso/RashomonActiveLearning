@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/mnt/beegfs/homes/simondn/RashomonActiveLearning/Code/RunSimulation.py", line 54, in <module>
+    with open(os.path.join(SaveDirectory, str(args.Output)), 'wb') as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/mnt/beegfs/homes/simondn/RashomonActiveLearning/Results/Simulate/RandomForestRegressor/Seed2_DataSimulate_TP0.2_CP0.8_STPassiveLearning_MTRandomForestRegressor.pkl'
