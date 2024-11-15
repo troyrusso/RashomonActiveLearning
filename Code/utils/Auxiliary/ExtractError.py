@@ -13,23 +13,14 @@ parser.add_argument("--DataType", type=int, help="An example integer argument")
 parser.add_argument("--SelectorType", type=str, help="An example string argument")
 parser.add_argument("--ModelType", type=str, help="An example string argument")
 
-
-# Manually set args without parsing command-line input
-args = argparse.Namespace(DataType = "Simulate", 
-                          SelectorType = ["PassiveLearning", "GSx", "GSy", "iGS"],
-                          ModelType = "LinearRegression")
-
-
 ### Set Up  ###
 cwd = os.getcwd()
-# cwd = "/Users/simondn/Documents/RashomonActiveLearning/"
-
-ResultsDirectory = os.path.join(cwd, "Results")
-SaveDirectory = os.path.join(ResultsDirectory, args.DataType, "ProcessedResults")
+ResultsDirectory = os.path.join(cwd, "Results", args.DataType, args.ModelType,)
+SaveDirectory = os.path.join(ResultsDirectory, "ProcessedResults")
 print("Chunk 3 good!")
 
 #### Construct Directory ###
-Directory = os.path.join(ResultsDirectory, args.DataType, args.ModelType, "Raw")
+Directory = os.path.join(ResultsDirectory, "Raw")
 print("Chunk 4 good!")
 
 ### Initialize ###
