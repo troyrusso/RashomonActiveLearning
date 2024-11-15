@@ -1,6 +1,7 @@
 ### Import packages ###
 import os
 import re
+import json
 import pickle
 import argparse
 import numpy as np
@@ -17,13 +18,13 @@ args = parser.parse_args()
 cwd = os.getcwd()
 ResultsDirectory = os.path.join(cwd, "Results", args.DataType, args.ModelType,)
 SaveDirectory = os.path.join(ResultsDirectory, "ProcessedResults")
-AllSelectorMethodErrors = {selector: [] for selector in args.SelectorType}
+AllSelectorMethodErrors = {selector: [] for selector in json.loads(args.SelectorType)}
 
 #### Construct Directory ###
 Directory = os.path.join(ResultsDirectory, "Raw")
 
 ### Iterate over directory files ###
-for SelectorTypeIteration in args.SelectorType:
+for SelectorTypeIteration in json.loads(args.SelectorType):
     for FileName in os.listdir(Directory):
         if FileName.endswith(".pkl"):
             
