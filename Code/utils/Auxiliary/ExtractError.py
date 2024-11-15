@@ -59,9 +59,11 @@ print("Chunk 6 good!")
 
 #### Save to CSV ###
 for file_SelectorType, df in AllSelectorMethodErrors.items():
+    print("preparing to save this shit")
     csv_file = os.path.join(SaveDirectory, f"{file_SelectorType}_ErrorVec.csv")
     df.to_csv(csv_file, index=False)
     print(f"Saved {file_SelectorType}_ErrorVec.csv")
+    print("did this shit save")
 print("Chunk 7 good!")
 print("yaaaayyyy!!!!!")
 
