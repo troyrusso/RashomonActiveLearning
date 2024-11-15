@@ -11,13 +11,13 @@ parser = argparse.ArgumentParser(description="Your script description here")
 parser.add_argument("--DataType", type=int, help="An example integer argument")
 parser.add_argument("--SelectorType", type=str, help="An example string argument")
 parser.add_argument("--ModelType", type=str, help="An example string argument")
+args = parser.parse_args()
 
 ### Set Up  ###
 cwd = os.getcwd()
 ResultsDirectory = os.path.join(cwd, "Results", args.DataType, args.ModelType,)
 SaveDirectory = os.path.join(ResultsDirectory, "ProcessedResults")
 AllSelectorMethodErrors = {selector: [] for selector in args.SelectorType}
-args = parser.parse_args()
 
 #### Construct Directory ###
 Directory = os.path.join(ResultsDirectory, "Raw")
