@@ -8,7 +8,7 @@ import pandas as pd
 
 # Manually define parser
 parser = argparse.ArgumentParser(description="Your script description here")
-parser.add_argument("--DataType", type=int, help="An example integer argument")
+parser.add_argument("--DataType", type=str, help="An example integer argument")
 parser.add_argument("--SelectorType", type=str, help="An example string argument")
 parser.add_argument("--ModelType", type=str, help="An example string argument")
 args = parser.parse_args()
