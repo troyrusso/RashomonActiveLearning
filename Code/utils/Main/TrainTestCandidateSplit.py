@@ -1,5 +1,15 @@
 ### NOTE: Need to floor the proprtions ###
 
+# Summary: Splits the original dataframe df into three sets: the training, test, and candidate sets.
+# Input:
+#   df: The original dataframe.
+#   TestProportion: Proportion of the data that is reserved for testing.
+#   CandidateProportion: Proportion of the data that is initially "unseen" and later added to the training set.
+# Output:
+#   df_Train: The initial training set.
+#   df_Test: The test set that is reserved for testing.
+#   df_Candidate: The candidate set that is initially "unseen" and later added to the training set.
+
 ### Libraries ###
 import pandas as pd
 from sklearn.model_selection import train_test_split

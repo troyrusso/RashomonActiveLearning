@@ -1,3 +1,7 @@
+# Summary:
+# Input:
+# Output:
+
 ### Import packages ###
 import numpy as np
 import matplotlib.pyplot as plt

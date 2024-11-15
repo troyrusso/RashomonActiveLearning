@@ -1,3 +1,12 @@
+# Summary: Initializes and fits a random forest regressor model.
+# Input:
+#   df_Train: The training data.
+#   n_estimators: The number of trees for each forest.
+#   Seed: Seed for reproducability.
+# Output:
+# RandomForestModel: A random forest regressor model.
+
+
 ### Libraries ###
 from sklearn.ensemble import RandomForestRegressor
 

@@ -1,3 +1,14 @@
+# Summary: Loads the three greedy sampling methods from Wu, Lin, and Huang (2018). 
+#   GSx samples based on the covariate space, GSy based on the output space, and iGS on both.
+# Input:
+#   df_Train: The training set.
+#   df_Candidate: The candidate set.
+#   Model: The predictive model.
+#   distance: The distance metric.
+# Output:
+#   IndexRecommendation: The index of the recommended observation from the candidate set to be queried.
+
+
 ### Libraries ###
 import numpy as np
 import pandas as pd

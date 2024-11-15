@@ -1,3 +1,16 @@
+# Summary: Runs one full iteration of the active learning process.
+# Input:
+#   DataFileInput: A string that indicates either "Simulate" for the simulation or the name of the DataFrame in the Data folder.
+#   Seed: Seed for reproducability.
+#   TestProportion: Proportion of the data that is reserved for testing.
+#   CandidateProportion: Proportion of the data that is initially "unseen" and later added to the training set.
+#   SelectorType: Selector type. Examples can be GSx, GSy, or PassiveLearning.
+#   ModelType: Predictive model. Examples can be LinearRegression or RandomForestRegresso.
+#   DataArgs: Arguments N and K for when simulated data.
+#   SelectorArgs: Arguments needed for the selector model. For instance, GSx requires a distance metric.
+#   ModelArgs: Arguments for the predictive model. For instance, the penalty for RidgeRegression.
+# Output:
+
 ### Import packages ###
 import numpy as np
 import time

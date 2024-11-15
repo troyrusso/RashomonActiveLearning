@@ -1,3 +1,9 @@
+# Summary: Calculates the RMSE of the test set.
+# Input:
+#   df_Test: The test data.
+# Output:
+# RMSE: The residual mean squared error of the predicted values and their true values in the test set. 
+
 ### Libraries ###
 import numpy as np
 

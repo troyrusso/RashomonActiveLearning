@@ -1,3 +1,10 @@
+# Summary: Initializes and fits a ridge regression model.
+# Input:
+#   df_Train: The training data.
+#   alpha_val: Ridge regression penalty.
+# Output:
+# RidgeRegressionModel: A ridge regression model.
+
 ### Libraries ###
 from sklearn.linear_model import Ridge
 

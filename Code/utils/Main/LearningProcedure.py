@@ -1,3 +1,16 @@
+# Summary: Runs active learning procedure by querying candidate observations from df_Candidate and adding them to the training set df_Train.
+# Input:
+#   df_Train: Training dataset.
+#   df_Test: Test dataset.
+#   df_Candidate: Candidate dataset.
+#   SelectorType: Selector type. Examples can be GSx, GSy, or PassiveLearning.
+#   SelectorArgs: Arguments needed for the selector model. For instance, GSx requires a distance metric.
+#   ModelType: Predictive model. Examples can be LinearRegression or RandomForestRegresso.
+#   ModelArgs: Arguments for the predictive model. For instance, the penalty for RidgeRegression.
+# Output:
+#   ErrorVec: A 1xM vector of errors with M being the number of observations in df_Candidate. 
+#   SelectedObservationHistory: The index of the queried candidate observation at each iteration.
+
 ### Import functions ###
 from utils.Main import *
 from utils.Selector import *
