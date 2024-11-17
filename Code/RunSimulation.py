@@ -22,44 +22,20 @@ from utils.Prediction import *
 ### Get Directory ###
 cwd = os.getcwd()
 SaveDirectory = os.path.join(cwd, "Results")
-print("Set up is good!)")
 
 # Set up argument parser
 parser = argparse.ArgumentParser(description="Parse command line arguments for job parameters")
-
 parser.add_argument("--JobName", type=str, default="-1", help="Simulation case number.")
-print(JobName + " is good!")
-
 parser.add_argument("--Seed", type=str, default="-1", help="Simulation case number.")
-print(Seed + " is good!")
-
-parser.add_argument("--Data", type=str, default="-1", help="Simulation case number.")
-print(Data + " is good!")
-
+# parser.add_argument("--Data", type=str, default="-1", help="Simulation case number.")
 parser.add_argument("--TestProportion", type=str, default="-1", help="Simulation case number.")
-print(TestProportion + " is good!")
-
 parser.add_argument("--CandidateProportion", type=str, default="-1", help="Simulation case number.")
-print(CandidateProportion + " is good!")
-
 parser.add_argument("--SelectorType", type=str, default="-1", help="Simulation case number.")
-print(SelectorType + " is good!")
-
 parser.add_argument("--ModelType", type=str, default="-1", help="Simulation case number.")
-print(ModelType + " is good!")
-
 parser.add_argument("--DataArgs", type=str, default="-1", help="Simulation case number.")
-print(DataArgs + " is good!")
-
 parser.add_argument("--SelectorArgs", type=str, default="-1", help="Simulation case number.")
-print(SelectorArgs + " is good!")
-
 parser.add_argument("--ModelArgs", type=str, default="-1", help="Simulation case number.")
-print(ModelArgs + " is good!")
-
 parser.add_argument("--Output", type=str, default="-1", help="Simulation case number.")
-print(Output + " is good!")
-
 args = parser.parse_args()
 
 ### Set Up ###
@@ -67,7 +43,7 @@ ErrorVecSimulation = []
 HistoryVecSimulation = []
 
 ### Run Code ###
-SimulationResults = OneIterationFunction(DataFileInput = args.Data,
+SimulationResults = OneIterationFunction(DataFileInput = "BostonHousing",
                                                 Seed = int(args.Seed),
                                                 TestProportion = float(args.TestProportion),
                                                 CandidateProportion = float(args.CandidateProportion),
