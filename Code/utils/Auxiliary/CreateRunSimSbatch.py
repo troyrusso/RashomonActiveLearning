@@ -14,7 +14,7 @@ parser.add_argument("--DataType", type=str, default="-1", help="Simulation case 
 args = parser.parse_args()
 
 ### Open Parameter Vector ###
-ParameterVector = pd.read_csv(os.path.join(ParentDirectory, "Data", "ParameterVectors", "ParameterVector" + args.DataType + ".csv"))
+ParameterVector = pd.read_csv(os.path.join(cwd, "Data", "ParameterVectors", "ParameterVector" + args.DataType + ".csv"))
 
 # Loop through each row in the DataFrame
 for i, row in ParameterVector.iterrows():
@@ -32,7 +32,7 @@ for i, row in ParameterVector.iterrows():
     Output = row["Output"]
     
     # Define the path for the .sbatch file
-    TargetDirectory = os.path.join(ParentDirectory,"Code", "Cluster", Data, "RunSimulations")
+    TargetDirectory = os.path.join(cwd,"Code", "Cluster", Data, "RunSimulations")
     sbatch_file_path = os.path.join(TargetDirectory, f"{JobName}.sbatch")
     
     # Create the .sbatch file content
