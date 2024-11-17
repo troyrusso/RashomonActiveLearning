@@ -14,7 +14,7 @@ parser.add_argument("--DataType", type=str, default="-1", help="Simulation case 
 args = parser.parse_args()
 
 ### Open Parameter Vector ###
-ParameterVector = pd.read_csv(os.path.join(ParentDirectory, "Data", "ParameterVectors", "ParameterVector" + DataTypeInput + ".csv"))
+ParameterVector = pd.read_csv(os.path.join(ParentDirectory, "Data", "ParameterVectors", "ParameterVector" + args.DataType + ".csv"))
 
 # Loop through each row in the DataFrame
 for i, row in ParameterVector.iterrows():
