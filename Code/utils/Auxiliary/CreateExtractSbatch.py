@@ -77,4 +77,4 @@ for i, row in ParameterVector.iterrows():
     with open(sbatch_file_path, "w") as sbatch_file:
         sbatch_file.write("\n".join(sbatch_content))
 
-print("Sbatch files for extraction generated successfully.")
+print("Extract Sbatch files for extraction generated successfully.")
