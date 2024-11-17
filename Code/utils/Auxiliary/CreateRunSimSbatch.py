@@ -6,7 +6,7 @@ import argparse
 
 ### Directory ###
 cwd = os.getcwd()
-ParentDirectory = os.path.abspath(os.path.join(cwd, "../../.."))
+ParentDirectory = os.path.abspath(os.path.join(cwd, "../.."))
 
 # Set up argument parser
 parser = argparse.ArgumentParser(description="Parse command line arguments for job parameters")
