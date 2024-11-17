@@ -35,7 +35,8 @@ ParameterVector["JobName"] = ("ExtractResults_" +
 
 ### Mutate Parameter Vector ###
 ParameterVector["SelectorType"] = "'" + ParameterVector["SelectorType"] + "'"
-# Create Sbatch file
+
+print(ParameterVector)
 
 # Loop through each row in the DataFrame
 for i, row in ParameterVector.iterrows():
