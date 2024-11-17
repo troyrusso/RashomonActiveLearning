@@ -1,7 +1,3 @@
-# Summary:
-# Input:
-# Output:
-
 ### Import Packages ###
 import ast
 import argparse
@@ -27,7 +23,7 @@ SaveDirectory = os.path.join(cwd, "Results")
 parser = argparse.ArgumentParser(description="Parse command line arguments for job parameters")
 parser.add_argument("--JobName", type=str, default="-1", help="Simulation case number.")
 parser.add_argument("--Seed", type=str, default="-1", help="Simulation case number.")
-# parser.add_argument("--Data", type=str, default="-1", help="Simulation case number.")
+parser.add_argument("--Data", type=str, default="-1", help="Simulation case number.")
 parser.add_argument("--TestProportion", type=str, default="-1", help="Simulation case number.")
 parser.add_argument("--CandidateProportion", type=str, default="-1", help="Simulation case number.")
 parser.add_argument("--SelectorType", type=str, default="-1", help="Simulation case number.")
@@ -43,7 +39,7 @@ ErrorVecSimulation = []
 HistoryVecSimulation = []
 
 ### Run Code ###
-SimulationResults = OneIterationFunction(DataFileInput = "BostonHousing",
+SimulationResults = OneIterationFunction(DataFileInput = args.Data,
                                                 Seed = int(args.Seed),
                                                 TestProportion = float(args.TestProportion),
                                                 CandidateProportion = float(args.CandidateProportion),
