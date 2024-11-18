@@ -17,5 +17,5 @@ def LoadData(filename):
     ### File Path ###
     filepath = os.path.join(CurrentDirectory, "Data","processed", filename +".pkl")
     with open(filepath, 'rb') as file:
-        data = pickle.load(file).dropna()
+        data = pickle.load(file)
     return data
