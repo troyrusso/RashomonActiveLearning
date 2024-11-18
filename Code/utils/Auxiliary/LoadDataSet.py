@@ -15,7 +15,6 @@ def LoadData(filename):
     CurrentDirectory = cwd                                        # NOTE: FOR THE CLUSTER
 
     ### File Path ###
-    CurrentDirectory = "/Users/simondn/Documents/RashomonActiveLearning"
     filepath = os.path.join(CurrentDirectory, "Data","processed", filename +".pkl")
     with open(filepath, 'rb') as file:
         data = pickle.load(file).dropna()
