@@ -1,3 +1,5 @@
+### Summary: The following script creates an sbatch file to run the function RunSimulation.py for each parameter vector variation.
+
 ### Import packages ###
 import os
 import numpy as np

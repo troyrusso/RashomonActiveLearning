@@ -16,7 +16,7 @@ def LoadData(filename):
 
     ### File Path ###
     filepath = os.path.join(CurrentDirectory, "Data","processed", filename +".pkl")
-    print(filepath)
+    # print(filepath)
     with open(filepath, 'rb') as file:
         data = pickle.load(file).dropna() #ERROR HERE WITH NOT FINDING PANDAS SOMETHING
     return data

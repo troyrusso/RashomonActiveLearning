@@ -1,3 +1,5 @@
+### Summary: The following script creates an sbatch file to run ExtractError to extract the simulation results for each model method.
+
 ### Import packages ###
 import os
 import itertools

@@ -1,6 +1,9 @@
-# Summary:
+# Summary: The  script creates extracts the simulation results for each model method.
 # Input:
-# Output:
+    # DataType: Dataset
+    # SelectorType: A list of selector types to compare.
+    # ModelType: The prediction method which to compare the methods in SelectorTypes.
+# Output: C
 
 ### Import packages ###
 import os
