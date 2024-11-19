@@ -11,11 +11,12 @@ def LoadData(filename):
     ### Directory ###
     cwd = os.getcwd()
     ParentDirectory = os.path.abspath(os.path.join(cwd, "../"))
-    # CurrentDirectory = ParentDirectory                              # NOTE: FOR LOCAL SIMULATIONS
-    CurrentDirectory = cwd                                        # NOTE: FOR THE CLUSTER
+    CurrentDirectory = ParentDirectory                              # NOTE: FOR LOCAL SIMULATIONS
+    # CurrentDirectory = cwd                                        # NOTE: FOR THE CLUSTER
 
     ### File Path ###
     filepath = os.path.join(CurrentDirectory, "Data","processed", filename +".pkl")
+    print(filepath)
     with open(filepath, 'rb') as file:
         data = pickle.load(file).dropna() #ERROR HERE WITH NOT FINDING PANDAS SOMETHING
     return data
