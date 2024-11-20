@@ -1,0 +1,16 @@
+   DataType  ...                                       JobName
+0         A  ...       ExtractResults_DataA_MTLinearRegression
+1         A  ...        ExtractResults_DataA_MTRidgeRegression
+2         A  ...  ExtractResults_DataA_MTRandomForestRegressor
+3         u  ...       ExtractResults_Datau_MTLinearRegression
+4         u  ...        ExtractResults_Datau_MTRidgeRegression
+5         u  ...  ExtractResults_Datau_MTRandomForestRegressor
+6         t  ...       ExtractResults_Datat_MTLinearRegression
+7         t  ...        ExtractResults_Datat_MTRidgeRegression
+8         t  ...  ExtractResults_Datat_MTRandomForestRegressor
+9         o  ...       ExtractResults_Datao_MTLinearRegression
+10        o  ...        ExtractResults_Datao_MTRidgeRegression
+11        o  ...  ExtractResults_Datao_MTRandomForestRegressor
+
+[12 rows x 4 columns]
+Extract Sbatch files for extraction generated successfully.
