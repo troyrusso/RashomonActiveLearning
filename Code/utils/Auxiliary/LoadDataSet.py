@@ -11,12 +11,20 @@ def LoadData(filename):
     ### Directory ###
     cwd = os.getcwd()
     ParentDirectory = os.path.abspath(os.path.join(cwd, "../"))
-    # CurrentDirectory = ParentDirectory                              # NOTE: FOR LOCAL SIMULATIONS
-    CurrentDirectory = cwd                                        # NOTE: FOR THE CLUSTER
+    directories = [cwd, ParentDirectory]  # Cluster first, then local
 
-    ### File Path ###
-    filepath = os.path.join(CurrentDirectory, "Data","processed", filename +".pkl")
-    # print(filepath)
-    with open(filepath, 'rb') as file:
-        data = pickle.load(file).dropna() #ERROR HERE WITH NOT FINDING PANDAS SOMETHING
+    ### Get Data ###
+    for directory in directories:
+        try:
+            filepath = os.path.join(directory, "Data", "processed", filename + ".pkl")
+            with open(filepath, 'rb') as file:
+                data = pickle.load(file).dropna()
+            return data
+        except FileNotFoundError:
+            continue
+        except Exception as e:
+            raise RuntimeError(f"An error occurred while loading the file: {e}")
+
+    raise FileNotFoundError(f"File '{filename}.pkl' not found in any specified directories.")
+
     return data

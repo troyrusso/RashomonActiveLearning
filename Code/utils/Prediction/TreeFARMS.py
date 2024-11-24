@@ -1,14 +1,26 @@
-# Summary: Calculates the RMSE of the test set.
+# Summary: Initializes and fits a treefarms model.
 # Input:
-#   df_Test: The test data.
+#   df_Train: The training data.
+#   TopCModels: TopCModels top models
+#   config:
 # Output:
-# RMSE: The residual mean squared error of the predicted values and their true values in the test set. 
+# treeFarmsModel: A treefarms model.
 
 ### Libraries ###
-import numpy as np
+# import treefarms here
 
 ### Function ###
-def TestErrorFunction(InputModel, df_Test):
-    Prediction = InputModel.predict(df_Test.loc[:, df_Test.columns != "Y"])
-    RMSE = np.mean((Prediction - df_Test["Y"])**2)
-    return(RMSE)
+def RidgeRegressionFunction(df_Train, config, TopCModels):
+    ### Train TreeFarms Model ###
+    model = TREEFARMS(config)
+    model.fit(X, y)
+
+    ### Extract Errors ###
+    AllErrors = [model[i].score(X, y) for i in range(model.get_tree_count())]
+
+    ### Extract TopCModels Best Models ###
+    HighestAccuracyIndices = np.argsort(AllErrors)[::-1][0:TopCModels]
+    BestModels = [model[i] for i in HighestAccuracyIndices]
+
+    ### Return ###
+    return BestModels
