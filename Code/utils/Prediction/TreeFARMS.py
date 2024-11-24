@@ -7,20 +7,21 @@
 # treeFarmsModel: A treefarms model.
 
 ### Libraries ###
-# import treefarms here
+from treeFarms.treefarms import TREEFARMS
+
+# import sys
+# sys.path.append('/Users/simondn/Documents/RashomonActiveLearning/Code')
+# from treeFarms.treefarms.model.threshold_guess import compute_thresholds
+# from utils.Prediction.TreeFARMS import <function_or_class_name>
 
 ### Function ###
-def RidgeRegressionFunction(df_Train, config, TopCModels):
-    ### Train TreeFarms Model ###
-    model = TREEFARMS(config)
-    model.fit(X, y)
-
-    ### Extract Errors ###
-    AllErrors = [model[i].score(X, y) for i in range(model.get_tree_count())]
-
-    ### Extract TopCModels Best Models ###
-    HighestAccuracyIndices = np.argsort(AllErrors)[::-1][0:TopCModels]
-    BestModels = [model[i] for i in HighestAccuracyIndices]
-
+def TreeFarmsFunction(df_Train, config, TopCModels):
+   ### Train TreeFarms Model ###
+    TreeFarmsModel = TREEFARMS("config")
+    TreeFarmsModel.fit(df_Train.loc[:, df_Train.columns != "Y"], df_Train["Y"])
+    
     ### Return ###
-    return BestModels
+    return TreeFarmsModel
+
+
+# NOTE: Is there a way to prune the tree such that only the top models are given back? Look into this

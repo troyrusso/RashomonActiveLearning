@@ -39,7 +39,7 @@ def LearningProcedure(df_Train,
         if "Model" in SelectorArgs.keys(): SelectorArgs['Model'] = Model            # NOTE: THIS IS NOT DYNAMIC
 
         ### Current Error ###
-        CurrentError = TestErrorFunction(Model, df_Test)
+        CurrentError = TestErrorFunction(Model, df_Test, ModelArgs)
         ErrorVec.append(CurrentError)
 
         ### Sampling Procedure ###
