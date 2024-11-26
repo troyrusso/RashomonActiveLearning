@@ -9,7 +9,7 @@
 #   ModelArgs: Arguments for the predictive model. For instance, the penalty for RidgeRegression.
 # Output:
 #   ErrorVec: A 1xM vector of errors with M being the number of observations in df_Candidate. 
-#   SelectedObservationHistory: The index of the queried candidate observation at each iteration.
+#   SelectedObservationHistory: The index of the queried candidate observation at each iteration
 
 ### Import functions ###
 from utils.Main import *

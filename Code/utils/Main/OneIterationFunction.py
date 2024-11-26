@@ -9,7 +9,11 @@
 #   DataArgs: Arguments N and K for when simulated data.
 #   SelectorArgs: Arguments needed for the selector model. For instance, GSx requires a distance metric.
 #   ModelArgs: Arguments for the predictive model. For instance, the penalty for RidgeRegression.
-# Output:
+# Output: Simulation results that contain
+#   ErrorVec: Vector of errors at each iteration of the learning process.
+#   SelectionHistory: Vector of recommended index for query at each iteration of the learning process.
+#   SimulationParameters: Parameters used in the simulation.
+#   ElapsedTime: Time for the entire learning process.
 
 ### Import packages ###
 import numpy as np
