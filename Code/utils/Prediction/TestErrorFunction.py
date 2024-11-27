@@ -20,11 +20,11 @@ def TestErrorFunction(InputModel, df_Test, ModelArgs):
 
         # Rashomon Classification #
         if "TopCModels" in ModelArgs.keys():
-            AllErrors = [InputModel[i].score(df_Test.loc[:, df_Test.columns != "Y"], df_Test["Y"]) for i in range(InputModel.get_tree_count())]
-            ErrorVal = AllErrors[::-1][1]
+            ErrorVal = [1-InputModel[i].score(df_Test.loc[:, df_Test.columns != "Y"], df_Test["Y"]) for i in range(InputModel.get_tree_count())]
 
         elif not("TopCModels" in ModelArgs.keys()):
             ErrorVal = np.mean(Prediction != df_Test["Y"])
 
-    ### Return ###
-    return(ErrorVal)
+
+    return ErrorVal
+            
