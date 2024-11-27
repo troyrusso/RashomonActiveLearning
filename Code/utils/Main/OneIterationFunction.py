@@ -16,8 +16,9 @@
 #   ElapsedTime: Time for the entire learning process.
 
 ### Import packages ###
-import numpy as np
+import os
 import time
+import numpy as np
 import math as math
 import pandas as pd
 import random as random
@@ -50,10 +51,9 @@ def OneIterationFunction(DataFileInput,
     ErrorVec = []
     SelectedObservationHistory = []
 
-    from utils.Main import DataGeneratingProcess                             ### NOTE: Why is this not imported from utils.Main import *
-
     ### Generate Data ###
     if(DataFileInput == "Simulate"):
+        from utils.Main import DataGeneratingProcess                             ### NOTE: Why is this not imported from utils.Main import *
         df = DataGeneratingProcess(**DataArgs)
     else:
         df = LoadData(DataFileInput)
@@ -83,6 +83,7 @@ def OneIterationFunction(DataFileInput,
                                                                 ModelArgs = ModelArgsFiltered
                                                                 )
     
+    ### Return Simulation Parameters ###
     SimulationParameters = {"DataFileInput" : str(DataFileInput),
                             "Seed" : str(Seed),
                             "TestProportion" : str(TestProportion),
@@ -94,6 +95,7 @@ def OneIterationFunction(DataFileInput,
                             "ModelArgs" : str(ModelArgsFiltered.pop('df_Train', None))
                             }
     
+    ### Return Time ###
     ElapsedTime = time.time() - StartTime
 
     ### Return Dictionary ###
