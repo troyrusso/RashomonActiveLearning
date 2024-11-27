@@ -65,7 +65,7 @@ def OneIterationFunction(DataFileInput,
     ### Selector Arguments ###
     SelectorArgs["df_Train"] = df_Test
     SelectorArgs["df_Candidate"] = df_Candidate
-    SelectorArgs["Model"] = ModelType
+    SelectorArgs["Model"] = ""
     SelectorArgsFiltered = FilterArguments(SelectorType, SelectorArgs)
 
     ### Model Arguments ###

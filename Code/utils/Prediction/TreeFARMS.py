@@ -7,17 +7,19 @@
 # treeFarmsModel: A treefarms model.
 
 ### Libraries ###
-from treeFarms.treefarms import TREEFARMS
+# from treeFarms.treefarms import TREEFARMS
 
-# import sys
+import sys
 # sys.path.append('/Users/simondn/Documents/RashomonActiveLearning/Code')
 # from treeFarms.treefarms.model.threshold_guess import compute_thresholds
 # from utils.Prediction.TreeFARMS import <function_or_class_name>
+from treeFarms.treefarms.model.treefarms import TREEFARMS
+
 
 ### Function ###
 def TreeFarmsFunction(df_Train, config, TopCModels):
    ### Train TreeFarms Model ###
-    TreeFarmsModel = TREEFARMS("config")
+    TreeFarmsModel = TREEFARMS(config)
     TreeFarmsModel.fit(df_Train.loc[:, df_Train.columns != "Y"], df_Train["Y"])
     
     ### Return ###

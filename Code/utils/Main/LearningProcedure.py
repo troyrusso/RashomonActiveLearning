@@ -30,26 +30,30 @@ def LearningProcedure(df_Train,
     ### Set Up ###
     ErrorVec = []
     SelectedObservationHistory = []
+    ModelArgsFiltered = FilterArguments(ModelType, ModelArgs)
+    SelectorArgsFiltered = FilterArguments(SelectorType, SelectorArgs)
+
 
     ### Algorithm
     for i in range(len(df_Candidate)):
 
         ### Prediction Model ###
-        Model = ModelType(**ModelArgs)
-        if "Model" in SelectorArgs.keys(): SelectorArgs['Model'] = Model            # NOTE: THIS IS NOT DYNAMIC
+        print("Iteration: " + str(i))
+        Model = ModelType(**ModelArgsFiltered)
+        if "Model" in SelectorArgsFiltered.keys(): SelectorArgsFiltered['Model'] = Model            # NOTE: THIS IS NOT DYNAMIC
 
         ### Current Error ###
-        TestErrorVal = TestErrorFunction(Model, df_Test, ModelArgs)
+        TestErrorVal = TestErrorFunction(Model, df_Test, ModelArgs["Type"])
         if(len(TestErrorVal) > 1):
             AllErrors = TestErrorVal                                                # Rashomon gives all errors of Rashomon
             CurrentError = float(np.min(AllErrors))                                 # Extract the best one
-            SelectorArgs["AllErrors"] = AllErrors                                   # Use AllErrors in RashomonQBC
+            SelectorArgsFiltered["AllErrors"] = AllErrors                                   # Use AllErrors in RashomonQBC
         else: 
             CurrentError = TestErrorVal                                             # One output for non-Rashomon
         ErrorVec.append(CurrentError)
 
         ### Sampling Procedure ###
-        QueryObservationIndex = SelectorType(**SelectorArgs)
+        QueryObservationIndex = SelectorType(**SelectorArgsFiltered)
         QueryObservation = df_Candidate.loc[[QueryObservationIndex]] # or should this be iloc
         SelectedObservationHistory.append(QueryObservationIndex)
         
@@ -58,9 +62,9 @@ def LearningProcedure(df_Train,
         df_Candidate = df_Candidate.drop(QueryObservationIndex)
 
         ### Update SelectorArgs and ModelArgs ###                                     # NOTE: THIS IS NOT DYNAMIC
-        if "df_Train" in ModelArgs.keys(): ModelArgs['df_Train'] = df_Train
-        if "df_Train" in SelectorArgs.keys(): SelectorArgs['df_Train'] = df_Train
-        if "df_Candidate" in SelectorArgs.keys(): SelectorArgs['df_Candidate'] = df_Candidate      
+        if "df_Train" in ModelArgsFiltered.keys(): ModelArgsFiltered['df_Train'] = df_Train
+        if "df_Train" in SelectorArgsFiltered.keys(): SelectorArgsFiltered['df_Train'] = df_Train
+        if "df_Candidate" in SelectorArgsFiltered.keys(): SelectorArgsFiltered['df_Candidate'] = df_Candidate      
 
     ### RETURN ###
     return ErrorVec, SelectedObservationHistory
