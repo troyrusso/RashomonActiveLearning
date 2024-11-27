@@ -63,14 +63,14 @@ def OneIterationFunction(DataFileInput,
     df_Train, df_Test, df_Candidate = TrainTestCandidateSplit(df, TestProportion, CandidateProportion)
 
     ### Selector Arguments ###
-    SelectorArgs["df_Train"] = df_Test
+    SelectorArgs["df_Train"] = df_Test                                     # NOTE: Change to df_Test if there is a test set
     SelectorArgs["df_Candidate"] = df_Candidate
     SelectorArgs["Model"] = ""
-    SelectorArgsFiltered = FilterArguments(SelectorType, SelectorArgs)
+    # SelectorArgsFiltered = FilterArguments(SelectorType, SelectorArgs)
 
     ### Model Arguments ###
     ModelArgs['df_Train'] = df_Train
-    ModelArgsFiltered = FilterArguments(ModelType, ModelArgs)
+    # ModelArgsFiltered = FilterArguments(ModelType, ModelArgs)
     
     ### Learning Process ###
     from utils.Main import LearningProcedure                                 ### NOTE: Why is this not imported from utils.Main import *
@@ -78,9 +78,9 @@ def OneIterationFunction(DataFileInput,
                                                                 df_Test = df_Test, 
                                                                 df_Candidate = df_Candidate, 
                                                                 SelectorType = SelectorType, 
-                                                                SelectorArgs = SelectorArgsFiltered,
+                                                                SelectorArgs = SelectorArgs,
                                                                 ModelType = ModelType, 
-                                                                ModelArgs = ModelArgsFiltered
+                                                                ModelArgs = ModelArgs
                                                                 )
     
     ### Return Simulation Parameters ###
@@ -92,7 +92,7 @@ def OneIterationFunction(DataFileInput,
                             "ModelType" : str(ModelType),
                             "DataArgs" : str(DataArgs),
                             # "SelectorArgs" : str(SelectorArgs),
-                            "ModelArgs" : str(ModelArgsFiltered.pop('df_Train', None))
+                            "ModelArgs" : str(FilterArguments(ModelType, ModelArgs).pop('df_Train', None))
                             }
     
     ### Return Time ###

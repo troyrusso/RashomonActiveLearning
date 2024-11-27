@@ -34,7 +34,7 @@ def LearningProcedure(df_Train,
     SelectorArgsFiltered = FilterArguments(SelectorType, SelectorArgs)
 
 
-    ### Algorithm
+    ### Algorithm ###
     for i in range(len(df_Candidate)):
 
         ### Prediction Model ###
@@ -43,7 +43,7 @@ def LearningProcedure(df_Train,
         if "Model" in SelectorArgsFiltered.keys(): SelectorArgsFiltered['Model'] = Model            # NOTE: THIS IS NOT DYNAMIC
 
         ### Current Error ###
-        TestErrorVal = TestErrorFunction(Model, df_Test, ModelArgs["Type"])
+        TestErrorVal = TestErrorFunction(Model, df_Test, ModelArgs["Type"])        # NOTE: Change to df_Test if there is a test set
         if(len(TestErrorVal) > 1):
             AllErrors = TestErrorVal                                                # Rashomon gives all errors of Rashomon
             CurrentError = float(np.min(AllErrors))                                 # Extract the best one

@@ -1,0 +1,15 @@
+#!/bin/bash
+#SBATCH --job-name=CreateRunSimFiles_COMPAS
+#SBATCH --partition=medium
+#SBATCH --ntasks=1
+#SBATCH --time=6-23:59:59
+#SBATCH --mem-per-cpu=30000
+#SBATCH -o ClusterMessages/out/CreateRunSimFiles_COMPAS%j.out
+#SBATCH -e ClusterMessages/error/CreateRunSimFiles_COMPAS%j.err
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=simondn@uw.edu
+
+cd ~/RashomonActiveLearning
+module load Python
+python Code/utils/Auxiliary/CreateRunSimSbatch.py \
+    --DataType COMPAS \

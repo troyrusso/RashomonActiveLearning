@@ -21,6 +21,8 @@ def RashomonQBCFunction(Model, df_Candidate, df_Train, TopCModels, AllErrors):
     # d_nX = d_nmX.min(axis=1)
 
     ### Extract Errors ###
+    if len(AllErrors) < TopCModels:
+        TopCModels = len(AllErrors)
     LowestErrorIndices = np.argsort(AllErrors)[:TopCModels]
 
     ### Prediction ###
@@ -30,6 +32,7 @@ def RashomonQBCFunction(Model, df_Candidate, df_Train, TopCModels, AllErrors):
     ### Uncertainty Metric ###
     df_Candidate["UncertaintyMetric"] = abs(RashomonMean - 0.5)
     IndexRecommendation = int(df_Candidate.sort_values(by = "UncertaintyMetric", ascending = True).index[0])
-
+    df_Candidate.drop('UncertaintyMetric', axis=1, inplace=True)
+    
     return(IndexRecommendation)
 

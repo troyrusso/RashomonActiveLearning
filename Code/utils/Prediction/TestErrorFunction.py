@@ -20,7 +20,14 @@ def TestErrorFunction(InputModel, df_Test, Type):
 
         # Rashomon Classification #
         if 'TREEFARMS' in str(type(InputModel)):
-            ErrorVal = [1-InputModel[i].score(df_Test.loc[:, df_Test.columns != "Y"], df_Test["Y"]) for i in range(InputModel.get_tree_count())]
+            ErrorVal =[]
+            for i in range(InputModel.get_tree_count()):
+                try:
+                    ModelError = InputModel[i].error(df_Test.loc[:, df_Test.columns != "Y"], df_Test["Y"])
+                except:
+                    ModelError = np.nan
+                ErrorVal.append(ModelError)
+            # ErrorVal = [1-InputModel[i].error(df_Test.loc[:, df_Test.columns != "Y"], df_Test["Y"]) for i in range(InputModel.get_tree_count())]
         else:
             ErrorVal = np.mean(Prediction != df_Test["Y"])
 
