@@ -30,29 +30,28 @@ def LearningProcedure(df_Train,
     ### Set Up ###
     ErrorVec = []
     SelectedObservationHistory = []
-    ModelArgsFiltered = FilterArguments(ModelType, ModelArgs)
-    SelectorArgsFiltered = FilterArguments(SelectorType, SelectorArgs)
-
 
     ### Algorithm ###
     for i in range(len(df_Candidate)):
 
         ### Prediction Model ###
         print("Iteration: " + str(i))
+        ModelArgsFiltered = FilterArguments(ModelType, ModelArgs)
         Model = ModelType(**ModelArgsFiltered)
-        if "Model" in SelectorArgsFiltered.keys(): SelectorArgsFiltered['Model'] = Model            # NOTE: THIS IS NOT DYNAMIC
+        if "Model" in SelectorArgs.keys(): SelectorArgs['Model'] = Model            # NOTE: THIS IS NOT DYNAMIC
 
         ### Current Error ###
         TestErrorVal = TestErrorFunction(Model, df_Test, ModelArgs["Type"])        # NOTE: Change to df_Test if there is a test set
         if(len(TestErrorVal) > 1):
             AllErrors = TestErrorVal                                                # Rashomon gives all errors of Rashomon
             CurrentError = float(np.min(AllErrors))                                 # Extract the best one
-            SelectorArgsFiltered["AllErrors"] = AllErrors                                   # Use AllErrors in RashomonQBC
+            SelectorArgs["AllErrors"] = AllErrors                           # Use AllErrors in RashomonQBC
         else: 
             CurrentError = TestErrorVal                                             # One output for non-Rashomon
         ErrorVec.append(CurrentError)
 
         ### Sampling Procedure ###
+        SelectorArgsFiltered = FilterArguments(SelectorType, SelectorArgs)
         QueryObservationIndex = SelectorType(**SelectorArgsFiltered)
         QueryObservation = df_Candidate.loc[[QueryObservationIndex]] # or should this be iloc
         SelectedObservationHistory.append(QueryObservationIndex)
