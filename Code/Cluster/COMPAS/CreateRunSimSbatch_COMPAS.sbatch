@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH --job-name=CreateRunSimFiles_COMPAS
-#SBATCH --partition=medium
+#SBATCH --partition=short
 #SBATCH --ntasks=1
-#SBATCH --time=6-23:59:59
+#SBATCH --time=11:59:00
 #SBATCH --mem-per-cpu=30000
 #SBATCH -o ClusterMessages/out/CreateRunSimFiles_COMPAS%j.out
 #SBATCH -e ClusterMessages/error/CreateRunSimFiles_COMPAS%j.err

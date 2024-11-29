@@ -61,9 +61,9 @@ def LearningProcedure(df_Train,
         df_Candidate = df_Candidate.drop(QueryObservationIndex)
 
         ### Update SelectorArgs and ModelArgs ###                                     # NOTE: THIS IS NOT DYNAMIC
-        if "df_Train" in ModelArgsFiltered.keys(): ModelArgsFiltered['df_Train'] = df_Train
-        if "df_Train" in SelectorArgsFiltered.keys(): SelectorArgsFiltered['df_Train'] = df_Train
-        if "df_Candidate" in SelectorArgsFiltered.keys(): SelectorArgsFiltered['df_Candidate'] = df_Candidate      
+        if "df_Train" in ModelArgs.keys(): ModelArgs['df_Train'] = df_Train
+        if "df_Train" in SelectorArgs.keys(): SelectorArgs['df_Train'] = df_Train
+        if "df_Candidate" in SelectorArgs.keys(): SelectorArgs['df_Candidate'] = df_Candidate      
 
     ### RETURN ###
     return ErrorVec, SelectedObservationHistory
