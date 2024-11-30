@@ -3,7 +3,7 @@
     # DataType: Dataset
     # SelectorType: A list of selector types to compare.
     # ModelType: The prediction method which to compare the methods in SelectorTypes.
-# Output: C
+# Output: 
 
 ### Import packages ###
 import os
