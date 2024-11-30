@@ -48,7 +48,7 @@ def RashomonQBCFunction(Model, df_Candidate, df_Train, TopCModels, AllErrors):
     ### Uncertainty Metric ###
     df_Candidate["UncertaintyMetric"] = VoteEntropyFinal
     IndexRecommendation = int(df_Candidate.sort_values(by = "UncertaintyMetric", ascending = False).index[0])
-    # df_Candidate.drop('UncertaintyMetric', axis=1, inplace=True)
+    df_Candidate.drop('UncertaintyMetric', axis=1, inplace=True)
     
     return(IndexRecommendation)
 
