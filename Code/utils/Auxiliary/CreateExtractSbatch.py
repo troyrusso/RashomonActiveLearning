@@ -17,26 +17,37 @@ parser = argparse.ArgumentParser(description="Parse command line arguments for j
 parser.add_argument("--DataType", type=str, default="-1", help="Simulation case number.")
 args = parser.parse_args()
 
-### Inputs ###
-DataType = args.DataType
-SelectorType = ['["PassiveLearning", "GSx", "GSy", "iGS"]']
-ModelType = ["LinearRegression", "RidgeRegression", "RandomForestRegressor"]
+### Rashomon Inputs ###
+DataType = ["COMPAS"]
+SelectorType = ["PassiveLearning", "RashomonQBC"]
+ModelType = ["TreeFarms"]
+RashomonModelsNumber = ["1", "10", "100"]
 
 ### Combinations ###
-Combinations = list(itertools.product(DataType, SelectorType, ModelType))
+Combinations = list(itertools.product(DataType, SelectorType, ModelType, RashomonModelsNumber))
+
+### Filter Combinations ###
+Combinations = [
+    (DataType, SelectorType, ModelType, RashomonModelsNumber)
+    for DataType, SelectorType, ModelType, RashomonModelsNumber in Combinations
+    if not (SelectorType == "PassiveLearning" and RashomonModelsNumber != "1")
+]
 
 ### Data Frame ###
-ParameterVector = pd.DataFrame(Combinations, columns = ["DataType", "SelectorType", "ModelType"])
+ParameterVector = pd.DataFrame(Combinations, columns = ["DataType", "SelectorType", "ModelType", "RashomonModelsNumber"])
 
 ### Job Name ###
 ParameterVector["JobName"] = ("ExtractResults_" + 
                               "Data" + ParameterVector["DataType"].astype(str) +
-                            #   "_ST" + ParameterVector["SelectorType"].astype(str) +
-                              "_MT" + ParameterVector["ModelType"].astype(str)
+                              "_ST" + ParameterVector["SelectorType"].astype(str) +
+                              "_MT" + ParameterVector["ModelType"].astype(str) + 
+                              "_RMN" + ParameterVector["RashomonModelsNumber"].astype(str)
                               )
 
 ### Mutate Parameter Vector ###
 ParameterVector["SelectorType"] = "'" + ParameterVector["SelectorType"] + "'"
+ParameterVector["ModelType"] = ParameterVector["ModelType"] + "RashomonNum" + ParameterVector["RashomonModelsNumber"]
+ParameterVector.drop("RashomonModelsNumber", inplace= True, axis = 1)
 
 print(ParameterVector)
 
@@ -47,7 +58,7 @@ for i, row in ParameterVector.iterrows():
     DataType = row["DataType"]
     SelectorType = row["SelectorType"]
     ModelType = row["ModelType"]
-    
+
     # Define the path for the .sbatch file
     sbatch_file_path = os.path.join(ParentDirectory, "Code", "Cluster", DataType, "ExtractResults", f"{JobName}_extract.sbatch")
     
@@ -80,3 +91,4 @@ for i, row in ParameterVector.iterrows():
         sbatch_file.write("\n".join(sbatch_content))
 
 print("Extract Sbatch files for extraction generated successfully.")
+
