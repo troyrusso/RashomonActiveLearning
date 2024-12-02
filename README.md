@@ -2,6 +2,11 @@
 
 🚧 This repository is currently under construction. 🚧
 
+sbatch Seed0_DataBostonHousingBinned_TP0.2_CP0.8_STPassiveLearning_MTTreeFarmsRashomonNum1.sbatch
+sbatch Seed0_DataBostonHousingBinned_TP0.2_CP0.8_STRashomonQBC_MTTreeFarmsRashomonNum100.sbatch
+sbatch Seed0_DataBostonHousingBinned_TP0.2_CP0.8_STRashomonQBC_MTTreeFarmsRashomonNum10.sbatch
+sbatch Seed0_DataBostonHousingBinned_TP0.2_CP0.8_STRashomonQBC_MTTreeFarmsRashomonNum1.sbatch
+
 Updates are ongoing as part of iterative version control and management.
 
 ## Abstract
