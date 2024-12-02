@@ -16,6 +16,9 @@ from scipy.spatial.distance import cdist
 ### Function ###
 def RashomonQBCFunction(Model, df_Candidate, df_Train, TopCModels, AllErrors):
 
+    ### Ignore warning (taken care of) ###
+    np.seterr(all = 'ignore') 
+ 
     # ### GSx: Incorporate? Good for tie breakers. Could also do GSx on the data set as opposed to the one-hot set
     # d_nmX = cdist(df_Candidate.loc[:,df_Candidate.columns!= "Y"], df_Train.loc[:,df_Train.columns!= "Y"], metric = distance)
     # d_nX = d_nmX.min(axis=1)
