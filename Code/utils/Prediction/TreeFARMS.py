@@ -17,7 +17,7 @@ from treeFarms.treefarms.model.treefarms import TREEFARMS
 
 
 ### Function ###
-def TreeFarmsFunction(df_Train, config, TopCModels):
+def TreeFarmsFunction(df_Train, config):
    ### Train TreeFarms Model ###
     TreeFarmsModel = TREEFARMS(config)
     TreeFarmsModel.fit(df_Train.loc[:, df_Train.columns != "Y"], df_Train["Y"])
