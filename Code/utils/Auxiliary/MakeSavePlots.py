@@ -9,7 +9,7 @@ from utils.Auxiliary import *
 from scipy.stats import wilcoxon
 
 ### Function ###
-def MakePlotFunctions(DataType, ModelType, PlotArgs, SaveInput = False):
+def MakePlotFunctions(DataType, ModelType, PlotArgs, SaveInput = None):
 
     ### Get Directory ###
     cwd = os.getcwd()
@@ -42,21 +42,22 @@ def MakePlotFunctions(DataType, ModelType, PlotArgs, SaveInput = False):
         for key, value in SimulationErrorResults.items()
     })
     
-    ### Return ###
-    # Path #
-    if(PlotArgs["RelativeError"] is None):
-        MeanPlotPath = os.path.join(ParentDirectory, "ResearchUpdates", "Nov15Updates", DataType, ModelType, "MeanPlot.png")
-        VariancePlotPath = os.path.join(ParentDirectory, "ResearchUpdates", "Nov15Updates", DataType, ModelType, "VariancePlot.png")
-    else:
-        MeanPlotPath = os.path.join(ParentDirectory, "ResearchUpdates", "Nov15Updates", DataType, ModelType, 
-                                    "MeanPlot" + PlotArgs["RelativeError"] + "Relative"+  ".png")
-        VariancePlotPath = os.path.join(ParentDirectory, "ResearchUpdates", "Nov15Updates", DataType, ModelType, 
-                                    "VariancePlot" + PlotArgs["RelativeError"] + "Relative"+  ".png")
-    
-    # Save #
-    if SaveInput is True:
+    ### Save ###
+    if SaveInput is not None:
+        ## Relative ##
+        if(PlotArgs["RelativeError"] is None):
+            MeanPlotPath = os.path.join(ParentDirectory, "ResearchUpdates", str(SaveInput), DataType + ModelType + "MeanPlot.png")
+            VariancePlotPath = os.path.join(ParentDirectory, "ResearchUpdates", str(SaveInput), DataType + ModelType + "VariancePlot.png")
+        ## Not Relative ##
+        else:
+            MeanPlotPath = os.path.join(ParentDirectory, "ResearchUpdates", str(SaveInput), DataType + ModelType + 
+                                        "MeanPlot" + PlotArgs["RelativeError"] + "Relative"+  ".png")
+            VariancePlotPath = os.path.join(ParentDirectory, "ResearchUpdates", str(SaveInput), DataType + ModelType + 
+                                        "VariancePlot" + PlotArgs["RelativeError"] + "Relative" +  ".png")
+        ### Save ###
         MeanPlot.savefig(MeanPlotPath)
         VariancePlot.savefig(VariancePlotPath)
 
+    ### Return ###
     return WRSTResults, MeanPlot, VariancePlot
     
