@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd RashomonActiveLearning
+cd ~/RashomonActiveLearning
 python Code/utils/Auxiliary/ProcessSimulationResults.py \
     --DataType "COMPAS" \
     --ModelType "TreeFarms" \
