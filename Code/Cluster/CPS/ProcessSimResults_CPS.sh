@@ -1,7 +1,6 @@
 #!/bin/bash
 
 cd RashomonActiveLearning
-module load python
 python Code/utils/Auxiliary/ProcessSimulationResults.py \
     --DataType "CPS" \
     --ModelType "TreeFarms" \
