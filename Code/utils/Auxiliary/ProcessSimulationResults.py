@@ -33,14 +33,6 @@ OutputDirectory = os.path.join(ResultsDirectory, "ProcessedResults")
 RawDirectory = os.path.join(ResultsDirectory, "Raw")
 Categories = json.loads(args.Categories)
 
-# ResultsDirectory = "/Users/simondn/Documents/RashomonActiveLearning/Results/COMPAS/TreeFarms"
-# OutputDirectory = "/Users/simondn/Documents/RashomonActiveLearning/Results/COMPAS/TreeFarms/Processed"
-# RawDirectory = "/Users/simondn/Documents/RashomonActiveLearning/Results/COMPAS/TreeFarms/Raw"
-# Categories = ["PassiveLearning_MTTreeFarmsRashomonNum11.pkl",
-# "RashomonQBC_MTTreeFarmsRashomonNum11.pkl",
-# "RashomonQBC_MTTreeFarmsRashomonNum1010.pkl",
-# "RashomonQBC_MTTreeFarmsRashomonNum100100.pkl"]
-
 # Group files by category
 category_files = {category: [] for category in Categories}
 for filename in os.listdir(RawDirectory):
@@ -54,7 +46,6 @@ for filename in os.listdir(RawDirectory):
 ErrorMatrices = {}
 TimeMatrices = {}
 
-
 for category, files in category_files.items():
     if not files:
         print(f"Warning: No files found for category {category}. Skipping.")
@@ -64,7 +55,6 @@ for category, files in category_files.items():
     ErrorMatrices[category] = error_vecs  # Transpose
     TimeMatrices[category] = time_vecs    # Transpose
 
-
 # Retain original category names as keys
 ErrorMatrices = {category: ErrorMatrices[category] for category in category_files if category in ErrorMatrices}
 TimeMatrices = {category: TimeMatrices[category] for category in category_files if category in TimeMatrices}
@@ -72,12 +62,19 @@ ErrorMatrices = {key.replace(".pkl", ""): value for key, value in ErrorMatrices.
 TimeMatrices = {key.replace(".pkl", ""): value for key, value in TimeMatrices.items()}
 
 # Squeeze dimensions #
-ErrorMatrices = {key: np.squeeze(matrix) for key, matrix in ErrorMatrices.items()}
-TimeMatrices = {key: np.squeeze(matrix) for key, matrix in TimeMatrices.items()}
+ErrorMatrices = {key: matrix.squeeze() for key, matrix in ErrorMatrices.items()}
+TimeMatrices = {key: matrix.squeeze() for key, matrix in TimeMatrices.items()}
 
-# Save results
+# Ensure the output directory exists
 os.makedirs(OutputDirectory, exist_ok=True)
+
+# Save ErrorMatrices
 for key, matrix in ErrorMatrices.items():
-    np.savetxt(os.path.join(OutputDirectory, f"{key}_ErrorMatrix.csv"), matrix, delimiter=",")
+    df = pd.DataFrame(matrix)  # Convert to DataFrame
+    df.to_csv(os.path.join(OutputDirectory, f"{key}_ErrorMatrix.csv"), index=False)
+
+# Save TimeMatrices
 for key, matrix in TimeMatrices.items():
-    np.savetxt(os.path.join(OutputDirectory, f"{key}_TimeMatrix.csv"), matrix, delimiter=",")
+    df = pd.DataFrame(matrix)  # Convert to DataFrame
+    df.to_csv(os.path.join(OutputDirectory, f"{key}_TimeMatrix.csv"), index=False)
+
