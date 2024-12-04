@@ -44,7 +44,7 @@ def TreeEnsembleQBCFunction(Model, df_Candidate, df_Train, TopCModels, AllErrors
         PredictedValues = [Model[i].predict(df_Candidate) for i in LowestErrorIndices]
 
     elif 'RandomForestClassifier' in str(type(Model)):                                                          # RandomForest
-        PredictedValues = [Model.estimators_[tree].predict(df_Candidate.loc[:, df_Candidate.columns != "Y"]) for tree in range(TopCModels)] 
+        PredictedValues = [Model.estimators_[tree].predict(df_Candidate.loc[:, df_Candidate.columns != "Y"]) for tree in range(Model.n_estimators)] 
     
     ### Stack values ###
     PredictedValues = np.vstack(PredictedValues)
