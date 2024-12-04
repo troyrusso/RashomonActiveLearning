@@ -14,6 +14,7 @@ def TestErrorFunction(InputModel, df_Test, Type):
     if(Type == "Regression"):
         Prediction = InputModel.predict(df_Test.loc[:, df_Test.columns != "Y"])
         ErrorVal = np.mean((Prediction - df_Test["Y"])**2)
+        ErrorVal = [ErrorVal.tolist()]
 
     ### Classification Error ###
     if(Type == "Classification"):
@@ -25,7 +26,9 @@ def TestErrorFunction(InputModel, df_Test, Type):
                 ModelError = InputModel[i].error(df_Test.loc[:, df_Test.columns != "Y"], df_Test["Y"])
                 ErrorVal.append(ModelError)
         else:
+            Prediction = InputModel.predict(df_Test.loc[:, df_Test.columns != "Y"])
             ErrorVal = np.mean(Prediction != df_Test["Y"])
+            ErrorVal = [ErrorVal.tolist()]
 
     ### Return ###
     return ErrorVal

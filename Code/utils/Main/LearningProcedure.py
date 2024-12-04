@@ -45,10 +45,12 @@ def LearningProcedure(df_Train,
         if(len(TestErrorVal) > 1):
             AllErrors = TestErrorVal                                                # Rashomon gives all errors of Rashomon
             CurrentError = float(np.min(AllErrors))                                 # Extract the best one
-            SelectorArgs["AllErrors"] = AllErrors                                   # Use AllErrors in RashomonQBC Selector method
         else: 
             CurrentError = TestErrorVal                                             # One output for non-Rashomon
+            AllErrors = [None]
+        SelectorArgs["AllErrors"] = AllErrors                                       # Use AllErrors in RashomonQBC
         ErrorVec.append(CurrentError)
+
 
         ### Sampling Procedure ###
         SelectorArgsFiltered = FilterArguments(SelectorType, SelectorArgs)
