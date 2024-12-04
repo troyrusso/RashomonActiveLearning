@@ -45,9 +45,9 @@ SimulationResults = OneIterationFunction(DataFileInput = args.Data,
                                                 CandidateProportion = float(args.CandidateProportion),
                                                 SelectorType = globals().get(args.SelectorType, None), 
                                                 ModelType = globals().get(args.ModelType, None), 
-                                                DataArgs = json.loads(args.DataArgs),
-                                                SelectorArgs = json.loads(args.SelectorArgs.replace("[","").replace("]","")),
-                                                ModelArgs = json.loads(args.ModelArgs)
+                                                DataArgs = json.loads(args.DataArgs.replace("'", '"')),
+                                                SelectorArgs = json.loads(args.SelectorArgs.replace("'", '"')),
+                                                ModelArgs = json.loads(args.ModelArgs.replace("'", '"'))
                                                 )
 
 ### Save Simulation Results ###
