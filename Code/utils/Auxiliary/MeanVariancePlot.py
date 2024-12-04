@@ -18,7 +18,7 @@ def MeanVariancePlot(Subtitle = None,
     MeanVector = {}
     VarianceVector = {}
     StdErrorVector ={}
-    Y_Label = "Error"
+    Y_Label = "Classification Error"
 
     ### Extract ###
     for Label, Results in SimulationErrorResults.items():
