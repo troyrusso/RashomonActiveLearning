@@ -1,0 +1,21 @@
+Traceback (most recent call last):
+  File "/mnt/beegfs/homes/simondn/RashomonActiveLearning/Code/RunSimulation.py", line 42, in <module>
+    SimulationResults = OneIterationFunction(DataFileInput = args.Data,
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/beegfs/homes/simondn/RashomonActiveLearning/Code/utils/Main/OneIterationFunction.py", line 102, in OneIterationFunction
+    SimulationResults = {"ErrorVec" : pd.DataFrame(ErrorVec, columns =["Error"]),
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/homes/simondn/.local/lib/python3.11/site-packages/pandas/core/frame.py", line 851, in __init__
+    arrays, columns, index = nested_data_to_arrays(
+                             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/homes/simondn/.local/lib/python3.11/site-packages/pandas/core/internals/construction.py", line 520, in nested_data_to_arrays
+    arrays, columns = to_arrays(data, columns, dtype=dtype)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/homes/simondn/.local/lib/python3.11/site-packages/pandas/core/internals/construction.py", line 835, in to_arrays
+    arr = _list_to_arrays(data)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/homes/simondn/.local/lib/python3.11/site-packages/pandas/core/internals/construction.py", line 856, in _list_to_arrays
+    content = lib.to_object_array(data)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "lib.pyx", line 3014, in pandas._libs.lib.to_object_array
+TypeError: object of type 'float' has no len()

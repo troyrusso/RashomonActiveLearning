@@ -1,0 +1,1455 @@
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.02500000037252903,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.06499999761581421,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 0,
+    "name": "CRIM_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.02500000037252903,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.06499999761581421,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 0,
+      "name": "CRIM_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 9,
+    "name": "PTRATIO_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.02469135820865631,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.06469135731458664,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 0,
+    "name": "CRIM_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.02469135820865631,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.06469135731458664,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 0,
+      "name": "CRIM_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 9,
+    "name": "PTRATIO_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.024390242993831635,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.06439024209976196,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 0,
+    "name": "CRIM_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.024390242993831635,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.06439024209976196,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 0,
+      "name": "CRIM_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 9,
+    "name": "PTRATIO_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.024096384644508362,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.06409638375043869,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 0,
+    "name": "CRIM_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.024096384644508362,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.06409638375043869,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 0,
+      "name": "CRIM_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 9,
+    "name": "PTRATIO_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.02380952425301075,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.06380952149629593,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 0,
+    "name": "CRIM_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.02380952425301075,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.06380952149629593,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 0,
+      "name": "CRIM_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 9,
+    "name": "PTRATIO_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0235294122248888,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.06352940946817398,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 0,
+    "name": "CRIM_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0235294122248888,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.06352940946817398,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 0,
+      "name": "CRIM_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 9,
+    "name": "PTRATIO_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.023255813866853714,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.06325581669807434,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 0,
+    "name": "CRIM_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.023255813866853714,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.06325581669807434,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 0,
+      "name": "CRIM_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 9,
+    "name": "PTRATIO_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.02298850566148758,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.06298850476741791,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 0,
+    "name": "CRIM_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.02298850566148758,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.06298850476741791,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 0,
+      "name": "CRIM_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 9,
+    "name": "PTRATIO_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.022727273404598236,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.06272727251052856,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 0,
+    "name": "CRIM_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.022727273404598236,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.06272727251052856,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 0,
+      "name": "CRIM_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 9,
+    "name": "PTRATIO_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.02247191034257412,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.0624719113111496,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 0,
+    "name": "CRIM_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.02247191034257412,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.0624719113111496,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 0,
+      "name": "CRIM_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 9,
+    "name": "PTRATIO_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.02222222276031971,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.06222222000360489,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 0,
+    "name": "CRIM_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.02222222276031971,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.06222222000360489,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 0,
+      "name": "CRIM_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 9,
+    "name": "PTRATIO_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.021978022530674934,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.061978019773960114,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 0,
+    "name": "CRIM_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.021978022530674934,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.061978019773960114,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 0,
+      "name": "CRIM_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 9,
+    "name": "PTRATIO_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.021739130839705467,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.061739131808280945,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 0,
+    "name": "CRIM_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.021739130839705467,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.061739131808280945,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 0,
+      "name": "CRIM_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 9,
+    "name": "PTRATIO_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.02150537632405758,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.06150537729263306,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 0,
+    "name": "CRIM_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.02150537632405758,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.06150537729263306,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 0,
+      "name": "CRIM_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 9,
+    "name": "PTRATIO_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.021276595070958138,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.07191489636898041,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.010638297535479069,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 0,
+    "name": "CRIM_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.021276595070958138,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.07191489636898041,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.010638297535479069,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 0,
+      "name": "CRIM_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 9,
+    "name": "PTRATIO_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+Iteration: 0
+treefarms reported successful execution
+training completed. Number of trees in the Rashomon set: 2
+Iteration: 1
+treefarms reported successful execution
+training completed. Number of trees in the Rashomon set: 2
+Iteration: 2
+treefarms reported successful execution
+training completed. Number of trees in the Rashomon set: 2
+Iteration: 3
+treefarms reported successful execution
+training completed. Number of trees in the Rashomon set: 2
+Iteration: 4
+treefarms reported successful execution
+training completed. Number of trees in the Rashomon set: 2
+Iteration: 5
+treefarms reported successful execution
+training completed. Number of trees in the Rashomon set: 2
+Iteration: 6
+treefarms reported successful execution
+training completed. Number of trees in the Rashomon set: 2
+Iteration: 7
+treefarms reported successful execution
+training completed. Number of trees in the Rashomon set: 2
+Iteration: 8
+treefarms reported successful execution
+training completed. Number of trees in the Rashomon set: 2
+Iteration: 9
+treefarms reported successful execution
+training completed. Number of trees in the Rashomon set: 2
+Iteration: 10
+treefarms reported successful execution
+training completed. Number of trees in the Rashomon set: 2
+Iteration: 11
+treefarms reported successful execution
+training completed. Number of trees in the Rashomon set: 2
+Iteration: 12
+treefarms reported successful execution
+training completed. Number of trees in the Rashomon set: 2
+Iteration: 13
+treefarms reported successful execution
+training completed. Number of trees in the Rashomon set: 2
+Iteration: 14
+treefarms reported successful execution
+training completed. Number of trees in the Rashomon set: 0

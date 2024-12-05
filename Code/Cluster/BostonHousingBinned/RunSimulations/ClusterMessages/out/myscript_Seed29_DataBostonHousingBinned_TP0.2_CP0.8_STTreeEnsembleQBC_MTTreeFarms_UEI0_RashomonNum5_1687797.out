@@ -1,0 +1,7504 @@
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.012500000186264515,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08749999850988388,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 2,
+    "name": "CRIM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.02500000037252903,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "feature": 9,
+        "name": "PTRATIO_1",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "type": "rational"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 11,
+  "model_objective": 0.1850000023841858,
+  "name": "PTRATIO_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.012500000186264515,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08749999850988388,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 2,
+    "name": "CRIM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.02500000037252903,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 12,
+        "name": "LSTAT_1",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 11,
+  "model_objective": 0.1850000023841858,
+  "name": "PTRATIO_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.012500000186264515,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 8,
+    "name": "RM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08749999850988388,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 11,
+      "name": "PTRATIO_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.1850000023841858,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.02500000037252903,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 9,
+    "name": "PTRATIO_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.012500000186264515,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 8,
+    "name": "RM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08749999850988388,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 11,
+      "name": "PTRATIO_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.1850000023841858,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.02500000037252903,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 12,
+    "name": "LSTAT_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.012500000186264515,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08749999850988388,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 11,
+    "name": "PTRATIO_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.1850000023841858,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 10,
+    "name": "PTRATIO_2",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.02500000037252903,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.012500000186264515,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08749999850988388,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 2,
+    "name": "CRIM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.02500000037252903,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 10,
+        "name": "PTRATIO_2",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 11,
+  "model_objective": 0.1850000023841858,
+  "name": "PTRATIO_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.012500000186264515,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 8,
+    "name": "RM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08749999850988388,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 11,
+      "name": "PTRATIO_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.1850000023841858,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 10,
+    "name": "PTRATIO_2",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.02500000037252903,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.012500000186264515,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08749999850988388,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 11,
+    "name": "PTRATIO_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.1850000023841858,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.02500000037252903,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 9,
+    "name": "PTRATIO_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.012500000186264515,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08749999850988388,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 11,
+    "name": "PTRATIO_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.1850000023841858,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.02500000037252903,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 12,
+    "name": "LSTAT_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.012500000186264515,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08749999850988388,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 2,
+    "name": "CRIM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 10,
+      "name": "PTRATIO_2",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.02500000037252903,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 12,
+        "name": "LSTAT_1",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 11,
+  "model_objective": 0.1850000023841858,
+  "name": "PTRATIO_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.05000000074505806,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.1850000023841858,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 12,
+        "name": "LSTAT_1",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 1,
+        "name": "CRIM_2",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "type": "rational"
+    },
+    "feature": 3,
+    "name": "NOX_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.07500000298023224,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.012500000186264515,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 8,
+    "name": "RM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08749999850988388,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 11,
+      "name": "PTRATIO_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.1850000023841858,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.02500000037252903,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 12,
+    "name": "LSTAT_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 10,
+      "name": "PTRATIO_2",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.012500000186264515,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08749999850988388,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 11,
+    "name": "PTRATIO_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.1850000023841858,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.02500000037252903,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 12,
+    "name": "LSTAT_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 10,
+      "name": "PTRATIO_2",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.012345679104328156,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08641975373029709,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 2,
+    "name": "CRIM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.02469135820865631,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 10,
+        "name": "PTRATIO_2",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 11,
+  "model_objective": 0.18345677852630615,
+  "name": "PTRATIO_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.012345679104328156,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 8,
+    "name": "RM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08641975373029709,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 11,
+      "name": "PTRATIO_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.18345679342746735,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.02469135820865631,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 12,
+    "name": "LSTAT_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 10,
+      "name": "PTRATIO_2",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.012345679104328156,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 8,
+    "name": "RM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08641975373029709,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 11,
+      "name": "PTRATIO_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.18345679342746735,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 10,
+    "name": "PTRATIO_2",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.02469135820865631,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.012345679104328156,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08641975373029709,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 2,
+    "name": "CRIM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 10,
+      "name": "PTRATIO_2",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.02469135820865631,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 12,
+        "name": "LSTAT_1",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 11,
+  "model_objective": 0.18345677852630615,
+  "name": "PTRATIO_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.012345679104328156,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 8,
+    "name": "RM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08641975373029709,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 11,
+      "name": "PTRATIO_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.18345679342746735,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.02469135820865631,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 9,
+    "name": "PTRATIO_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.012345679104328156,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 8,
+    "name": "RM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08641975373029709,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 11,
+      "name": "PTRATIO_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.18345679342746735,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.02469135820865631,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 12,
+    "name": "LSTAT_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.012345679104328156,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08641975373029709,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 2,
+    "name": "CRIM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.02469135820865631,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "feature": 9,
+        "name": "PTRATIO_1",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "type": "rational"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 11,
+  "model_objective": 0.18345677852630615,
+  "name": "PTRATIO_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.04938271641731262,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.18345677852630615,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 12,
+        "name": "LSTAT_1",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 1,
+        "name": "CRIM_2",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "type": "rational"
+    },
+    "feature": 3,
+    "name": "NOX_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.07407407462596893,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.012345679104328156,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08641975373029709,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 11,
+    "name": "PTRATIO_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.18345679342746735,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.02469135820865631,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 9,
+    "name": "PTRATIO_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.012345679104328156,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08641975373029709,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 11,
+    "name": "PTRATIO_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.18345679342746735,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.02469135820865631,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 12,
+    "name": "LSTAT_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 10,
+      "name": "PTRATIO_2",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.012345679104328156,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08641975373029709,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 2,
+    "name": "CRIM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.02469135820865631,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 12,
+        "name": "LSTAT_1",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 11,
+  "model_objective": 0.18345677852630615,
+  "name": "PTRATIO_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.012345679104328156,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08641975373029709,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 11,
+    "name": "PTRATIO_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.18345679342746735,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 10,
+    "name": "PTRATIO_2",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.02469135820865631,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.012345679104328156,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08641975373029709,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 11,
+    "name": "PTRATIO_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.18345679342746735,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.02469135820865631,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 12,
+    "name": "LSTAT_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.012195121496915817,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08536584675312042,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 2,
+    "name": "CRIM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.024390242993831635,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "feature": 9,
+        "name": "PTRATIO_1",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "type": "rational"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 11,
+  "model_objective": 0.18195120990276337,
+  "name": "PTRATIO_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.012195121496915817,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08536584675312042,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 2,
+    "name": "CRIM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 10,
+      "name": "PTRATIO_2",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.024390242993831635,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 12,
+        "name": "LSTAT_1",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 11,
+  "model_objective": 0.18195120990276337,
+  "name": "PTRATIO_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.04878048598766327,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.18195120990276337,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 12,
+        "name": "LSTAT_1",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 1,
+        "name": "CRIM_2",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "type": "rational"
+    },
+    "feature": 3,
+    "name": "NOX_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0731707289814949,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.012195121496915817,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 8,
+    "name": "RM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08536584675312042,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 11,
+      "name": "PTRATIO_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.18195120990276337,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.024390242993831635,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 9,
+    "name": "PTRATIO_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.012195121496915817,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08536584675312042,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 2,
+    "name": "CRIM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.024390242993831635,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 12,
+        "name": "LSTAT_1",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 11,
+  "model_objective": 0.18195120990276337,
+  "name": "PTRATIO_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.012195121496915817,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 8,
+    "name": "RM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08536584675312042,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 11,
+      "name": "PTRATIO_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.18195120990276337,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 10,
+    "name": "PTRATIO_2",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.024390242993831635,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.012195121496915817,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08536584675312042,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 2,
+    "name": "CRIM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.024390242993831635,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 10,
+        "name": "PTRATIO_2",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 11,
+  "model_objective": 0.18195120990276337,
+  "name": "PTRATIO_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.012195121496915817,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 8,
+    "name": "RM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08536584675312042,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 11,
+      "name": "PTRATIO_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.18195120990276337,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.024390242993831635,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 12,
+    "name": "LSTAT_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.012195121496915817,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08536584675312042,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 11,
+    "name": "PTRATIO_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.18195120990276337,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 10,
+    "name": "PTRATIO_2",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.024390242993831635,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.012195121496915817,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 8,
+    "name": "RM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08536584675312042,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 11,
+      "name": "PTRATIO_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.18195120990276337,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.024390242993831635,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 12,
+    "name": "LSTAT_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 10,
+      "name": "PTRATIO_2",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.012195121496915817,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08536584675312042,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 11,
+    "name": "PTRATIO_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.18195120990276337,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.024390242993831635,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 12,
+    "name": "LSTAT_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 10,
+      "name": "PTRATIO_2",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.012195121496915817,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08536584675312042,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 11,
+    "name": "PTRATIO_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.18195120990276337,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.024390242993831635,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 9,
+    "name": "PTRATIO_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.012195121496915817,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08536584675312042,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 11,
+    "name": "PTRATIO_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.18195120990276337,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.024390242993831635,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 12,
+    "name": "LSTAT_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.012048192322254181,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08433734625577927,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 2,
+    "name": "CRIM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.024096384644508362,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 10,
+        "name": "PTRATIO_2",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 11,
+  "model_objective": 0.1804819107055664,
+  "name": "PTRATIO_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.012048192322254181,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08433734625577927,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 2,
+    "name": "CRIM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.024096384644508362,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 12,
+        "name": "LSTAT_1",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 11,
+  "model_objective": 0.1804819107055664,
+  "name": "PTRATIO_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.012048192322254181,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08433734625577927,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 2,
+    "name": "CRIM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 10,
+      "name": "PTRATIO_2",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.024096384644508362,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 12,
+        "name": "LSTAT_1",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 11,
+  "model_objective": 0.1804819107055664,
+  "name": "PTRATIO_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.012048192322254181,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 8,
+    "name": "RM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08433734625577927,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 11,
+      "name": "PTRATIO_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.1804819256067276,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 10,
+    "name": "PTRATIO_2",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.024096384644508362,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.012048192322254181,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 8,
+    "name": "RM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08433734625577927,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 11,
+      "name": "PTRATIO_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.1804819256067276,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.024096384644508362,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 9,
+    "name": "PTRATIO_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.012048192322254181,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 8,
+    "name": "RM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08433734625577927,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 11,
+      "name": "PTRATIO_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.1804819256067276,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.024096384644508362,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 12,
+    "name": "LSTAT_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 10,
+      "name": "PTRATIO_2",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.012048192322254181,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08433734625577927,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 11,
+    "name": "PTRATIO_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.1804819256067276,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.024096384644508362,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 9,
+    "name": "PTRATIO_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.012048192322254181,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 8,
+    "name": "RM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08433734625577927,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 11,
+      "name": "PTRATIO_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.1804819256067276,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.024096384644508362,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 12,
+    "name": "LSTAT_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.012048192322254181,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08433734625577927,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 11,
+    "name": "PTRATIO_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.1804819256067276,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 10,
+    "name": "PTRATIO_2",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.024096384644508362,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.012048192322254181,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08433734625577927,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 2,
+    "name": "CRIM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.024096384644508362,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "feature": 9,
+        "name": "PTRATIO_1",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "type": "rational"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 11,
+  "model_objective": 0.1804819107055664,
+  "name": "PTRATIO_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.048192769289016724,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.1804819107055664,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 12,
+        "name": "LSTAT_1",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 1,
+        "name": "CRIM_2",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "type": "rational"
+    },
+    "feature": 3,
+    "name": "NOX_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.07228915393352509,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.012048192322254181,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08433734625577927,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 11,
+    "name": "PTRATIO_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.1804819256067276,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.024096384644508362,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 12,
+    "name": "LSTAT_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 10,
+      "name": "PTRATIO_2",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.012048192322254181,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08433734625577927,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 11,
+    "name": "PTRATIO_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.1804819256067276,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.024096384644508362,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 12,
+    "name": "LSTAT_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.011904762126505375,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0833333358168602,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 2,
+    "name": "CRIM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 10,
+      "name": "PTRATIO_2",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.02380952425301075,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 12,
+        "name": "LSTAT_1",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 11,
+  "model_objective": 0.1790476143360138,
+  "name": "PTRATIO_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.011904762126505375,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0833333358168602,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 2,
+    "name": "CRIM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.02380952425301075,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 10,
+        "name": "PTRATIO_2",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 11,
+  "model_objective": 0.1790476143360138,
+  "name": "PTRATIO_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0476190485060215,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.1790476143360138,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 12,
+        "name": "LSTAT_1",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 1,
+        "name": "CRIM_2",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "type": "rational"
+    },
+    "feature": 3,
+    "name": "NOX_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0714285746216774,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.011904762126505375,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0833333358168602,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 2,
+    "name": "CRIM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.02380952425301075,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "feature": 9,
+        "name": "PTRATIO_1",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "type": "rational"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 11,
+  "model_objective": 0.1790476143360138,
+  "name": "PTRATIO_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.011904762126505375,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 8,
+    "name": "RM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0833333358168602,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 11,
+      "name": "PTRATIO_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.1790476143360138,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.02380952425301075,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 9,
+    "name": "PTRATIO_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.011904762126505375,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0833333358168602,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 2,
+    "name": "CRIM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.02380952425301075,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 12,
+        "name": "LSTAT_1",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 11,
+  "model_objective": 0.1790476143360138,
+  "name": "PTRATIO_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.011904762126505375,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 8,
+    "name": "RM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0833333358168602,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 11,
+      "name": "PTRATIO_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.1790476143360138,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 10,
+    "name": "PTRATIO_2",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.02380952425301075,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.011904762126505375,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 8,
+    "name": "RM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0833333358168602,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 11,
+      "name": "PTRATIO_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.1790476143360138,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.02380952425301075,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 12,
+    "name": "LSTAT_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.011904762126505375,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0833333358168602,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 11,
+    "name": "PTRATIO_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.1790476143360138,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.02380952425301075,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 9,
+    "name": "PTRATIO_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.011904762126505375,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0833333358168602,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 11,
+    "name": "PTRATIO_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.1790476143360138,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 10,
+    "name": "PTRATIO_2",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.02380952425301075,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.011904762126505375,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0833333358168602,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 11,
+    "name": "PTRATIO_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.1790476143360138,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.02380952425301075,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 12,
+    "name": "LSTAT_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 10,
+      "name": "PTRATIO_2",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.011904762126505375,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 8,
+    "name": "RM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0833333358168602,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 11,
+      "name": "PTRATIO_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.1790476143360138,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.02380952425301075,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 12,
+    "name": "LSTAT_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 10,
+      "name": "PTRATIO_2",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.011904762126505375,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0833333358168602,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 11,
+    "name": "PTRATIO_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.1790476143360138,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.02380952425301075,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 12,
+    "name": "LSTAT_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0117647061124444,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08235294371843338,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 2,
+    "name": "CRIM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0235294122248888,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 10,
+        "name": "PTRATIO_2",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 11,
+  "model_objective": 0.17764705419540405,
+  "name": "PTRATIO_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0117647061124444,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08235294371843338,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 2,
+    "name": "CRIM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 10,
+      "name": "PTRATIO_2",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0235294122248888,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 12,
+        "name": "LSTAT_1",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 11,
+  "model_objective": 0.17764705419540405,
+  "name": "PTRATIO_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0117647061124444,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 8,
+    "name": "RM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08235294371843338,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 11,
+      "name": "PTRATIO_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.17764705419540405,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0235294122248888,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 9,
+    "name": "PTRATIO_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0117647061124444,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08235294371843338,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 2,
+    "name": "CRIM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0235294122248888,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "feature": 9,
+        "name": "PTRATIO_1",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "type": "rational"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 11,
+  "model_objective": 0.17764705419540405,
+  "name": "PTRATIO_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0117647061124444,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 8,
+    "name": "RM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08235294371843338,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 11,
+      "name": "PTRATIO_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.17764705419540405,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 10,
+    "name": "PTRATIO_2",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0235294122248888,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0117647061124444,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 8,
+    "name": "RM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08235294371843338,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 11,
+      "name": "PTRATIO_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.17764705419540405,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0235294122248888,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 12,
+    "name": "LSTAT_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 10,
+      "name": "PTRATIO_2",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0117647061124444,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08235294371843338,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 2,
+    "name": "CRIM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0235294122248888,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 12,
+        "name": "LSTAT_1",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 11,
+  "model_objective": 0.17764705419540405,
+  "name": "PTRATIO_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0117647061124444,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 8,
+    "name": "RM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08235294371843338,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 11,
+      "name": "PTRATIO_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.17764705419540405,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0235294122248888,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 12,
+    "name": "LSTAT_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0117647061124444,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08235294371843338,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 11,
+    "name": "PTRATIO_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.17764705419540405,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0235294122248888,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 9,
+    "name": "PTRATIO_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0117647061124444,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08235294371843338,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 11,
+    "name": "PTRATIO_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.17764705419540405,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 10,
+    "name": "PTRATIO_2",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0235294122248888,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0117647061124444,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08235294371843338,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 11,
+    "name": "PTRATIO_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.17764705419540405,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0235294122248888,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 12,
+    "name": "LSTAT_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 10,
+      "name": "PTRATIO_2",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0470588244497776,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.17764705419540405,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 12,
+        "name": "LSTAT_1",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 1,
+        "name": "CRIM_2",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "type": "rational"
+    },
+    "feature": 3,
+    "name": "NOX_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.07058823853731155,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0117647061124444,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08235294371843338,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 11,
+    "name": "PTRATIO_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.17764705419540405,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0235294122248888,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 12,
+    "name": "LSTAT_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.011627906933426857,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08139535039663315,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 2,
+    "name": "CRIM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.023255813866853714,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "feature": 9,
+        "name": "PTRATIO_1",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "type": "rational"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 11,
+  "model_objective": 0.17627906799316406,
+  "name": "PTRATIO_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.011627906933426857,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08139535039663315,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 2,
+    "name": "CRIM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.023255813866853714,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 12,
+        "name": "LSTAT_1",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 11,
+  "model_objective": 0.17627906799316406,
+  "name": "PTRATIO_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.011627906933426857,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08139535039663315,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 2,
+    "name": "CRIM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.023255813866853714,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 10,
+        "name": "PTRATIO_2",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 11,
+  "model_objective": 0.17627906799316406,
+  "name": "PTRATIO_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.011627906933426857,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08139535039663315,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 2,
+    "name": "CRIM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 10,
+      "name": "PTRATIO_2",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.023255813866853714,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 12,
+        "name": "LSTAT_1",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 11,
+  "model_objective": 0.17627906799316406,
+  "name": "PTRATIO_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.04651162773370743,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.17627906799316406,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 12,
+        "name": "LSTAT_1",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 1,
+        "name": "CRIM_2",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "type": "rational"
+    },
+    "feature": 3,
+    "name": "NOX_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.06976744532585144,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.011627906933426857,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 8,
+    "name": "RM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08139535039663315,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 11,
+      "name": "PTRATIO_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.17627906799316406,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 10,
+    "name": "PTRATIO_2",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.023255813866853714,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.011627906933426857,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 8,
+    "name": "RM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08139535039663315,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 11,
+      "name": "PTRATIO_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.17627906799316406,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.023255813866853714,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 9,
+    "name": "PTRATIO_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.011627906933426857,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 8,
+    "name": "RM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08139535039663315,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 11,
+      "name": "PTRATIO_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.17627906799316406,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.023255813866853714,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 12,
+    "name": "LSTAT_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.011627906933426857,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 8,
+    "name": "RM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08139535039663315,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 11,
+      "name": "PTRATIO_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.17627906799316406,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.023255813866853714,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 12,
+    "name": "LSTAT_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 10,
+      "name": "PTRATIO_2",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.011627906933426857,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08139535039663315,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 11,
+    "name": "PTRATIO_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.17627906799316406,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.023255813866853714,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 9,
+    "name": "PTRATIO_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.011627906933426857,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08139535039663315,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 11,
+    "name": "PTRATIO_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.17627906799316406,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 10,
+    "name": "PTRATIO_2",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.023255813866853714,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.011627906933426857,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08139535039663315,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 11,
+    "name": "PTRATIO_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.17627906799316406,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.023255813866853714,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 12,
+    "name": "LSTAT_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.011627906933426857,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08139535039663315,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 11,
+    "name": "PTRATIO_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.17627906799316406,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.023255813866853714,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 12,
+    "name": "LSTAT_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 10,
+      "name": "PTRATIO_2",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.01149425283074379,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08045977354049683,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 2,
+    "name": "CRIM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.02298850566148758,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 10,
+        "name": "PTRATIO_2",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 11,
+  "model_objective": 0.1749425232410431,
+  "name": "PTRATIO_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.01149425283074379,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08045977354049683,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 2,
+    "name": "CRIM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 10,
+      "name": "PTRATIO_2",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.02298850566148758,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 12,
+        "name": "LSTAT_1",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 11,
+  "model_objective": 0.1749425232410431,
+  "name": "PTRATIO_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.01149425283074379,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08045977354049683,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 2,
+    "name": "CRIM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.02298850566148758,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 12,
+        "name": "LSTAT_1",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 11,
+  "model_objective": 0.1749425232410431,
+  "name": "PTRATIO_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.04597701132297516,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "feature": 8,
+  "model_objective": 0.1749425232410431,
+  "name": "RM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 12,
+        "name": "LSTAT_1",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 1,
+        "name": "CRIM_2",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "rational"
+      },
+      "type": "rational"
+    },
+    "feature": 3,
+    "name": "NOX_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.06896551698446274,
+      "name": "Y",
+      "prediction": "True"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.01149425283074379,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08045977354049683,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 2,
+    "name": "CRIM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.02298850566148758,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "feature": 9,
+        "name": "PTRATIO_1",
+        "reference": 1.0,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "type": "rational"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 11,
+  "model_objective": 0.1749425232410431,
+  "name": "PTRATIO_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "False"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.01149425283074379,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 8,
+    "name": "RM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08045977354049683,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 11,
+      "name": "PTRATIO_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.1749425232410431,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 10,
+    "name": "PTRATIO_2",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.02298850566148758,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.01149425283074379,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 8,
+    "name": "RM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08045977354049683,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 11,
+      "name": "PTRATIO_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.1749425232410431,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.02298850566148758,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 12,
+    "name": "LSTAT_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 10,
+      "name": "PTRATIO_2",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.01149425283074379,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 8,
+    "name": "RM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08045977354049683,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 11,
+      "name": "PTRATIO_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.1749425232410431,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.02298850566148758,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 12,
+    "name": "LSTAT_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.01149425283074379,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08045977354049683,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 11,
+    "name": "PTRATIO_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.1749425232410431,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.02298850566148758,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 9,
+    "name": "PTRATIO_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.01149425283074379,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08045977354049683,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 11,
+    "name": "PTRATIO_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.1749425232410431,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.02298850566148758,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 12,
+    "name": "LSTAT_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 10,
+      "name": "PTRATIO_2",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.01149425283074379,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 8,
+    "name": "RM_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08045977354049683,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 11,
+      "name": "PTRATIO_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.1749425232410431,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.02298850566148758,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 9,
+    "name": "PTRATIO_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.01149425283074379,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08045977354049683,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 11,
+    "name": "PTRATIO_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.1749425232410431,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 10,
+    "name": "PTRATIO_2",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.02298850566148758,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 12,
+      "name": "LSTAT_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.01149425283074379,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 8,
+      "name": "RM_3",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08045977354049683,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "type": "rational"
+    },
+    "feature": 11,
+    "name": "PTRATIO_3",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "type": "rational"
+  },
+  "feature": 2,
+  "model_objective": 0.1749425232410431,
+  "name": "CRIM_3",
+  "reference": 1.0,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.02298850566148758,
+      "name": "Y",
+      "prediction": "False"
+    },
+    "feature": 12,
+    "name": "LSTAT_1",
+    "reference": 1.0,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 9,
+      "name": "PTRATIO_1",
+      "reference": 1.0,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "rational"
+    },
+    "type": "rational"
+  },
+  "type": "rational"
+}
