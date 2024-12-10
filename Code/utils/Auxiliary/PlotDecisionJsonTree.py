@@ -70,6 +70,14 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from collections import Counter
 
+import matplotlib.pyplot as plt
+import pandas as pd
+from collections import Counter
+
+import matplotlib.pyplot as plt
+import pandas as pd
+from collections import Counter
+
 def PlotTreeFarmsDecisionTreeErrors(AllErrors, order_errors=True):
     """
     Plot misclassification errors with TreeIndex values.
@@ -90,7 +98,7 @@ def PlotTreeFarmsDecisionTreeErrors(AllErrors, order_errors=True):
         pdAllErrors = pdAllErrors.sort_values(by="ClassificationError").reset_index(drop=True)
 
     # Plot the scatter plot
-    fig, ax = plt.subplots(figsize=(20, 6))  # Increased figure width
+    fig, ax = plt.subplots(figsize=(4, 6))  # Adjust figure size
 
     # Prepare the error counts (from Counter)
     error_counts = Counter(pdAllErrors["RoundedError"])
@@ -101,9 +109,6 @@ def PlotTreeFarmsDecisionTreeErrors(AllErrors, order_errors=True):
 
     # Combine header and rows
     caption = caption_header + "\n" + caption_rows
-
-    # Display the caption vertically on the right side of the plot
-    plt.text(1.02, 0.5, caption, ha='left', va='center', transform=ax.transAxes, fontsize=10)
 
     # Add small circles with the TreeIndex on each point (without scatter plot points)
     for i, row in pdAllErrors.iterrows():
@@ -116,8 +121,19 @@ def PlotTreeFarmsDecisionTreeErrors(AllErrors, order_errors=True):
     ax.set_ylim(0, 0.3)  # Extend y-axis limits
     ax.set_xlabel("Index of Trees in TREEFarms")
     ax.set_ylabel("Misclassification error")
+    ax.set_xticks([])
+
+    # Add the caption inside the plot at the top-left corner
+    ax.text(
+        0.02, 0.98,  # Relative position in the axes (2% from left, 98% from top)
+        caption, 
+        ha="left", va="top",  # Align text to the top-left corner
+        transform=ax.transAxes,  # Use axes coordinates for positioning
+        fontsize=10, family="monospace", bbox=dict(facecolor="white", alpha=0.8)
+    )
 
     plt.show()
+
 
 ### # For loop for generating the decision trees ###
 # for tree in range(0, Model.get_tree_count()):
