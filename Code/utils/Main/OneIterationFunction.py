@@ -52,25 +52,23 @@ def OneIterationFunction(DataFileInput,
     SelectedObservationHistory = []
 
     ### Generate Data ###
-    if(DataFileInput == "Simulate"):
-        from utils.Main import DataGeneratingProcess                             ### NOTE: Why is this not imported from utils.Main import *
-        df = DataGeneratingProcess(**DataArgs)
-    else:
-        df = LoadData(DataFileInput)
+    # if(DataFileInput == "Simulate"):
+    #     from utils.Main import DataGeneratingProcess                             ### NOTE: Why is this not imported from utils.Main import *
+    #     df = DataGeneratingProcess(**DataArgs)
+    # else:
+    df = LoadData(SimulationConfigInput["DataFileInput"])
 
     ### Train Test Candidate Split
     from utils.Main import TrainTestCandidateSplit                           ### NOTE: Why is this not imported from utils.Main import *
-    df_Train, df_Test, df_Candidate = TrainTestCandidateSplit(df, TestProportion, CandidateProportion)
+    df_Train, df_Test, df_Candidate = TrainTestCandidateSplit(df, SimulationConfigInput["TestProportion"], SimulationConfigInput["CandidateProportion"])
 
     ### Selector Arguments ###
     SelectorArgs["df_Train"] = df_Test                                     # NOTE: Change to df_Test if there is a test set
     SelectorArgs["df_Candidate"] = df_Candidate
     SelectorArgs["Model"] = ""
-    # SelectorArgsFiltered = FilterArguments(SelectorType, SelectorArgs)
 
     ### Model Arguments ###
     ModelArgs['df_Train'] = df_Train
-    # ModelArgsFiltered = FilterArguments(ModelType, ModelArgs)
     
     ### Learning Process ###
     from utils.Main import LearningProcedure                                 ### NOTE: Why is this not imported from utils.Main import *

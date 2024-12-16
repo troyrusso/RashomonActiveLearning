@@ -7,7 +7,7 @@ import os
 import pickle
 import pandas as pd
 
-def LoadData(filename):
+def LoadData(DataFileInput):
     ### Directory ###
     cwd = os.getcwd()
     ParentDirectory = os.path.abspath(os.path.join(cwd, "../"))
@@ -16,7 +16,7 @@ def LoadData(filename):
     ### Get Data ###
     for directory in directories:
         try:
-            filepath = os.path.join(directory, "Data", "processed", filename + ".pkl")
+            filepath = os.path.join(directory, "Data", "processed", DataFileInput + ".pkl")
             with open(filepath, 'rb') as file:
                 data = pickle.load(file).dropna()
             return data
@@ -25,6 +25,6 @@ def LoadData(filename):
         except Exception as e:
             raise RuntimeError(f"An error occurred while loading the file: {e}")
 
-    raise FileNotFoundError(f"File '{filename}.pkl' not found in any specified directories.")
+    raise FileNotFoundError(f"File '{DataFileInput}.pkl' not found in any specified directories.")
 
     return data
