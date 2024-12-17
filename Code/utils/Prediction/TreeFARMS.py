@@ -17,8 +17,9 @@ from treeFarms.treefarms.model.treefarms import TREEFARMS
 
 
 ### Function ###
-def TreeFarmsFunction(df_Train, config):
-   ### Train TreeFarms Model ###
+def TreeFarmsFunction(df_Train, regularization, rashomon_bound_adder):
+    ### Train TreeFarms Model ###
+    config = {"regularization": regularization, "rashomon_bound_adder": rashomon_bound_adder}
     TreeFarmsModel = TREEFARMS(config)
     TreeFarmsModel.fit(df_Train.loc[:, df_Train.columns != "Y"], df_Train["Y"])
     

@@ -16,14 +16,11 @@
 #   ElapsedTime: Time for the entire learning process.
 
 ### Import packages ###
-import os
 import time
 import numpy as np
 import math as math
 import pandas as pd
 import random as random
-import matplotlib.pyplot as plt
-from scipy.spatial.distance import cdist
 
 ### Import functions ###
 from utils.Main import *
@@ -32,22 +29,14 @@ from utils.Auxiliary import *
 from utils.Prediction import *
 
 ### Function ###
-def OneIterationFunction(DataFileInput,
-                         Seed,
-                         TestProportion,
-                         CandidateProportion,
-                         SelectorType, 
-                         ModelType, 
-                         DataArgs,
-                         SelectorArgs,
-                         ModelArgs):
+def OneIterationFunction(SimulationConfigInput):
     
     ### Run Time ###
     StartTime = time.time()
 
     ### Set Up ###
-    random.seed(Seed)
-    np.random.seed(Seed)
+    random.seed(SimulationConfigInput["Seed"])
+    np.random.seed(SimulationConfigInput["Seed"])
     ErrorVec = []
     SelectedObservationHistory = []
 
@@ -58,39 +47,31 @@ def OneIterationFunction(DataFileInput,
     # else:
     df = LoadData(SimulationConfigInput["DataFileInput"])
 
-    ### Train Test Candidate Split
+    ### Train Test Candidate Split ###
     from utils.Main import TrainTestCandidateSplit                           ### NOTE: Why is this not imported from utils.Main import *
     df_Train, df_Test, df_Candidate = TrainTestCandidateSplit(df, SimulationConfigInput["TestProportion"], SimulationConfigInput["CandidateProportion"])
 
-    ### Selector Arguments ###
-    SelectorArgs["df_Train"] = df_Test                                     # NOTE: Change to df_Test if there is a test set
-    SelectorArgs["df_Candidate"] = df_Candidate
-    SelectorArgs["Model"] = ""
-
-    ### Model Arguments ###
-    ModelArgs['df_Train'] = df_Train
+    ### Update SimulationConfig Arguments ###
+    SimulationConfigInput['df_Train'] = df_Train
+    SimulationConfigInput["df_Test"] = df_Test                                     # NOTE: Change to df_Test if there is a test set
+    SimulationConfigInput["df_Candidate"] = df_Candidate
     
     ### Learning Process ###
     from utils.Main import LearningProcedure                                 ### NOTE: Why is this not imported from utils.Main import *
-    ErrorVec, SelectedObservationHistory = LearningProcedure(df_Train = df_Train, 
-                                                                df_Test = df_Test, 
-                                                                df_Candidate = df_Candidate, 
-                                                                SelectorType = SelectorType, 
-                                                                SelectorArgs = SelectorArgs,
-                                                                ModelType = ModelType, 
-                                                                ModelArgs = ModelArgs
-                                                                )
+    ErrorVec, SelectedObservationHistory = LearningProcedure(SimulationConfigInputUpdated = SimulationConfigInput)
     
     ### Return Simulation Parameters ###
-    SimulationParameters = {"DataFileInput" : str(DataFileInput),
-                            "Seed" : str(Seed),
-                            "TestProportion" : str(TestProportion),
-                            "CandidateProportion" : str(CandidateProportion),
-                            "SelectorType" : str(SelectorType),
-                            "ModelType" : str(ModelType),
-                            "DataArgs" : str(DataArgs),
-                            # "SelectorArgs" : str(SelectorArgs),
-                            "ModelArgs" : str(FilterArguments(ModelType, ModelArgs).pop('df_Train', None))
+    SimulationParameters = {"DataFileInput" : str(SimulationConfigInput["DataFileInput"]),
+                            "Seed" : str(SimulationConfigInput["Seed"]),
+                            "TestProportion" : str(SimulationConfigInput["TestProportion"]),
+                            "CandidateProportion" : str(SimulationConfigInput["CandidateProportion"]),
+                            "SelectorType" :  str(SimulationConfigInput["SelectorType"]),
+                            "ModelType" :  str(SimulationConfigInput["ModelType"]),
+                            'UniqueErrorsInput': str(SimulationConfigInput["UniqueErrorsInput"]),
+                            'n_estimators': str(SimulationConfigInput["n_estimators"]),
+                            'regularization': str(SimulationConfigInput["regularization"]),
+                            'rashomon_bound_adder': str(SimulationConfigInput["rashomon_bound_adder"]),
+                            'Type': 'Classification'
                             }
     
     ### Return Time ###
@@ -98,9 +79,9 @@ def OneIterationFunction(DataFileInput,
 
     ### Return Dictionary ###
     SimulationResults = {"ErrorVec" : pd.DataFrame(ErrorVec, columns =["Error"]),
-                             "SelectionHistory" : pd.DataFrame(SelectedObservationHistory, columns = ["ObservationID"]),
-                             "SimulationParameters" : SimulationParameters,
-                             "ElapsedTime" : ElapsedTime}
+                         "SelectionHistory" : pd.DataFrame(SelectedObservationHistory, columns = ["ObservationID"]),
+                         "SimulationParameters" : SimulationParameters,
+                         "ElapsedTime" : ElapsedTime}
 
 
     return SimulationResults

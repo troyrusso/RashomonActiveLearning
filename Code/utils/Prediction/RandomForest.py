@@ -23,5 +23,3 @@ def RandomForestClassificationFunction(df_Train, n_estimators, Seed):
     RandomForestClassificationModel.fit(df_Train.loc[:, df_Train.columns != "Y"], df_Train["Y"])
     return RandomForestClassificationModel
 
-
-

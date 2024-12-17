@@ -19,53 +19,47 @@ from utils.Prediction import *
 import pandas as pd
 
 ### Function ###
-def LearningProcedure(df_Train, 
-                         df_Test, 
-                         df_Candidate, 
-                         SelectorType, 
-                         SelectorArgs,
-                         ModelType, 
-                         ModelArgs):
+def LearningProcedure(SimulationConfigInputUpdated):
 
     ### Set Up ###
     ErrorVec = []
     SelectedObservationHistory = []
 
     ### Algorithm ###
-    for i in range(len(df_Candidate)):
+    for i in range(len(SimulationConfigInputUpdated["df_Candidate"])):
 
         ### Prediction Model ###
         print("Iteration: " + str(i))
-        ModelArgsFiltered = FilterArguments(ModelType, ModelArgs)
+        ModelType = globals().get(SimulationConfigInputUpdated["ModelType"], None)
+        ModelArgsFiltered = FilterArguments(ModelType, SimulationConfigInputUpdated)
         Model = ModelType(**ModelArgsFiltered)
-        if "Model" in SelectorArgs.keys(): SelectorArgs['Model'] = Model            # NOTE: THIS IS NOT DYNAMIC
+        SimulationConfigInputUpdated['Model'] = Model
 
         ### Current Error ###
-        TestErrorVal = TestErrorFunction(Model, df_Test, ModelArgs["Type"])        # NOTE: Change to df_Test if there is a test set
+        TestErrorVal = TestErrorFunction(Model, SimulationConfigInputUpdated["df_Test"], SimulationConfigInputUpdated["Type"])
         if(len(TestErrorVal) > 1):
             AllErrors = TestErrorVal                                                # Rashomon gives all errors of Rashomon
             CurrentError = float(np.min(AllErrors))                                 # Extract the best one
         else: 
             CurrentError = TestErrorVal                                             # One output for non-Rashomon
             AllErrors = [None]
-        SelectorArgs["AllErrors"] = AllErrors                                       # Use AllErrors in RashomonQBC
+        SimulationConfigInputUpdated["AllErrors"] = AllErrors                       # Use AllErrors in RashomonQBC
         ErrorVec.append(CurrentError)
 
-
         ### Sampling Procedure ###
-        SelectorArgsFiltered = FilterArguments(SelectorType, SelectorArgs)
+        SelectorType = globals().get(SimulationConfigInputUpdated["SelectorType"], None)
+        SelectorArgsFiltered = FilterArguments(SelectorType, SimulationConfigInputUpdated)
         QueryObservationIndex = SelectorType(**SelectorArgsFiltered)
-        QueryObservation = df_Candidate.loc[[QueryObservationIndex]] # or should this be iloc
+        QueryObservation = SimulationConfigInputUpdated["df_Candidate"].loc[[QueryObservationIndex]] # or should this be iloc
         SelectedObservationHistory.append(QueryObservationIndex)
         
         ### Update Train and Candidate Sets ###
-        df_Train = pd.concat([df_Train, QueryObservation])
-        df_Candidate = df_Candidate.drop(QueryObservationIndex)
+        SimulationConfigInputUpdated["df_Train"] = pd.concat([SimulationConfigInputUpdated["df_Train"], QueryObservation])
+        SimulationConfigInputUpdated["df_Candidate"] = SimulationConfigInputUpdated["df_Candidate"].drop(QueryObservationIndex)
 
-        ### Update SelectorArgs and ModelArgs ###                                     # NOTE: THIS IS NOT DYNAMIC
-        if "df_Train" in ModelArgs.keys(): ModelArgs['df_Train'] = df_Train
-        if "df_Train" in SelectorArgs.keys(): SelectorArgs['df_Train'] = df_Train
-        if "df_Candidate" in SelectorArgs.keys(): SelectorArgs['df_Candidate'] = df_Candidate      
+        # ### Update SimulationConfigInputUpdated ###
+        # SimulationConfigInputUpdated['df_Train'] = df_Train
+        # SimulationConfigInputUpdated['df_Candidate'] = df_Candidate   
 
     ### RETURN ###
     return ErrorVec, SelectedObservationHistory
