@@ -1,22 +1,20 @@
 #!/bin/bash
 
-# cd RashomonActiveLearning
-# python Code/utils/Auxiliary/ProcessSimulationResults.py \
-#     --DataType "BostonHousing" \
-#     --ModelType "TreeFarms" \
-#     --Categories '["PassiveLearning_MTTreeFarmsRashomonNum11.pkl", "RashomonQBC_MTTreeFarmsRashomonNum11.pkl", "RashomonQBC_MTTreeFarmsRashomonNum1010.pkl", "RashomonQBC_MTTreeFarmsRashomonNum100100.pkl"]'
-
-cd ~/RashomonActiveLearning
-python Code/utils/Auxiliary/ProcessSimulationResults.py \
-    --DataType "BostonHousing" \
-    --ModelType "TreeFarms" \
-    --Categories '["8_STTreeEnsembleQBC_MTTreeFarms_UEI0_RashomonNum100.pkl",
-                   "8_STTreeEnsembleQBC_MTTreeFarms_UEI0_RashomonNum10.pkl",
-                   "8_STTreeEnsembleQBC_MTTreeFarms_UEI1_RashomonNum100.pkl",
-                   "8_STTreeEnsembleQBC_MTTreeFarms_UEI1_RashomonNum10.pkl"]'
-                   
+### Extract Random Forests Results ###
 cd ~/RashomonActiveLearning
 python Code/utils/Auxiliary/ProcessSimulationResults.py \
     --DataType "BostonHousing" \
     --ModelType "RandomForestClassification" \
-    --Categories '["MTRandomForestClassification_UEI1_RashomonNum10.pkl"]'
+    --Categories '["MTRandomForestClassification_UEI0_NE100_Reg0.01_RBA0.01.pkl"]'
+
+### Extract Duplicate TREEFARMS Results ###
+python Code/utils/Auxiliary/ProcessSimulationResults.py \
+    --DataType "BostonHousing" \
+    --ModelType "TreeFarms" \
+    --Categories '["MTTreeFarms_UEI0_NE100_Reg0.01_RBA0.01.pkl"]'
+
+### Extract Unique TREEFARMS Results ###
+python Code/utils/Auxiliary/ProcessSimulationResults.py \
+    --DataType "BostonHousing" \
+    --ModelType "TreeFarms" \
+    --Categories '["MTTreeFarms_UEI1_NE100_Reg0.01_RBA0.01.pkl"]'
