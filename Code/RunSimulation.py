@@ -34,21 +34,23 @@ parser.add_argument("--ModelArgs", type=str, default="-1", help="Simulation case
 parser.add_argument("--Output", type=str, default="-1", help="Simulation case number.")
 args = parser.parse_args()
 
-### Set Up ###
-ErrorVecSimulation = []
-HistoryVecSimulation = []
+### Parameter Vector ###
+SimulationConfigInput = {"DataFileInput": ParameterVector.iloc[i]["Data"],
+                        "Seed": int(ParameterVector.iloc[i]["Seed"]),
+                        "TestProportion": float(ParameterVector.iloc[i]["TestProportion"]),
+                        "CandidateProportion": float(ParameterVector.iloc[i]["CandidateProportion"]),
+                        "SelectorType": str(ParameterVector.iloc[i]["SelectorType"]), 
+                        "ModelType": str(ParameterVector.iloc[i]["ModelType"]), 
+                        "TopCModels": float(ParameterVector.iloc[i]["TopCModels"]), 
+                        "UniqueErrorsInput": int(ParameterVector.iloc[i]["UniqueErrorsInput"]),
+                        "n_estimators":int(ParameterVector.iloc[i]["n_estimators"]),
+                        "regularization":float(ParameterVector.iloc[i]["regularization"]),
+                        "rashomon_bound_adder":float(ParameterVector.iloc[i]["rashomon_bound_adder"]),
+                        "Type":ParameterVector.iloc[i]["Type"]
+                        }
 
 ### Run Code ###
-SimulationResults = OneIterationFunction(DataFileInput = args.Data,
-                                                Seed = int(args.Seed),
-                                                TestProportion = float(args.TestProportion),
-                                                CandidateProportion = float(args.CandidateProportion),
-                                                SelectorType = globals().get(args.SelectorType, None), 
-                                                ModelType = globals().get(args.ModelType, None), 
-                                                DataArgs = json.loads(args.DataArgs.replace("'", '"')),
-                                                SelectorArgs = json.loads(args.SelectorArgs.replace("'", '"')),
-                                                ModelArgs = json.loads(args.ModelArgs.replace("'", '"'))
-                                                )
+SimulationResults = OneIterationFunction(SimulationConfigInput)
 
 ### Save Simulation Results ###
 with open(os.path.join(SaveDirectory, str(args.Output)), 'wb') as f:

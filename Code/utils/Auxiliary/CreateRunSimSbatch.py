@@ -10,30 +10,34 @@ import argparse
 cwd = os.getcwd()
 ParentDirectory = os.path.abspath(os.path.join(cwd, "../.."))
 
-# Set up argument parser
+### Set up argument parser ###
 parser = argparse.ArgumentParser(description="Parse command line arguments for job parameters")
 parser.add_argument("--DataType", type=str, default="-1", help="Simulation case number.")
 args = parser.parse_args()
 
-### Open Parameter Vector ###
+### Open ParameterVector ###
 ParameterVector = pd.read_csv(os.path.join(cwd, "Data", "ParameterVectors", "ParameterVector" + args.DataType + ".csv"))
 
-# Loop through each row in the DataFrame
+### Loop through each row in the DataFrame ###
 for i, row in ParameterVector.iterrows():
-    # Extract parameters for the current row
-    JobName = row["JobName"]
-    Seed = row["Seed"]
-    Data = row["Data"]
-    TestProportion = row["TestProportion"]
-    CandidateProportion = row["CandidateProportion"]
-    SelectorType = row["SelectorType"]
-    ModelType = row["ModelType"]
-    DataArgs = row["DataArgs"]
-    SelectorArgs = row["SelectorArgs"]
-    ModelArgs = row["ModelArgs"]
-    Output = row["Output"]
     
-    # Define the path for the .sbatch file
+    ## Extract parameters ###
+    JobName = row['JobName']
+    Data = row['Data']
+    Seed = row['Seed']
+    TestProportion = row['TestProportion']
+    CandidateProportion = row['CandidateProportion']
+    SelectorType = row['SelectorType']
+    ModelType = row['ModelType']
+    TopCModels = row['TopCModels']
+    UniqueErrorsInput = row['UniqueErrorsInput']
+    n_estimators = row['n_estimators']
+    regularization = row['regularization']
+    rashomon_bound_adder = row['rashomon_bound_adder']
+    Type = row['Type']
+    Output = row['Output']
+    
+    # Path for .sbatch files ###
     TargetDirectory = os.path.join(cwd,"Code", "Cluster", Data, "RunSimulations")
     sbatch_file_path = os.path.join(TargetDirectory, f"{JobName}.sbatch")
     
@@ -54,16 +58,19 @@ for i, row in ParameterVector.iterrows():
         "module load Python",
         "python Code/RunSimulation.py \\",
         f"    --JobName " + JobName +" \\",
-        f"    --Seed {Seed} \\",
         f"    --Data {Data} \\",
+        f"    --Seed {Seed} \\",
         f"    --TestProportion {TestProportion} \\",
         f"    --CandidateProportion {CandidateProportion} \\",
         f"    --SelectorType {SelectorType} \\",
         f"    --ModelType {ModelType} \\",
-        f"    --DataArgs {DataArgs} \\",
-        f"    --SelectorArgs {SelectorArgs} \\",
-        f"    --ModelArgs {ModelArgs} \\",
-        f"    --Output {Output}"
+        f"    --TopCModels {TopCModels} \\",
+        f"    --UniqueErrorsInput {UniqueErrorsInput} \\",
+        f"    --n_estimators {n_estimators} \\",
+        f"    --regularization {regularization}"
+        f"    ---rashomon_bound_adder {rashomon_bound_adder} \\",
+        f"    ---Type {Type} \\",
+        f"    ---Output {Output} \\"
     ]
 
     # Write content to .sbatch file
