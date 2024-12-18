@@ -29,7 +29,6 @@ for i, row in ParameterVector.iterrows():
     CandidateProportion = row['CandidateProportion']
     SelectorType = row['SelectorType']
     ModelType = row['ModelType']
-    TopCModels = row['TopCModels']
     UniqueErrorsInput = row['UniqueErrorsInput']
     n_estimators = row['n_estimators']
     regularization = row['regularization']
@@ -64,13 +63,12 @@ for i, row in ParameterVector.iterrows():
         f"    --CandidateProportion {CandidateProportion} \\",
         f"    --SelectorType {SelectorType} \\",
         f"    --ModelType {ModelType} \\",
-        f"    --TopCModels {TopCModels} \\",
         f"    --UniqueErrorsInput {UniqueErrorsInput} \\",
         f"    --n_estimators {n_estimators} \\",
-        f"    --regularization {regularization}"
-        f"    ---rashomon_bound_adder {rashomon_bound_adder} \\",
-        f"    ---Type {Type} \\",
-        f"    ---Output {Output} \\"
+        f"    --regularization {regularization} \\",
+        f"    --rashomon_bound_adder {rashomon_bound_adder} \\",
+        f"    --Type {Type} \\",
+        f"    --Output {Output}"
     ]
 
     # Write content to .sbatch file

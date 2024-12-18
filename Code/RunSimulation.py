@@ -21,17 +21,19 @@ SaveDirectory = os.path.join(cwd, "Results")
 
 # Set up argument parser
 parser = argparse.ArgumentParser(description="Parse command line arguments for job parameters")
-parser.add_argument("--JobName", type=str, default="-1", help="Simulation case number.")
-parser.add_argument("--Seed", type=str, default="-1", help="Simulation case number.")
-parser.add_argument("--Data", type=str, default="-1", help="Simulation case number.")
-parser.add_argument("--TestProportion", type=str, default="-1", help="Simulation case number.")
-parser.add_argument("--CandidateProportion", type=str, default="-1", help="Simulation case number.")
-parser.add_argument("--SelectorType", type=str, default="-1", help="Simulation case number.")
-parser.add_argument("--ModelType", type=str, default="-1", help="Simulation case number.")
-parser.add_argument("--DataArgs", type=str, default="-1", help="Simulation case number.")
-parser.add_argument("--SelectorArgs", type=str, default="-1", help="Simulation case number.")
-parser.add_argument("--ModelArgs", type=str, default="-1", help="Simulation case number.")
-parser.add_argument("--Output", type=str, default="-1", help="Simulation case number.")
+parser.add_argument("--JobName", type=str, default="-1", help="Job name.")
+parser.add_argument("--Seed", type=int, default=-1, help="Seed.")
+parser.add_argument("--Data", type=str, default="-1", help="Data type.")
+parser.add_argument("--TestProportion", type=float, default="-1.0", help="Percent for validation set.")
+parser.add_argument("--CandidateProportion", type=float, default="-1.0", help="Percent for candidate datset.")
+parser.add_argument("--SelectorType", type=str, default="-1", help="Query strategy.")
+parser.add_argument("--ModelType", type=str, default="-1", help="Predictive model.")
+parser.add_argument("--UniqueErrorsInput", type=int, default="-1", help="Unique (1) vs. Duplicate (0) boolean for TreeFarms.")
+parser.add_argument("--n_estimators", type=int, default="-1", help="Number of trees for random forest.")
+parser.add_argument("--regularization", type=float, default="-1.0", help="Regularization for TreeFarms.")
+parser.add_argument("--rashomon_bound_adder", type=float, default="-1.0", help="Rashomon threshold addiditive epislon for TreeFarms.")
+parser.add_argument("--Type", type=str, default="-1", help="Regression vs. Classification (currently only classification offered).")
+parser.add_argument("--Output", type=str, default="-1", help="Output.")
 args = parser.parse_args()
 
 ### Parameter Vector ###
@@ -41,12 +43,11 @@ SimulationConfigInput = {"DataFileInput": ParameterVector.iloc[i]["Data"],
                         "CandidateProportion": float(ParameterVector.iloc[i]["CandidateProportion"]),
                         "SelectorType": str(ParameterVector.iloc[i]["SelectorType"]), 
                         "ModelType": str(ParameterVector.iloc[i]["ModelType"]), 
-                        "TopCModels": float(ParameterVector.iloc[i]["TopCModels"]), 
                         "UniqueErrorsInput": int(ParameterVector.iloc[i]["UniqueErrorsInput"]),
                         "n_estimators":int(ParameterVector.iloc[i]["n_estimators"]),
                         "regularization":float(ParameterVector.iloc[i]["regularization"]),
                         "rashomon_bound_adder":float(ParameterVector.iloc[i]["rashomon_bound_adder"]),
-                        "Type":ParameterVector.iloc[i]["Type"]
+                        "Type": ParameterVector.iloc[i]["Type"]
                         }
 
 ### Run Code ###
