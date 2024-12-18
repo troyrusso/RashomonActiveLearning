@@ -37,17 +37,17 @@ parser.add_argument("--Output", type=str, default="-1", help="Output.")
 args = parser.parse_args()
 
 ### Parameter Vector ###
-SimulationConfigInput = {"DataFileInput": ParameterVector.iloc[i]["Data"],
-                        "Seed": int(ParameterVector.iloc[i]["Seed"]),
-                        "TestProportion": float(ParameterVector.iloc[i]["TestProportion"]),
-                        "CandidateProportion": float(ParameterVector.iloc[i]["CandidateProportion"]),
-                        "SelectorType": str(ParameterVector.iloc[i]["SelectorType"]), 
-                        "ModelType": str(ParameterVector.iloc[i]["ModelType"]), 
-                        "UniqueErrorsInput": int(ParameterVector.iloc[i]["UniqueErrorsInput"]),
-                        "n_estimators":int(ParameterVector.iloc[i]["n_estimators"]),
-                        "regularization":float(ParameterVector.iloc[i]["regularization"]),
-                        "rashomon_bound_adder":float(ParameterVector.iloc[i]["rashomon_bound_adder"]),
-                        "Type": ParameterVector.iloc[i]["Type"]
+SimulationConfigInput = {"DataFileInput": args.Data,
+                        "Seed": int(args.Seed),
+                        "TestProportion": float(args.TestProportion),
+                        "CandidateProportion": float(args.CandidateProportion),
+                        "SelectorType": str(args.SelectorType), 
+                        "ModelType": str(args.ModelType), 
+                        "UniqueErrorsInput": int(args.UniqueErrorsInput),
+                        "n_estimators":int(args.n_estimators),
+                        "regularization":float(args.regularization),
+                        "rashomon_bound_adder":float(args.rashomon_bound_adder),
+                        "Type": args.Type
                         }
 
 ### Run Code ###
