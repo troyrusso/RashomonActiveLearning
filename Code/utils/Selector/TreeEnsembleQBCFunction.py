@@ -15,7 +15,7 @@ import numpy as np
 from scipy.spatial.distance import cdist
 
 ### Function ###
-def TreeEnsembleQBCFunction(Model, df_Candidate, df_Train, TopCModels, AllErrors, UniqueErrorsInput):
+def TreeEnsembleQBCFunction(Model, df_Candidate, df_Train, AllErrors, UniqueErrorsInput):
 
     ### Ignore warning (taken care of) ###
     np.seterr(all = 'ignore') 
@@ -27,17 +27,14 @@ def TreeEnsembleQBCFunction(Model, df_Candidate, df_Train, TopCModels, AllErrors
 
     ### Predicted Values ###
     if 'TREEFARMS' in str(type(Model)):                                                                         # TreeFarms
-        if len(AllErrors) < TopCModels:
-            TopCModels = len(AllErrors)
 
         ## Unique Errors ##
         if UniqueErrorsInput:
             AllErrorsArray = np.array(AllErrors)
-            UniqueErrors = sorted(set(AllErrors))
-            SelectedErrors = UniqueErrors[:TopCModels]
-            LowestErrorIndices = [int(np.where(AllErrorsArray == error)[0][0]) for error in SelectedErrors]
+            UniqueErrors = sorted(set(AllErrors))                                                               # NOTE: NEED TO CORRECTLY CATEGORIZE CLASSIFICATION PATTERNS HERE
+            LowestErrorIndices = [int(np.where(AllErrorsArray == error)[0][0]) for error in UniqueErrors]
         else:
-            LowestErrorIndices = np.argsort(AllErrors)[:TopCModels]
+            LowestErrorIndices = np.argsort(AllErrors)
 
         ## Prediction ##
         PredictedValues = [Model[i].predict(df_Candidate) for i in LowestErrorIndices]
@@ -70,5 +67,5 @@ def TreeEnsembleQBCFunction(Model, df_Candidate, df_Train, TopCModels, AllErrors
     IndexRecommendation = int(df_Candidate.sort_values(by = "UncertaintyMetric", ascending = False).index[0])
     df_Candidate.drop('UncertaintyMetric', axis=1, inplace=True)
     
-    return(IndexRecommendation)
+    return IndexRecommendation
 

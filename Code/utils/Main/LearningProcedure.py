@@ -24,6 +24,7 @@ def LearningProcedure(SimulationConfigInputUpdated):
     ### Set Up ###
     ErrorVec = []
     SelectedObservationHistory = []
+    RashomonCommitteeDict = {"AllModelsInRashomonSet": [], "UniqueModelsInRashomonSet": []}
 
     ### Algorithm ###
     for i in range(len(SimulationConfigInputUpdated["df_Candidate"])):
@@ -37,13 +38,15 @@ def LearningProcedure(SimulationConfigInputUpdated):
 
         ### Current Error ###
         TestErrorVal = TestErrorFunction(Model, SimulationConfigInputUpdated["df_Test"], SimulationConfigInputUpdated["Type"])
-        if(len(TestErrorVal) > 1):
-            AllErrors = TestErrorVal                                                # Rashomon gives all errors of Rashomon
-            CurrentError = float(np.min(AllErrors))                                 # Extract the best one
+        if(len(TestErrorVal) > 1):                                                                   # If Rashomon
+            AllErrors = TestErrorVal                                                                 # All errors of Rashomon
+            CurrentError = float(np.min(AllErrors))                                                  # Extract the best one
+            RashomonCommitteeDict["AllModelsInRashomonSet"].append(Model.get_tree_count())           # Store number of trees
+            RashomonCommitteeDict["UniqueModelsInRashomonSet"].append(len(set(AllErrors)))           # Store number of unique/duplicate trees
         else: 
-            CurrentError = TestErrorVal                                             # One output for non-Rashomon
+            CurrentError = TestErrorVal                                                              # One output for non-Rashomon
             AllErrors = [None]
-        SimulationConfigInputUpdated["AllErrors"] = AllErrors                       # Use AllErrors in RashomonQBC
+        SimulationConfigInputUpdated["AllErrors"] = AllErrors                                        # Use AllErrors in RashomonQBC
         ErrorVec.append(CurrentError)
 
         ### Sampling Procedure ###
@@ -55,11 +58,7 @@ def LearningProcedure(SimulationConfigInputUpdated):
         
         ### Update Train and Candidate Sets ###
         SimulationConfigInputUpdated["df_Train"] = pd.concat([SimulationConfigInputUpdated["df_Train"], QueryObservation])
-        SimulationConfigInputUpdated["df_Candidate"] = SimulationConfigInputUpdated["df_Candidate"].drop(QueryObservationIndex)
-
-        # ### Update SimulationConfigInputUpdated ###
-        # SimulationConfigInputUpdated['df_Train'] = df_Train
-        # SimulationConfigInputUpdated['df_Candidate'] = df_Candidate   
+        SimulationConfigInputUpdated["df_Candidate"] = SimulationConfigInputUpdated["df_Candidate"].drop(QueryObservationIndex) 
 
     ### RETURN ###
-    return ErrorVec, SelectedObservationHistory
+    return ErrorVec, SelectedObservationHistory, RashomonCommitteeDict
