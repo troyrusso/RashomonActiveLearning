@@ -10,6 +10,7 @@ Updates are ongoing as part of iterative version control and management.
 Active learning’s key task is selecting informative data points to enhance model predictions with a fixed labeling budget. However, when ensemble models such as random forests are used, there is a risk of the ensemble containing models with poor predictive accuracy or redundant trees with the same interpretation. To address this, we develop a novel approach to only ensemble the set of near-optimal models called the Rashomon set in order to guide the active learning process. We demonstrate how taking a Rashomon approach can not only improve the accuracy and rate of convergence of the active learning procedure, but also lead to improved interpretability compared to traditional approaches.
 
 ## Setup
+🚧 Under construction. 🚧
 
 ## Running
 This section will describe the functions used to run the simulations.
@@ -24,7 +25,7 @@ There are four main terminal functions in each of the folders Cluster dataset fo
     - `delete_out.sh` deletes the output messages from each simulation.
     - `delete_results.sh` deletes the unprocessed results from each simulation.
 
- **DO NOT this function before processing results with '3_ProcessSimulations.sh'.**
+    **DO NOT this function before processing results with '3_ProcessSimulations.sh'.**
 
 ## Code
 
