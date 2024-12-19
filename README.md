@@ -25,7 +25,7 @@ There are four main terminal functions in each of the folders Cluster dataset fo
     - `delete_out.sh` deletes the output messages from each simulation.
     - `delete_results.sh` deletes the unprocessed results from each simulation.
 
-    **DO NOT this function before processing results with '3_ProcessSimulations.sh'.**
+**WARNING:** Do not run `4_DeleteSimulationFiles.sh` before processing results with '3_ProcessSimulations.sh'.
 
 ## Code
 
