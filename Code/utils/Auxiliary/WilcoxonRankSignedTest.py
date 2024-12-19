@@ -1,6 +1,8 @@
-# Summary:
-# Input:
-# Output:
+# Summary: Computes the Wilcoxon Ranked Signed Test pairwisely for each of the methods in the simulation.
+# Input: SimulationErrorResults is a dictionary containing the name of each active learning 
+#        method and its values as the error across the active learning process.
+# Output: Returns a diagonal matrix whose entries are the p-values from the Wilcoxon Ranked Signed Test 
+#         pairwisely comparing each of the methods in the simulation.
 
 ### Packages ###
 import numpy as np

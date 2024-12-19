@@ -1,3 +1,15 @@
+# Summary: A python script to extract the error and time for the active learning simulation. It accesses each of the .pkl result files
+#          from the simulations, and places each error (time) into a row in the ErrorMatrix.csv (TimeMatrix.csv) file.
+# Input: 
+#   DataType: A string that indicates either "Simulate" for the simulation or the name of the DataFrame in the Data folder.
+#   ModelType: Predictive model. Examples can be LinearRegression or RandomForestRegresso.
+#   Categories: The last identifying portion of the results file.
+#               For the DUREAL, UNREAL, and RandomForests methods, the respective inputs are
+#               {"MTTreeFarms_UEI0_NE100_Reg0.01_RBA0.01.pkl", 
+#                "MTTreeFarms_UEI1_NE100_Reg0.01_RBA0.01.pkl",
+#                "MTRandomForestClassification_UEI0_NE100_Reg0.01_RBA0.01.pkl"}
+# Output: Outputs the matrices ErrorMatrix and TimeMatrix into the ProcessedResults folder.
+
 ### Import libraries ###
 import os
 import pickle

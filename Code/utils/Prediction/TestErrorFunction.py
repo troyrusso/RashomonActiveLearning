@@ -1,6 +1,8 @@
-# Summary: Calculates the RMSE of the test set.
+# Summary: Calculates the loss (RMSE for regression and classification error for classification) of the test set.
 # Input:
+#   InputModel: The prediction model used.
 #   df_Test: The test data.
+#   Type: A string {"Regression", "Classification"} indicating the prediction objective.
 # Output:
 # RMSE: The residual mean squared error of the predicted values and their true values in the test set. 
 

@@ -1,20 +1,13 @@
 # Summary: Initializes and fits a treefarms model.
 # Input:
 #   df_Train: The training data.
-#   TopCModels: TopCModels top models
-#   config:
+#   regularization: Penalty on the number of splits in a tree.
+#   rashomon_bound_adder: A float indicating the Rashomon threshold: (1+\epsilon)*OptimalLoss
 # Output:
 # treeFarmsModel: A treefarms model.
 
 ### Libraries ###
-# from treeFarms.treefarms import TREEFARMS
-
-import sys
-# sys.path.append('/Users/simondn/Documents/RashomonActiveLearning/Code')
-# from treeFarms.treefarms.model.threshold_guess import compute_thresholds
-# from utils.Prediction.TreeFARMS import <function_or_class_name>
 from treeFarms.treefarms.model.treefarms import TREEFARMS
-
 
 ### Function ###
 def TreeFarmsFunction(df_Train, regularization, rashomon_bound_adder):
@@ -25,6 +18,3 @@ def TreeFarmsFunction(df_Train, regularization, rashomon_bound_adder):
     
     ### Return ###
     return TreeFarmsModel
-
-
-# NOTE: Is there a way to prune the tree such that only the top models are given back? Look into this

@@ -1,7 +1,7 @@
 # Summary: Initializes and fits a random forest regressor/classifier model.
 # Input:
 #   df_Train: The training data.
-#   n_estimators: The number of trees for each forest.
+#   n_estimators: The number of trees for a random forest.
 #   Seed: Seed for reproducability.
 # Output:
 # RandomForestModel: A random forest regressor/classifier model.

@@ -1,15 +1,24 @@
 # Summary: Runs active learning procedure by querying candidate observations from df_Candidate and adding them to the training set df_Train.
-# Input:
-#   df_Train: Training dataset.
-#   df_Test: Test dataset.
-#   df_Candidate: Candidate dataset.
+# Input: A dictionary SimulationConfigInputUpdated with the following keys and values:
+#   DataFileInput: A string that indicates either "Simulate" for the simulation or the name of the DataFrame in the Data folder.
+#   df_Train: The given train dataset from the function TrainTestCandidateSplit in the script OneIterationFunction.
+#   df_Test: The given test dataset from the function TrainTestCandidateSplit in the script OneIterationFunction.
+#   df_Candidate: The given candidate dataset from the function TrainTestCandidateSplit in the script OneIterationFunction.
+#   Seed: Seed for reproducability.
+#   TestProportion: Proportion of the data that is reserved for testing.
+#   CandidateProportion: Proportion of the data that is initially "unseen" and later added to the training set.
 #   SelectorType: Selector type. Examples can be GSx, GSy, or PassiveLearning.
-#   SelectorArgs: Arguments needed for the selector model. For instance, GSx requires a distance metric.
 #   ModelType: Predictive model. Examples can be LinearRegression or RandomForestRegresso.
-#   ModelArgs: Arguments for the predictive model. For instance, the penalty for RidgeRegression.
+#   UniqueErrorsInput: A binary input indicating whether to prune duplicate trees in TreeFarms.
+#   n_estimators: The number of trees for a random forest.
+#   regularization: Penalty on the number of splits in a tree.
+#   rashomon_bound_adder: A float indicating the Rashomon threshold: (1+\epsilon)*OptimalLoss
+#   Type: A string {"Regression", "Classification"} indicating the prediction objective.
 # Output:
 #   ErrorVec: A 1xM vector of errors with M being the number of observations in df_Candidate. 
 #   SelectedObservationHistory: The index of the queried candidate observation at each iteration
+#   RashomonCommitteeDict: A dictionary that contains two keys: {AllModelsInRashomonSet, UniqueModelsInRashomonSet} indicating
+#                          the number of trees in the Rashomon set from TreeFarms and the number of unique classification patterns.
 
 ### Import functions ###
 from utils.Main import *

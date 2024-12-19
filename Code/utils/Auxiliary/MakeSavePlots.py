@@ -1,6 +1,10 @@
-# Summary:
+# Summary: Saves the matrices MeanPlot.png and VariancePlot.png into the respective MeetingUpdates folder.
 # Input:
-# Output:
+#   DataType: A string that indicates either "Simulate" for the simulation or the name of the DataFrame in the Data folder.
+#   ModelType: Predictive model. Examples can be LinearRegression or RandomForestRegression.
+#   PlotArgs: A dictionary containing the TransparencyVal, CriticalValue, and RelativeError arguments of MeanVariancePlot.py.
+#   SaveInput = A {None} or string argument indicating which folder in MeetingUpdates to save MeanPlot.png and VariancePlot.png in.
+# Output: Outputs the matrices MeanPlot.png and VariancePlot.png into the respective MeetingUpdates folder.
 
 ### Import Functions
 import os
@@ -46,13 +50,13 @@ def MakePlotFunctions(DataType, ModelType, PlotArgs, SaveInput = None):
     if SaveInput is not None:
         ## Relative ##
         if(PlotArgs["RelativeError"] is None):
-            MeanPlotPath = os.path.join(ParentDirectory, "ResearchUpdates", str(SaveInput), DataType + ModelType + "MeanPlot.png")
-            VariancePlotPath = os.path.join(ParentDirectory, "ResearchUpdates", str(SaveInput), DataType + ModelType + "VariancePlot.png")
+            MeanPlotPath = os.path.join(ParentDirectory, "MeetingUpdates", str(SaveInput), DataType + ModelType + "MeanPlot.png")
+            VariancePlotPath = os.path.join(ParentDirectory, "MeetingUpdates", str(SaveInput), DataType + ModelType + "VariancePlot.png")
         ## Not Relative ##
         else:
-            MeanPlotPath = os.path.join(ParentDirectory, "ResearchUpdates", str(SaveInput), DataType + ModelType + 
+            MeanPlotPath = os.path.join(ParentDirectory, "MeetingUpdates", str(SaveInput), DataType + ModelType + 
                                         "MeanPlot" + PlotArgs["RelativeError"] + "Relative"+  ".png")
-            VariancePlotPath = os.path.join(ParentDirectory, "ResearchUpdates", str(SaveInput), DataType + ModelType + 
+            VariancePlotPath = os.path.join(ParentDirectory, "MeetingUpdates", str(SaveInput), DataType + ModelType + 
                                         "VariancePlot" + PlotArgs["RelativeError"] + "Relative" +  ".png")
         ### Save ###
         MeanPlot.savefig(MeanPlotPath)

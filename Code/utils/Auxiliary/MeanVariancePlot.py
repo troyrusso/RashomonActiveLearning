@@ -1,6 +1,16 @@
-# Summary:
+# Summary: Creates a plot for the average error and the average variance of each active learning strategy averaged 
+#          across simulations.
 # Input:
-# Output:
+#   Subtitle: A string subtitle for the plot.
+#   TransparencyVal: A float value indicating the transparency of the confidence interval.
+#   CriticalValue: The critical value of the confidence interval.
+#   RelativeError: A string whose value is one of the names of the input SimulationErrorResults indicating whether
+#                  to make the plot relative to this value. The graph's line of the input for RelativeError will be 
+#                  1 to form a baseline across the simulation with all other errors and variance divided by the baseline.
+#   Colors: A dictionary of colors for each active learning strategy in SimulationErrorResults. 
+#   SimulationErrorResults: The error rates across iteration for each active learning strategy.
+# Output: Two plots MeanPlot and VariancePlot representing the mean and variance of the active learning strategies 
+#         averaged across simulations.
 
 ### Import packages ###
 import numpy as np

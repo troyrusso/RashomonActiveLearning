@@ -1,9 +1,9 @@
 
-# Summary: Genrates data according to Burbidge, Rowland, King (2007).
+# Summary: Generates data according to Burbidge, Rowland, King (2007).
 # Input:
 #   N: Number of observations.
 #   K: Number of covariates.
-# Output: Data frame
+# Output: Dataframe.
 
 ### Libraries ###
 import numpy as np

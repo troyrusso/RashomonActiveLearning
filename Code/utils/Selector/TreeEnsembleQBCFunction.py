@@ -1,9 +1,11 @@
-# Summary: QBC function for either random forest or Rashomon's TreeFarms.
+# Summary: Query-by-committee function for either random forest or Rashomon's TreeFarms that 
+#          recommends an observation from the candidate set to be queried.
 # Input:
-#   df_Train: The training set.
-#   df_Candidate: The candidate set.
 #   Model: The predictive model.
-#   distance: The distance metric.
+#   df_Candidate: The candidate set.
+#   df_Train: The training set.
+#   AllErrors: The test errors from each model in the Rashomon set.
+#   UniqueErrorsInput: A binary input indicating whether to prune duplicate trees in TreeFarms.
 # Output:
 #   IndexRecommendation: The index of the recommended observation from the candidate set to be queried.
 

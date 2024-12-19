@@ -24,8 +24,11 @@ echo "All .error files deleted."
 ### Delete all Unprocessed Results files ##
 # Remove Random Forest Results #
 cd ../../../../../../Results/"$CURRENT_DIR"/RandomForestClassification/Raw
-rm *.pkl
+bash delete_results.sh
+echo "All .pkl results files in RandomForests deleted."
 
 # Remove TreeFarms Results #
 cd ../../TreeFarms/Raw/
-rm *.pkl
+bash delete_results.sh
+echo "All .pkl results files in TreeFarms deleted."
+

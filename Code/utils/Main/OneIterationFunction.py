@@ -1,16 +1,20 @@
 # Summary: Runs one full iteration of the active learning process.
-# Input:
+# Input: A dictionary SimulationConfigInput with the following keys and values:
 #   DataFileInput: A string that indicates either "Simulate" for the simulation or the name of the DataFrame in the Data folder.
 #   Seed: Seed for reproducability.
 #   TestProportion: Proportion of the data that is reserved for testing.
 #   CandidateProportion: Proportion of the data that is initially "unseen" and later added to the training set.
 #   SelectorType: Selector type. Examples can be GSx, GSy, or PassiveLearning.
 #   ModelType: Predictive model. Examples can be LinearRegression or RandomForestRegresso.
-#   DataArgs: Arguments N and K for when simulated data.
-#   SelectorArgs: Arguments needed for the selector model. For instance, GSx requires a distance metric.
-#   ModelArgs: Arguments for the predictive model. For instance, the penalty for RidgeRegression.
-# Output: Simulation results that contain
+#   UniqueErrorsInput: A binary input indicating whether to prune duplicate trees in TreeFarms.
+#   n_estimators: The number of trees for a random forest.
+#   regularization: Penalty on the number of splits in a tree.
+#   rashomon_bound_adder: A float indicating the Rashomon threshold: (1+\epsilon)*OptimalLoss
+#   Type: A string {"Regression", "Classification"} indicating the prediction objective.
+# Output: A dictionary SimulationResults with the following keys and values:
 #   ErrorVec: Vector of errors at each iteration of the learning process.
+#   RashomonCommitteeDict: A dictionary that contains two keys: {AllModelsInRashomonSet, UniqueModelsInRashomonSet} indicating
+#                          the number of trees in the Rashomon set from TreeFarms and the number of unique classification patterns.
 #   SelectionHistory: Vector of recommended index for query at each iteration of the learning process.
 #   SimulationParameters: Parameters used in the simulation.
 #   ElapsedTime: Time for the entire learning process.

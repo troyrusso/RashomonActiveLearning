@@ -4,9 +4,8 @@
 # Output:
 #   IndexRecommendation: The index of the recommended observation from the candidate set to be queried.
 
-
 ### Libraries ###
-import pandas as pd
+# import pandas as pd
 
 def PassiveLearning(df_Candidate):
     ### Passive Sampling ###
