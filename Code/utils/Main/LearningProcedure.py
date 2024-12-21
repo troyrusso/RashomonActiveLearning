@@ -32,8 +32,8 @@ def LearningProcedure(SimulationConfigInputUpdated):
 
     ### Set Up ###
     ErrorVec = []
-    SelectedObservationHistory = []
     AllErrorVec = []
+    SelectedObservationHistory = []
     RashomonCommitteeDict = {"AllModelsInRashomonSet": [], "UniqueModelsInRashomonSet": []}
 
     ### Algorithm ###
@@ -77,8 +77,8 @@ def LearningProcedure(SimulationConfigInputUpdated):
 
     ### RETURN ###
     LearningProcedureOutput = {"ErrorVec": ErrorVec,
-                               "SelectedObservationHistory": SelectedObservationHistory,
+                               "AllErrorVec": AllErrorVec,
                                "RashomonCommitteeDict": RashomonCommitteeDict,
-                               "AllErrorVec": AllErrorVec}
+                               "SelectedObservationHistory": SelectedObservationHistory}
                               
     return LearningProcedureOutput
