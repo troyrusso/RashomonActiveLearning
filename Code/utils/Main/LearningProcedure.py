@@ -49,7 +49,8 @@ def LearningProcedure(SimulationConfigInputUpdated):
         TestErrorVal = TestErrorFunction(Model, SimulationConfigInputUpdated["df_Test"], SimulationConfigInputUpdated["Type"])
         if(len(TestErrorVal) > 1):                                                                   # If Rashomon
             AllErrors = TestErrorVal                                                                 # All errors of Rashomon
-            CurrentError = float(np.min(AllErrors))                                                  # Extract the best one
+            # CurrentError = float(np.min(AllErrors))                                                  # Extract the best one
+            CurrentError = min(AllErrors)                                                  # Extract the best one
             RashomonCommitteeDict["AllModelsInRashomonSet"].append(Model.get_tree_count())           # Store number of trees
             RashomonCommitteeDict["UniqueModelsInRashomonSet"].append(len(set(AllErrors)))           # Store number of unique/duplicate trees
         else: 
