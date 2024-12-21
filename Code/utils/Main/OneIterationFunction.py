@@ -62,7 +62,7 @@ def OneIterationFunction(SimulationConfigInput):
     
     ### Learning Process ###
     from utils.Main import LearningProcedure                                 ### NOTE: Why is this not imported from utils.Main import *
-    ErrorVec, SelectedObservationHistory, RashomonCommitteeDict = LearningProcedure(SimulationConfigInputUpdated = SimulationConfigInput)
+    LearningProcedureOutput = LearningProcedure(SimulationConfigInputUpdated = SimulationConfigInput)
     
     ### Return Simulation Parameters ###
     SimulationParameters = {"DataFileInput" : str(SimulationConfigInput["DataFileInput"]),
@@ -82,9 +82,11 @@ def OneIterationFunction(SimulationConfigInput):
     ElapsedTime = time.time() - StartTime
 
     ### Return Dictionary ###
-    SimulationResults = {"ErrorVec" : pd.DataFrame(ErrorVec, columns =["Error"]),
-                         "RashomonCommitteeDict": RashomonCommitteeDict,
-                         "SelectionHistory" : pd.DataFrame(SelectedObservationHistory, columns = ["ObservationID"]),
+    SimulationResults = {"ErrorVec" : pd.DataFrame(LearningProcedureOutput["ErrorVec"], columns =["Error"]),
+                         "AllErrorVec": pd.DataFrame(LearningProcedureOutput["AllErrorVec"], columns = ["Error"]),
+                         "RashomonCommitteeDict": LearningProcedureOutput["RashomonCommitteeDict"],
+                         "SelectionHistory" : pd.DataFrame(LearningProcedureOutput["SelectedObservationHistory"], 
+                                                           columns = ["ObservationID"]),
                          "SimulationParameters" : SimulationParameters,
                          "ElapsedTime" : ElapsedTime}
 
