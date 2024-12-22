@@ -41264,7 +41264,7 @@ Iteration: 14
 treefarms reported successful execution
 training completed. Number of trees in the Rashomon set: 1
 CURRENT ERROR: 
-[0.17647058823529416]
+0.17647058823529416
 ---
 Iteration: 15
 treefarms reported successful execution
@@ -41276,13 +41276,13 @@ Iteration: 16
 treefarms reported successful execution
 training completed. Number of trees in the Rashomon set: 1
 CURRENT ERROR: 
-[0.17647058823529416]
+0.17647058823529416
 ---
 Iteration: 17
 treefarms reported successful execution
 training completed. Number of trees in the Rashomon set: 1
 CURRENT ERROR: 
-[0.17647058823529416]
+0.17647058823529416
 ---
 Iteration: 18
 treefarms reported successful execution
