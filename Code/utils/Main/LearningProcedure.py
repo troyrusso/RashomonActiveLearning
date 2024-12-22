@@ -51,11 +51,11 @@ def LearningProcedure(SimulationConfigInputUpdated):
         if(len(TestErrorVal) > 1):                                                                   # If Rashomon
             AllErrors = TestErrorVal                                                                 # All errors of Rashomon
             AllErrorVec.append(AllErrors)
-            CurrentError = min(AllErrors)                                                            # Extract the best one
+            CurrentError = float(min(AllErrors))                                                            # Extract the best one
             RashomonCommitteeDict["AllModelsInRashomonSet"].append(Model.get_tree_count())           # Store number of trees
             RashomonCommitteeDict["UniqueModelsInRashomonSet"].append(len(set(AllErrors)))           # Store number of unique/duplicate trees
         else: 
-            CurrentError = TestErrorVal                                                              # One output for non-Rashomon
+            CurrentError = float(TestErrorVal[0])                                                              # One output for non-Rashomon
             AllErrors = [None]
         SimulationConfigInputUpdated["AllErrors"] = AllErrors                                        # Use AllErrors in RashomonQBC
         ErrorVec.append(CurrentError)

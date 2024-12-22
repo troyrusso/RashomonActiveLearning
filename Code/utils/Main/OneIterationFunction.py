@@ -35,14 +35,10 @@ from utils.Prediction import *
 ### Function ###
 def OneIterationFunction(SimulationConfigInput):
     
-    ### Run Time ###
-    StartTime = time.time()
-
     ### Set Up ###
+    StartTime = time.time()
     random.seed(SimulationConfigInput["Seed"])
     np.random.seed(SimulationConfigInput["Seed"])
-    ErrorVec = []
-    SelectedObservationHistory = []
 
     ### Generate Data ###
     # if(DataFileInput == "Simulate"):
