@@ -88,3 +88,8 @@ def OneIterationFunction(SimulationConfigInput):
 
 
     return SimulationResults
+
+rm MTTreeFarms_UEI0_NE100_Reg0.01_RBA0.01_TimeMatrix.csv
+rm MTTreeFarms_UEI0_NE100_Reg0.01_RBA0.01_ErrorMatrix.csv
+rm MTTreeFarms_UEI1_NE100_Reg0.01_RBA0.01_TimeMatrix.csv
+rm MTTreeFarms_UEI1_NE100_Reg0.01_RBA0.01_ErrorMatrix.csv
