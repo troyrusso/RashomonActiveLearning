@@ -79,7 +79,6 @@ def OneIterationFunction(SimulationConfigInput):
 
     ### Return Dictionary ###
     SimulationResults = {"ErrorVec" : pd.DataFrame(LearningProcedureOutput["ErrorVec"], columns =["Error"]),
-                         "AllErrorVec": LearningProcedureOutput["AllErrorVec"],
                          "RashomonCommitteeDict": LearningProcedureOutput["RashomonCommitteeDict"],
                          "SelectionHistory" : pd.DataFrame(LearningProcedureOutput["SelectedObservationHistory"], 
                                                            columns = ["ObservationID"]),

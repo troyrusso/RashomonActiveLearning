@@ -32,7 +32,6 @@ def LearningProcedure(SimulationConfigInputUpdated):
 
     ### Set Up ###
     ErrorVec = []
-    AllErrorVec = []
     SelectedObservationHistory = []
     RashomonCommitteeDict = {"AllModelsInRashomonSet": [], "UniqueModelsInRashomonSet": []}
 
@@ -50,7 +49,6 @@ def LearningProcedure(SimulationConfigInputUpdated):
         TestErrorVal = TestErrorFunction(Model, SimulationConfigInputUpdated["df_Test"], SimulationConfigInputUpdated["Type"])
         if('TREEFARMS' in str(type(Model))):                                                         # If Rashomon
             AllErrors = TestErrorVal                                                                 # All errors of Rashomon
-            AllErrorVec.append(AllErrors)
             CurrentError = float(min(AllErrors))                                                     # Extract the best one
             RashomonCommitteeDict["AllModelsInRashomonSet"].append(Model.get_tree_count())           # Store number of trees
             RashomonCommitteeDict["UniqueModelsInRashomonSet"].append(len(set(AllErrors)))           # Store number of unique/duplicate trees
@@ -77,7 +75,6 @@ def LearningProcedure(SimulationConfigInputUpdated):
 
     ### RETURN ###
     LearningProcedureOutput = {"ErrorVec": ErrorVec,
-                               "AllErrorVec": AllErrorVec,
                                "RashomonCommitteeDict": RashomonCommitteeDict,
                                "SelectedObservationHistory": SelectedObservationHistory}
                               
