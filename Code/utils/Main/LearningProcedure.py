@@ -17,7 +17,7 @@
 # Output:
 #   ErrorVec: A 1xM vector of errors with M being the number of observations in df_Candidate. 
 #   SelectedObservationHistory: The index of the queried candidate observation at each iteration
-#   RashomonCommitteeDict: A dictionary that contains two keys: {AllTreeCount, UniqueTreeCount} indicating
+#   TreeCount: A dictionary that contains two keys: {AllTreeCount, UniqueTreeCount} indicating
 #                          the number of trees in the Rashomon set from TreeFarms and the number of unique classification patterns.
 
 ### Import functions ###
@@ -33,7 +33,7 @@ def LearningProcedure(SimulationConfigInputUpdated):
     ### Set Up ###
     ErrorVec = []
     SelectedObservationHistory = []
-    RashomonCommitteeDict = {"AllTreeCount": [], "UniqueTreeCount": []}
+    TreeCount = {"AllTreeCount": [], "UniqueTreeCount": []}
 
     ### Algorithm ###
     for i in range(len(SimulationConfigInputUpdated["df_Candidate"])):
@@ -72,12 +72,12 @@ def LearningProcedure(SimulationConfigInputUpdated):
 
         ### Store Number of (Unique) Trees ###
         if('TREEFARMS' in str(type(Model))):
-            RashomonCommitteeDict["AllTreeCount"].append(SelectorFuncOutput["AllTreeCount"])          # Store number of trees
-            RashomonCommitteeDict["UniqueTreeCount"].append(SelectorFuncOutput["UniqueTreeCount"])    # Store number of unique/duplicate trees
+            TreeCount["AllTreeCount"].append(SelectorFuncOutput["AllTreeCount"])          # Store number of trees
+            TreeCount["UniqueTreeCount"].append(SelectorFuncOutput["UniqueTreeCount"])    # Store number of unique/duplicate trees
 
     ### RETURN ###
     LearningProcedureOutput = {"ErrorVec": ErrorVec,
-                               "RashomonCommitteeDict": RashomonCommitteeDict,
+                               "TreeCount": TreeCount,
                                "SelectedObservationHistory": SelectedObservationHistory}
                               
     return LearningProcedureOutput

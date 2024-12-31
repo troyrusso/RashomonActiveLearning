@@ -13,7 +13,7 @@
 #   Type: A string {"Regression", "Classification"} indicating the prediction objective.
 # Output: A dictionary SimulationResults with the following keys and values:
 #   ErrorVec: Vector of errors at each iteration of the learning process.
-#   RashomonCommitteeDict: A dictionary that contains two keys: {AllModelsInRashomonSet, UniqueModelsInRashomonSet} indicating
+#   TreeCount: A dictionary that contains two keys: {AllModelsInRashomonSet, UniqueModelsInRashomonSet} indicating
 #                          the number of trees in the Rashomon set from TreeFarms and the number of unique classification patterns.
 #   SelectionHistory: Vector of recommended index for query at each iteration of the learning process.
 #   SimulationParameters: Parameters used in the simulation.
@@ -79,7 +79,7 @@ def OneIterationFunction(SimulationConfigInput):
 
     ### Return Dictionary ###
     SimulationResults = {"ErrorVec" : pd.DataFrame(LearningProcedureOutput["ErrorVec"], columns =["Error"]),
-                         "RashomonCommitteeDict": LearningProcedureOutput["RashomonCommitteeDict"],
+                         "TreeCount": LearningProcedureOutput["TreeCount"],
                          "SelectionHistory" : pd.DataFrame(LearningProcedureOutput["SelectedObservationHistory"], 
                                                            columns = ["ObservationID"]),
                          "SimulationParameters" : SimulationParameters,
