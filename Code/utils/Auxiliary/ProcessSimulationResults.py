@@ -77,3 +77,4 @@ TimeMatrix.to_csv(os.path.join(OutputDirectory, "ElapsedTime", f"{Category.repla
 AllTreeCountVec.to_csv(os.path.join(OutputDirectory, "TreeCount", f"{Category.replace('.pkl', '')}_AllTreeCount.csv"), index=False)
 UniqueTreeCounttVec.to_csv(os.path.join(OutputDirectory, "TreeCount", f"{Category.replace('.pkl', '')}_UniqueTreeCount.csv"), index=False)
 SelectionHistoryVec.to_csv(os.path.join(OutputDirectory, "SelectionHistory", f"{Category.replace('.pkl', '')}_SelectionHistory.csv"), index=False)
+print(f"Saved {Category} files!")
