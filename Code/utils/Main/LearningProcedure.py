@@ -17,7 +17,7 @@
 # Output:
 #   ErrorVec: A 1xM vector of errors with M being the number of observations in df_Candidate. 
 #   SelectedObservationHistory: The index of the queried candidate observation at each iteration
-#   RashomonCommitteeDict: A dictionary that contains two keys: {AllModelsInRashomonSet, UniqueModelsInRashomonSet} indicating
+#   RashomonCommitteeDict: A dictionary that contains two keys: {AllTreeCount, UniqueTreeCount} indicating
 #                          the number of trees in the Rashomon set from TreeFarms and the number of unique classification patterns.
 
 ### Import functions ###
@@ -33,7 +33,7 @@ def LearningProcedure(SimulationConfigInputUpdated):
     ### Set Up ###
     ErrorVec = []
     SelectedObservationHistory = []
-    RashomonCommitteeDict = {"AllModelsInRashomonSet": [], "UniqueModelsInRashomonSet": []}
+    RashomonCommitteeDict = {"AllTreeCount": [], "UniqueTreeCount": []}
 
     ### Algorithm ###
     for i in range(len(SimulationConfigInputUpdated["df_Candidate"])):
@@ -45,33 +45,35 @@ def LearningProcedure(SimulationConfigInputUpdated):
         Model = ModelType(**ModelArgsFiltered)
         SimulationConfigInputUpdated['Model'] = Model
 
-        ### Current Error ###
-        TestErrorVal = TestErrorFunction(Model, SimulationConfigInputUpdated["df_Test"], SimulationConfigInputUpdated["Type"])
-        if('TREEFARMS' in str(type(Model))):                                                         # If Rashomon
-            AllErrors = TestErrorVal                                                                 # All errors of Rashomon
-            CurrentError = float(min(AllErrors))                                                     # Extract the best one
-            RashomonCommitteeDict["AllModelsInRashomonSet"].append(Model.get_tree_count())           # Store number of trees
-            RashomonCommitteeDict["UniqueModelsInRashomonSet"].append(len(set(AllErrors)))           # Store number of unique/duplicate trees
+        ### Test Error ###
+        TestErrorOutput = TestErrorFunction(InputModel = Model, df_Test = SimulationConfigInputUpdated["df_Test"], Type = "Classification")
+        if('TREEFARMS' in str(type(Model))):                                                       # If Rashomon
+            CurrentError = TestErrorOutput["Error_Duplicate"]
+            # # Unique vs. Duplicate *ENSEMBLE* Prediction Error #                                   # NOTE: Should ensemble prediction error be based on unique or duplicate?
+            # if(SimulationConfigInputUpdated["UniqueErrorsInput"]) == 1:                            # NOTE: Once decided, modify TestErrorOutput to have only 1 error output.
+            #     CurrentError = TestErrorOutput["Error_Unique"]                                     # NOTE: I think it should be based on duplicate; TBD TBD TBD
+            # if(SimulationConfigInputUpdated["UniqueErrorsInput"]) == 0:
+            #     CurrentError = TestErrorOutput["Error_Duplicate"]
         else: 
-            CurrentError = float(TestErrorVal[0])                                                    # One output for non-Rashomon
-            AllErrors = [None]
-        SimulationConfigInputUpdated["AllErrors"] = AllErrors                                        # Use AllErrors in RashomonQBC
+            CurrentError = TestErrorOutput["ErrorVal"]                                               # One output for non-Rashomon
         ErrorVec.append(CurrentError)
-
-        print("CURRENT ERROR: ")
-        print(CurrentError)
-        print("---")
 
         ### Sampling Procedure ###
         SelectorType = globals().get(SimulationConfigInputUpdated["SelectorType"], None)
         SelectorArgsFiltered = FilterArguments(SelectorType, SimulationConfigInputUpdated)
-        QueryObservationIndex = SelectorType(**SelectorArgsFiltered)
+        SelectorFuncOutput = SelectorType(**SelectorArgsFiltered)
+        QueryObservationIndex = SelectorFuncOutput["IndexRecommendation"]
         QueryObservation = SimulationConfigInputUpdated["df_Candidate"].loc[[QueryObservationIndex]] # or should this be iloc
         SelectedObservationHistory.append(QueryObservationIndex)
         
         ### Update Train and Candidate Sets ###
         SimulationConfigInputUpdated["df_Train"] = pd.concat([SimulationConfigInputUpdated["df_Train"], QueryObservation])
         SimulationConfigInputUpdated["df_Candidate"] = SimulationConfigInputUpdated["df_Candidate"].drop(QueryObservationIndex) 
+
+        ### Store Number of (Unique) Trees ###
+        if('TREEFARMS' in str(type(Model))):
+            RashomonCommitteeDict["AllTreeCount"].append(SelectorFuncOutput["AllTreeCount"])          # Store number of trees
+            RashomonCommitteeDict["UniqueTreeCount"].append(SelectorFuncOutput["UniqueTreeCount"])    # Store number of unique/duplicate trees
 
     ### RETURN ###
     LearningProcedureOutput = {"ErrorVec": ErrorVec,

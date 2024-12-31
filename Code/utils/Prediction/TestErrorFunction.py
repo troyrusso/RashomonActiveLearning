@@ -8,6 +8,7 @@
 
 ### Libraries ###
 import numpy as np
+import pandas as pd
 
 ### Function ###
 def TestErrorFunction(InputModel, df_Test, Type):
@@ -17,21 +18,44 @@ def TestErrorFunction(InputModel, df_Test, Type):
         Prediction = InputModel.predict(df_Test.loc[:, df_Test.columns != "Y"])
         ErrorVal = np.mean((Prediction - df_Test["Y"])**2)
         ErrorVal = [ErrorVal.tolist()]
+        Output = {"ErrorVal": ErrorVal}
 
     ### Classification Error ###
     if(Type == "Classification"):
-
-        # Rashomon Classification #
+        
+        ## Rashomon Classification ##
         if 'TREEFARMS' in str(type(InputModel)):
-            ErrorVal =[]
-            for i in range(InputModel.get_tree_count()):
-                ModelError = InputModel[i].error(df_Test.loc[:, df_Test.columns != "Y"], df_Test["Y"])
-                ErrorVal.append(ModelError)
+            TreeCounts = InputModel.get_tree_count()
+
+            # Duplicate #
+            PredictionArray_Duplicate = pd.DataFrame(np.array([InputModel[i].predict(df_Test.loc[:, df_Test.columns != "Y"]) for i in range(TreeCounts)]))
+            EnsemblePrediction_Duplicate = np.mean(PredictionArray_Duplicate, axis =0)>=0.5
+            EnsemblePrediction_Duplicate.index = df_Test["Y"].index
+            Error_Duplicate = float(np.mean(EnsemblePrediction_Duplicate != df_Test["Y"]))
+            AllTreeCount = PredictionArray_Duplicate.shape[0]
+
+            # Unique #
+            PredictionArray_Unique = pd.DataFrame(PredictionArray_Duplicate).drop_duplicates()
+            EnsemblePrediction_Unique = np.mean(PredictionArray_Unique, axis =0)>=0.5
+            EnsemblePrediction_Unique.index = df_Test["Y"].index
+            Error_Unique = float(np.mean(EnsemblePrediction_Unique != df_Test["Y"]))
+            UniqueTreeIndices= PredictionArray_Unique.index
+            UniqueTreeCount = PredictionArray_Unique.shape[0]
+
+            # Output #
+            Output = {"Error_Duplicate": Error_Duplicate,
+                      "Error_Unique": Error_Unique,
+                      "PredictionArray_Duplicate" : PredictionArray_Duplicate,
+                      "PredictionArray_Unique" : PredictionArray_Unique,
+                      "UniqueTreeIndices": UniqueTreeIndices,
+                      "AllTreeCount": AllTreeCount,
+                      "UniqueTreeCount": UniqueTreeCount}
+
         else:
             Prediction = InputModel.predict(df_Test.loc[:, df_Test.columns != "Y"])
-            ErrorVal = np.mean(Prediction != df_Test["Y"])
-            ErrorVal = [ErrorVal.tolist()]
+            ErrorVal = float(np.mean(Prediction != df_Test["Y"]))
+            Output = {"ErrorVal": ErrorVal}
 
     ### Return ###
-    return ErrorVal
+    return Output
             
