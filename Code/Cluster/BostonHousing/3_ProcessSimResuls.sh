@@ -10,7 +10,6 @@ python Code/utils/Auxiliary/ProcessSimulationResults.py \
     --DataType "$CURRENT_DIR" \
     --ModelType "RandomForestClassification" \
     --Categories "MTRandomForestClassification_UEI0_NE100_Reg0.01_RBA0.025.pkl"
-    "MTTreeFarms_UEI1_NE100_Reg0.01_RBA0.025.pkl"
 
 ### Extract Duplicate TREEFARMS Results ###
 python Code/utils/Auxiliary/ProcessSimulationResults.py \

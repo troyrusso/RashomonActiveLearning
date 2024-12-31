@@ -72,8 +72,8 @@ AllTreeCountVec = pd.DataFrame(AllTreeCountVec.squeeze())
 UniqueTreeCounttVec = pd.DataFrame(UniqueTreeCounttVec.squeeze())
 
 ### Save ###
-ErrorMatrix.to_csv(os.path.join(OutputDirectory, "/ErrorVec", f"{Category.replace('.pkl', '')}_ErrorMatrix.csv"), index=False)
-TimeMatrix.to_csv(os.path.join(OutputDirectory, "/ElapsedTime", f"{Category.replace('.pkl', '')}_TimeMatrix.csv"), index=False)
-AllTreeCountVec.to_csv(os.path.join(OutputDirectory, "/TreeCount", f"{Category.replace('.pkl', '')}_AllTreeCount.csv"), index=False)
-UniqueTreeCounttVec.to_csv(os.path.join(OutputDirectory, "/TreeCount", f"{Category.replace('.pkl', '')}_UniqueTreeCount.csv"), index=False)
-SelectionHistoryVec.to_csv(os.path.join(OutputDirectory, "/SelectionHistory", f"{Category.replace('.pkl', '')}_SelectionHistory.csv"), index=False)
+ErrorMatrix.to_csv(os.path.join(OutputDirectory, "ErrorVec", f"{Category.replace('.pkl', '')}_ErrorMatrix.csv"), index=False)
+TimeMatrix.to_csv(os.path.join(OutputDirectory, "ElapsedTime", f"{Category.replace('.pkl', '')}_TimeMatrix.csv"), index=False)
+AllTreeCountVec.to_csv(os.path.join(OutputDirectory, "TreeCount", f"{Category.replace('.pkl', '')}_AllTreeCount.csv"), index=False)
+UniqueTreeCounttVec.to_csv(os.path.join(OutputDirectory, "TreeCount", f"{Category.replace('.pkl', '')}_UniqueTreeCount.csv"), index=False)
+SelectionHistoryVec.to_csv(os.path.join(OutputDirectory, "SelectionHistory", f"{Category.replace('.pkl', '')}_SelectionHistory.csv"), index=False)
