@@ -16,24 +16,10 @@ python Code/utils/Auxiliary/ProcessSimulationResults.py \
 python Code/utils/Auxiliary/ProcessSimulationResults.py \
     --DataType "$CURRENT_DIR" \
     --ModelType "TreeFarms" \
-    --Categories "MTTreeFarms_UEI0_NE100_Reg0.01_RBA0.01.pkl"
+    --Categories "DPL0.01.pkl"
 
 ### Extract Unique TREEFARMS Results ###
 python Code/utils/Auxiliary/ProcessSimulationResults.py \
     --DataType "$CURRENT_DIR" \
     --ModelType "TreeFarms" \
-    --Categories "MTTreeFarms_UEI1_NE100_Reg0.01_RBA0.01.pkl"
-
-### Extract Duplicate TREEFARMS Results ###
-python Code/utils/Auxiliary/ProcessSimulationResults.py \
-    --DataType "$CURRENT_DIR" \
-    --ModelType "TreeFarms" \
-    --Categories "MTTreeFarms_UEI0_NE100_Reg0.01_RBA0.025.pkl"
-
-### Extract Unique TREEFARMS Results ###
-python Code/utils/Auxiliary/ProcessSimulationResults.py \
-    --DataType "$CURRENT_DIR" \
-    --ModelType "TreeFarms" \
-    --Categories "MTTreeFarms_UEI1_NE100_Reg0.01_RBA0.025.pkl"
-    
-
+    --Categories "UNQ0.01.pkl"
