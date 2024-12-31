@@ -2,7 +2,6 @@
 
 # Function to delete all err files
 delete_error_files() {
-    echo "Deleting all .err files in $(pwd)..."
     rm *.err
 }
 
