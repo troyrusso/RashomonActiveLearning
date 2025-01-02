@@ -9,6 +9,7 @@
 ### Libraries ###
 import numpy as np
 import pandas as pd
+from sklearn.metrics import f1_score
 
 ### Function ###
 def TestErrorFunction(InputModel, df_Test, Type):
@@ -32,6 +33,7 @@ def TestErrorFunction(InputModel, df_Test, Type):
             EnsemblePrediction_Duplicate = np.mean(PredictionArray_Duplicate, axis =0)>=0.5
             EnsemblePrediction_Duplicate.index = df_Test["Y"].index
             Error_Duplicate = float(np.mean(EnsemblePrediction_Duplicate != df_Test["Y"]))
+            # Error_Duplicate = float(f1_score(df_Test["Y"], EnsemblePrediction_Duplicate, average='binary'))
             AllTreeCount = PredictionArray_Duplicate.shape[0]
 
             # Unique #
@@ -39,6 +41,7 @@ def TestErrorFunction(InputModel, df_Test, Type):
             EnsemblePrediction_Unique = np.mean(PredictionArray_Unique, axis =0)>=0.5
             EnsemblePrediction_Unique.index = df_Test["Y"].index
             Error_Unique = float(np.mean(EnsemblePrediction_Unique != df_Test["Y"]))
+            # Error_Unique = float(f1_score(df_Test["Y"], EnsemblePrediction_Unique, average='binary'))
             UniqueTreeIndices= PredictionArray_Unique.index
             UniqueTreeCount = PredictionArray_Unique.shape[0]
 
@@ -54,6 +57,7 @@ def TestErrorFunction(InputModel, df_Test, Type):
         else:
             Prediction = InputModel.predict(df_Test.loc[:, df_Test.columns != "Y"])
             ErrorVal = float(np.mean(Prediction != df_Test["Y"]))
+            # ErrorVal = float(f1_score(df_Test["Y"], Prediction, average='binary'))
             Output = {"ErrorVal": ErrorVal}
 
     ### Return ###
