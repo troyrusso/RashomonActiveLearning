@@ -33,16 +33,13 @@ def TreeEnsembleQBCFunction(Model, df_Candidate, df_Train, UniqueErrorsInput):
         PredictionArray_Duplicate.columns = df_Candidate.index.astype(str)
         EnsemblePrediction_Duplicate = np.mean(PredictionArray_Duplicate, axis =0)>=0.5
         EnsemblePrediction_Duplicate.index = df_Candidate["Y"].index
-        Error_Duplicate = float(np.mean(EnsemblePrediction_Duplicate != df_Candidate["Y"]))
         AllTreeCount = PredictionArray_Duplicate.shape[0]
 
         # Unique #
         PredictionArray_Unique = pd.DataFrame(PredictionArray_Duplicate).drop_duplicates()
         EnsemblePrediction_Unique = np.mean(PredictionArray_Unique, axis =0)>=0.5
         EnsemblePrediction_Unique.index = df_Candidate["Y"].index
-        Error_Unique = float(np.mean(EnsemblePrediction_Unique != df_Candidate["Y"]))
         UniqueTreeCount = PredictionArray_Unique.shape[0]
-        UniqueTreeIndices= PredictionArray_Unique.index
 
         if UniqueErrorsInput:
             PredictedValues = PredictionArray_Unique

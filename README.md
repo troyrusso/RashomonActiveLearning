@@ -10,14 +10,31 @@ Updates are ongoing as part of iterative version control and management.
 Active learning’s key task is selecting informative data points to enhance model predictions with a fixed labeling budget. However, when ensemble models such as random forests are used, there is a risk of the ensemble containing models with poor predictive accuracy or redundant trees with the same interpretation. To address this, we develop a novel approach to only ensemble the set of near-optimal models called the Rashomon set in order to guide the active learning process. We demonstrate how taking a Rashomon approach can not only improve the accuracy and rate of convergence of the active learning procedure, but also lead to improved interpretability compared to traditional approaches.
 
 ## Setup
-🚧 Under construction. 🚧
+
+Python 3.9.18 was used in both the local and high-performance computing cluster simulations. The following packages were used:
+
+- `argparse` (version 1.1)
+- `importlib` (part of Python standard library)
+- `inspect` (part of Python standard library)
+- `itertools` (part of Python standard library)
+- `math` (part of Python standard library)
+- `matplotlib` (version 3.9.2)
+- `numpy` (version 1.26.2)
+- `os` (part of Python standard library)
+- `pickle` (part of Python standard library)
+- `pandas` (version 2.1.4)
+- `scikit-learn` (version 1.5.1)
+- `scipy` (version 1.13.1)
+- `treeFarms` (version from [GitHub](https://github.com/ubc-systopia/treeFarms))
 
 ## Run Simulations
 
-### Running Locally
-🚧 Under construction. 🚧
+Before running the simulation locally or using a high-performance computing cluster (HPC), create the parameter vector in the `CreateParameterVector.ipynb` notebook. Note it is preferred to run the simulations on the HPC.
 
-### Running on High Performance Computing Clusters
+### Running Locally
+Simulations can be ran locally in the `LocalSimulation.ipynb` notebook. The notebook will loop over each simulation version from the parameter vector and store it in `SimulationResults`. 
+
+### Running on High-Performance Computing Clusters
 This section will describe the functions used to run the simulations.
 
 There are four main terminal functions in each of the folders Cluster dataset folders. They are numbered in the order that they should be ran to run the simulations.
@@ -31,6 +48,12 @@ There are four main terminal functions in each of the folders Cluster dataset fo
     - `delete_results.sh` deletes the unprocessed results from each simulation.
 
 **WARNING:** Do not run `4_DeleteSimulationFiles.sh` before processing results with `3_ProcessSimulations.sh` .
+
+Results will be stored in the Results folder under the respective dataset name and predictive model type (eg. RandomForestClassification or TreeFarms). The files
+- ProcessedResults/ElapsedTime contains a `.csv` file with the run time of each of the iterations.
+- ProcessedResults/ErrorVec contains a `.csv` file whose rows indicate the simulation iteration and whose columns indicate the error at each iteration of the active learning process.
+- ProcessedResults/SelectionHistory contains a `.csv` file whose rows indicate the simulation iteration and whose columns indicate the index of the candidate observations which was queried at each iteration of the active learning process.
+- ProcessedResults/TreeCount contains two `.csv` file for each simulation type. One `.csv` file is for the total number of trees from the TreeFarms model and the other `.csv` file contains the number of •unique* trees/classification patterns from the TreeFarms model. Note the `.csv` files for RandomForests will be empty.
 
 ## Code
 
@@ -71,4 +94,7 @@ The following list contain auxiliary functions/scripts used "behind-the-scenes" 
 - `WilcoxonRankSignedTest.py` computes the Wilcoxon Ranked Signed Test pairwisely for each of the methods in the simulation.
 - `CreateParameterVector.ipynb` is a notebook that creates the parameter vector for each dataset.
 
-## Simulations
+## Analyzing Simulations
+The `AnalyzeResults.ipynb` notebook is where the researcher can evaluate the different active learning processes. Note that if the user ran the simulations locally, they will have to manually save the files accordingly.
+
+The first part of the notebook presents the average and maximum run time of each simulations. The second part of the notebook presents the standard active learning error plot. The final part of the notebook presents the covariates of the top observations that were queried in the active learning process within the first $J$ queries across simulations. It also contains the frequency of being queried within the first $J$ iterations of the active learning process to give insight into which observations are first queried by each active learning process.
