@@ -29,7 +29,11 @@ Python 3.9.18 was used in both the local and high-performance computing cluster 
 
 ## Run Simulations
 
+<<<<<<< HEAD
 Before running the simulation locally or using a high-performance computing cluster (HPC), create the parameter vector in the `CreateParameterVector.ipynb` notebook. Note it is preferred to run the simulations on the HPC.
+=======
+Before running the simulation locally or using a high-performance computing cluster, create the parameter vector in the `CreateParameterVector.ipynb` notebook.
+>>>>>>> 8ff683f410196824ab08812ee648976e0a980c8b
 
 ### Running Locally
 Simulations can be ran locally in the `LocalSimulation.ipynb` notebook. The notebook will loop over each simulation version from the parameter vector and store it in `SimulationResults`. 

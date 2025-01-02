@@ -81,4 +81,3 @@ def TreeEnsembleQBCFunction(Model, df_Candidate, df_Train, UniqueErrorsInput):
     Output["IndexRecommendation"] = IndexRecommendation
 
     return Output
-
