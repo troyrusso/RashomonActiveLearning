@@ -11,7 +11,7 @@ Active learning’s key task is selecting informative data points to enhance mod
 
 ## Setup
 
-Python 3.9.18 was used in both the local and high-performance computing cluster simulations. The following packages were used:
+Python 3.9.18 was used in both the local and high-performance computing (HPC) cluster simulations. The following packages were used:
 
 - `argparse` (version 1.1)
 - `importlib` (part of Python standard library)
@@ -29,7 +29,7 @@ Python 3.9.18 was used in both the local and high-performance computing cluster 
 
 ## Run Simulations
 
-Before running the simulation locally or using a high-performance computing cluster (HPC), create the parameter vector in the `CreateParameterVector.ipynb` notebook. Note it is preferred to run the simulations on the HPC.
+Before running the simulation locally or using an HPC cluster, create the parameter vector in the `CreateParameterVector.ipynb` notebook. It is preferred to run the simulations on the HPC.
 
 ### Running Locally
 Simulations can be ran locally in the `LocalSimulation.ipynb` notebook. The notebook will loop over each simulation version from the parameter vector and store it in `SimulationResults`. 
