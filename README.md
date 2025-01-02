@@ -79,7 +79,7 @@ The following list contains functions/scripts used for the predictive modelling 
 The following list contains functions/scripts for the selection strategies of the active learning process.
 - `TreeEnsembleQBCFunction.py` is a query-by-committee selection method for either random forest or Rashomon's TreeFarms that recommends an observation from the candidate set to be queried.
 - `PassiveSampling.py` chooses an index at random from the candidate set to be queried.
-- `GreedySampling.py` loads the three greedy sampling methods for regression from Wu, Lin, and Huang (2018). GSx samples based on the covariate space, GSy based on the output space, and iGS on both.
+- `GreedySampling.py` loads the three greedy sampling methods for regression from [Wu, Lin, and Huang (2018)](https://www.sciencedirect.com/science/article/pii/S0020025518307680). GSx samples based on the covariate space, GSy based on the output space, and iGS on both.
 
 **Auxiliary**
 
