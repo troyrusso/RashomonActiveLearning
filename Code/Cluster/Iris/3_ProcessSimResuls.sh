@@ -15,10 +15,10 @@ python Code/utils/Auxiliary/ProcessSimulationResults.py \
 python Code/utils/Auxiliary/ProcessSimulationResults.py \
     --DataType "$CURRENT_DIR" \
     --ModelType "TreeFarms" \
-    --Categories "DPL0.01.pkl"
+    --Categories "DPL0.05.pkl"
 
 ### Extract Unique TREEFARMS Results ###
 python Code/utils/Auxiliary/ProcessSimulationResults.py \
     --DataType "$CURRENT_DIR" \
     --ModelType "TreeFarms" \
-    --Categories "UNQ0.01.pkl"
+    --Categories "UNQ0.05.pkl"
