@@ -9,7 +9,7 @@ cd ~/RashomonActiveLearning
 python Code/utils/Auxiliary/ProcessSimulationResults.py \
     --DataType "$CURRENT_DIR" \
     --ModelType "RandomForestClassification" \
-    --Categories "RF0.01.pkl"
+    --Categories "RF0.0.pkl"
 
 ### Extract Duplicate TREEFARMS Results ###
 python Code/utils/Auxiliary/ProcessSimulationResults.py \
