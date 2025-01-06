@@ -46,7 +46,7 @@ for i, row in ParameterVector.iterrows():
         f"#SBATCH --job-name={JobName}",
         "#SBATCH --partition=short",                                             # --partition=short or --partition=medium
         "#SBATCH --ntasks=1",
-        "#SBATCH --time=7:59:00",                                               # --time=11:59:00 or time=6-23:59:00
+        "#SBATCH --time=11:59:00",                                               # --time=11:59:00 or time=6-23:59:00
         "#SBATCH --mem-per-cpu=30000",
         f"#SBATCH -o ClusterMessages/out/myscript_{JobName}_%j.out",
         f"#SBATCH -e ClusterMessages/error/myscript_{JobName}_%j.err",

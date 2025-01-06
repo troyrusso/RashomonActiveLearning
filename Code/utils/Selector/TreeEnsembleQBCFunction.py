@@ -14,6 +14,7 @@
 import warnings
 import numpy as np
 import pandas as pd
+from scipy import stats
 from scipy.spatial.distance import cdist
 
 ### Function ###
@@ -22,7 +23,7 @@ def TreeEnsembleQBCFunction(Model, df_Candidate, df_Train, UniqueErrorsInput):
     ### Ignore warning (taken care of) ###
     np.seterr(all = 'ignore') 
     warnings.filterwarnings("ignore", category=UserWarning)
-    UniqueErrorsInput= 1
+
     ### Predicted Values ###
     ## Rashomon Classification ##
     if 'TREEFARMS' in str(type(Model)):
@@ -31,13 +32,15 @@ def TreeEnsembleQBCFunction(Model, df_Candidate, df_Train, UniqueErrorsInput):
         # Duplicate #
         PredictionArray_Duplicate = pd.DataFrame(np.array([Model[i].predict(df_Candidate.loc[:, df_Candidate.columns != "Y"]) for i in range(TreeCounts)]))
         PredictionArray_Duplicate.columns = df_Candidate.index.astype(str)
-        EnsemblePrediction_Duplicate = np.mean(PredictionArray_Duplicate, axis =0)>=0.5
+        # EnsemblePrediction_Duplicate = np.mean(PredictionArray_Duplicate, axis =0)>=0.5
+        EnsemblePrediction_Duplicate = pd.Series(stats.mode(PredictionArray_Duplicate)[0])
         EnsemblePrediction_Duplicate.index = df_Candidate["Y"].index
         AllTreeCount = PredictionArray_Duplicate.shape[0]
 
         # Unique #
         PredictionArray_Unique = pd.DataFrame(PredictionArray_Duplicate).drop_duplicates()
-        EnsemblePrediction_Unique = np.mean(PredictionArray_Unique, axis =0)>=0.5
+        # EnsemblePrediction_Unique = np.mean(PredictionArray_Unique, axis =0)>=0.5
+        EnsemblePrediction_Unique = pd.Series(stats.mode(PredictionArray_Unique)[0])
         EnsemblePrediction_Unique.index = df_Candidate["Y"].index
         UniqueTreeCount = PredictionArray_Unique.shape[0]
 
