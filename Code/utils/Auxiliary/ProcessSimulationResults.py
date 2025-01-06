@@ -18,18 +18,26 @@ import numpy as np
 import pandas as pd
 
 ### Extract Error and Time Function ###
-def ExtractErrorAndTime(files):
+def ExtractInformation(files):
+
+    ### Set Up ###
     ErrorVec = []
     TimeVec = []
+    SelectionHistoryVec = []
+    AllTreeCountVec = []
+    UniqueTreeCountVec = []
     for file in files:
         try:
             with open(file, "rb") as f:
                 data = pickle.load(f)
                 ErrorVec.append(data["ErrorVec"])
                 TimeVec.append(data["ElapsedTime"])
+                SelectionHistoryVec.append(data["SelectionHistory"])
+                AllTreeCountVec.append(data["TreeCount"]["AllTreeCount"])
+                UniqueTreeCountVec.append(data["TreeCount"]["UniqueTreeCount"])
         except Exception as e:
             print(f"Error loading file {file}: {e}")
-    return np.array(ErrorVec), np.array(TimeVec)
+    return np.array(ErrorVec), np.array(TimeVec), np.array(SelectionHistoryVec), np.array(AllTreeCountVec), np.array(UniqueTreeCountVec)
 
 ### Parser ###
 parser = argparse.ArgumentParser(description="Aggregate simulation results.")
@@ -56,10 +64,26 @@ if not CategoryFileNames:
     print(f"Warning: No files found for category {Category}. Exiting.")
     exit(1)
 print(f"Processing category: {Category} with {len(CategoryFileNames)} files")
-ErrorVec, TimeVec = ExtractErrorAndTime(CategoryFileNames)
+ErrorVec, TimeVec, SelectionHistoryVec, AllTreeCountVec, UniqueTreeCountVec = ExtractInformation(CategoryFileNames)
 ErrorMatrix = pd.DataFrame(ErrorVec.squeeze())
 TimeMatrix = pd.DataFrame(TimeVec.squeeze())
+SelectionHistoryVec = pd.DataFrame(SelectionHistoryVec.squeeze())
+AllTreeCountVec = pd.DataFrame(AllTreeCountVec.squeeze())
+UniqueTreeCountVec = pd.DataFrame(UniqueTreeCountVec.squeeze())
+
+# ### Make Dicionary ###
+# SimulationResulsDictionary = {"ErrorMatrix" : ErrorMatrix,
+#                               "TimeMatrix" : TimeMatrix,
+#                               "AllTreeCountVec" : AllTreeCountVec,
+#                               "UniqueTreeCountVec" : UniqueTreeCountVec,
+#                               "SelectionHistoryVec" : SelectionHistoryVec}
+# with open(os.path.join(OutputDirectory, f"{Category}"), 'wb') as file:
+#     pickle.dump(SimulationResulsDictionary, file)
 
 ### Save ###
-ErrorMatrix.to_csv(os.path.join(OutputDirectory, f"{Category.replace('.pkl', '')}_ErrorMatrix.csv"), index=False)
-TimeMatrix.to_csv(os.path.join(OutputDirectory, f"{Category.replace('.pkl', '')}_TimeMatrix.csv"), index=False)
+ErrorMatrix.to_csv(os.path.join(OutputDirectory, "ErrorVec", f"{Category.replace('.pkl', '')}_ErrorMatrix.csv"), index=False)
+TimeMatrix.to_csv(os.path.join(OutputDirectory, "ElapsedTime", f"{Category.replace('.pkl', '')}_TimeMatrix.csv"), index=False)
+AllTreeCountVec.to_csv(os.path.join(OutputDirectory, "TreeCount", f"{Category.replace('.pkl', '')}_AllTreeCount.csv"), index=False)
+UniqueTreeCountVec.to_csv(os.path.join(OutputDirectory, "TreeCount", f"{Category.replace('.pkl', '')}_UniqueTreeCount.csv"), index=False)
+SelectionHistoryVec.to_csv(os.path.join(OutputDirectory, "SelectionHistory", f"{Category.replace('.pkl', '')}_SelectionHistory.csv"), index=False)
+print(f"Saved {Category} files!")

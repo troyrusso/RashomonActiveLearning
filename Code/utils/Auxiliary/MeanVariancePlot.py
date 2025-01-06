@@ -24,6 +24,7 @@ def MeanVariancePlot(Subtitle = None,
                      CriticalValue = 1.96,
                      RelativeError = None,
                      Colors=None, 
+                     Linestyles = None,
                      **SimulationErrorResults):
 
     ### Set Up ###
@@ -67,8 +68,9 @@ def MeanVariancePlot(Subtitle = None,
     for Label, MeanValues in MeanVector.items():
         StdErrorValues = StdErrorVector[Label]
         x = 20 + (np.arange(len(MeanValues)) / len(MeanValues)) * 80  # Start at 20% and go to 100%
-        color = Colors.get(Label, None) if Colors else None  # Get color for the key
-        plt.plot(x, MeanValues, label=Label, color=color)
+        color = Colors.get(Label, None) if Colors else None 
+        linestyle = Linestyles.get(Label, '-') if Linestyles else '-'
+        plt.plot(x, MeanValues, label=Label, color=color, linestyle=linestyle)
         plt.fill_between(x, MeanValues - CriticalValue * StdErrorValues, 
                          MeanValues + CriticalValue * StdErrorValues, alpha=TransparencyVal, color=color)
 
@@ -84,8 +86,9 @@ def MeanVariancePlot(Subtitle = None,
     plt.figure(figsize=(7, 6))
     for Label, VarianceValues in VarianceVector.items():
         x = 20 + (np.arange(len(VarianceValues)) / len(VarianceValues)) * 80  # Start at 20% and go to 100%
-        color = Colors.get(Label, None) if Colors else None  # Get color for the key
-        plt.plot(x, VarianceValues, label=Label, color=color)
+        color = Colors.get(Label, None) if Colors else None
+        linestyle = Linestyles.get(Label, '-') if Linestyles else '-'
+        plt.plot(x, VarianceValues, label=Label, color=color, linestyle=linestyle)
         lower_bound = StdErrorVarianceVector[Label]["lower"]
         upper_bound = StdErrorVarianceVector[Label]["upper"]
         plt.fill_between(x, lower_bound, upper_bound, alpha=TransparencyVal, color=color)

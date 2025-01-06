@@ -4,7 +4,6 @@
 #   Model: The predictive model.
 #   df_Candidate: The candidate set.
 #   df_Train: The training set.
-#   AllErrors: The test errors from each model in the Rashomon set.
 #   UniqueErrorsInput: A binary input indicating whether to prune duplicate trees in TreeFarms.
 # Output:
 #   IndexRecommendation: The index of the recommended observation from the candidate set to be queried.
@@ -14,38 +13,46 @@
 ### Libraries ###
 import warnings
 import numpy as np
+import pandas as pd
 from scipy.spatial.distance import cdist
 
 ### Function ###
-def TreeEnsembleQBCFunction(Model, df_Candidate, df_Train, AllErrors, UniqueErrorsInput):
+def TreeEnsembleQBCFunction(Model, df_Candidate, df_Train, UniqueErrorsInput):
 
     ### Ignore warning (taken care of) ###
     np.seterr(all = 'ignore') 
     warnings.filterwarnings("ignore", category=UserWarning)
-
-    # ### GSx: Incorporate? Good for tie breakers. Could also do GSx on the data set as opposed to the one-hot set
-    # d_nmX = cdist(df_Candidate.loc[:,df_Candidate.columns!= "Y"], df_Train.loc[:,df_Train.columns!= "Y"], metric = distance)
-    # d_nX = d_nmX.min(axis=1)
-
+    UniqueErrorsInput= 1
     ### Predicted Values ###
-    if 'TREEFARMS' in str(type(Model)):                                                                         # TreeFarms
+    ## Rashomon Classification ##
+    if 'TREEFARMS' in str(type(Model)):
+        TreeCounts = Model.get_tree_count()
 
-        ## Unique Errors ##
+        # Duplicate #
+        PredictionArray_Duplicate = pd.DataFrame(np.array([Model[i].predict(df_Candidate.loc[:, df_Candidate.columns != "Y"]) for i in range(TreeCounts)]))
+        PredictionArray_Duplicate.columns = df_Candidate.index.astype(str)
+        EnsemblePrediction_Duplicate = np.mean(PredictionArray_Duplicate, axis =0)>=0.5
+        EnsemblePrediction_Duplicate.index = df_Candidate["Y"].index
+        AllTreeCount = PredictionArray_Duplicate.shape[0]
+
+        # Unique #
+        PredictionArray_Unique = pd.DataFrame(PredictionArray_Duplicate).drop_duplicates()
+        EnsemblePrediction_Unique = np.mean(PredictionArray_Unique, axis =0)>=0.5
+        EnsemblePrediction_Unique.index = df_Candidate["Y"].index
+        UniqueTreeCount = PredictionArray_Unique.shape[0]
+
         if UniqueErrorsInput:
-            AllErrorsArray = np.array(AllErrors)
-            UniqueErrors = sorted(set(AllErrors))                                                               # NOTE: NEED TO CORRECTLY CATEGORIZE CLASSIFICATION PATTERNS HERE
-            LowestErrorIndices = [int(np.where(AllErrorsArray == error)[0][0]) for error in UniqueErrors]
+            PredictedValues = PredictionArray_Unique
         else:
-            LowestErrorIndices = np.argsort(AllErrors)
+            PredictedValues = PredictionArray_Duplicate
 
-        ## Prediction ##
-        PredictedValues = [Model[i].predict(df_Candidate) for i in LowestErrorIndices]
+        Output = {"AllTreeCount": AllTreeCount,
+                  "UniqueTreeCount": UniqueTreeCount}
 
     elif 'RandomForestClassifier' in str(type(Model)):                                                          # RandomForest
         PredictedValues = [Model.estimators_[tree].predict(df_Candidate.loc[:, df_Candidate.columns != "Y"]) for tree in range(Model.n_estimators)] 
-    
-    ### Stack values ###
-    PredictedValues = np.vstack(PredictedValues)
+        PredictedValues = np.vstack(PredictedValues)
+        Output = {}
 
     ### Vote Entropy ###
     VoteC = {}
@@ -59,15 +66,18 @@ def TreeEnsembleQBCFunction(Model, df_Candidate, df_Train, AllErrors, UniqueErro
         LogVoteC[classes] = np.log(VoteC[classes])
         VoteEntropy[classes] =  - VoteC[classes] * LogVoteC[classes]
         VoteEntropy[classes] = np.nan_to_num(VoteEntropy[classes], nan=0)
-
+        
     # Vote Entropy #
     VoteEntropyMatrix = np.stack(list(VoteEntropy.values()), axis=1)
     VoteEntropyFinal = np.sum(VoteEntropyMatrix, axis=1)
 
     ### Uncertainty Metric ###
     df_Candidate["UncertaintyMetric"] = VoteEntropyFinal
+
     IndexRecommendation = int(df_Candidate.sort_values(by = "UncertaintyMetric", ascending = False).index[0])
     df_Candidate.drop('UncertaintyMetric', axis=1, inplace=True)
-    
-    return IndexRecommendation
 
+    # Output #
+    Output["IndexRecommendation"] = IndexRecommendation
+
+    return Output
