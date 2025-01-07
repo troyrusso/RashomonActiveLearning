@@ -26,6 +26,7 @@ def MeanVariancePlot(Subtitle = None,
                      Colors= None, 
                      Linestyles = None,
                      xlim = None,
+                     Y_Label = None,
                      **SimulationErrorResults):
 
     ### Set Up ###
@@ -33,7 +34,6 @@ def MeanVariancePlot(Subtitle = None,
     VarianceVector = {}
     StdErrorVector ={}
     StdErrorVarianceVector = {}
-    Y_Label = "F1 Score"
 
     ### Extract ###
     for Label, Results in SimulationErrorResults.items():
