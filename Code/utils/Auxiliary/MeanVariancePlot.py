@@ -23,8 +23,9 @@ def MeanVariancePlot(Subtitle = None,
                      TransparencyVal = 0.2,
                      CriticalValue = 1.96,
                      RelativeError = None,
-                     Colors=None, 
+                     Colors= None, 
                      Linestyles = None,
+                     xlim = None,
                      **SimulationErrorResults):
 
     ### Set Up ###
@@ -32,7 +33,7 @@ def MeanVariancePlot(Subtitle = None,
     VarianceVector = {}
     StdErrorVector ={}
     StdErrorVarianceVector = {}
-    Y_Label = "Classification error"
+    Y_Label = "F1 Score"
 
     ### Extract ###
     for Label, Results in SimulationErrorResults.items():
@@ -73,13 +74,15 @@ def MeanVariancePlot(Subtitle = None,
         plt.plot(x, MeanValues, label=Label, color=color, linestyle=linestyle)
         plt.fill_between(x, MeanValues - CriticalValue * StdErrorValues, 
                          MeanValues + CriticalValue * StdErrorValues, alpha=TransparencyVal, color=color)
-
-
     # plt.suptitle("Active Learning Mean Error Plot")
     plt.xlabel("Percent of labelled observations")
     plt.ylabel(Y_Label)
     plt.title(Subtitle, fontsize=9)
     plt.legend()
+    if type(xlim) == list:
+        plt.xlim(xlim)
+    else: 
+        pass
     MeanPlot = plt.gcf()
 
     # Variance Plot
@@ -97,6 +100,10 @@ def MeanVariancePlot(Subtitle = None,
     plt.ylabel("Variance of " + Y_Label)
     plt.title(Subtitle, fontsize = 9)
     plt.legend()
+    if type(xlim) == list:
+        plt.xlim(xlim)
+    else: 
+        pass
     VariancePlot = plt.gcf()
 
     return MeanPlot, VariancePlot
