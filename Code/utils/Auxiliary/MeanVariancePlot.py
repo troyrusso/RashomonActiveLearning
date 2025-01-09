@@ -27,6 +27,7 @@ def MeanVariancePlot(Subtitle = None,
                      Linestyles = None,
                      xlim = None,
                      Y_Label = None,
+                     VarInput = False,
                      **SimulationErrorResults):
 
     ### Set Up ###
@@ -70,7 +71,7 @@ def MeanVariancePlot(Subtitle = None,
         StdErrorValues = StdErrorVector[Label]
         x = 20 + (np.arange(len(MeanValues)) / len(MeanValues)) * 80  # Start at 20% and go to 100%
         color = Colors.get(Label, None) if Colors else None 
-        linestyle = Linestyles.get(Label, '-') if Linestyles else '-'
+        linestyle = Linestyles.get(Label, ':') if Linestyles else ':'
         plt.plot(x, MeanValues, label=Label, color=color, linestyle=linestyle)
         plt.fill_between(x, MeanValues - CriticalValue * StdErrorValues, 
                          MeanValues + CriticalValue * StdErrorValues, alpha=TransparencyVal, color=color)
@@ -86,24 +87,32 @@ def MeanVariancePlot(Subtitle = None,
     MeanPlot = plt.gcf()
 
     # Variance Plot
-    plt.figure(figsize=(7, 6))
-    for Label, VarianceValues in VarianceVector.items():
-        x = 20 + (np.arange(len(VarianceValues)) / len(VarianceValues)) * 80  # Start at 20% and go to 100%
-        color = Colors.get(Label, None) if Colors else None
-        linestyle = Linestyles.get(Label, '-') if Linestyles else '-'
-        plt.plot(x, VarianceValues, label=Label, color=color, linestyle=linestyle)
-        lower_bound = StdErrorVarianceVector[Label]["lower"]
-        upper_bound = StdErrorVarianceVector[Label]["upper"]
-        plt.fill_between(x, lower_bound, upper_bound, alpha=TransparencyVal, color=color)
-    # plt.suptitle("Active Learning Variance of Error Plot")
-    plt.xlabel("Percent of labelled observations")
-    plt.ylabel("Variance of " + Y_Label)
-    plt.title(Subtitle, fontsize = 9)
-    plt.legend()
-    if type(xlim) == list:
-        plt.xlim(xlim)
-    else: 
-        pass
-    VariancePlot = plt.gcf()
+    if VarInput:
+        plt.figure(figsize=(7, 6))
+        for Label, VarianceValues in VarianceVector.items():
+            x = 20 + (np.arange(len(VarianceValues)) / len(VarianceValues)) * 80  # Start at 20% and go to 100%
+            color = Colors.get(Label, None) if Colors else None
+            linestyle = Linestyles.get(Label, '-') if Linestyles else '-'
+            plt.plot(x, VarianceValues, label=Label, color=color, linestyle=linestyle)
+            lower_bound = StdErrorVarianceVector[Label]["lower"]
+            upper_bound = StdErrorVarianceVector[Label]["upper"]
+            plt.fill_between(x, lower_bound, upper_bound, alpha=TransparencyVal, color=color)
+        # plt.suptitle("Active Learning Variance of Error Plot")
+        plt.xlabel("Percent of labelled observations")
+        plt.ylabel("Variance of " + Y_Label)
+        plt.title(Subtitle, fontsize = 9)
+        plt.legend()
+        if type(xlim) == list:
+            plt.xlim(xlim)
+        else: 
+            pass
+        VariancePlot = plt.gcf()
+    else:
+        VariancePlot = None
 
-    return MeanPlot, VariancePlot
+    ### Return ###
+    if VarInput:
+        return MeanPlot, VariancePlot
+    else:
+        return MeanPlot
+
