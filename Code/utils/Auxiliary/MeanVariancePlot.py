@@ -66,7 +66,7 @@ def MeanVariancePlot(Subtitle = None,
 
 
     ### Mean Plot ###
-    plt.figure(figsize=(20, 6))
+    plt.figure(figsize=(7, 6))
     for Label, MeanValues in MeanVector.items():
         StdErrorValues = StdErrorVector[Label]
         x = 20 + (np.arange(len(MeanValues)) / len(MeanValues)) * 80  # Start at 20% and go to 100%
