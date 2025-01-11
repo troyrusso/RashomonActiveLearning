@@ -24,8 +24,8 @@ def LoadAnalyzedData(data_type, base_directory, method, parameter):
             "Time_DUREAL": f"ProcessedResults/ElapsedTime/DPL{parameter}_TimeMatrix.csv",
             "SelectionHistory_UNREAL": f"ProcessedResults/SelectionHistory/UNQ{parameter}_SelectionHistory.csv",
             "SelectionHistory_DUREAL": f"ProcessedResults/SelectionHistory/DPL{parameter}_SelectionHistory.csv",
-            "TreeCounts_UNREAL": f"ProcessedResults/TreeCount/UNQ{parameter}_UniqueTreeCount.csv",
-            "TreeCounts_DUREAL": f"ProcessedResults/TreeCount/DPL{parameter}_UniqueTreeCount.csv",
+            "TreeCounts_UNIQUE_UNREAL": f"ProcessedResults/TreeCount/UNQ{parameter}_UniqueTreeCount.csv",
+            "TreeCounts_UNIQUE_DUREAL": f"ProcessedResults/TreeCount/DPL{parameter}_UniqueTreeCount.csv",
             "TreeCounts_ALL_UNREAL": f"ProcessedResults/TreeCount/UNQ{parameter}_AllTreeCount.csv",
             "TreeCounts_ALL_DUREAL": f"ProcessedResults/TreeCount/DPL{parameter}_AllTreeCount.csv",
         }
