@@ -44,7 +44,7 @@ for i, row in ParameterVector.iterrows():
     sbatch_content = [
         "#!/bin/bash",
         f"#SBATCH --job-name={JobName}",
-        "#SBATCH --partition=medium",                                             # short or medium or long or largemem	
+        "#SBATCH --partition=largemem",                                             # short or medium or long or largemem	
         "#SBATCH --ntasks=1",
         "#SBATCH --time=6-23:59:00",                                               # 11:59:00 or 6-23:59:00
         "#SBATCH --mem-per-cpu=300000",                                             # mem-per-cpu=30000 or mem-per-cpu=300000
