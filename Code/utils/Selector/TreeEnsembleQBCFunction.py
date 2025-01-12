@@ -32,14 +32,12 @@ def TreeEnsembleQBCFunction(Model, df_Candidate, df_Train, UniqueErrorsInput):
         # Duplicate #
         PredictionArray_Duplicate = pd.DataFrame(np.array([Model[i].predict(df_Candidate.loc[:, df_Candidate.columns != "Y"]) for i in range(TreeCounts)]))
         PredictionArray_Duplicate.columns = df_Candidate.index.astype(str)
-        # EnsemblePrediction_Duplicate = np.mean(PredictionArray_Duplicate, axis =0)>=0.5
         EnsemblePrediction_Duplicate = pd.Series(stats.mode(PredictionArray_Duplicate)[0])
         EnsemblePrediction_Duplicate.index = df_Candidate["Y"].index
         AllTreeCount = PredictionArray_Duplicate.shape[0]
 
         # Unique #
         PredictionArray_Unique = pd.DataFrame(PredictionArray_Duplicate).drop_duplicates()
-        # EnsemblePrediction_Unique = np.mean(PredictionArray_Unique, axis =0)>=0.5
         EnsemblePrediction_Unique = pd.Series(stats.mode(PredictionArray_Unique)[0])
         EnsemblePrediction_Unique.index = df_Candidate["Y"].index
         UniqueTreeCount = PredictionArray_Unique.shape[0]
@@ -52,7 +50,8 @@ def TreeEnsembleQBCFunction(Model, df_Candidate, df_Train, UniqueErrorsInput):
         Output = {"AllTreeCount": AllTreeCount,
                   "UniqueTreeCount": UniqueTreeCount}
 
-    elif 'RandomForestClassifier' in str(type(Model)):                                                          # RandomForest
+    ## Random Forest Classification ###
+    elif 'RandomForestClassifier' in str(type(Model)):
         PredictedValues = [Model.estimators_[tree].predict(df_Candidate.loc[:, df_Candidate.columns != "Y"]) for tree in range(Model.n_estimators)] 
         PredictedValues = np.vstack(PredictedValues)
         Output = {}

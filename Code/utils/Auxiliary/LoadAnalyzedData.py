@@ -18,8 +18,8 @@ def LoadAnalyzedData(data_type, base_directory, method, parameter):
         }
     if method == "TreeFarms":
         PathTemplates = {
-            "Error_UNREAL": f"ProcessedResults/ErrorVec/DPL{parameter}_ErrorMatrix.csv",
-            "Error_DUREAL": f"ProcessedResults/ErrorVec/UNQ{parameter}_ErrorMatrix.csv",
+            "Error_UNREAL": f"ProcessedResults/ErrorVec/UNQ{parameter}_ErrorMatrix.csv",
+            "Error_DUREAL": f"ProcessedResults/ErrorVec/DPL{parameter}_ErrorMatrix.csv",
             "Time_UNREAL": f"ProcessedResults/ElapsedTime/UNQ{parameter}_TimeMatrix.csv",
             "Time_DUREAL": f"ProcessedResults/ElapsedTime/DPL{parameter}_TimeMatrix.csv",
             "SelectionHistory_UNREAL": f"ProcessedResults/SelectionHistory/UNQ{parameter}_SelectionHistory.csv",
