@@ -47,7 +47,7 @@ for i, row in ParameterVector.iterrows():
         "#SBATCH --partition=largemem",                                             # short or medium or long or largemem	
         "#SBATCH --ntasks=1",
         "#SBATCH --time=6-23:59:00",                                               # 11:59:00 or 6-23:59:00
-        "#SBATCH --mem-per-cpu=300000",                                             # mem-per-cpu=30000 or mem-per-cpu=300000
+        "#SBATCH --mem-per-cpu=100000",                                             # mem-per-cpu=30000 or mem-per-cpu=100000
         f"#SBATCH -o ClusterMessages/out/myscript_{JobName}_%j.out",
         f"#SBATCH -e ClusterMessages/error/myscript_{JobName}_%j.err",
         "#SBATCH --mail-type=FAIL",                                             # FAIL ALL
