@@ -17,7 +17,7 @@ from sklearn.model_selection import train_test_split
 ### Function ###
 def TrainTestCandidateSplit(df, TestProportion, CandidateProportion):
 
-     # Train/Test split #
+    # Train/Test split #
     X_TrainCandidate, X_Test, y_TrainCandidate, y_Test = train_test_split(
         df.loc[:, df.columns != "Y"], df["Y"], test_size=TestProportion
     )

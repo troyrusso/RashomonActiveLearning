@@ -79,7 +79,7 @@ def MeanVariancePlot(Subtitle = None,
     plt.xlabel("Percent of labelled observations")
     plt.ylabel(Y_Label)
     plt.title(Subtitle, fontsize=9)
-    plt.legend()
+    plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
     if type(xlim) == list:
         plt.xlim(xlim)
     else: 
@@ -101,7 +101,7 @@ def MeanVariancePlot(Subtitle = None,
         plt.xlabel("Percent of labelled observations")
         plt.ylabel("Variance of " + Y_Label)
         plt.title(Subtitle, fontsize = 9)
-        plt.legend()
+        plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
         if type(xlim) == list:
             plt.xlim(xlim)
         else: 
