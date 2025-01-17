@@ -32,7 +32,8 @@ for i, row in ParameterVector.iterrows():
     UniqueErrorsInput = row['UniqueErrorsInput']
     n_estimators = row['n_estimators']
     regularization = row['regularization']
-    rashomon_bound_adder = row['rashomon_bound_adder']
+    RashomonThresholdType = row['RashomonThresholdType']
+    RashomonThreshold = row['RashomonThreshold']
     Type = row['Type']
     Output = row['Output']
     Partition = row["Partition"]
@@ -69,7 +70,8 @@ for i, row in ParameterVector.iterrows():
         f"    --UniqueErrorsInput {UniqueErrorsInput} \\",
         f"    --n_estimators {n_estimators} \\",
         f"    --regularization {regularization} \\",
-        f"    --rashomon_bound_adder {rashomon_bound_adder} \\",
+        f"    --RashomonThresholdType {RashomonThresholdType} \\",
+        f"    --RashomonThreshold {RashomonThreshold} \\",
         f"    --Type {Type} \\",
         f"    --Output {Output}"
     ]
