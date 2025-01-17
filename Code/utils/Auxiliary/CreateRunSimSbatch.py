@@ -35,6 +35,9 @@ for i, row in ParameterVector.iterrows():
     rashomon_bound_adder = row['rashomon_bound_adder']
     Type = row['Type']
     Output = row['Output']
+    Partition = row["Partition"]
+    Time = row["Time"]
+    Memory = row["Memory"]
     
     # Path for .sbatch files ###
     TargetDirectory = os.path.join(cwd,"Code", "Cluster", Data, "RunSimulations")
@@ -44,10 +47,10 @@ for i, row in ParameterVector.iterrows():
     sbatch_content = [
         "#!/bin/bash",
         f"#SBATCH --job-name={JobName}",
-        "#SBATCH --partition=largemem",                                             # short or medium or long or largemem	
+        f"#SBATCH --partition={Partition}",                                             # [short, medium, long, largemem, or compute]
         "#SBATCH --ntasks=1",
-        "#SBATCH --time=6-23:59:00",                                               # 11:59:00 or 6-23:59:00
-        "#SBATCH --mem-per-cpu=100000",                                             # mem-per-cpu=30000 or mem-per-cpu=100000
+        f"#SBATCH --time={Time}",                                                # [11:59:00, 6-23:59:00]
+        f"#SBATCH --mem-per-cpu={Memory}",                                             # [30000, 100000]
         f"#SBATCH -o ClusterMessages/out/myscript_{JobName}_%j.out",
         f"#SBATCH -e ClusterMessages/error/myscript_{JobName}_%j.err",
         "#SBATCH --mail-type=FAIL",                                             # FAIL ALL
