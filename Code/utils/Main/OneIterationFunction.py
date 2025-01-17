@@ -9,7 +9,7 @@
 #   UniqueErrorsInput: A binary input indicating whether to prune duplicate trees in TreeFarms.
 #   n_estimators: The number of trees for a random forest.
 #   regularization: Penalty on the number of splits in a tree.
-#   rashomon_bound_adder: A float indicating the Rashomon threshold: (1+\epsilon)*OptimalLoss
+#   RashomonThreshold: A float indicating the Rashomon threshold: (1+\epsilon)*OptimalLoss
 #   Type: A string {"Regression", "Classification"} indicating the prediction objective.
 # Output: A dictionary SimulationResults with the following keys and values:
 #   ErrorVec: Vector of errors at each iteration of the learning process.
@@ -46,10 +46,6 @@ def OneIterationFunction(SimulationConfigInput):
     np.random.seed(SimulationConfigInput["Seed"])
 
     ### Generate Data ###
-    # if(DataFileInput == "Simulate"):
-    #     from utils.Main import DataGeneratingProcess                             ### NOTE: Why is this not imported from utils.Main import *
-    #     df = DataGeneratingProcess(**DataArgs)
-    # else:
     df = LoadData(SimulationConfigInput["DataFileInput"])
 
     ### Train Test Candidate Split ###
@@ -75,7 +71,8 @@ def OneIterationFunction(SimulationConfigInput):
                             'UniqueErrorsInput': str(SimulationConfigInput["UniqueErrorsInput"]),
                             'n_estimators': str(SimulationConfigInput["n_estimators"]),
                             'regularization': str(SimulationConfigInput["regularization"]),
-                            'rashomon_bound_adder': str(SimulationConfigInput["rashomon_bound_adder"]),
+                            'RashomonThresholdType': str(SimulationConfigInput["RashomonThresholdType"]),
+                            'RashomonThreshold': str(SimulationConfigInput["RashomonThreshold"]),
                             'Type': 'Classification'
                             }
     

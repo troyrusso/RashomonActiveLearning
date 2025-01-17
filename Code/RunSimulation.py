@@ -31,7 +31,8 @@ parser.add_argument("--ModelType", type=str, default="-1", help="Predictive mode
 parser.add_argument("--UniqueErrorsInput", type=int, default="-1", help="Unique (1) vs. Duplicate (0) boolean for TreeFarms.")
 parser.add_argument("--n_estimators", type=int, default="-1", help="Number of trees for random forest.")
 parser.add_argument("--regularization", type=float, default="-1.0", help="Regularization for TreeFarms.")
-parser.add_argument("--rashomon_bound_adder", type=float, default="-1.0", help="Rashomon threshold addiditive epislon for TreeFarms.")
+parser.add_argument("--RashomonThresholdType", type=float, default="-1.0", help="Adder or multiplier.")
+parser.add_argument("--RashomonThreshold", type=float, default="-1.0", help="Rashomon threshold (adder/multiplier) epislon for TreeFarms.")
 parser.add_argument("--Type", type=str, default="-1", help="Regression vs. Classification (currently only classification offered).")
 parser.add_argument("--Output", type=str, default="-1", help="Output.")
 args = parser.parse_args()
@@ -46,7 +47,8 @@ SimulationConfigInput = {"DataFileInput": args.Data,
                         "UniqueErrorsInput": int(args.UniqueErrorsInput),
                         "n_estimators":int(args.n_estimators),
                         "regularization":float(args.regularization),
-                        "rashomon_bound_adder":float(args.rashomon_bound_adder),
+                        "RashomonThresholdType":args.RashomonThresholdType,
+                        "RashomonThreshold":float(args.RashomonThreshold),
                         "Type": args.Type
                         }
 
