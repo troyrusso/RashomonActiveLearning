@@ -10,24 +10,38 @@ def LoadAnalyzedData(data_type, base_directory, method, parameter):
 
     ### File Path ###
 
+
     if method == "RandomForestClassification":
         PathTemplates = {
             "Error_RF": f"ProcessedResults/ErrorVec/RF{parameter}_ErrorMatrix.csv",
             "Time_RF": f"ProcessedResults/ElapsedTime/RF{parameter}_TimeMatrix.csv",
             "SelectionHistory_RF": f"ProcessedResults/SelectionHistory/RF{parameter}_SelectionHistory.csv"
         }
+    # if method == "TreeFarms":
+    #     PathTemplates = {
+    #         "Error_UNREAL": f"ProcessedResults/ErrorVec/UNQ{parameter}_ErrorMatrix.csv",
+    #         "Error_DUREAL": f"ProcessedResults/ErrorVec/DPL{parameter}_ErrorMatrix.csv",
+    #         "Time_UNREAL": f"ProcessedResults/ElapsedTime/UNQ{parameter}_TimeMatrix.csv",
+    #         "Time_DUREAL": f"ProcessedResults/ElapsedTime/DPL{parameter}_TimeMatrix.csv",
+    #         "SelectionHistory_UNREAL": f"ProcessedResults/SelectionHistory/UNQ{parameter}_SelectionHistory.csv",
+    #         "SelectionHistory_DUREAL": f"ProcessedResults/SelectionHistory/DPL{parameter}_SelectionHistory.csv",
+    #         "TreeCounts_UNIQUE_UNREAL": f"ProcessedResults/TreeCount/UNQ{parameter}_UniqueTreeCount.csv",
+    #         "TreeCounts_UNIQUE_DUREAL": f"ProcessedResults/TreeCount/DPL{parameter}_UniqueTreeCount.csv",
+    #         "TreeCounts_ALL_UNREAL": f"ProcessedResults/TreeCount/UNQ{parameter}_AllTreeCount.csv",
+    #         "TreeCounts_ALL_DUREAL": f"ProcessedResults/TreeCount/DPL{parameter}_AllTreeCount.csv",
+    #     }
     if method == "TreeFarms":
         PathTemplates = {
-            "Error_UNREAL": f"ProcessedResults/ErrorVec/UNQ{parameter}_ErrorMatrix.csv",
-            "Error_DUREAL": f"ProcessedResults/ErrorVec/DPL{parameter}_ErrorMatrix.csv",
-            "Time_UNREAL": f"ProcessedResults/ElapsedTime/UNQ{parameter}_TimeMatrix.csv",
-            "Time_DUREAL": f"ProcessedResults/ElapsedTime/DPL{parameter}_TimeMatrix.csv",
-            "SelectionHistory_UNREAL": f"ProcessedResults/SelectionHistory/UNQ{parameter}_SelectionHistory.csv",
-            "SelectionHistory_DUREAL": f"ProcessedResults/SelectionHistory/DPL{parameter}_SelectionHistory.csv",
-            "TreeCounts_UNIQUE_UNREAL": f"ProcessedResults/TreeCount/UNQ{parameter}_UniqueTreeCount.csv",
-            "TreeCounts_UNIQUE_DUREAL": f"ProcessedResults/TreeCount/DPL{parameter}_UniqueTreeCount.csv",
-            "TreeCounts_ALL_UNREAL": f"ProcessedResults/TreeCount/UNQ{parameter}_AllTreeCount.csv",
-            "TreeCounts_ALL_DUREAL": f"ProcessedResults/TreeCount/DPL{parameter}_AllTreeCount.csv",
+            "Error_UNREAL": f"ProcessedResults/ErrorVec/IS_U{parameter}M_ErrorMatrix.csv",
+            "Error_DUREAL": f"ProcessedResults/ErrorVec/IS_D{parameter}M_ErrorMatrix.csv",
+            "Time_UNREAL": f"ProcessedResults/ElapsedTime/IS_U{parameter}M_TimeMatrix.csv",
+            "Time_DUREAL": f"ProcessedResults/ElapsedTime/IS_D{parameter}M_TimeMatrix.csv",
+            "SelectionHistory_UNREAL": f"ProcessedResults/SelectionHistory/IS_U{parameter}M_SelectionHistory.csv",
+            "SelectionHistory_DUREAL": f"ProcessedResults/SelectionHistory/IS_D{parameter}M_SelectionHistory.csv",
+            "TreeCounts_UNIQUE_UNREAL": f"ProcessedResults/TreeCount/IS_U{parameter}M_UniqueTreeCount.csv",
+            "TreeCounts_UNIQUE_DUREAL": f"ProcessedResults/TreeCount/IS_D{parameter}M_UniqueTreeCount.csv",
+            "TreeCounts_ALL_UNREAL": f"ProcessedResults/TreeCount/IS_U{parameter}M_AllTreeCount.csv",
+            "TreeCounts_ALL_DUREAL": f"ProcessedResults/TreeCount/IS_D{parameter}M_AllTreeCount.csv",
         }
 
     #### Load Data Into Dictionary ###
