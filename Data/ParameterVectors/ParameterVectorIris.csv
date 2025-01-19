@@ -1,2 +1,2 @@
 Data,Seed,TestProportion,CandidateProportion,SelectorType,ModelType,UniqueErrorsInput,n_estimators,regularization,RashomonThresholdType,RashomonThreshold,Type,Partition,Time,Memory,JobName,Output
-IRIS,70,0.2,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,1,100,0.01,Multiplier,0.5,Classification,largemem,6-23:59:00,100000,70IS_UM0.5,IRIS/TreeFarms/Raw/70IS_UM0.5.pkl
+Iris,70,0.2,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,1,100,0.01,Multiplier,0.5,Classification,largemem,6-23:59:00,100000,70IS_UM0.5,Iris/TreeFarms/Raw/70IS_UM0.5.pkl
