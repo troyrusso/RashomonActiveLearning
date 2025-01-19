@@ -1,2 +1,2 @@
 Data,Seed,TestProportion,CandidateProportion,SelectorType,ModelType,UniqueErrorsInput,n_estimators,regularization,RashomonThresholdType,RashomonThreshold,Type,Partition,Time,Memory,JobName,Output
-MONK1,52,0.2,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,0,100,0.01,Multiplier,0.2,Classification,compute,6-23:59:00,100000,52M1_DM0.2,MONK1/TreeFarms/Raw/52M1_DM0.2.pkl
+MONK1,52,0.2,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,1,100,0.01,Multiplier,0.2,Classification,compute,6-23:59:00,30000,52M1_UM0.2,MONK1/TreeFarms/Raw/52M1_UM0.2.pkl
