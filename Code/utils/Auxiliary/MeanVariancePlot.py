@@ -29,6 +29,7 @@ def MeanVariancePlot(Subtitle = None,
                      xlim = None,
                      Y_Label = None,
                      VarInput = False,
+                     FigSize = (10,3),
                      LegendMapping = None,
                      **SimulationErrorResults):
 
@@ -68,8 +69,7 @@ def MeanVariancePlot(Subtitle = None,
 
 
     ### Mean Plot ###
-    plt.figure(figsize=(5, 5))
-    # plt.figure(figsize=(10, 3))
+    plt.figure(figsize=FigSize)
     for Label, MeanValues in MeanVector.items():
         StdErrorValues = StdErrorVector[Label]
         x = 20 + (np.arange(len(MeanValues)) / len(MeanValues)) * 80  # Start at 20% and go to 100%
@@ -85,7 +85,8 @@ def MeanVariancePlot(Subtitle = None,
     plt.xlabel("Percent of labelled observations")
     plt.ylabel(Y_Label)
     plt.title(Subtitle, fontsize=9)
-    plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
+    # plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+    plt.legend(loc='upper right')
     if type(xlim) == list:
         plt.xlim(xlim)
     else: 
@@ -94,8 +95,7 @@ def MeanVariancePlot(Subtitle = None,
 
     # Variance Plot
     if VarInput:
-        plt.figure(figsize=(5, 5))
-        # plt.figure(figsize=(10, 3))
+        plt.figure(figsize= FigSize)
         for Label, VarianceValues in VarianceVector.items():
             x = 20 + (np.arange(len(VarianceValues)) / len(VarianceValues)) * 80  # Start at 20% and go to 100%
             color = Colors.get(Label, None) if Colors else None
@@ -111,7 +111,8 @@ def MeanVariancePlot(Subtitle = None,
         plt.xlabel("Percent of labelled observations")
         plt.ylabel("Variance of " + Y_Label)
         plt.title(Subtitle, fontsize = 9)
-        plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
+        # plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+        plt.legend(loc='upper right')
         if type(xlim) == list:
             plt.xlim(xlim)
         else: 

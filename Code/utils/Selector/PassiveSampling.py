@@ -11,4 +11,6 @@ def PassiveLearning(df_Candidate):
     ### Passive Sampling ###
     QueryObservation = df_Candidate.sample(n=1)
     IndexRecommendation = QueryObservation.index[0]
-    return(IndexRecommendation)
+
+    Output = {"IndexRecommendation": float(IndexRecommendation)}
+    return(Output)
