@@ -25,6 +25,7 @@ def MeanVariancePlot(Subtitle = None,
                      RelativeError = None,
                      Colors= None, 
                      Linestyles = None,
+                     Markerstyles = None,
                      xlim = None,
                      Y_Label = None,
                      VarInput = False,
@@ -67,14 +68,17 @@ def MeanVariancePlot(Subtitle = None,
 
 
     ### Mean Plot ###
-    plt.figure(figsize=(10, 3))
+    plt.figure(figsize=(5, 5))
+    # plt.figure(figsize=(10, 3))
     for Label, MeanValues in MeanVector.items():
         StdErrorValues = StdErrorVector[Label]
         x = 20 + (np.arange(len(MeanValues)) / len(MeanValues)) * 80  # Start at 20% and go to 100%
         color = Colors.get(Label, None) if Colors else None 
         linestyle = Linestyles.get(Label, ':') if Linestyles else ':'
+        markerstyle = Markerstyles.get(Label, 'o') if Markerstyles else 'o'
         legend_label = LegendMapping[Label] if LegendMapping and Label in LegendMapping else Label
         plt.plot(x, MeanValues, label=legend_label, color=color, linestyle=linestyle)
+        # plt.plot(x, MeanValues, label=legend_label, color=color, linestyle=linestyle, marker = markerstyle, markersize=2)
         plt.fill_between(x, MeanValues - CriticalValue * StdErrorValues, 
                          MeanValues + CriticalValue * StdErrorValues, alpha=TransparencyVal, color=color)
     # plt.suptitle("Active Learning Mean Error Plot")
@@ -90,13 +94,16 @@ def MeanVariancePlot(Subtitle = None,
 
     # Variance Plot
     if VarInput:
-        plt.figure(figsize=(10, 3))
+        plt.figure(figsize=(5, 5))
+        # plt.figure(figsize=(10, 3))
         for Label, VarianceValues in VarianceVector.items():
             x = 20 + (np.arange(len(VarianceValues)) / len(VarianceValues)) * 80  # Start at 20% and go to 100%
             color = Colors.get(Label, None) if Colors else None
             linestyle = Linestyles.get(Label, '-') if Linestyles else '-'
+            markerstyle = Markerstyles.get(Label, 'o') if Markerstyles else 'o'
             legend_label = LegendMapping[Label] if LegendMapping and Label in LegendMapping else Label
             plt.plot(x, VarianceValues, label=legend_label, color=color, linestyle=linestyle)
+            # plt.plot(x, VarianceValues, label=legend_label, color=color, linestyle=linestyle, marker = markerstyle, markersize=2)
             lower_bound = StdErrorVarianceVector[Label]["lower"]
             upper_bound = StdErrorVarianceVector[Label]["upper"]
             plt.fill_between(x, lower_bound, upper_bound, alpha=TransparencyVal, color=color)

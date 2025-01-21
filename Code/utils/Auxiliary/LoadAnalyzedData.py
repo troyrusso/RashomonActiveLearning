@@ -32,16 +32,16 @@ def LoadAnalyzedData(data_type, base_directory, method, parameter):
         }
     # if method == "TreeFarms":
     #     PathTemplates = {
-    #         "Error_UNREAL": f"ProcessedResults/ErrorVec/IS_U{parameter}M_ErrorMatrix.csv",
-    #         "Error_DUREAL": f"ProcessedResults/ErrorVec/IS_D{parameter}M_ErrorMatrix.csv",
-    #         "Time_UNREAL": f"ProcessedResults/ElapsedTime/IS_U{parameter}M_TimeMatrix.csv",
-    #         "Time_DUREAL": f"ProcessedResults/ElapsedTime/IS_D{parameter}M_TimeMatrix.csv",
-    #         "SelectionHistory_UNREAL": f"ProcessedResults/SelectionHistory/IS_U{parameter}M_SelectionHistory.csv",
-    #         "SelectionHistory_DUREAL": f"ProcessedResults/SelectionHistory/IS_D{parameter}M_SelectionHistory.csv",
-    #         "TreeCounts_UNIQUE_UNREAL": f"ProcessedResults/TreeCount/IS_U{parameter}M_UniqueTreeCount.csv",
-    #         "TreeCounts_UNIQUE_DUREAL": f"ProcessedResults/TreeCount/IS_D{parameter}M_UniqueTreeCount.csv",
-    #         "TreeCounts_ALL_UNREAL": f"ProcessedResults/TreeCount/IS_U{parameter}M_AllTreeCount.csv",
-    #         "TreeCounts_ALL_DUREAL": f"ProcessedResults/TreeCount/IS_D{parameter}M_AllTreeCount.csv",
+    #         "Error_UNREAL": f"ProcessedResults/ErrorVec/UA{parameter}_ErrorMatrix.csv",
+    #         "Error_DUREAL": f"ProcessedResults/ErrorVec/DA{parameter}_ErrorMatrix.csv",
+    #         "Time_UNREAL": f"ProcessedResults/ElapsedTime/UA{parameter}_TimeMatrix.csv",
+    #         "Time_DUREAL": f"ProcessedResults/ElapsedTime/DA{parameter}_TimeMatrix.csv",
+    #         "SelectionHistory_UNREAL": f"ProcessedResults/SelectionHistory/UA{parameter}_SelectionHistory.csv",
+    #         "SelectionHistory_DUREAL": f"ProcessedResults/SelectionHistory/DA{parameter}_SelectionHistory.csv",
+    #         "TreeCounts_UNIQUE_UNREAL": f"ProcessedResults/TreeCount/UA{parameter}_UniqueTreeCount.csv",
+    #         "TreeCounts_UNIQUE_DUREAL": f"ProcessedResults/TreeCount/DA{parameter}_UniqueTreeCount.csv",
+    #         "TreeCounts_ALL_UNREAL": f"ProcessedResults/TreeCount/UA{parameter}_AllTreeCount.csv",
+    #         "TreeCounts_ALL_DUREAL": f"ProcessedResults/TreeCount/DA{parameter}_AllTreeCount.csv",
     #     }
 
     #### Load Data Into Dictionary ###
