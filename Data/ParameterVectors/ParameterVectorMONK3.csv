@@ -1,15 +1,3 @@
 Data,Seed,TestProportion,CandidateProportion,SelectorType,ModelType,UniqueErrorsInput,n_estimators,regularization,RashomonThresholdType,RashomonThreshold,Type,Partition,Time,Memory,JobName,Output
-MONK3,3,0.2,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,0,100,0.01,Adder,0.019,Classification,compute,23:59:00,50G,3M3_DA0.019,MONK3/TreeFarms/Raw/3M3_DA0.019.pkl
-MONK3,22,0.2,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,1,100,0.01,Adder,0.019,Classification,compute,23:59:00,50G,22M3_UA0.019,MONK3/TreeFarms/Raw/22M3_UA0.019.pkl
-MONK3,28,0.2,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,1,100,0.01,Adder,0.019,Classification,compute,23:59:00,50G,28M3_UA0.019,MONK3/TreeFarms/Raw/28M3_UA0.019.pkl
-MONK3,40,0.2,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,0,100,0.01,Adder,0.019,Classification,compute,23:59:00,50G,40M3_DA0.019,MONK3/TreeFarms/Raw/40M3_DA0.019.pkl
-MONK3,50,0.2,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,0,100,0.01,Adder,0.019,Classification,compute,23:59:00,50G,50M3_DA0.019,MONK3/TreeFarms/Raw/50M3_DA0.019.pkl
-MONK3,71,0.2,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,0,100,0.01,Adder,0.019,Classification,compute,23:59:00,50G,71M3_DA0.019,MONK3/TreeFarms/Raw/71M3_DA0.019.pkl
-MONK3,76,0.2,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,1,100,0.01,Adder,0.019,Classification,compute,23:59:00,50G,76M3_UA0.019,MONK3/TreeFarms/Raw/76M3_UA0.019.pkl
-MONK3,78,0.2,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,1,100,0.01,Adder,0.019,Classification,compute,23:59:00,50G,78M3_UA0.019,MONK3/TreeFarms/Raw/78M3_UA0.019.pkl
-MONK3,80,0.2,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,0,100,0.01,Adder,0.019,Classification,compute,23:59:00,50G,80M3_DA0.019,MONK3/TreeFarms/Raw/80M3_DA0.019.pkl
-MONK3,87,0.2,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,0,100,0.01,Adder,0.019,Classification,compute,23:59:00,50G,87M3_DA0.019,MONK3/TreeFarms/Raw/87M3_DA0.019.pkl
-MONK3,89,0.2,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,1,100,0.01,Adder,0.019,Classification,compute,23:59:00,50G,89M3_UA0.019,MONK3/TreeFarms/Raw/89M3_UA0.019.pkl
-MONK3,94,0.2,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,0,100,0.01,Adder,0.019,Classification,compute,23:59:00,50G,94M3_DA0.019,MONK3/TreeFarms/Raw/94M3_DA0.019.pkl
-MONK3,94,0.2,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,1,100,0.01,Adder,0.019,Classification,compute,23:59:00,50G,94M3_UA0.019,MONK3/TreeFarms/Raw/94M3_UA0.019.pkl
-MONK3,96,0.2,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,1,100,0.01,Adder,0.019,Classification,compute,23:59:00,50G,96M3_UA0.019,MONK3/TreeFarms/Raw/96M3_UA0.019.pkl
+MONK3,39,0.2,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,1,100,0.01,Adder,0.03,Classification,medium,6-23:59:00,30000M,39M3_UA0.03,MONK3/TreeFarms/Raw/39M3_UA0.03.pkl
+MONK3,59,0.2,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,1,100,0.01,Adder,0.03,Classification,medium,6-23:59:00,30000M,59M3_UA0.03,MONK3/TreeFarms/Raw/59M3_UA0.03.pkl
