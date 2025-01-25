@@ -10,7 +10,7 @@ import pandas as pd
 from scipy.stats import wilcoxon
 
 ### Function ###
-def WilcoxonRankSignedTest(SimulationErrorResults):
+def WilcoxonRankSignedTest(SimulationErrorResults, RoundingVal = None):
 
     ### Set Up ###
     strategies = list(SimulationErrorResults.keys())
@@ -20,8 +20,12 @@ def WilcoxonRankSignedTest(SimulationErrorResults):
     ### Wilcoxon Signed-Rank Test ###
     for i in range(n_strategies):
         for j in range(i):
-            stat, pval = wilcoxon(SimulationErrorResults[strategies[i]], SimulationErrorResults[strategies[j]])
-            PValeMatrix[i, j] = pval
+            stat, pval = wilcoxon(np.mean(SimulationErrorResults[strategies[i]],axis=0), 
+                                  np.mean(SimulationErrorResults[strategies[j]],axis=0))
+            if RoundingVal == None:
+                PValeMatrix[i, j] = pval
+            else:
+                PValeMatrix[i, j] = np.round(pval,RoundingVal)
 
     ### Formatting ###
     np.fill_diagonal(PValeMatrix, 1)

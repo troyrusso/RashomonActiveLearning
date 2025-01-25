@@ -84,9 +84,9 @@ def MeanVariancePlot(Subtitle = None,
     # plt.suptitle("Active Learning Mean Error Plot")
     plt.xlabel("Percent of labelled observations")
     plt.ylabel(Y_Label)
-    plt.title(Subtitle, fontsize=9)
-    # plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
-    plt.legend(loc='upper right')
+    # plt.title(Subtitle, fontsize=9)
+    plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+    # plt.legend(loc='upper right')
     if type(xlim) == list:
         plt.xlim(xlim)
     else: 
