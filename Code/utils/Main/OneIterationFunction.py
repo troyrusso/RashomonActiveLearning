@@ -49,7 +49,7 @@ def OneIterationFunction(SimulationConfigInput):
     df = LoadData(SimulationConfigInput["DataFileInput"])
 
     ### Perform stratified sampling (due to large number of observations) ###
-    if SimulationConfigInput["DataFileInput"] in ["COMPAS", "BreastCancer"]:
+    if SimulationConfigInput["DataFileInput"] in ["COMPAS", "BreastCancer", "FICO"]:
         X_sampled, _, y_sampled, _ = train_test_split(df.drop(columns=["Y"]), 
                                               df["Y"], 
                                               stratify=df["Y"], 
