@@ -54,7 +54,7 @@ for i, row in ParameterVector.iterrows():
         f"#SBATCH --mem-per-cpu={Memory}",                                             # [30000, 100000]
         f"#SBATCH -o ClusterMessages/out/myscript_{JobName}_%j.out",
         f"#SBATCH -e ClusterMessages/error/myscript_{JobName}_%j.err",
-        "#SBATCH --mail-type=ALL",                                             # FAIL ALL
+        "#SBATCH --mail-type=FAIL",                                             # FAIL ALL
         "#SBATCH --mail-user=simondn@uw.edu",
         "",
         "cd ~/RashomonActiveLearning",
