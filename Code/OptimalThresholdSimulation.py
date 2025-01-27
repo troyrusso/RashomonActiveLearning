@@ -14,7 +14,7 @@ from utils.Auxiliary import *
 
 ### GET DIRECTORY ###
 cwd = os.getcwd()
-SaveDirectory = os.path.join(cwd, "Results/OptimalThreshold/Raw")
+SaveDirectory = os.path.join(cwd, "Results/OptimalThreshold")
 
 ### PARSER ###
 parser = argparse.ArgumentParser(description="Parse command line arguments for job parameters")
@@ -106,5 +106,5 @@ SimulationResults = {
     "Epsilon_ClassAccuracy" : Epsilon_ClassAccuracy}
 
 ### Save Simulation Results ###
-with open(os.path.join(SaveDirectory, str(args.Output)), 'wb') as f:
+with open(os.path.join(SaveDirectory, str(args.Data), "Raw", str(args.Output)), 'wb') as f:
     pickle.dump(SimulationResults, f)
