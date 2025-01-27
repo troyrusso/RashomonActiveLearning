@@ -6,6 +6,7 @@ import math as math
 import pandas as pd
 import random as random
 from sklearn.metrics import f1_score
+from treeFarms.treefarms.model.treefarms import TREEFARMS
 
 ### IMPORT FUNCTIONS ###
 # from utils.Main import *
