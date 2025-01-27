@@ -46,9 +46,9 @@ for filename in os.listdir(RawDirectory):
 ### Extract Data ###
 ModelIndicesVecStorage, ThresholdValuesStorage, Epsilon_F1ScoreStorage, Epsilon_ClassAccuracyStorage = ExtractInformation(CategoryFileNames)
 # ModelIndicesVecStorage = pd.DataFrame(ModelIndicesVecStorage.squeeze())
-ThresholdValuesStorage = pd.DataFrame(ThresholdValuesStorage.squeeze())
-Epsilon_F1ScoreStorage = pd.DataFrame(Epsilon_F1ScoreStorage.squeeze())
-Epsilon_ClassAccuracyStorage = pd.DataFrame(Epsilon_ClassAccuracyStorage.squeeze())
+ThresholdValuesStorage = pd.DataFrame(ThresholdValuesStorage)
+Epsilon_F1ScoreStorage = pd.DataFrame(Epsilon_F1ScoreStorage)
+Epsilon_ClassAccuracyStorage = pd.DataFrame(Epsilon_ClassAccuracyStorage)
 
 ### Save ###
 ModelIndicesVecStorage.to_csv(os.path.join(OutputDirectory, "ErrorVec", f"{args.DataType}_ModelIndicesVecStorage.csv"), index=False)
