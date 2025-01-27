@@ -10,10 +10,7 @@ from sklearn.metrics import f1_score
 from treeFarms.treefarms.model.treefarms import TREEFARMS
 
 ### IMPORT FUNCTIONS ###
-# from utils.Main import *
-# from utils.Selector import *
 from utils.Auxiliary import *
-# from utils.Prediction import *
 
 ### GET DIRECTORY ###
 cwd = os.getcwd()
@@ -44,7 +41,7 @@ CandidateProportion = float(args.CandidateProportion)
 Seed = args.Seed
 
 # Load Data #
-df = LoadData(args.Data)
+df = LoadData(DataFile)
 random.seed(Seed)
 np.random.seed(Seed)
 
