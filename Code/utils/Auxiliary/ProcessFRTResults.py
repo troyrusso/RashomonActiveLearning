@@ -51,8 +51,8 @@ Epsilon_F1ScoreStorage = pd.DataFrame(Epsilon_F1ScoreStorage)
 Epsilon_ClassAccuracyStorage = pd.DataFrame(Epsilon_ClassAccuracyStorage)
 
 ### Save ###
-ModelIndicesVecStorage.to_csv(os.path.join(OutputDirectory, "ErrorVec", f"{args.DataType}_ModelIndicesVecStorage.csv"), index=False)
+# ModelIndicesVecStorage.to_csv(os.path.join(OutputDirectory, "ErrorVec", f"{args.DataType}_ModelIndicesVecStorage.csv"), index=False)
 ThresholdValuesStorage.to_csv(os.path.join(OutputDirectory, "ElapsedTime", f"{args.DataType}_ThresholdValuesStorage.csv"), index=False)
 Epsilon_F1ScoreStorage.to_csv(os.path.join(OutputDirectory, "TreeCount", f"{args.DataType}_Epsilon_F1ScoreStorage.csv"), index=False)
 Epsilon_ClassAccuracyStorage.to_csv(os.path.join(OutputDirectory, "TreeCount", f"{args.DataType}_Epsilon_ClassAccuracyStorage.csv"), index=False)
-print(f"Saved {Category} files!")
+print(f"Saved {args.DataType} FRT files!")
