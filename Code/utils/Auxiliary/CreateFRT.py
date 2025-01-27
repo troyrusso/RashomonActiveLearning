@@ -5,16 +5,17 @@ import itertools
 import numpy as np
 import pandas as pd
 
-### Input Data Set ###
-Data ="BreastCancer"
-JobNameAbbrev = "BC"
+### Set up argument parser ###
+parser = argparse.ArgumentParser(description="Parse command line arguments for job parameters")
+parser.add_argument("--DataType", type=str, default="-1", help="Simulation case number.")
+args = parser.parse_args()
 
 ### Directory ###
 cwd = os.getcwd()
 # ParentDirectory = os.path.abspath(os.path.join(cwd, "../.."))
 
 # Input Parameters #
-ParameterDictionary = {"Data":[Data],
+ParameterDictionary = {"Data":[args.DataType],
                        "Seed":list(range(0,100)),
                        "TestProportion":[0.2],
                        "CandidateProportion":[0.8],
@@ -32,9 +33,9 @@ ParameterVector = pd.DataFrame.from_records(itertools.product(*ParameterDictiona
 # Generate JobName #
 ParameterVector["JobName"] = (
     ParameterVector["Seed"].astype(str) +
-    JobNameAbbrev + "_FRT")
+    ParameterDictionary["Data"] + "_FRT")
 # Output Name #
-ParameterVector["Output"] = "OptimalThreshold/" +  ParameterVector["Data"].astype(str) + ".pkl"
+ParameterVector["Output"] = "OptimalThreshold/" +  ParameterVector["DataType"].astype(str) + ".pkl"
 
 ### Loop through each row in the DataFrame ###
 for i, row in ParameterVector.iterrows():
