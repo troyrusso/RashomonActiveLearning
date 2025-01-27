@@ -77,6 +77,7 @@ ThresholdValues = np.linspace(MinEpsilon, MaxEpsilon, 1000)
 # Set Up #
 Epsilon_F1Score = []
 Epsilon_ClassAccuracy = []
+ModelIndicesVec = []
 for Threshold in ThresholdValues:
 
     # Filter Models Based on Threshold
@@ -89,10 +90,11 @@ for Threshold in ThresholdValues:
     EnsemblePrediction.index = df_Test["Y"].index
 
     # Compute Metrics
-    F1Score = f1_score(df_Test["Y"], EnsemblePrediction, average='micro')
-    ClassAccuracy = np.mean(EnsemblePrediction == df_Test["Y"])
+    F1Score = float(f1_score(df_Test["Y"], EnsemblePrediction, average='micro'))
+    ClassAccuracy = float(np.mean(EnsemblePrediction == df_Test["Y"]))
 
     # Append Metrics
+    ModelIndicesVec.append(ModelIndices)
     Epsilon_F1Score.append(F1Score)
     Epsilon_ClassAccuracy.append(ClassAccuracy)
 
