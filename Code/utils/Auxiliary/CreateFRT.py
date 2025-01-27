@@ -8,6 +8,7 @@ import pandas as pd
 ### Set up argument parser ###
 parser = argparse.ArgumentParser(description="Parse command line arguments for job parameters")
 parser.add_argument("--DataType", type=str, default="-1", help="Simulation case number.")
+parser.add_argument("--RashomonThreshold", type=str, default="-1", help="Simulation case number.")
 args = parser.parse_args()
 
 ### Directory ###
@@ -21,7 +22,7 @@ ParameterDictionary = {"Data":[args.DataType],
                        "CandidateProportion":[0.8],
                        "regularization": [0.01],
                        "RashomonThresholdType": ["Adder"],                                         # ["Adder", "Multiplier"]
-                       "RashomonThreshold": [0.05],
+                       "RashomonThreshold": [args.RashomonThreshold],
                        "Partition": ["short"],                                                        # [short, medium, long, largemem, compute, cpu-g2-mem2x]
                        "Time": ["11:59:00"],                                                            # [00:59:00, 11:59:00, 6-23:59:00]
                        "Memory": ["30G"]}                                                                # [100M, 30000M, 100000M]
