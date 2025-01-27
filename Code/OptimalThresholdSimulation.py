@@ -38,13 +38,14 @@ DataFile = "BreastCancer"
 rashomon_bound_adder = float(args.RashomonThreshold)
 regularization = float(args.regularization)
 TestProportion = float(args.TestProportion)
+CandidateProportion = float(args.CandidateProportion)
 
 # Load Data #
 df = LoadData(args.Data)
 
 # Train Test Candidate Split #
 from utils.Main import TrainTestCandidateSplit
-df_Train, df_Test, df_Candidate = TrainTestCandidateSplit(df, args["TestProportion"], args["CandidateProportion"])
+df_Train, df_Test, df_Candidate = TrainTestCandidateSplit(df, TestProportion, CandidateProportion)
 
 ### TRAIN TREEFARMS ###
 # TreeFarms #
