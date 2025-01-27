@@ -35,7 +35,7 @@ args = parser.parse_args()
 ### Set Up ###
 cwd = os.getcwd()
 ResultsDirectory = os.path.join(cwd, "Results")
-OutputDirectory = os.path.join(ResultsDirectory, "OptimalThreshold", "OptimalValues")
+OutputDirectory = os.path.join(ResultsDirectory, "OptimalThreshold")
 RawDirectory = os.path.join(ResultsDirectory, "OptimalThreshold", args.DataType, "Raw")
 
 ### Extract File Names ###
@@ -52,7 +52,7 @@ Epsilon_ClassAccuracyStorage = pd.DataFrame(Epsilon_ClassAccuracyStorage)
 
 ### Save ###
 # ModelIndicesVecStorage.to_csv(os.path.join(OutputDirectory, "ErrorVec", f"{args.DataType}_ModelIndicesVecStorage.csv"), index=False)
-ThresholdValuesStorage.to_csv(os.path.join(OutputDirectory, "ElapsedTime", f"{args.DataType}_ThresholdValuesStorage.csv"), index=False)
-Epsilon_F1ScoreStorage.to_csv(os.path.join(OutputDirectory, "TreeCount", f"{args.DataType}_Epsilon_F1ScoreStorage.csv"), index=False)
-Epsilon_ClassAccuracyStorage.to_csv(os.path.join(OutputDirectory, "TreeCount", f"{args.DataType}_Epsilon_ClassAccuracyStorage.csv"), index=False)
+ThresholdValuesStorage.to_csv(os.path.join(OutputDirectory, f"{args.DataType}", "Processed/ThresholdValuesStorage.csv"), index=False)
+Epsilon_F1ScoreStorage.to_csv(os.path.join(OutputDirectory, f"{args.DataType}", "Processed/Epsilon_F1ScoreStorage.csv"), index=False)
+Epsilon_ClassAccuracyStorage.to_csv(os.path.join(OutputDirectory, f"{args.DataType}", "Processed/Epsilon_ClassAccuracyStorage.csv"), index=False)
 print(f"Saved {args.DataType} FRT files!")
