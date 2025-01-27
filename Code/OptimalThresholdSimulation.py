@@ -36,7 +36,7 @@ args = parser.parse_args()
 ### SET UP ###
 
 # Input #
-DataFile = "BreastCancer"
+DataFile = args.Data
 rashomon_bound_adder = float(args.RashomonThreshold)
 regularization = float(args.regularization)
 TestProportion = float(args.TestProportion)
@@ -103,7 +103,7 @@ for Threshold in ThresholdValues:
 
 ### OUTPUT ###
 SimulationResults = {
-    "ModelIndices" : ModelIndicesVec,
+    "ModelIndicesVec" : ModelIndicesVec,
     "ThresholdValues" : ThresholdValues,
     "Epsilon_F1Score" : Epsilon_F1Score,
     "Epsilon_ClassAccuracy" : Epsilon_ClassAccuracy}
