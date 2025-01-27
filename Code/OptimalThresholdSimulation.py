@@ -35,6 +35,11 @@ args = parser.parse_args()
 
 ### SET UP ###
 
+# Set Seed #
+random.seed(args["Seed"])
+np.random.seed(args["Seed"])
+
+
 # Input #
 DataFile = "BreastCancer"
 rashomon_bound_adder = float(args.RashomonThreshold)
