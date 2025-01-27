@@ -22,8 +22,8 @@ ParameterDictionary = {"Data":[args.DataType],
                        "regularization": [0.01],
                        "RashomonThresholdType": ["Adder"],                                         # ["Adder", "Multiplier"]
                        "RashomonThreshold": [0.05],
-                       "Partition": ["compute"],                                                        # [short, medium, long, largemem, compute, cpu-g2-mem2x]
-                       "Time": ["23:59:00"],                                                            # [00:59:00, 11:59:00, 6-23:59:00]
+                       "Partition": ["short"],                                                        # [short, medium, long, largemem, compute, cpu-g2-mem2x]
+                       "Time": ["11:59:00"],                                                            # [00:59:00, 11:59:00, 6-23:59:00]
                        "Memory": ["30G"]}                                                                # [100M, 30000M, 100000M]
 
 # Create Parameter Vector #
@@ -36,7 +36,7 @@ ParameterVector["JobName"] = (
     ParameterDictionary["Data"] + "_FRT")
 
 # Generate OutputName #
-ParameterVector["Output"] = "OptimalThreshold/" +  ParameterVector["Data"].astype(str) + ".pkl"
+ParameterVector["Output"] = ParameterVector["Data"].astype(str) + ".pkl"
 
 ### Loop through each row in the DataFrame ###
 for i, row in ParameterVector.iterrows():
@@ -74,7 +74,7 @@ for i, row in ParameterVector.iterrows():
         "",
         "cd ~/RashomonActiveLearning",
         "module load Python",
-        "python Code/OptimalThresholdSimulation.py \\",
+        "python Code/Auxiliary/OptimalThresholdSimulation.py \\",
         f"    --JobName " + JobName +" \\",
         f"    --Data {Data} \\",
         f"    --Seed {Seed} \\",

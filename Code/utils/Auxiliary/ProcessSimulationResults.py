@@ -71,15 +71,6 @@ SelectionHistoryVec = pd.DataFrame(SelectionHistoryVec.squeeze())
 AllTreeCountVec = pd.DataFrame(AllTreeCountVec.squeeze())
 UniqueTreeCountVec = pd.DataFrame(UniqueTreeCountVec.squeeze())
 
-# ### Make Dicionary ###
-# SimulationResulsDictionary = {"ErrorMatrix" : ErrorMatrix,
-#                               "TimeMatrix" : TimeMatrix,
-#                               "AllTreeCountVec" : AllTreeCountVec,
-#                               "UniqueTreeCountVec" : UniqueTreeCountVec,
-#                               "SelectionHistoryVec" : SelectionHistoryVec}
-# with open(os.path.join(OutputDirectory, f"{Category}"), 'wb') as file:
-#     pickle.dump(SimulationResulsDictionary, file)
-
 ### Save ###
 ErrorMatrix.to_csv(os.path.join(OutputDirectory, "ErrorVec", f"{Category.replace('.pkl', '')}_ErrorMatrix.csv"), index=False)
 TimeMatrix.to_csv(os.path.join(OutputDirectory, "ElapsedTime", f"{Category.replace('.pkl', '')}_TimeMatrix.csv"), index=False)

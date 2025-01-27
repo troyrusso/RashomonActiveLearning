@@ -14,7 +14,7 @@ from utils.Auxiliary import *
 
 ### GET DIRECTORY ###
 cwd = os.getcwd()
-SaveDirectory = os.path.join(cwd, "Results/OptimalThreshold")
+SaveDirectory = os.path.join(cwd, "Results/OptimalThreshold/Raw")
 
 ### PARSER ###
 parser = argparse.ArgumentParser(description="Parse command line arguments for job parameters")
