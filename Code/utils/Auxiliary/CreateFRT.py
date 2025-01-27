@@ -74,7 +74,7 @@ for i, row in ParameterVector.iterrows():
         "",
         "cd ~/RashomonActiveLearning",
         "module load Python",
-        "python Code/Auxiliary/OptimalThresholdSimulation.py \\",
+        "python Code/OptimalThresholdSimulation.py \\",
         f"    --JobName " + JobName +" \\",
         f"    --Data {Data} \\",
         f"    --Seed {Seed} \\",
