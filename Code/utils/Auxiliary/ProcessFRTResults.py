@@ -36,7 +36,7 @@ args = parser.parse_args()
 cwd = os.getcwd()
 ResultsDirectory = os.path.join(cwd, "Results")
 OutputDirectory = os.path.join(ResultsDirectory, "OptimalThreshold", "OptimalValues")
-RawDirectory = os.path.join(ResultsDirectory, "OptimalThreshold" args.DataType, "Raw")
+RawDirectory = os.path.join(ResultsDirectory, "OptimalThreshold", args.DataType, "Raw")
 
 ### Extract File Names ###
 CategoryFileNames = []
