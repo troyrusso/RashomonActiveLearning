@@ -4,6 +4,7 @@ import argparse
 import numpy as np
 import math as math
 import pandas as pd
+from scipy import stats
 import random as random
 from sklearn.metrics import f1_score
 from treeFarms.treefarms.model.treefarms import TREEFARMS
