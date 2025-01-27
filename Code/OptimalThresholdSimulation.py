@@ -106,7 +106,7 @@ SimulationResults = {
     "Epsilon_ClassAccuracy" : Epsilon_ClassAccuracy}
     
 
-print(ModelIndices)
+print(ModelIndicesVec)
 print(ThresholdValues)
 print(Epsilon_F1Score)
 print(Epsilon_ClassAccuracy)
