@@ -100,16 +100,10 @@ for Threshold in ThresholdValues:
 
 ### OUTPUT ###
 SimulationResults = {
-    "ModelIndices" : ModelIndices,
+    "ModelIndices" : ModelIndicesVec,
     "ThresholdValues" : ThresholdValues,
     "Epsilon_F1Score" : Epsilon_F1Score,
     "Epsilon_ClassAccuracy" : Epsilon_ClassAccuracy}
-    
-
-print(ModelIndicesVec)
-print(ThresholdValues)
-print(Epsilon_F1Score)
-print(Epsilon_ClassAccuracy)
 
 ### Save Simulation Results ###
 with open(os.path.join(SaveDirectory, str(args.Output)), 'wb') as f:
