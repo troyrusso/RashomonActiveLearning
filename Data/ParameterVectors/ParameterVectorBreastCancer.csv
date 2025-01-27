@@ -1,10 +1,2 @@
 Data,Seed,TestProportion,CandidateProportion,SelectorType,ModelType,UniqueErrorsInput,n_estimators,regularization,RashomonThresholdType,RashomonThreshold,Type,Partition,Time,Memory,JobName,Output
-BreastCancer,2,0.02,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,0,100,0.01,Adder,0.01,Classification,compute,11:59:00,30000M,2BC_DA0.01,BreastCancer/TreeFarms/Raw/2BC_DA0.01.pkl
-BreastCancer,6,0.02,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,0,100,0.01,Adder,0.01,Classification,compute,11:59:00,30000M,6BC_DA0.01,BreastCancer/TreeFarms/Raw/6BC_DA0.01.pkl
-BreastCancer,9,0.02,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,1,100,0.01,Adder,0.005,Classification,compute,11:59:00,30000M,9BC_UA0.005,BreastCancer/TreeFarms/Raw/9BC_UA0.005.pkl
-BreastCancer,9,0.02,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,1,100,0.01,Adder,0.01,Classification,compute,11:59:00,30000M,9BC_UA0.01,BreastCancer/TreeFarms/Raw/9BC_UA0.01.pkl
-BreastCancer,9,0.02,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,1,100,0.01,Adder,0.015,Classification,compute,11:59:00,30000M,9BC_UA0.015,BreastCancer/TreeFarms/Raw/9BC_UA0.015.pkl
-BreastCancer,36,0.02,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,0,100,0.01,Adder,0.015,Classification,compute,11:59:00,30000M,36BC_DA0.015,BreastCancer/TreeFarms/Raw/36BC_DA0.015.pkl
-BreastCancer,54,0.02,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,0,100,0.01,Adder,0.01,Classification,compute,11:59:00,30000M,54BC_DA0.01,BreastCancer/TreeFarms/Raw/54BC_DA0.01.pkl
-BreastCancer,82,0.02,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,0,100,0.01,Adder,0.01,Classification,compute,11:59:00,30000M,82BC_DA0.01,BreastCancer/TreeFarms/Raw/82BC_DA0.01.pkl
-BreastCancer,83,0.02,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,0,100,0.01,Adder,0.015,Classification,compute,11:59:00,30000M,83BC_DA0.015,BreastCancer/TreeFarms/Raw/83BC_DA0.015.pkl
+BreastCancer,9,0.02,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,0,100,0.01,Adder,0.02,Classification,short,11:59:00,30000M,9BC_DA0.02,BreastCancer/TreeFarms/Raw/9BC_DA0.02.pkl
