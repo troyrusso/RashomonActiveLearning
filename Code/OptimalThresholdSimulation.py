@@ -35,20 +35,18 @@ args = parser.parse_args()
 
 ### SET UP ###
 
-# Set Seed #
-random.seed(args["Seed"])
-np.random.seed(args["Seed"])
-
-
 # Input #
 DataFile = "BreastCancer"
 rashomon_bound_adder = float(args.RashomonThreshold)
 regularization = float(args.regularization)
 TestProportion = float(args.TestProportion)
 CandidateProportion = float(args.CandidateProportion)
+Seed = float(args["Seed"])
 
 # Load Data #
 df = LoadData(args.Data)
+random.seed(Seed)
+np.random.seed(Seed)
 
 # Train Test Candidate Split #
 from utils.Main import TrainTestCandidateSplit
