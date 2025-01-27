@@ -75,9 +75,9 @@ ThresholdValues = np.linspace(MinEpsilon, MaxEpsilon, 1000)
 
 ### TEST ACCURACY ###
 # Set Up #
+ModelIndicesVec = []
 Epsilon_F1Score = []
 Epsilon_ClassAccuracy = []
-ModelIndicesVec = []
 for Threshold in ThresholdValues:
 
     # Filter Models Based on Threshold
