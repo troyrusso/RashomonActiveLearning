@@ -36,7 +36,7 @@ ParameterVector["JobName"] = (
     ParameterDictionary["Data"] + "_FRT")
 
 # Generate OutputName #
-ParameterVector["Output"] = ParameterVector["Seed"].astype(str) + ParameterVector["Data"].astype(str) + ".pkl"
+ParameterVector["Output"] = ParameterVector["Seed"].astype(str) + ParameterVector["Data"].astype(str) +"_FRT" + ".pkl"
 
 ### Loop through each row in the DataFrame ###
 for i, row in ParameterVector.iterrows():
