@@ -34,8 +34,9 @@ ParameterVector = pd.DataFrame.from_records(itertools.product(*ParameterDictiona
 ParameterVector["JobName"] = (
     ParameterVector["Seed"].astype(str) +
     ParameterDictionary["Data"] + "_FRT")
-# Output Name #
-ParameterVector["Output"] = "OptimalThreshold/" +  ParameterVector["DataType"].astype(str) + ".pkl"
+
+# Generate OutputName #
+ParameterVector["Output"] = "OptimalThreshold/" +  ParameterVector["Data"].astype(str) + ".pkl"
 
 ### Loop through each row in the DataFrame ###
 for i, row in ParameterVector.iterrows():
