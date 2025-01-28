@@ -23,7 +23,7 @@ ParameterDictionary = {"Data":[args.DataType],
                        "regularization": [0.01],
                        "RashomonThresholdType": ["Adder"],                                         # ["Adder", "Multiplier"]
                        "RashomonThreshold": [args.RashomonThreshold],
-                       "Partition": ["short"],                                                        # [short, medium, long, largemem, compute, cpu-g2-mem2x]
+                       "Partition": ["compute"],                                                        # [short, medium, long, largemem, compute, cpu-g2-mem2x]
                        "Time": ["11:59:00"],                                                            # [00:59:00, 11:59:00, 6-23:59:00]
                        "Memory": ["30G"]}                                                                # [100M, 30000M, 100000M]
 
