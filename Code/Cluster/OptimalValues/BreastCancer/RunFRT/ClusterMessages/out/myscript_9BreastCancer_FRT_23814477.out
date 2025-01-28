@@ -1,0 +1,96 @@
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 6,
+    "name": "BareNuclei_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 5,
+  "model_objective": 0.03999999910593033,
+  "name": "SingleEpithelialCellSize_2",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 1,
+    "name": "CellSize_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 6,
+    "name": "BareNuclei_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 4,
+  "model_objective": 0.03999999910593033,
+  "name": "Adhesion_1",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 1,
+    "name": "CellSize_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "type": "integral"
+}
+treefarms reported successful execution
+training completed. Number of trees in the Rashomon set: 988114

@@ -1,0 +1,70 @@
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0625,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 1,
+    "name": "CellSize_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 3,
+  "model_objective": 0.0925000011920929,
+  "name": "CellShape_1",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 0
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0625,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 3,
+    "name": "CellShape_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 1,
+  "model_objective": 0.0925000011920929,
+  "name": "CellSize_1",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 0
+  },
+  "type": "integral"
+}
+treefarms reported successful execution
+training completed. Number of trees in the Rashomon set: 45463157

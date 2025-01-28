@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=6CarEvaluation_FRT
-#SBATCH --partition=short
+#SBATCH --partition=compute
 #SBATCH --ntasks=1
 #SBATCH --time=11:59:00
 #SBATCH --mem-per-cpu=30G
@@ -19,5 +19,5 @@ python Code/OptimalThresholdSimulation.py \
     --CandidateProportion 0.8 \
     --regularization 0.01 \
     --RashomonThresholdType Adder \
-    --RashomonThreshold 0.035 \
+    --RashomonThreshold 0.04 \
     --Output 6CarEvaluation_FRT.pkl
