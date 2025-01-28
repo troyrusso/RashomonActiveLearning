@@ -3,7 +3,7 @@
 #SBATCH --partition=compute
 #SBATCH --ntasks=1
 #SBATCH --time=11:59:00
-#SBATCH --mem-per-cpu=30G
+#SBATCH --mem-per-cpu=10G
 #SBATCH -o ClusterMessages/out/myscript_19BreastCancer_FRT_%j.out
 #SBATCH -e ClusterMessages/error/myscript_19BreastCancer_FRT_%j.err
 #SBATCH --mail-type=FAIL
@@ -19,5 +19,5 @@ python Code/OptimalThresholdSimulation.py \
     --CandidateProportion 0.8 \
     --regularization 0.01 \
     --RashomonThresholdType Adder \
-    --RashomonThreshold 0.1 \
+    --RashomonThreshold 0.15 \
     --Output 19BreastCancer_FRT.pkl
