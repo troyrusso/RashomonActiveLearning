@@ -6,12 +6,13 @@ echo "Processing results for dataset: $CURRENT_DIR"
 
 ### Extract Random Forests Results ###
 cd ~/RashomonActiveLearning
-python Code/utils/Auxiliary/ProcessSimulationResults.py \
-    --DataType "$CURRENT_DIR" \
-    --ModelType "RandomForestClassification" \
-    --Categories "RF0.0.pkl"
+# python Code/utils/Auxiliary/ProcessSimulationResults.py \
+#     --DataType "$CURRENT_DIR" \
+#     --ModelType "RandomForestClassification" \
+#     --Categories "RF0.0.pkl"
 
 ### Extract Duplicate TREEFARMS Results ###
+
 python Code/utils/Auxiliary/ProcessSimulationResults.py \
     --DataType "$CURRENT_DIR" \
     --ModelType "TreeFarms" \

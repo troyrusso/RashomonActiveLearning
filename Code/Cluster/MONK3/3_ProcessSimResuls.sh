@@ -12,13 +12,14 @@ python Code/utils/Auxiliary/ProcessSimulationResults.py \
     --Categories "RF0.0.pkl"
 
 ### Extract Duplicate TREEFARMS Results ###
+
 python Code/utils/Auxiliary/ProcessSimulationResults.py \
     --DataType "$CURRENT_DIR" \
     --ModelType "TreeFarms" \
-    --Categories "DPL0.015.pkl"
+    --Categories "DPL0.019.pkl"
 
 ### Extract Unique TREEFARMS Results ###
 python Code/utils/Auxiliary/ProcessSimulationResults.py \
     --DataType "$CURRENT_DIR" \
     --ModelType "TreeFarms" \
-    --Categories "UNQ0.015.pkl"
+    --Categories "UNQ0.019.pkl"
