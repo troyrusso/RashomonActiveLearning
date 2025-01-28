@@ -17,7 +17,7 @@ cwd = os.getcwd()
 
 # Input Parameters #
 ParameterDictionary = {"Data":[args.DataType],
-                       "Seed":list(range(0,25)),
+                       "Seed":list(range(0,100)),
                        "TestProportion":[0.2],
                        "CandidateProportion":[0.8],
                        "regularization": [0.01],
