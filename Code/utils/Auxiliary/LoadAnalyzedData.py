@@ -13,9 +13,9 @@ def LoadAnalyzedData(data_type, base_directory, method, parameter):
 
     if method == "RandomForestClassification":
         PathTemplates = {
-            "Error_RF": f"ProcessedResults/ErrorVec/RF{parameter}_ErrorMatrix.csv",
-            "Time_RF": f"ProcessedResults/ElapsedTime/RF{parameter}_TimeMatrix.csv",
-            "SelectionHistory_RF": f"ProcessedResults/SelectionHistory/RF{parameter}_SelectionHistory.csv"
+            "Error": f"ProcessedResults/ErrorVec/{parameter}_ErrorMatrix.csv",
+            "Time": f"ProcessedResults/ElapsedTime/{parameter}_TimeMatrix.csv",
+            "SelectionHistory_RF": f"ProcessedResults/SelectionHistory/{parameter}_SelectionHistory.csv"
         }
     # if method == "TreeFarms":
     #     PathTemplates = {
