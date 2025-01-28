@@ -1,0 +1,1874 @@
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "false": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 0
+          },
+          "feature": 4,
+          "name": "a2_low",
+          "reference": 1,
+          "relation": "==",
+          "true": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 1
+          },
+          "type": "integral"
+        },
+        "feature": 2,
+        "name": "a1_med",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 13,
+      "name": "a6_high",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "feature": 0,
+    "name": "a1_high",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 14,
+  "model_objective": 0.059999994933605194,
+  "name": "a6_low",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 0
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "feature": 4,
+        "name": "a2_low",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "false": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 1
+          },
+          "feature": 6,
+          "name": "a3_2",
+          "reference": 1,
+          "relation": "==",
+          "true": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 0
+          },
+          "type": "integral"
+        },
+        "type": "integral"
+      },
+      "feature": 13,
+      "name": "a6_high",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "feature": 0,
+    "name": "a1_high",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 14,
+  "model_objective": 0.059999994933605194,
+  "name": "a6_low",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 0
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "false": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 0
+          },
+          "feature": 4,
+          "name": "a2_low",
+          "reference": 1,
+          "relation": "==",
+          "true": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 1
+          },
+          "type": "integral"
+        },
+        "feature": 6,
+        "name": "a3_2",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 13,
+      "name": "a6_high",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "feature": 0,
+    "name": "a1_high",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 14,
+  "model_objective": 0.059999994933605194,
+  "name": "a6_low",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 0
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "feature": 4,
+        "name": "a2_low",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "false": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 1
+          },
+          "feature": 2,
+          "name": "a1_med",
+          "reference": 1,
+          "relation": "==",
+          "true": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 0
+          },
+          "type": "integral"
+        },
+        "type": "integral"
+      },
+      "feature": 13,
+      "name": "a6_high",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "feature": 0,
+    "name": "a1_high",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 14,
+  "model_objective": 0.059999994933605194,
+  "name": "a6_low",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 0
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 4,
+      "name": "a2_low",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 2,
+        "name": "a1_med",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "type": "integral"
+    },
+    "feature": 13,
+    "name": "a6_high",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "feature": 0,
+      "name": "a1_high",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "feature": 14,
+  "model_objective": 0.059999994933605194,
+  "name": "a6_low",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 0
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "feature": 4,
+        "name": "a2_low",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "type": "integral"
+      },
+      "feature": 6,
+      "name": "a3_2",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 13,
+    "name": "a6_high",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "feature": 0,
+      "name": "a1_high",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "feature": 14,
+  "model_objective": 0.059999994933605194,
+  "name": "a6_low",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 0
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 4,
+      "name": "a2_low",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 14,
+        "name": "a6_low",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "type": "integral"
+    },
+    "feature": 6,
+    "name": "a3_2",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 13,
+  "model_objective": 0.05999999865889549,
+  "name": "a6_high",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 0,
+    "name": "a1_high",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "feature": 4,
+        "name": "a2_low",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "false": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 1
+          },
+          "feature": 14,
+          "name": "a6_low",
+          "reference": 1,
+          "relation": "==",
+          "true": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 0
+          },
+          "type": "integral"
+        },
+        "type": "integral"
+      },
+      "feature": 2,
+      "name": "a1_med",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 13,
+    "name": "a6_high",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.059999994933605194,
+  "name": "a1_high",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 0
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 4,
+      "name": "a2_low",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 6,
+        "name": "a3_2",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "type": "integral"
+    },
+    "feature": 13,
+    "name": "a6_high",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "feature": 0,
+      "name": "a1_high",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "feature": 14,
+  "model_objective": 0.059999994933605194,
+  "name": "a6_low",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 0
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "false": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 0
+          },
+          "feature": 4,
+          "name": "a2_low",
+          "reference": 1,
+          "relation": "==",
+          "true": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 1
+          },
+          "type": "integral"
+        },
+        "feature": 2,
+        "name": "a1_med",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 14,
+      "name": "a6_low",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 13,
+    "name": "a6_high",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.059999994933605194,
+  "name": "a1_high",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 0
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "false": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 0
+          },
+          "feature": 4,
+          "name": "a2_low",
+          "reference": 1,
+          "relation": "==",
+          "true": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 1
+          },
+          "type": "integral"
+        },
+        "feature": 14,
+        "name": "a6_low",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 2,
+      "name": "a1_med",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 13,
+    "name": "a6_high",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.059999994933605194,
+  "name": "a1_high",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 0
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "false": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 0
+          },
+          "feature": 4,
+          "name": "a2_low",
+          "reference": 1,
+          "relation": "==",
+          "true": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 1
+          },
+          "type": "integral"
+        },
+        "feature": 6,
+        "name": "a3_2",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 13,
+      "name": "a6_high",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "feature": 14,
+    "name": "a6_low",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.059999994933605194,
+  "name": "a1_high",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 0
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "feature": 4,
+        "name": "a2_low",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "false": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 1
+          },
+          "feature": 2,
+          "name": "a1_med",
+          "reference": 1,
+          "relation": "==",
+          "true": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 0
+          },
+          "type": "integral"
+        },
+        "type": "integral"
+      },
+      "feature": 13,
+      "name": "a6_high",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "feature": 14,
+    "name": "a6_low",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.059999994933605194,
+  "name": "a1_high",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 0
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "feature": 4,
+        "name": "a2_low",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "type": "integral"
+      },
+      "feature": 14,
+      "name": "a6_low",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 6,
+    "name": "a3_2",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 13,
+  "model_objective": 0.05999999865889549,
+  "name": "a6_high",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 0,
+    "name": "a1_high",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 4,
+      "name": "a2_low",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "false": {
+          "false": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 1
+          },
+          "feature": 2,
+          "name": "a1_med",
+          "reference": 1,
+          "relation": "==",
+          "true": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 0
+          },
+          "type": "integral"
+        },
+        "feature": 14,
+        "name": "a6_low",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "type": "integral"
+    },
+    "feature": 13,
+    "name": "a6_high",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.059999994933605194,
+  "name": "a1_high",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 0
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "feature": 4,
+        "name": "a2_low",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "type": "integral"
+      },
+      "feature": 2,
+      "name": "a1_med",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 13,
+    "name": "a6_high",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "feature": 0,
+      "name": "a1_high",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "feature": 14,
+  "model_objective": 0.059999994933605194,
+  "name": "a6_low",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 0
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "feature": 4,
+        "name": "a2_low",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "false": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 1
+          },
+          "feature": 6,
+          "name": "a3_2",
+          "reference": 1,
+          "relation": "==",
+          "true": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 0
+          },
+          "type": "integral"
+        },
+        "type": "integral"
+      },
+      "feature": 13,
+      "name": "a6_high",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "feature": 14,
+    "name": "a6_low",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.059999994933605194,
+  "name": "a1_high",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 0
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 4,
+      "name": "a2_low",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "false": {
+          "false": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 1
+          },
+          "feature": 14,
+          "name": "a6_low",
+          "reference": 1,
+          "relation": "==",
+          "true": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 0
+          },
+          "type": "integral"
+        },
+        "feature": 6,
+        "name": "a3_2",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "type": "integral"
+    },
+    "feature": 13,
+    "name": "a6_high",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.059999994933605194,
+  "name": "a1_high",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 0
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "feature": 4,
+        "name": "a2_low",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "false": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 1
+          },
+          "feature": 2,
+          "name": "a1_med",
+          "reference": 1,
+          "relation": "==",
+          "true": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 0
+          },
+          "type": "integral"
+        },
+        "type": "integral"
+      },
+      "feature": 14,
+      "name": "a6_low",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 13,
+    "name": "a6_high",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.059999994933605194,
+  "name": "a1_high",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 0
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "feature": 4,
+        "name": "a2_low",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "false": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 1
+          },
+          "feature": 14,
+          "name": "a6_low",
+          "reference": 1,
+          "relation": "==",
+          "true": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 0
+          },
+          "type": "integral"
+        },
+        "type": "integral"
+      },
+      "feature": 6,
+      "name": "a3_2",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 13,
+    "name": "a6_high",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.059999994933605194,
+  "name": "a1_high",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 0
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "false": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 0
+          },
+          "feature": 4,
+          "name": "a2_low",
+          "reference": 1,
+          "relation": "==",
+          "true": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 1
+          },
+          "type": "integral"
+        },
+        "feature": 14,
+        "name": "a6_low",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 6,
+      "name": "a3_2",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 13,
+    "name": "a6_high",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.059999994933605194,
+  "name": "a1_high",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 0
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "false": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 0
+          },
+          "feature": 4,
+          "name": "a2_low",
+          "reference": 1,
+          "relation": "==",
+          "true": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 1
+          },
+          "type": "integral"
+        },
+        "feature": 6,
+        "name": "a3_2",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 14,
+      "name": "a6_low",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 13,
+    "name": "a6_high",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.059999994933605194,
+  "name": "a1_high",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 0
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 4,
+      "name": "a2_low",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "false": {
+          "false": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 1
+          },
+          "feature": 14,
+          "name": "a6_low",
+          "reference": 1,
+          "relation": "==",
+          "true": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 0
+          },
+          "type": "integral"
+        },
+        "feature": 2,
+        "name": "a1_med",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "type": "integral"
+    },
+    "feature": 13,
+    "name": "a6_high",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.059999994933605194,
+  "name": "a1_high",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 0
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 4,
+      "name": "a2_low",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "false": {
+          "false": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 1
+          },
+          "feature": 6,
+          "name": "a3_2",
+          "reference": 1,
+          "relation": "==",
+          "true": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 0
+          },
+          "type": "integral"
+        },
+        "feature": 14,
+        "name": "a6_low",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "type": "integral"
+    },
+    "feature": 13,
+    "name": "a6_high",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.059999994933605194,
+  "name": "a1_high",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 0
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "false": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 0
+          },
+          "feature": 4,
+          "name": "a2_low",
+          "reference": 1,
+          "relation": "==",
+          "true": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 1
+          },
+          "type": "integral"
+        },
+        "feature": 2,
+        "name": "a1_med",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 13,
+      "name": "a6_high",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "feature": 14,
+    "name": "a6_low",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.059999994933605194,
+  "name": "a1_high",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 0
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "feature": 4,
+        "name": "a2_low",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "false": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 1
+          },
+          "feature": 6,
+          "name": "a3_2",
+          "reference": 1,
+          "relation": "==",
+          "true": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 0
+          },
+          "type": "integral"
+        },
+        "type": "integral"
+      },
+      "feature": 14,
+      "name": "a6_low",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 13,
+    "name": "a6_high",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.059999994933605194,
+  "name": "a1_high",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 0
+  },
+  "type": "integral"
+}

@@ -1,0 +1,25 @@
+Lmod has detected the following error: The following module(s) are unknown:
+"Python"
+
+Please check the spelling or version number. Also try "module spider ..."
+It is also possible your cache file is out-of-date; it may help to try:
+  $ module --ignore_cache load "Python"
+
+Also make sure that all modulefiles written in TCL start with the string
+#%Module
+
+
+
+slurmstepd: error: unable to open '/proc/90766/cgroup' for reading : No such file or directory
+slurmstepd: error: unable to open '/proc/90767/cgroup' for reading : No such file or directory
+slurmstepd: error: unable to open '/proc/23278/cgroup' for reading : No such file or directory
+slurmstepd: error: unable to open '/proc/45778/cgroup' for reading : No such file or directory
+slurmstepd: error: unable to open '/proc/74540/cgroup' for reading : No such file or directory
+slurmstepd: error: unable to open '/proc/74541/cgroup' for reading : No such file or directory
+slurmstepd: error: unable to open '/proc/6895/cgroup' for reading : No such file or directory
+slurmstepd: error: unable to open '/proc/55633/cgroup' for reading : No such file or directory
+slurmstepd: error: unable to open '/proc/55634/cgroup' for reading : No such file or directory
+slurmstepd: error: unable to open '/proc/32252/cgroup' for reading : No such file or directory
+slurmstepd: error: unable to open '/proc/32251/cgroup' for reading : No such file or directory
+/var/spool/slurmd/job23822228/slurm_script: line 23: 11863 Killed                  python Code/OptimalThresholdSimulation.py --JobName 80CarEvaluation_FRT --Data CarEvaluation --Seed 80 --TestProportion 0.2 --CandidateProportion 0.8 --regularization 0.01 --RashomonThresholdType Adder --RashomonThreshold 0.1 --Output 80CarEvaluation_FRT.pkl
+slurmstepd: error: Detected 1 oom_kill event in StepId=23822228.batch. Some of the step tasks have been OOM Killed.

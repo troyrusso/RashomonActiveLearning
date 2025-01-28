@@ -1,0 +1,23 @@
+Lmod has detected the following error: The following module(s) are unknown:
+"Python"
+
+Please check the spelling or version number. Also try "module spider ..."
+It is also possible your cache file is out-of-date; it may help to try:
+  $ module --ignore_cache load "Python"
+
+Also make sure that all modulefiles written in TCL start with the string
+#%Module
+
+
+
+slurmstepd: error: unable to open '/proc/77194/cgroup' for reading : No such file or directory
+slurmstepd: error: unable to open '/proc/77195/cgroup' for reading : No such file or directory
+slurmstepd: error: unable to open '/proc/95338/cgroup' for reading : No such file or directory
+slurmstepd: error: unable to open '/proc/94198/cgroup' for reading : No such file or directory
+slurmstepd: error: unable to open '/proc/8452/cgroup' for reading : No such file or directory
+slurmstepd: error: unable to open '/proc/8453/cgroup' for reading : No such file or directory
+slurmstepd: error: unable to open '/proc/22938/cgroup' for reading : No such file or directory
+slurmstepd: error: unable to open '/proc/61993/cgroup' for reading : No such file or directory
+slurmstepd: error: unable to open '/proc/19550/cgroup' for reading : No such file or directory
+/var/spool/slurmd/job23822152/slurm_script: line 23:  4472 Killed                  python Code/OptimalThresholdSimulation.py --JobName 11CarEvaluation_FRT --Data CarEvaluation --Seed 11 --TestProportion 0.2 --CandidateProportion 0.8 --regularization 0.01 --RashomonThresholdType Adder --RashomonThreshold 0.1 --Output 11CarEvaluation_FRT.pkl
+slurmstepd: error: Detected 1 oom_kill event in StepId=23822152.batch. Some of the step tasks have been OOM Killed.
