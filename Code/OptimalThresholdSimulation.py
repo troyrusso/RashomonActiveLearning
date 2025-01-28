@@ -71,7 +71,7 @@ BestAccuracy = float(np.max(TreeClassificationAccuracy))
 EpsilonVec = BestAccuracy - TreeClassificationAccuracy
 MinEpsilon = float(np.min(EpsilonVec))
 MaxEpsilon = float(np.max(EpsilonVec))
-ThresholdValues = np.linspace(MinEpsilon, MaxEpsilon, 1000)
+ThresholdValues = np.linspace(MinEpsilon, MaxEpsilon, 10000)
 
 ### TEST ACCURACY ###
 # Set Up #
