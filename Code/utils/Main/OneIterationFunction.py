@@ -48,17 +48,6 @@ def OneIterationFunction(SimulationConfigInput):
     ### Generate Data ###
     df = LoadData(SimulationConfigInput["DataFileInput"])
 
-    ### Perform stratified sampling (due to large number of observations) ###
-    if SimulationConfigInput["DataFileInput"] in ["COMPAS", "BreastCancer", "FICO"]:
-        X_sampled, _, y_sampled, _ = train_test_split(df.drop(columns=["Y"]), 
-                                              df["Y"], 
-                                              stratify=df["Y"], 
-                                              train_size=150, 
-                                              random_state=SimulationConfigInput["Seed"])
-        ### Reform DataFrame ###
-        df = X_sampled.copy()
-        df["Y"] = y_sampled.reset_index(drop=True).values
-
     ### Train Test Candidate Split ###
     from utils.Main import TrainTestCandidateSplit                           ### NOTE: Why is this not imported from utils.Main import *
     df_Train, df_Test, df_Candidate = TrainTestCandidateSplit(df, SimulationConfigInput["TestProportion"], SimulationConfigInput["CandidateProportion"])
