@@ -72,27 +72,47 @@ EpsilonVec = BestAccuracy - TreeClassificationAccuracy
 MinEpsilon = float(np.min(EpsilonVec))
 MaxEpsilon = float(np.max(EpsilonVec))
 # ThresholdValues = np.linspace(MinEpsilon, MaxEpsilon, 10000)
-ThresholdValues = np.arange(MinEpsilon, MaxEpsilon + 0.0001, 0.0001)
+ThresholdValues = np.arange(MinEpsilon, MaxEpsilon + 0.000001, 0.000001)
 
 ### TEST ACCURACY ###
 # Set Up #
 ModelIndicesVec = []
 Epsilon_F1Score = []
 Epsilon_ClassAccuracy = []
+ModelIndicesOld = []  # Initialize as empty list
+F1ScoreOld = None
+ClassAccuracyOld = None
+
 for Threshold in ThresholdValues:
 
     # Filter Models Based on Threshold
     ModelIndices = EpsilonVec[EpsilonVec <= Threshold].index.tolist()
-    Test_Predictions = pd.DataFrame(np.array([TreeFarmsModel[i].predict(df_Test.loc[:, df_Test.columns != "Y"]) for i in ModelIndices]))
-    Test_Predictions.columns = df_Test.index.astype(str)
 
-    # Compute Ensemble Prediction (Mode)
-    EnsemblePrediction = pd.Series(stats.mode(Test_Predictions, axis=0, keepdims=True)[0].flatten())
-    EnsemblePrediction.index = df_Test["Y"].index
+    # Only recalculate F1 and Class Accuracy if new models were added
+    if ModelIndices == ModelIndicesOld:
+        # Use stored values
+        F1Score = F1ScoreOld
+        ClassAccuracy = ClassAccuracyOld
+    else: 
+        # Test Set Predictions
+        Test_Predictions = pd.DataFrame(
+            np.array([TreeFarmsModel[i].predict(df_Test.loc[:, df_Test.columns != "Y"]) for i in ModelIndices])
+        )
+        Test_Predictions.columns = df_Test.index.astype(str)
 
-    # Compute Metrics
-    F1Score = float(f1_score(df_Test["Y"], EnsemblePrediction, average='micro'))
-    ClassAccuracy = float(np.mean(EnsemblePrediction == df_Test["Y"]))
+        # Compute Ensemble Prediction (Mode)
+        mode_result = stats.mode(Test_Predictions, axis=0, keepdims=True)
+        EnsemblePrediction = pd.Series(mode_result.mode.flatten())
+        EnsemblePrediction.index = df_Test.index
+
+        # Compute Metrics
+        F1Score = float(f1_score(df_Test["Y"], EnsemblePrediction, average='micro'))
+        ClassAccuracy = float(np.mean(EnsemblePrediction == df_Test["Y"]))
+
+        # Store Old ModelIndices
+        ModelIndicesOld = ModelIndices.copy()
+        F1ScoreOld = F1Score
+        ClassAccuracyOld = ClassAccuracy
 
     # Append Metrics
     ModelIndicesVec.append(ModelIndices)
