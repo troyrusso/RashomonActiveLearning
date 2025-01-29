@@ -1,0 +1,16 @@
+Lmod has detected the following error: The following module(s) are unknown:
+"Python"
+
+Please check the spelling or version number. Also try "module spider ..."
+It is also possible your cache file is out-of-date; it may help to try:
+  $ module --ignore_cache load "Python"
+
+Also make sure that all modulefiles written in TCL start with the string
+#%Module
+
+
+
+slurmstepd: error: unable to open '/proc/28467/cgroup' for reading : No such file or directory
+slurmstepd: error: unable to open '/proc/24199/cgroup' for reading : No such file or directory
+/var/spool/slurmd/job23837585/slurm_script: line 28: 59638 Killed                  python Code/RunSimulation.py --JobName 52B7_UA0.02 --Data Bar7 --Seed 52 --TestProportion 0.2 --CandidateProportion 0.8 --SelectorType TreeEnsembleQBCFunction --ModelType TreeFarmsFunction --UniqueErrorsInput 1 --n_estimators 100 --regularization 0.01 --RashomonThresholdType Adder --RashomonThreshold 0.02 --Type Classification --Output Bar7/TreeFarms/Raw/52B7_UA0.02.pkl
+slurmstepd: error: Detected 1 oom_kill event in StepId=23837585.batch. Some of the step tasks have been OOM Killed.
