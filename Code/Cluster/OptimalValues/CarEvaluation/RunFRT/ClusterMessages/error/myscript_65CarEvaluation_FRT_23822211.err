@@ -1,0 +1,14 @@
+Lmod has detected the following error: The following module(s) are unknown:
+"Python"
+
+Please check the spelling or version number. Also try "module spider ..."
+It is also possible your cache file is out-of-date; it may help to try:
+  $ module --ignore_cache load "Python"
+
+Also make sure that all modulefiles written in TCL start with the string
+#%Module
+
+
+
+/var/spool/slurmd/job23822211/slurm_script: line 23: 61211 Killed                  python Code/OptimalThresholdSimulation.py --JobName 65CarEvaluation_FRT --Data CarEvaluation --Seed 65 --TestProportion 0.2 --CandidateProportion 0.8 --regularization 0.01 --RashomonThresholdType Adder --RashomonThreshold 0.1 --Output 65CarEvaluation_FRT.pkl
+slurmstepd: error: Detected 1 oom_kill event in StepId=23822211.batch. Some of the step tasks have been OOM Killed.

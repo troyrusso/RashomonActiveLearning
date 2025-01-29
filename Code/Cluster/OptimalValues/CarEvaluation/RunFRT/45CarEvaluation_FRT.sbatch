@@ -19,5 +19,5 @@ python Code/OptimalThresholdSimulation.py \
     --CandidateProportion 0.8 \
     --regularization 0.01 \
     --RashomonThresholdType Adder \
-    --RashomonThreshold 0.08 \
+    --RashomonThreshold 0.1 \
     --Output 45CarEvaluation_FRT.pkl
