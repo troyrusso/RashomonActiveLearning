@@ -1,8 +1,7 @@
-#!/bin/bash
-
 ### Current Directory Name ###
 CURRENT_DIR=$(basename "$PWD")
 echo "Processing results for dataset: $CURRENT_DIR"
+cd ~/RashomonActiveLearning
 
 ### Extract PassiveLearning Results ###
 cd ~/RashomonActiveLearning
@@ -22,12 +21,10 @@ python Code/utils/Auxiliary/ProcessSimulationResults.py \
 # python Code/utils/Auxiliary/ProcessSimulationResults.py \
 #     --DataType "$CURRENT_DIR" \
 #     --ModelType "TreeFarms" \
-#     --Categories "DPL0.015.pkl"
+#     --Categories "DA0.02.pkl"
 
 # ### Extract Unique TREEFARMS Results ###
 # python Code/utils/Auxiliary/ProcessSimulationResults.py \
 #     --DataType "$CURRENT_DIR" \
 #     --ModelType "TreeFarms" \
-#     --Categories "UNQ0.015.pkl"
-
-
+#     --Categories "UA0.02.pkl"
