@@ -1,0 +1,3878 @@
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "feature": 8,
+  "model_objective": 0.04999999701976776,
+  "name": "NormalNucleoli_1",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 3,
+        "name": "CellShape_1",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 5,
+      "name": "SingleEpithelialCellSize_2",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 0,
+    "name": "ClumpThickness_10",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "feature": 8,
+  "model_objective": 0.04999999701976776,
+  "name": "NormalNucleoli_1",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "feature": 3,
+      "name": "CellShape_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 5,
+    "name": "SingleEpithelialCellSize_2",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 0,
+      "name": "ClumpThickness_10",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 3,
+        "name": "CellShape_1",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 5,
+      "name": "SingleEpithelialCellSize_2",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 0,
+    "name": "ClumpThickness_10",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "feature": 7,
+  "model_objective": 0.04999999701976776,
+  "name": "BareNuclei_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 5,
+        "name": "SingleEpithelialCellSize_2",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 3,
+      "name": "CellShape_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 0,
+    "name": "ClumpThickness_10",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "feature": 7,
+  "model_objective": 0.04999999701976776,
+  "name": "BareNuclei_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 5,
+        "name": "SingleEpithelialCellSize_2",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 0,
+      "name": "ClumpThickness_10",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "feature": 7,
+    "name": "BareNuclei_10",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "feature": 3,
+  "model_objective": 0.04999999701976776,
+  "name": "CellShape_1",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 0
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 3,
+    "name": "CellShape_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 5,
+  "model_objective": 0.04999999701976776,
+  "name": "SingleEpithelialCellSize_2",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 8,
+    "name": "NormalNucleoli_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 0,
+      "name": "ClumpThickness_10",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 8,
+    "name": "NormalNucleoli_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 5,
+        "name": "SingleEpithelialCellSize_2",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 3,
+      "name": "CellShape_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.04999999701976776,
+  "name": "ClumpThickness_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 3,
+    "name": "CellShape_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 5,
+  "model_objective": 0.04999999701976776,
+  "name": "SingleEpithelialCellSize_2",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 0,
+      "name": "ClumpThickness_10",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "feature": 7,
+    "name": "BareNuclei_10",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 8,
+    "name": "NormalNucleoli_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 3,
+        "name": "CellShape_1",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 5,
+      "name": "SingleEpithelialCellSize_2",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.04999999701976776,
+  "name": "ClumpThickness_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "feature": 3,
+      "name": "CellShape_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 5,
+    "name": "SingleEpithelialCellSize_2",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 0,
+      "name": "ClumpThickness_10",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "feature": 7,
+  "model_objective": 0.04999999701976776,
+  "name": "BareNuclei_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 5,
+        "name": "SingleEpithelialCellSize_2",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 3,
+      "name": "CellShape_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 7,
+    "name": "BareNuclei_10",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.04999999701976776,
+  "name": "ClumpThickness_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 3,
+        "name": "CellShape_1",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 5,
+      "name": "SingleEpithelialCellSize_2",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 7,
+    "name": "BareNuclei_10",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.04999999701976776,
+  "name": "ClumpThickness_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "feature": 8,
+  "model_objective": 0.04999999701976776,
+  "name": "NormalNucleoli_1",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 5,
+        "name": "SingleEpithelialCellSize_2",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 3,
+      "name": "CellShape_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 0,
+    "name": "ClumpThickness_10",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "feature": 3,
+      "name": "CellShape_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 5,
+    "name": "SingleEpithelialCellSize_2",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 7,
+      "name": "BareNuclei_10",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.04999999701976776,
+  "name": "ClumpThickness_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 3,
+    "name": "CellShape_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 5,
+  "model_objective": 0.04999999701976776,
+  "name": "SingleEpithelialCellSize_2",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 7,
+      "name": "BareNuclei_10",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "feature": 0,
+    "name": "ClumpThickness_10",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "feature": 3,
+      "name": "CellShape_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 5,
+    "name": "SingleEpithelialCellSize_2",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "feature": 8,
+      "name": "NormalNucleoli_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.04999999701976776,
+  "name": "ClumpThickness_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "feature": 5,
+      "name": "SingleEpithelialCellSize_2",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "feature": 0,
+        "name": "ClumpThickness_10",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "type": "integral"
+      },
+      "type": "integral"
+    },
+    "feature": 7,
+    "name": "BareNuclei_10",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "feature": 3,
+  "model_objective": 0.04999999701976776,
+  "name": "CellShape_1",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 0
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 3,
+    "name": "CellShape_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 5,
+  "model_objective": 0.04999999701976776,
+  "name": "SingleEpithelialCellSize_2",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "feature": 8,
+      "name": "NormalNucleoli_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 0,
+    "name": "ClumpThickness_10",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "type": "integral"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 3,
+        "name": "CellShape_1",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 5,
+      "name": "SingleEpithelialCellSize_2",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 0,
+    "name": "ClumpThickness_10",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "feature": 7,
+  "model_objective": 0.04999999701976776,
+  "name": "BareNuclei_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "feature": 5,
+      "name": "SingleEpithelialCellSize_2",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "feature": 0,
+        "name": "ClumpThickness_10",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "type": "integral"
+      },
+      "type": "integral"
+    },
+    "feature": 3,
+    "name": "CellShape_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 7,
+  "model_objective": 0.04999999701976776,
+  "name": "BareNuclei_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 5,
+        "name": "SingleEpithelialCellSize_2",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 0,
+      "name": "ClumpThickness_10",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "feature": 3,
+    "name": "CellShape_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 7,
+  "model_objective": 0.04999999701976776,
+  "name": "BareNuclei_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "feature": 3,
+      "name": "CellShape_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 5,
+    "name": "SingleEpithelialCellSize_2",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 0,
+      "name": "ClumpThickness_10",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "feature": 7,
+  "model_objective": 0.04999999701976776,
+  "name": "BareNuclei_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "feature": 8,
+  "model_objective": 0.04999999701976776,
+  "name": "NormalNucleoli_1",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 5,
+        "name": "SingleEpithelialCellSize_2",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 3,
+      "name": "CellShape_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 0,
+    "name": "ClumpThickness_10",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 3,
+    "name": "CellShape_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 5,
+  "model_objective": 0.04999999701976776,
+  "name": "SingleEpithelialCellSize_2",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "feature": 8,
+      "name": "NormalNucleoli_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 0,
+    "name": "ClumpThickness_10",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 3,
+    "name": "CellShape_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 5,
+  "model_objective": 0.04999999701976776,
+  "name": "SingleEpithelialCellSize_2",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 0,
+      "name": "ClumpThickness_10",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "feature": 7,
+    "name": "BareNuclei_10",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 3,
+    "name": "CellShape_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 5,
+  "model_objective": 0.04999999701976776,
+  "name": "SingleEpithelialCellSize_2",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 7,
+      "name": "BareNuclei_10",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "feature": 0,
+    "name": "ClumpThickness_10",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 8,
+    "name": "NormalNucleoli_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 5,
+        "name": "SingleEpithelialCellSize_2",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 3,
+      "name": "CellShape_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.04999999701976776,
+  "name": "ClumpThickness_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "feature": 8,
+  "model_objective": 0.04999999701976776,
+  "name": "NormalNucleoli_1",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 3,
+        "name": "CellShape_1",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 5,
+      "name": "SingleEpithelialCellSize_2",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 0,
+    "name": "ClumpThickness_10",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 5,
+        "name": "SingleEpithelialCellSize_2",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 3,
+      "name": "CellShape_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 7,
+    "name": "BareNuclei_10",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.04999999701976776,
+  "name": "ClumpThickness_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 8,
+    "name": "NormalNucleoli_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 5,
+        "name": "SingleEpithelialCellSize_2",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 0,
+      "name": "ClumpThickness_10",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "feature": 3,
+  "model_objective": 0.04999999701976776,
+  "name": "CellShape_1",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 0
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "feature": 3,
+      "name": "CellShape_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 5,
+    "name": "SingleEpithelialCellSize_2",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 7,
+      "name": "BareNuclei_10",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.04999999701976776,
+  "name": "ClumpThickness_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "feature": 8,
+  "model_objective": 0.04999999701976776,
+  "name": "NormalNucleoli_1",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "feature": 3,
+      "name": "CellShape_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 5,
+    "name": "SingleEpithelialCellSize_2",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 0,
+      "name": "ClumpThickness_10",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "feature": 5,
+      "name": "SingleEpithelialCellSize_2",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 8,
+        "name": "NormalNucleoli_1",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "type": "integral"
+    },
+    "feature": 3,
+    "name": "CellShape_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.04999999701976776,
+  "name": "ClumpThickness_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "feature": 8,
+      "name": "NormalNucleoli_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 5,
+        "name": "SingleEpithelialCellSize_2",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "type": "integral"
+    },
+    "feature": 3,
+    "name": "CellShape_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.04999999701976776,
+  "name": "ClumpThickness_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "feature": 3,
+      "name": "CellShape_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 5,
+    "name": "SingleEpithelialCellSize_2",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "feature": 8,
+      "name": "NormalNucleoli_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.04999999701976776,
+  "name": "ClumpThickness_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 5,
+        "name": "SingleEpithelialCellSize_2",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 7,
+      "name": "BareNuclei_10",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "feature": 3,
+    "name": "CellShape_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.04999999701976776,
+  "name": "ClumpThickness_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 5,
+        "name": "SingleEpithelialCellSize_2",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 3,
+      "name": "CellShape_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 0,
+    "name": "ClumpThickness_10",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "feature": 7,
+  "model_objective": 0.04999999701976776,
+  "name": "BareNuclei_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 8,
+    "name": "NormalNucleoli_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 3,
+        "name": "CellShape_1",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 5,
+      "name": "SingleEpithelialCellSize_2",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.04999999701976776,
+  "name": "ClumpThickness_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 8,
+    "name": "NormalNucleoli_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "feature": 5,
+      "name": "SingleEpithelialCellSize_2",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "feature": 0,
+        "name": "ClumpThickness_10",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "type": "integral"
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "feature": 3,
+  "model_objective": 0.04999999701976776,
+  "name": "CellShape_1",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 0
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "feature": 5,
+      "name": "SingleEpithelialCellSize_2",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "feature": 7,
+        "name": "BareNuclei_10",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "type": "integral"
+      },
+      "type": "integral"
+    },
+    "feature": 3,
+    "name": "CellShape_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.04999999701976776,
+  "name": "ClumpThickness_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 3,
+    "name": "CellShape_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 5,
+  "model_objective": 0.04999999701976776,
+  "name": "SingleEpithelialCellSize_2",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 8,
+    "name": "NormalNucleoli_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 0,
+      "name": "ClumpThickness_10",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 3,
+        "name": "CellShape_1",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 5,
+      "name": "SingleEpithelialCellSize_2",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 7,
+    "name": "BareNuclei_10",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.04999999701976776,
+  "name": "ClumpThickness_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "feature": 8,
+  "model_objective": 0.04999999701976776,
+  "name": "NormalNucleoli_1",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 5,
+        "name": "SingleEpithelialCellSize_2",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 3,
+      "name": "CellShape_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 0,
+    "name": "ClumpThickness_10",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "feature": 8,
+  "model_objective": 0.04999999701976776,
+  "name": "NormalNucleoli_1",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "feature": 3,
+      "name": "CellShape_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 5,
+    "name": "SingleEpithelialCellSize_2",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 0,
+      "name": "ClumpThickness_10",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 3,
+        "name": "CellShape_1",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 5,
+      "name": "SingleEpithelialCellSize_2",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 0,
+    "name": "ClumpThickness_10",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "feature": 7,
+  "model_objective": 0.04999999701976776,
+  "name": "BareNuclei_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 5,
+        "name": "SingleEpithelialCellSize_2",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 3,
+      "name": "CellShape_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 0,
+    "name": "ClumpThickness_10",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "feature": 7,
+  "model_objective": 0.04999999701976776,
+  "name": "BareNuclei_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "feature": 3,
+      "name": "CellShape_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 5,
+    "name": "SingleEpithelialCellSize_2",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 0,
+      "name": "ClumpThickness_10",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "feature": 7,
+  "model_objective": 0.04999999701976776,
+  "name": "BareNuclei_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "feature": 8,
+  "model_objective": 0.04999999701976776,
+  "name": "NormalNucleoli_1",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 3,
+        "name": "CellShape_1",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 5,
+      "name": "SingleEpithelialCellSize_2",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 0,
+    "name": "ClumpThickness_10",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 3,
+    "name": "CellShape_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 5,
+  "model_objective": 0.04999999701976776,
+  "name": "SingleEpithelialCellSize_2",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "feature": 8,
+      "name": "NormalNucleoli_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 0,
+    "name": "ClumpThickness_10",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 3,
+        "name": "CellShape_1",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 5,
+      "name": "SingleEpithelialCellSize_2",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 7,
+    "name": "BareNuclei_10",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.04999999701976776,
+  "name": "ClumpThickness_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 8,
+    "name": "NormalNucleoli_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 5,
+        "name": "SingleEpithelialCellSize_2",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 3,
+      "name": "CellShape_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.04999999701976776,
+  "name": "ClumpThickness_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "feature": 3,
+      "name": "CellShape_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 5,
+    "name": "SingleEpithelialCellSize_2",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 7,
+      "name": "BareNuclei_10",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.04999999701976776,
+  "name": "ClumpThickness_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 5,
+        "name": "SingleEpithelialCellSize_2",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 7,
+      "name": "BareNuclei_10",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "feature": 3,
+    "name": "CellShape_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.04999999701976776,
+  "name": "ClumpThickness_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "feature": 8,
+      "name": "NormalNucleoli_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 5,
+        "name": "SingleEpithelialCellSize_2",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "type": "integral"
+    },
+    "feature": 3,
+    "name": "CellShape_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.04999999701976776,
+  "name": "ClumpThickness_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "feature": 5,
+      "name": "SingleEpithelialCellSize_2",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "feature": 7,
+        "name": "BareNuclei_10",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "type": "integral"
+      },
+      "type": "integral"
+    },
+    "feature": 3,
+    "name": "CellShape_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.04999999701976776,
+  "name": "ClumpThickness_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 3,
+    "name": "CellShape_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 5,
+  "model_objective": 0.04999999701976776,
+  "name": "SingleEpithelialCellSize_2",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 7,
+      "name": "BareNuclei_10",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "feature": 0,
+    "name": "ClumpThickness_10",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "feature": 3,
+      "name": "CellShape_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 5,
+    "name": "SingleEpithelialCellSize_2",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "feature": 8,
+      "name": "NormalNucleoli_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.04999999701976776,
+  "name": "ClumpThickness_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 5,
+        "name": "SingleEpithelialCellSize_2",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 3,
+      "name": "CellShape_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "feature": 7,
+    "name": "BareNuclei_10",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.04999999701976776,
+  "name": "ClumpThickness_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 8,
+    "name": "NormalNucleoli_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 3,
+        "name": "CellShape_1",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "feature": 5,
+      "name": "SingleEpithelialCellSize_2",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.04999999701976776,
+  "name": "ClumpThickness_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 3,
+    "name": "CellShape_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 5,
+  "model_objective": 0.04999999701976776,
+  "name": "SingleEpithelialCellSize_2",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 8,
+    "name": "NormalNucleoli_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 0,
+      "name": "ClumpThickness_10",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "feature": 5,
+      "name": "SingleEpithelialCellSize_2",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 1
+        },
+        "feature": 8,
+        "name": "NormalNucleoli_1",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "type": "integral"
+    },
+    "feature": 3,
+    "name": "CellShape_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.04999999701976776,
+  "name": "ClumpThickness_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 3,
+    "name": "CellShape_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 5,
+  "model_objective": 0.04999999701976776,
+  "name": "SingleEpithelialCellSize_2",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 0,
+      "name": "ClumpThickness_10",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "feature": 7,
+    "name": "BareNuclei_10",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "type": "integral"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "feature": 8,
+  "model_objective": 0.058571428060531616,
+  "name": "NormalNucleoli_1",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.02857142873108387,
+      "name": "Y",
+      "prediction": 0
+    },
+    "feature": 0,
+    "name": "ClumpThickness_10",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 8,
+    "name": "NormalNucleoli_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.02857142873108387,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.058571428060531616,
+  "name": "ClumpThickness_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "feature": 8,
+      "name": "NormalNucleoli_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "false": {
+          "false": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 1
+          },
+          "feature": 6,
+          "name": "BareNuclei_1",
+          "reference": 1,
+          "relation": "==",
+          "true": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 0
+          },
+          "type": "integral"
+        },
+        "feature": 5,
+        "name": "SingleEpithelialCellSize_2",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "type": "integral"
+    },
+    "feature": 1,
+    "name": "CellSize_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.059999994933605194,
+  "name": "ClumpThickness_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": 1
+      },
+      "feature": 8,
+      "name": "NormalNucleoli_1",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "false": {
+          "false": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 1
+          },
+          "feature": 5,
+          "name": "SingleEpithelialCellSize_2",
+          "reference": 1,
+          "relation": "==",
+          "true": {
+            "complexity": 0.009999999776482582,
+            "loss": 0.0,
+            "name": "Y",
+            "prediction": 0
+          },
+          "type": "integral"
+        },
+        "feature": 6,
+        "name": "BareNuclei_1",
+        "reference": 1,
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": 0
+        },
+        "type": "integral"
+      },
+      "type": "integral"
+    },
+    "feature": 1,
+    "name": "CellSize_1",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.059999994933605194,
+  "name": "ClumpThickness_10",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
