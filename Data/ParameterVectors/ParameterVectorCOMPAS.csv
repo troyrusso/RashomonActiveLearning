@@ -1,4 +1,6 @@
 Data,Seed,TestProportion,CandidateProportion,SelectorType,ModelType,UniqueErrorsInput,n_estimators,regularization,RashomonThresholdType,RashomonThreshold,Type,Partition,Time,Memory,JobName,Output
+COMPAS,21,0.2,0.8,PassiveLearning,RandomForestClassificationFunction,1,100,0.01,Adder,0,Classification,short,00:59:00,1000,21CP_PLA0,COMPAS/RandomForestClassification/Raw/21CP_PLA0.pkl
+COMPAS,21,0.2,0.8,TreeEnsembleQBCFunction,RandomForestClassificationFunction,0,100,0.01,Adder,0,Classification,short,00:59:00,1000,21CP_RFA0,COMPAS/RandomForestClassification/Raw/21CP_RFA0.pkl
 COMPAS,27,0.2,0.8,PassiveLearning,RandomForestClassificationFunction,1,100,0.01,Adder,0,Classification,short,00:59:00,1000,27CP_PLA0,COMPAS/RandomForestClassification/Raw/27CP_PLA0.pkl
 COMPAS,27,0.2,0.8,TreeEnsembleQBCFunction,RandomForestClassificationFunction,0,100,0.01,Adder,0,Classification,short,00:59:00,1000,27CP_RFA0,COMPAS/RandomForestClassification/Raw/27CP_RFA0.pkl
 COMPAS,31,0.2,0.8,PassiveLearning,RandomForestClassificationFunction,1,100,0.01,Adder,0,Classification,short,00:59:00,1000,31CP_PLA0,COMPAS/RandomForestClassification/Raw/31CP_PLA0.pkl
@@ -7,7 +9,11 @@ COMPAS,43,0.2,0.8,PassiveLearning,RandomForestClassificationFunction,1,100,0.01,
 COMPAS,43,0.2,0.8,TreeEnsembleQBCFunction,RandomForestClassificationFunction,0,100,0.01,Adder,0,Classification,short,00:59:00,1000,43CP_RFA0,COMPAS/RandomForestClassification/Raw/43CP_RFA0.pkl
 COMPAS,50,0.2,0.8,PassiveLearning,RandomForestClassificationFunction,1,100,0.01,Adder,0,Classification,short,00:59:00,1000,50CP_PLA0,COMPAS/RandomForestClassification/Raw/50CP_PLA0.pkl
 COMPAS,50,0.2,0.8,TreeEnsembleQBCFunction,RandomForestClassificationFunction,0,100,0.01,Adder,0,Classification,short,00:59:00,1000,50CP_RFA0,COMPAS/RandomForestClassification/Raw/50CP_RFA0.pkl
+COMPAS,59,0.2,0.8,PassiveLearning,RandomForestClassificationFunction,1,100,0.01,Adder,0,Classification,short,00:59:00,1000,59CP_PLA0,COMPAS/RandomForestClassification/Raw/59CP_PLA0.pkl
+COMPAS,59,0.2,0.8,TreeEnsembleQBCFunction,RandomForestClassificationFunction,0,100,0.01,Adder,0,Classification,short,00:59:00,1000,59CP_RFA0,COMPAS/RandomForestClassification/Raw/59CP_RFA0.pkl
 COMPAS,85,0.2,0.8,PassiveLearning,RandomForestClassificationFunction,1,100,0.01,Adder,0,Classification,short,00:59:00,1000,85CP_PLA0,COMPAS/RandomForestClassification/Raw/85CP_PLA0.pkl
 COMPAS,85,0.2,0.8,TreeEnsembleQBCFunction,RandomForestClassificationFunction,0,100,0.01,Adder,0,Classification,short,00:59:00,1000,85CP_RFA0,COMPAS/RandomForestClassification/Raw/85CP_RFA0.pkl
 COMPAS,95,0.2,0.8,PassiveLearning,RandomForestClassificationFunction,1,100,0.01,Adder,0,Classification,short,00:59:00,1000,95CP_PLA0,COMPAS/RandomForestClassification/Raw/95CP_PLA0.pkl
 COMPAS,95,0.2,0.8,TreeEnsembleQBCFunction,RandomForestClassificationFunction,0,100,0.01,Adder,0,Classification,short,00:59:00,1000,95CP_RFA0,COMPAS/RandomForestClassification/Raw/95CP_RFA0.pkl
+COMPAS,96,0.2,0.8,PassiveLearning,RandomForestClassificationFunction,1,100,0.01,Adder,0,Classification,short,00:59:00,1000,96CP_PLA0,COMPAS/RandomForestClassification/Raw/96CP_PLA0.pkl
+COMPAS,96,0.2,0.8,TreeEnsembleQBCFunction,RandomForestClassificationFunction,0,100,0.01,Adder,0,Classification,short,00:59:00,1000,96CP_RFA0,COMPAS/RandomForestClassification/Raw/96CP_RFA0.pkl
