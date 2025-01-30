@@ -15,7 +15,7 @@ python Code/utils/Auxiliary/ProcessSimulationResults.py \
 python Code/utils/Auxiliary/ProcessSimulationResults.py \
     --DataType "$CURRENT_DIR" \
     --ModelType "RandomForestClassification" \
-    --Categories "RFA.pkl"
+    --Categories "RFA0.pkl"
 
 # ### Extract Duplicate TREEFARMS Results ###
 # python Code/utils/Auxiliary/ProcessSimulationResults.py \
