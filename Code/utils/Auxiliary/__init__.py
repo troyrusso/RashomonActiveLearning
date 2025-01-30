@@ -5,4 +5,5 @@ from .MakeSavePlots import *
 from .MeanVariancePlot import *
 from .PlotDecisionJsonTree import *
 from .SelectionHistoryRank import *
+from .StoppingCriteria import *
 from .WilcoxonRankSignedTest import *
