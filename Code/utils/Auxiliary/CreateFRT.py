@@ -23,9 +23,9 @@ ParameterDictionary = {"Data":[args.DataType],
                        "regularization": [0.01],
                        "RashomonThresholdType": ["Adder"],                                         # ["Adder", "Multiplier"]
                        "RashomonThreshold": [args.RashomonThreshold],
-                       "Partition": ["compute"],                                                        # [short, medium, long, largemem, compute, cpu-g2-mem2x]
+                       "Partition": ["short"],                                                        # [short, medium, long, largemem, compute, cpu-g2-mem2x]
                        "Time": ["11:59:00"],                                                            # [00:59:00, 11:59:00, 6-23:59:00]
-                       "Memory": ["10G"]}                                                                # [100M, 30000M, 100000M]
+                       "Memory": ["30000M"]}                                                                # [100M, 30000M, 100000M]
 
 # Create Parameter Vector #
 ParameterVector = pd.DataFrame.from_records(itertools.product(*ParameterDictionary.values()), columns=ParameterDictionary.keys())
