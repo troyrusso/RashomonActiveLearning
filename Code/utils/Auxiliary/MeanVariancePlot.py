@@ -29,7 +29,7 @@ def MeanVariancePlot(Subtitle = None,
                      xlim = None,
                      Y_Label = None,
                      VarInput = False,
-                     FigSize = (10,3),
+                     FigSize = (10,4),
                      LegendMapping = None,
                      **SimulationErrorResults):
 
@@ -60,13 +60,16 @@ def MeanVariancePlot(Subtitle = None,
             Y_Label = "Mean Error relative to " + RelativeError
             BaselineMean = MeanVector[RelativeError]
             BaselineVariance = VarianceVector[RelativeError]
+            
             for Label in MeanVector:
-                MeanVector[Label] = pd.Series(MeanVector[Label].values / BaselineMean.values, index=MeanVector[Label].index)
-                StdErrorVector[Label] = pd.Series(StdErrorVector[Label].values / BaselineMean.values, index=StdErrorVector[Label].index)
-                VarianceVector[Label] = pd.Series(VarianceVector[Label].values / BaselineVariance.values, index=VarianceVector[Label].index)
+                MeanVector[Label] = pd.Series((MeanVector[Label].values - BaselineMean.values) / BaselineMean.values, 
+                                            index=MeanVector[Label].index)
+                StdErrorVector[Label] = pd.Series(StdErrorVector[Label].values / BaselineMean.values, 
+                                                index=StdErrorVector[Label].index)
+                VarianceVector[Label] = pd.Series(VarianceVector[Label].values / BaselineVariance.values, 
+                                                index=VarianceVector[Label].index)
         else:
             raise ValueError(f"RelativeError='{RelativeError}' not found in provided results.")
-
 
     ### Mean Plot ###
     plt.figure(figsize=FigSize)
