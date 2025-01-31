@@ -131,7 +131,7 @@ def draw_decision_tree(graph, groups, group_colors, tree_index, filename=None):
             rect_width,
             rect_height,
             edgecolor="black",
-            facecolor="lightblue",
+            facecolor="lightcyan",
             zorder=3,
         )
         ax.add_patch(rect)
@@ -183,13 +183,15 @@ def draw_decision_tree(graph, groups, group_colors, tree_index, filename=None):
     plt.close()  # Close the plot to free memory and avoid overlap
 
 ### UNREAL vs. DUREAL Plot ###
-def PlotTreeFarmsDecisionTreeErrorsWithGroups(AllErrors, order_errors=True):
+def PlotTreeFarmsDecisionTreeErrorsWithGroups(AllErrors, order_errors=True, epsilon=0.01):
     """
     Plot misclassification errors with TreeIndex values and group labels.
+    Uses consistent epsilon spacing for both group labels and orange ticks.
 
     Parameters:
         AllErrors (list): List of classification errors.
         order_errors (bool): Whether to sort errors by value (default True).
+        epsilon (float): Vertical spacing for group labels and ticks.
     """
     # Create the DataFrame
     pdAllErrors = pd.DataFrame(AllErrors, columns=["ClassificationError"])
@@ -202,152 +204,152 @@ def PlotTreeFarmsDecisionTreeErrorsWithGroups(AllErrors, order_errors=True):
     if order_errors:
         pdAllErrors = pdAllErrors.sort_values(by="ClassificationError").reset_index(drop=True)
 
-    # Plot the scatter plot
-    fig, ax = plt.subplots(figsize=(10, 1210))  # Adjust figure size
+    # Create figure with a reasonable size
+    fig, ax = plt.subplots(figsize=(5, 5))
+
+    # Calculate the y-range for better spacing
+    y_min = min(pdAllErrors["ClassificationError"]) - 0.02
+    y_max = max(pdAllErrors["ClassificationError"]) + 0.025  # Increased to accommodate elevated ticks
+    y_range = y_max - y_min
 
     # Scatter plot for points with equal size
     ax.scatter(
-        pdAllErrors.index,  # X-axis values
-        pdAllErrors["ClassificationError"],  # Y-axis values
-        s=200,  # Size of points
-        color="white",  # Point color
-        edgecolor="black",  # Outline color
-        zorder=2,  # Layer above gridlines
+        pdAllErrors.index,
+        pdAllErrors["ClassificationError"],
+        s=200,
+        color="white",
+        edgecolor="black",
+        zorder=2,
     )
 
     # Add text labels for TreeIndex
     for i, row in pdAllErrors.iterrows():
         ax.text(
-            i, row["ClassificationError"],  # Position
-            str(int(row["TreeIndex"])),  # Text (TreeIndex as integer)
-            color="black", fontsize=20, ha="center", va="center"
+            i, row["ClassificationError"],
+            str(int(row["TreeIndex"])),
+            color="black", fontsize=10, ha="center", va="center"
         )
 
-    # Add group labels below the specified indices
-    # Group 1
-    group_1_x = [0, 1, 2, 3, 6, 7, 8]
-    ax.text(
-        sum(group_1_x) / len(group_1_x)-1, 0.033,  # Center position for the group
-        'Group 1',
-        color="black",
-        fontsize=20, ha="center", va="center",
-        bbox=dict(facecolor="cyan", alpha=0.5, edgecolor="black"),
-        fontweight='bold'
-    )
+    # Define groups based on unique values
+    unique_values = sorted(set(pdAllErrors["ClassificationError"]))
+    value_to_group = {val: f"Group {i+1}" for i, val in enumerate(unique_values)}
 
-    # Group 2
-    group_2_x = [4, 5, 9, 12, 13]
-    ax.text(
-        sum(group_2_x) / len(group_2_x)+.5 , 0.04,  # Center position for the group
-        'Group 2',
-        color="black",
-        fontsize=20, ha="center", va="center",
-        bbox=dict(facecolor="cyan", alpha=0.5, edgecolor="black"),
-        fontweight='bold'
-    )
+    # Create groups based on unique values
+    groups = {}
+    for i, row in pdAllErrors.iterrows():
+        value = row["ClassificationError"]
+        group = value_to_group[value]
+        if group not in groups:
+            groups[group] = {"indices": [], "value": value}
+        groups[group]["indices"].append(i)
 
-    # Group 3
-    group_3_x = [10, 11]
-    ax.text(
-        sum(group_3_x) / len(group_3_x)+2, 0.048,  # Center position for the group
-        'Group 3',
-        color="black",
-        fontsize=20, ha="center", va="center",
-        bbox=dict(facecolor="cyan", alpha=0.5, edgecolor="black"),
-        fontweight='bold'
-    )
+    # Calculate positions
+    unique_y = min(pdAllErrors["ClassificationError"]) - 0.015
 
-    # Arrow from Group 1 to Unique Ensemble
-    ax.annotate(
-        "", xy=(sum(group_1_x) / len(group_1_x)-1, 0.023), xytext=(9.1, -0.049+0.025),  # Adjust the positions for arrows
-        arrowprops=dict(facecolor="cyan", edgecolor="cyan", arrowstyle="<-", lw=2),
-    )
+    # Draw groups and their connections
+    for group_name, group_data in groups.items():
+        indices = group_data["indices"]
+        value = group_data["value"]
+        group_x = sum(indices) / len(indices)
+        
+        # Place group labels epsilon below their corresponding values
+        ax.text(
+            group_x, value - 0.003,
+            group_name,
+            color="black",
+            fontsize=10, ha="center", va="center",
+            bbox=dict(facecolor="cyan", alpha=0.5, edgecolor="black"),
+            fontweight='bold'
+        )
 
-    # Arrow from Group 2 to Unique Ensemble
-    ax.annotate(
-        "", xy=(sum(group_2_x) / len(group_2_x)+.5 , 0.03), xytext=(9.1, -0.05+0.025),  # Adjust the positions for arrows
-        arrowprops=dict(facecolor="cyan", edgecolor="cyan", arrowstyle="<-", lw=2),
-    )
-
-    # Arrow from Group 3 to Unique Ensemble
-    ax.annotate(
-        "", xy=(sum(group_3_x) / len(group_3_x)+2, 0.038), xytext=(9.2, -0.05+0.025),  # Adjust the positions for arrows
-        arrowprops=dict(facecolor="cyan", edgecolor="cyan", arrowstyle="<-", lw=2),
-    )
-    
-    # Add arrows and annotations for Unique and Duplicate ensembles
+    # Unique Ensemble label
     ax.annotate(
         "Unique Ensemble (UNREAL)",
-        xy=(4, 0.02), xytext=(9.1, -0.06+0.025),
-        fontsize=20, color="black", ha="center", va="center",
+        xy=(4, unique_y), xytext=(len(AllErrors)/2, unique_y+epsilon/2),
+        fontsize=10, color="black", ha="center", va="center",
         bbox=dict(facecolor="cyan", edgecolor="black"),
         fontweight='bold'
     )
+
+    # Connect groups to Unique Ensemble
+    for group_name, group_data in groups.items():
+        indices = group_data["indices"]
+        value = group_data["value"]
+        group_x = sum(indices) / len(indices)
+        ax.annotate(
+            "", 
+            xy=(group_x, value - 0.005), 
+            xytext=(len(AllErrors)/2, unique_y + epsilon + 0.001),
+            arrowprops=dict(facecolor="cyan", edgecolor="cyan", arrowstyle="<-", lw=2)
+        )
+
+    # Draw ticks above each point at their corresponding value + epsilon
+    tick_height = 0.0005  # Small tick height
+    for group_name, group_data in groups.items():
+        indices = group_data["indices"]
+        value = group_data["value"]
+        tick_y = value + epsilon  # Place ticks epsilon above their corresponding values
+        
+        # Draw ticks for each point in the group
+        for idx in indices:
+            ax.plot([idx, idx], [tick_y-tick_height, tick_y+tick_height], 
+                   color="orange", linewidth=2)
+        
+        # Connect ticks in the same group
+        ax.plot([min(indices), max(indices)], [tick_y, tick_y], 
+                color="orange", linewidth=2)
+        
+        # Add count label
+        ax.text(sum(indices) / len(indices), tick_y + 0.002, 
+                f"{len(indices)} trees", 
+                color="orange", ha="center", va="center", 
+                fontsize=10, fontweight='bold')
+
+    # Duplicate Ensemble annotation - positioned above the highest tick
+    max_tick_y = max(pdAllErrors["ClassificationError"]) + epsilon
+    duplicate_y = max_tick_y + 0.008
     ax.annotate(
         "Duplicate Ensemble (DUREAL)",
-        xy=(9.5, 0.1), xytext=(9.5, 0.15),
-        fontsize=20, color="black", ha="center", va="center",
+        xy=(len(AllErrors)/2+1, duplicate_y), xytext=(len(AllErrors)/2, duplicate_y+epsilon/1.5),
+        fontsize=10, color="black", ha="center", va="center",
         bbox=dict(facecolor="orange", edgecolor="black"),
         fontweight='bold'
     )
 
-    # Define the points for the line
-    line_x = [0, 1, 2, 3, 4, 5, 6]
-    line_y = [0.072] * len(line_x)  # Set the y-values to 0 for a horizontal line
-    ax.plot(line_x, line_y, color="orange", linewidth=2, marker="|", markersize=10)  # Use '|' markers for the points
-    ax.text(sum(line_x) / len(line_x), 0.081, "7 trees", color="orange", ha="center", va="center", fontsize=20, fontweight='bold')
+    # Connect tick groups to Duplicate Ensemble
+    for group_name, group_data in groups.items():
+        indices = group_data["indices"]
+        value = group_data["value"]
+        group_x = sum(indices) / len(indices)
+        tick_y = value + epsilon  # Connect from the tick level
+        ax.annotate(
+            "", 
+            xy=(group_x, tick_y+0.003), 
+            xytext=(len(AllErrors)/2, duplicate_y),
+            arrowprops=dict(facecolor="orange", edgecolor="orange", arrowstyle="<-", lw=2)
+        )
 
-    # Define the points for the line
-    line_x = [7,8,9,10,11]
-    line_y = [0.079] * len(line_x)  # Set the y-values to 0 for a horizontal line
-    ax.plot(line_x, line_y, color="orange", linewidth=2, marker="|", markersize=10)  # Use '|' markers for the points
-    ax.text(sum(line_x) / len(line_x), 0.088, "5 trees", color="orange", ha="center", va="center", fontsize=20, fontweight='bold')
-
-    # Define the points for the line
-    line_x = [12, 13]
-    line_y = [0.086] * len(line_x)  # Set the y-values to 0 for a horizontal line
-    ax.plot(line_x, line_y, color="orange", linewidth=2, marker="|", markersize=10)  # Use '|' markers for the points
-    ax.text(sum(line_x) / len(line_x), 0.095, "2 trees", color="orange", ha="center", va="center", fontsize=20, fontweight='bold')
-
-    # Draw lines from each of the groups to DUREAL (duplicate ensemble)
-    # Line from Group 1 to DUREAL
-    ax.annotate(
-        "", xy=(sum(group_1_x) / len(group_1_x)-1, 0.033+.055), xytext=(9.05, 0.14),  # Starting point from Group 1, ending at DUREAL
-        arrowprops=dict(facecolor="orange", edgecolor="orange", arrowstyle="<-", lw=2),
-    )
-
-    # Line from Group 2 to DUREAL
-    ax.annotate(
-        "", xy=(sum(group_2_x) / len(group_2_x)+.5 , 0.04+.055), xytext=(9.05, 0.14),  # Starting point from Group 2, ending at DUREAL
-        arrowprops=dict(facecolor="orange", edgecolor="orange", arrowstyle="<-", lw=2),
-    )
-
-    # Line from Group 3 to DUREAL
-    ax.annotate(
-        "", xy=(sum(group_3_x) / len(group_3_x)+2, 0.048+.055), xytext=(9.05, 0.14),  # Starting point from Group 3, ending at DUREAL
-        arrowprops=dict(facecolor="orange", edgecolor="orange", arrowstyle="<-", lw=2),
-    )
-
-    # Prepare the error counts (from Counter)
+    # Add error counts
     error_counts = Counter(pdAllErrors["RoundedError"])
     caption_header = "Error    Count"
-    caption_rows = "\n".join([f"{error}    {count}" for error, count in error_counts.items()])
+    caption_rows = "\n".join([f"{error:.3f}    {count}" for error, count in error_counts.items()])
     caption = caption_header + "\n" + caption_rows
 
-    # Add the caption inside the plot at the top-left corner
     ax.text(
-        0.05, 0.95,  # Relative position in the axes (5% from left, 95% from top)
+        0.05, 0.95,
         caption,
-        ha="left", va="top",  # Align text to the top-left corner
-        transform=ax.transAxes,  # Use axes coordinates for positioning
-        fontsize=20, family="monospace", bbox=dict(facecolor="white", alpha=0.8)
+        ha="left", va="top",
+        transform=ax.transAxes,
+        fontsize=10, family="monospace",
+        bbox=dict(facecolor="white", alpha=0.8)
     )
 
-    # Customize the plot appearance
-    ax.set_xlim(-1, len(pdAllErrors)+2)  # Extend x-axis limits for spacing
-    ax.set_ylim(-0.06, .2)  # Extend y-axis limits
+    # Customize plot appearance
+    ax.set_xlim(-1, len(pdAllErrors)+0)
+    ax.set_ylim(y_min, y_max)
     ax.set_xlabel("Index of Trees in TREEFarms")
     ax.set_ylabel("Misclassification Error")
-    ax.set_xticks([])  # Remove x-axis ticks for a clean look
+    ax.set_xticks([])
 
+    plt.tight_layout()
     plt.show()
