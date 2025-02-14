@@ -27,9 +27,7 @@ def GSxFunction(df_Train, df_Candidate, distance = "euclidean"):
     MaxRowNumber = np.argmax(d_nX)
     IndexRecommendation = df_Candidate.iloc[[MaxRowNumber]].index[0]
 
-    ### Output ###
-    Output = {"IndexRecommendation": float(IndexRecommendation)}
-    return(Output)
+    return(IndexRecommendation)
 
 ### GSy ###
 def GSyFunction(df_Train, df_Candidate, Model, distance = "euclidean"):  ### NOTE: or should df_Train be df_Test
@@ -49,9 +47,8 @@ def GSyFunction(df_Train, df_Candidate, Model, distance = "euclidean"):  ### NOT
     MaxRowNumber = np.argmax(d_nY)
     IndexRecommendation = df_Candidate.iloc[[MaxRowNumber]].index[0]
 
-    ### Output ###
-    Output = {"IndexRecommendation": float(IndexRecommendation)}
-    return(Output)
+
+    return(IndexRecommendation)
     
 ### iGS ###
 def iGSFunction(df_Train, df_Candidate, Model, distance = "euclidean"):
@@ -75,6 +72,4 @@ def iGSFunction(df_Train, df_Candidate, Model, distance = "euclidean"):
     MaxRowNumber = np.argmax(d_nXY)
     IndexRecommendation = df_Candidate.iloc[[MaxRowNumber]].index[0]
 
-    ### Output ###
-    Output = {"IndexRecommendation": float(IndexRecommendation)}
-    return(Output)
+    return(IndexRecommendation)

@@ -46,7 +46,7 @@ def LearningProcedure(SimulationConfigInputUpdated):
         SimulationConfigInputUpdated['Model'] = Model
 
         ### Test Error ###
-        TestErrorOutput = TestErrorFunction(InputModel = Model, df_Test = SimulationConfigInputUpdated["df_Test"], Type = SimulationConfigInputUpdated["Type"])
+        TestErrorOutput = TestErrorFunction(InputModel = Model, df_Test = SimulationConfigInputUpdated["df_Test"], Type = "Classification")
         if('TREEFARMS' in str(type(Model))):                                                       # If Rashomon
             CurrentError = TestErrorOutput["Error_Duplicate"]
             # # Unique vs. Duplicate *ENSEMBLE* Prediction Error #                                   # NOTE: Should ensemble prediction error be based on unique or duplicate?
