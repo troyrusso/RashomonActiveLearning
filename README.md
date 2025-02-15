@@ -1,9 +1,5 @@
 # Unique Rashomon Ensembled Active Learning (UNREAL)
 
-🚧 This repository is currently under construction. 🚧
-
-Updates are ongoing as part of iterative version control and management.
-
 ## Abstract
 [NeurIPS Paper/Presentation](https://neurips.cc/virtual/2024/98966)
 
