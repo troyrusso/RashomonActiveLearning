@@ -3,7 +3,7 @@
 ## Abstract
 [NeurIPS Paper/Presentation](https://neurips.cc/virtual/2024/98966)
 
-Active learning is based on selecting informative data points to enhance model predictions often using uncertainty as a selection criterion. However, when ensemble models such as random forests are used, there is a risk of the ensemble containing models with poor predictive accuracy or duplicates with the same interpretation. To address these challenges, we develop a novel approach called \textit{UNique Rashomon Ensembled Active Learning (UNREAL)} to only ensemble the distinct set of near-optimal models called the Rashomon set. By ensembling over the Rashomon set, our method accounts for noise by capturing uncertainty across diverse yet plausible explanations, thereby improving the robustness of the query selection in the active learning procedure. We extensively evaluate \textit{UNREAL} against current active learning procedures on five benchmark datasets. We demonstrate how taking a Rashomon approach can improve not only the accuracy and rate of convergence of the active learning procedure but can also lead to improved interpretability compared to traditional approaches. 
+Active learning is based on selecting informative data points to enhance model predictions often using uncertainty as a selection criterion. However, when ensemble models such as random forests are used, there is a risk of the ensemble containing models with poor predictive accuracy or duplicates with the same interpretation. To address these challenges, we develop a novel approach called **UNique Rashomon Ensembled Active Learning (UNREAL)** to only ensemble the distinct set of near-optimal models called the Rashomon set. By ensembling over the Rashomon set, our method accounts for noise by capturing uncertainty across diverse yet plausible explanations, thereby improving the robustness of the query selection in the active learning procedure. We extensively evaluate **UNREAL** against current active learning procedures on five benchmark datasets. We demonstrate how taking a Rashomon approach can improve not only the accuracy and rate of convergence of the active learning procedure but can also lead to improved interpretability compared to traditional approaches. 
 
 ## Setup
 
@@ -91,6 +91,6 @@ The following list contain auxiliary functions/scripts used "behind-the-scenes" 
 - `CreateParameterVector.ipynb` is a notebook that creates the parameter vector for each dataset.
 
 ## Analyzing Simulations
-The `AnalyzeResults.ipynb` notebook is where the researcher can evaluate the different active learning processes. Note that if the user ran the simulations locally, they will have to manually save the files accordingly.
+The `Analysis` folder is where the researcher can evaluate the different active learning processes. Note that if the user ran the simulations locally, they will have to manually save the files accordingly.
 
 The first part of the notebook presents the average and maximum run time of each simulations. The second part of the notebook presents the standard active learning error plot. The final part of the notebook presents the selection history and the average iteration in which each observation was queried in the active learning process.
