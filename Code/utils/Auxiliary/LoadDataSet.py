@@ -14,7 +14,8 @@ def LoadData(DataFileInput):
     ### Directory ###
     cwd = os.getcwd()
     ParentDirectory = os.path.abspath(os.path.join(cwd, "../"))
-    directories = [cwd, ParentDirectory]  # Cluster first, then local
+    ScratchParentDirectory = os.path.abspath(os.path.join(cwd, "../../"))
+    directories = [cwd, ParentDirectory, ScratchParentDirectory]  # Cluster first, then local, then within Scratch
 
     ### Get Data ###
     for directory in directories:
