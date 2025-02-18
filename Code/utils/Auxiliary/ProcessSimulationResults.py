@@ -78,3 +78,110 @@ AllTreeCountVec.to_csv(os.path.join(OutputDirectory, "TreeCount", f"{Category.re
 UniqueTreeCountVec.to_csv(os.path.join(OutputDirectory, "TreeCount", f"{Category.replace('.pkl', '')}_UniqueTreeCount.csv"), index=False)
 SelectionHistoryVec.to_csv(os.path.join(OutputDirectory, "SelectionHistory", f"{Category.replace('.pkl', '')}_SelectionHistory.csv"), index=False)
 print(f"Saved {Category} files!")
+
+### BATCH SAVE SIMULATION ###
+# ### Import libraries ###
+# import os
+# import pickle
+# import argparse
+# import numpy as np
+# import pandas as pd
+# from tqdm import tqdm
+
+# ### Extract Error and Time Function ###
+# def ExtractInformation(files, batch_size=5):
+#     ### Set Up ###
+#     ErrorVec = []
+#     TimeVec = []
+#     SelectionHistoryVec = []
+#     AllTreeCountVec = []
+#     UniqueTreeCountVec = []
+
+#     ### Process in Batches ###
+#     for i in range(0, len(files), batch_size):
+#         batch_files = files[i:i + batch_size]
+        
+#         ### Process Current Batch ###
+#         for file in tqdm(batch_files, desc=f"Processing batch {i//batch_size + 1}"):
+#             try:
+#                 ### Load and Process File ###
+#                 with open(file, "rb") as f:
+#                     data = pickle.load(f)
+#                     ErrorVec.append(data["ErrorVec"])
+#                     TimeVec.append(data["ElapsedTime"])
+#                     SelectionHistoryVec.append(data["SelectionHistory"])
+#                     AllTreeCountVec.append(data["TreeCount"]["AllTreeCount"])
+#                     UniqueTreeCountVec.append(data["TreeCount"]["UniqueTreeCount"])
+                    
+#                     # Clear data from memory
+#                     del data
+                    
+#             except Exception as e:
+#                 print(f"Error loading file {file}: {e}")
+#                 continue
+
+#     ### Convert to Arrays ###
+#     return (np.array(ErrorVec), np.array(TimeVec), np.array(SelectionHistoryVec), 
+#             np.array(AllTreeCountVec), np.array(UniqueTreeCountVec))
+
+# ### Main Function ###
+# def main():
+#     ### Parser ###
+#     parser = argparse.ArgumentParser(description="Aggregate simulation results.")
+#     parser.add_argument("--DataType", type=str, required=True, help="Type of data.")
+#     parser.add_argument("--ModelType", type=str, required=True, help="Prediction model type.")
+#     parser.add_argument("--Categories", type=str, required=True, help="Single category string.")
+#     args = parser.parse_args()
+
+#     ### Set Up ###
+#     cwd = os.getcwd()
+#     ResultsDirectory = os.path.join(cwd, "Results", args.DataType, args.ModelType)
+#     OutputDirectory = os.path.join(ResultsDirectory, "ProcessedResults")
+#     RawDirectory = os.path.join(ResultsDirectory, "Raw")
+#     Category = args.Categories
+
+#     ### Create Output Directories ###
+#     for subdir in ["ErrorVec", "ElapsedTime", "TreeCount", "SelectionHistory"]:
+#         os.makedirs(os.path.join(OutputDirectory, subdir), exist_ok=True)
+
+#     ### Extract File Names ###
+#     CategoryFileNames = [
+#         os.path.join(RawDirectory, filename)
+#         for filename in os.listdir(RawDirectory)
+#         if filename.endswith(".pkl") and filename.endswith(Category)
+#     ]
+
+#     ### Check Files Exist ###
+#     if not CategoryFileNames:
+#         print(f"Warning: No files found for category {Category}. Exiting.")
+#         exit(1)
+
+#     ### Process Files ###
+#     print(f"Processing category: {Category} with {len(CategoryFileNames)} files")
+#     ErrorVec, TimeVec, SelectionHistoryVec, AllTreeCountVec, UniqueTreeCountVec = ExtractInformation(
+#         CategoryFileNames, 
+#         batch_size=5
+#     )
+
+#     ### Convert to DataFrames ###
+#     print("Converting results to DataFrames...")
+#     ErrorMatrix = pd.DataFrame(ErrorVec.squeeze())
+#     TimeMatrix = pd.DataFrame(TimeVec.squeeze())
+#     SelectionHistoryVec = pd.DataFrame(SelectionHistoryVec.squeeze())
+#     AllTreeCountVec = pd.DataFrame(AllTreeCountVec.squeeze())
+#     UniqueTreeCountVec = pd.DataFrame(UniqueTreeCountVec.squeeze())
+
+#     ### Save Results ###
+#     print("Saving results...")
+#     base_filename = Category.replace('.pkl', '')
+#     ErrorMatrix.to_csv(os.path.join(OutputDirectory, "ErrorVec", f"{base_filename}_ErrorMatrix.csv"), index=False)
+#     TimeMatrix.to_csv(os.path.join(OutputDirectory, "ElapsedTime", f"{base_filename}_TimeMatrix.csv"), index=False)
+#     AllTreeCountVec.to_csv(os.path.join(OutputDirectory, "TreeCount", f"{base_filename}_AllTreeCount.csv"), index=False)
+#     UniqueTreeCountVec.to_csv(os.path.join(OutputDirectory, "TreeCount", f"{base_filename}_UniqueTreeCount.csv"), index=False)
+#     SelectionHistoryVec.to_csv(os.path.join(OutputDirectory, "SelectionHistory", f"{base_filename}_SelectionHistory.csv"), index=False)
+    
+#     print(f"Saved {Category} files!")
+
+# ### Run Main ###
+# if __name__ == "__main__":
+#     main()
