@@ -75,7 +75,6 @@ def TreeEnsembleQBCFunction(Model, df_Candidate, df_Train, UniqueErrorsInput):
 
     ### Uncertainty Metric ###
     df_Candidate["UncertaintyMetric"] = VoteEntropyFinal
-
     IndexRecommendation = int(df_Candidate.sort_values(by = "UncertaintyMetric", ascending = False).index[0])
     df_Candidate.drop('UncertaintyMetric', axis=1, inplace=True)
 

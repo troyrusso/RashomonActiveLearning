@@ -49,11 +49,6 @@ def LearningProcedure(SimulationConfigInputUpdated):
         TestErrorOutput = TestErrorFunction(InputModel = Model, df_Test = SimulationConfigInputUpdated["df_Test"], Type = SimulationConfigInputUpdated["Type"])
         if('TREEFARMS' in str(type(Model))):                                                       # If Rashomon
             CurrentError = TestErrorOutput["Error_Duplicate"]
-            # # Unique vs. Duplicate *ENSEMBLE* Prediction Error #                                   # NOTE: Should ensemble prediction error be based on unique or duplicate?
-            # if(SimulationConfigInputUpdated["UniqueErrorsInput"]) == 1:                            # NOTE: Once decided, modify TestErrorOutput to have only 1 error output.
-            #     CurrentError = TestErrorOutput["Error_Unique"]                                     # NOTE: I think it should be based on duplicate; TBD TBD TBD
-            # if(SimulationConfigInputUpdated["UniqueErrorsInput"]) == 0:
-            #     CurrentError = TestErrorOutput["Error_Duplicate"]
         else: 
             CurrentError = TestErrorOutput["ErrorVal"]                                               # One output for non-Rashomon
         ErrorVec.append(CurrentError)
@@ -63,7 +58,7 @@ def LearningProcedure(SimulationConfigInputUpdated):
         SelectorArgsFiltered = FilterArguments(SelectorType, SimulationConfigInputUpdated)
         SelectorFuncOutput = SelectorType(**SelectorArgsFiltered)
         QueryObservationIndex = SelectorFuncOutput["IndexRecommendation"]
-        QueryObservation = SimulationConfigInputUpdated["df_Candidate"].loc[[QueryObservationIndex]] # or should this be iloc
+        QueryObservation = SimulationConfigInputUpdated["df_Candidate"].loc[[QueryObservationIndex]]
         SelectedObservationHistory.append(QueryObservationIndex)
         
         ### Update Train and Candidate Sets ###
