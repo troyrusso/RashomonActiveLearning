@@ -50,6 +50,11 @@ def CalculateMeanValues(ProcessedDirectory):
     Epsilon_F1ScoreALL = pd.read_csv(os.path.join(ProcessedDirectory, "Epsilon_F1ScoreStorage.csv"))
     Epsilon_ClassAccuracyALL = pd.read_csv(os.path.join(ProcessedDirectory, "Epsilon_ClassAccuracyStorage.csv"))
     
+    ### Shape ###
+    print("ThresholdValuesALL: " + str(ThresholdValuesALL.shape[0]))
+    print("Epsilon_F1ScoreALL: " + str(Epsilon_F1ScoreALL.shape[0]))
+    print("Epsilon_ClassAccuracyALL: " + str(Epsilon_ClassAccuracyALL.shape[0]))
+
     ### Calculate Mean Values ###
     ThresholdValues_Mean = np.mean(ThresholdValuesALL, axis=0)
     Epsilon_F1Score_Mean = np.mean(Epsilon_F1ScoreALL, axis=0)
