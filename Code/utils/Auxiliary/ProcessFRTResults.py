@@ -43,6 +43,27 @@ def ProcessBatch(files, batch_size=5):
     
     return ThresholdValuesDF, Epsilon_F1ScoreDF, Epsilon_ClassAccuracyDF
 
+### Calculate Mean Values Function ###
+def CalculateMeanValues(ProcessedDirectory):
+    ### Load CSV Files ###
+    ThresholdValuesALL = pd.read_csv(os.path.join(ProcessedDirectory, "ThresholdValuesStorage.csv"))
+    Epsilon_F1ScoreALL = pd.read_csv(os.path.join(ProcessedDirectory, "Epsilon_F1ScoreStorage.csv"))
+    Epsilon_ClassAccuracyALL = pd.read_csv(os.path.join(ProcessedDirectory, "Epsilon_ClassAccuracyStorage.csv"))
+    
+    ### Calculate Mean Values ###
+    ThresholdValues_Mean = np.mean(ThresholdValuesALL, axis=0)
+    Epsilon_F1Score_Mean = np.mean(Epsilon_F1ScoreALL, axis=0)
+    Epsilon_ClassAccuracy_Mean = np.mean(Epsilon_ClassAccuracyALL, axis=0)
+    
+    ### Create Dictionary ###
+    MeanValues = {
+        "ThresholdValues_Mean": ThresholdValues_Mean,
+        "Epsilon_F1Score_Mean": Epsilon_F1Score_Mean,
+        "Epsilon_ClassAccuracy_Mean": Epsilon_ClassAccuracy_Mean
+    }
+    
+    return MeanValues
+
 ### Main Function ###
 def main():
     ### Parser ###
@@ -71,14 +92,22 @@ def main():
         CategoryFileNames, 
         batch_size=5
     )
-
-    ### Save Results ###
-    print(f"Saving results for {args.DataType}...")
+    
+    ### Save Individual Results ###
+    print(f"Saving individual results for {args.DataType}...")
     ThresholdValuesStorage.to_csv(os.path.join(ProcessedDirectory, "ThresholdValuesStorage.csv"), index=False)
     Epsilon_F1ScoreStorage.to_csv(os.path.join(ProcessedDirectory, "Epsilon_F1ScoreStorage.csv"), index=False)
     Epsilon_ClassAccuracyStorage.to_csv(os.path.join(ProcessedDirectory, "Epsilon_ClassAccuracyStorage.csv"), index=False)
 
-    print(f"Successfully saved {args.DataType} FRT files!")
+    ### Calculate and Save Mean Values ###
+    print(f"Calculating and saving mean values for {args.DataType}...")
+    MeanValues = CalculateMeanValues(ProcessedDirectory)
+    
+    ### Save Mean Values ###
+    with open(os.path.join(ProcessedDirectory, "FRTMeanValues.pkl"), 'wb') as file:
+        pickle.dump(MeanValues, file)
+
+    print(f"Successfully saved all {args.DataType} files, including mean values!")
 
 ### Run Main ###
 if __name__ == "__main__":
