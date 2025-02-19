@@ -17,4 +17,4 @@
 from .GreedySampling import *
 from .PassiveSampling import *
 from .TreeEnsembleQBCFunction import *
-from .MetaLearnerSampling import *
+from .MetaLearnerSampling_Logistic import *
