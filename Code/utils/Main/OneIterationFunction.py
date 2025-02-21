@@ -45,7 +45,7 @@ def OneIterationFunction(SimulationConfigInput):
     random.seed(SimulationConfigInput["Seed"])
     np.random.seed(SimulationConfigInput["Seed"])
 
-    ### Generate Data ###
+    ### Load Data ###
     df = LoadData(SimulationConfigInput["DataFileInput"])
 
     ### Train Test Candidate Split ###

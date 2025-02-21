@@ -11,13 +11,13 @@
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.ensemble import RandomForestClassifier
 
-### Function ###
+### Regression ###
 def RandomForestRegressorFunction(df_Train, n_estimators, Seed):
     RandomForestRegressorModel = RandomForestRegressor(n_estimators=n_estimators, random_state=Seed)
     RandomForestRegressorModel.fit(df_Train.loc[:, df_Train.columns != "Y"], df_Train["Y"])
     return RandomForestRegressorModel
 
-### Function ###
+### Classification ###
 def RandomForestClassificationFunction(df_Train, n_estimators, Seed):
     RandomForestClassificationModel = RandomForestClassifier(n_estimators=n_estimators, random_state=Seed)
     RandomForestClassificationModel.fit(df_Train.loc[:, df_Train.columns != "Y"], df_Train["Y"])

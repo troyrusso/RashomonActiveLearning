@@ -32,10 +32,10 @@ def GSxFunction(df_Train, df_Candidate, distance = "euclidean"):
     return(Output)
 
 ### GSy ###
-def GSyFunction(df_Train, df_Candidate, Model, distance = "euclidean"):  ### NOTE: or should df_Train be df_Test
+def GSyFunction(df_Train, df_Candidate, Model, distance = "euclidean"): 
 
     ### Prediction ###
-    if "[APARA'S PACKAGE]" in str(type(Model)):                                                                 # TODO: Rashomon
+    if "[APARA'S PACKAGE]" in str(type(Model)):                                                            # TODO: Rashomon (RPS)
         # Predictions = Model.predict(df_Candidate.loc[:, df_Candidate.columns != "Y"])
         pass
     else:                                                                                                       # Not Rashomon
