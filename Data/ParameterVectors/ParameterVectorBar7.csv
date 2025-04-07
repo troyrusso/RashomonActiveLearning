@@ -1,5 +1,13 @@
 Data,Seed,TestProportion,CandidateProportion,SelectorType,ModelType,UniqueErrorsInput,n_estimators,regularization,RashomonThresholdType,RashomonThreshold,Type,Partition,Time,Memory,JobName,Output
-Bar7,52,0.2,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,1,100,0.01,Adder,0.02,Classification,cpu-g2-mem2x,1-23:59:00,2000M,52B7_UA0.02,Bar7/TreeFarms/Raw/52B7_UA0.02.pkl
-Bar7,68,0.2,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,1,100,0.01,Adder,0.02,Classification,cpu-g2-mem2x,1-23:59:00,2000M,68B7_UA0.02,Bar7/TreeFarms/Raw/68B7_UA0.02.pkl
-Bar7,73,0.2,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,1,100,0.01,Adder,0.02,Classification,cpu-g2-mem2x,1-23:59:00,2000M,73B7_UA0.02,Bar7/TreeFarms/Raw/73B7_UA0.02.pkl
-Bar7,80,0.2,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,1,100,0.01,Adder,0.02,Classification,cpu-g2-mem2x,1-23:59:00,2000M,80B7_UA0.02,Bar7/TreeFarms/Raw/80B7_UA0.02.pkl
+Bar7,0,0.2,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,0,100,0.01,Adder,0.01,Classification,short,00:59:00,30000M,0B7_DA0.01,Bar7/TreeFarms/Raw/0B7_DA0.01.pkl
+Bar7,0,0.2,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,1,100,0.01,Adder,0.01,Classification,short,00:59:00,30000M,0B7_UA0.01,Bar7/TreeFarms/Raw/0B7_UA0.01.pkl
+Bar7,0,0.2,0.8,PassiveLearning,RandomForestClassificationFunction,1,100,0.01,Adder,0.0,Classification,short,00:59:00,1000,0B7_PLA0.0,Bar7/RandomForestClassification/Raw/0B7_PLA0.0.pkl
+Bar7,0,0.2,0.8,TreeEnsembleQBCFunction,RandomForestClassificationFunction,0,100,0.01,Adder,0.0,Classification,short,00:59:00,1000,0B7_RFA0.0,Bar7/RandomForestClassification/Raw/0B7_RFA0.0.pkl
+Bar7,1,0.2,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,0,100,0.01,Adder,0.01,Classification,short,00:59:00,30000M,1B7_DA0.01,Bar7/TreeFarms/Raw/1B7_DA0.01.pkl
+Bar7,1,0.2,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,1,100,0.01,Adder,0.01,Classification,short,00:59:00,30000M,1B7_UA0.01,Bar7/TreeFarms/Raw/1B7_UA0.01.pkl
+Bar7,1,0.2,0.8,PassiveLearning,RandomForestClassificationFunction,1,100,0.01,Adder,0.0,Classification,short,00:59:00,1000,1B7_PLA0.0,Bar7/RandomForestClassification/Raw/1B7_PLA0.0.pkl
+Bar7,1,0.2,0.8,TreeEnsembleQBCFunction,RandomForestClassificationFunction,0,100,0.01,Adder,0.0,Classification,short,00:59:00,1000,1B7_RFA0.0,Bar7/RandomForestClassification/Raw/1B7_RFA0.0.pkl
+Bar7,2,0.2,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,0,100,0.01,Adder,0.01,Classification,short,00:59:00,30000M,2B7_DA0.01,Bar7/TreeFarms/Raw/2B7_DA0.01.pkl
+Bar7,2,0.2,0.8,TreeEnsembleQBCFunction,TreeFarmsFunction,1,100,0.01,Adder,0.01,Classification,short,00:59:00,30000M,2B7_UA0.01,Bar7/TreeFarms/Raw/2B7_UA0.01.pkl
+Bar7,2,0.2,0.8,PassiveLearning,RandomForestClassificationFunction,1,100,0.01,Adder,0.0,Classification,short,00:59:00,1000,2B7_PLA0.0,Bar7/RandomForestClassification/Raw/2B7_PLA0.0.pkl
+Bar7,2,0.2,0.8,TreeEnsembleQBCFunction,RandomForestClassificationFunction,0,100,0.01,Adder,0.0,Classification,short,00:59:00,1000,2B7_RFA0.0,Bar7/RandomForestClassification/Raw/2B7_RFA0.0.pkl
