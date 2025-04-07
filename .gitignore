@@ -57,6 +57,10 @@ Data/ComboDrugGrowth_Nov2017.csv
 
 # Ignore documents folder
 **/documents/
+**Results/PreICMLResults/
+**Presentations/
+**Images
+**MeetingUpdates/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
