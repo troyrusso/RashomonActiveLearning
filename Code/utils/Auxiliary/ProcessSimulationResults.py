@@ -56,7 +56,7 @@ Category = args.Categories
 ### Extract File Names ###
 CategoryFileNames = []
 for filename in os.listdir(RawDirectory):
-    if filename.endswith(".pkl") and filename.endswith(Category):
+    if filename.endswith(".pkl") and Category in filename:
         CategoryFileNames.append(os.path.join(RawDirectory, filename))
 
 ### Extract Data ###
