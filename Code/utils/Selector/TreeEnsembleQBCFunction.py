@@ -21,16 +21,18 @@ from scipy.spatial.distance import cdist
 def TreeEnsembleQBCFunction(Model, df_Candidate, df_Train, UniqueErrorsInput):
 
     # ### Ignore warning (taken care of) ###
-    # np.seterr(all = 'ignore') 
-    # warnings.filterwarnings("ignore", category=UserWarning)
+    warnings.filterwarnings("ignore", message="divide by zero encountered in log", category=RuntimeWarning)
+    warnings.filterwarnings("ignore", message="invalid value encountered in multiply", category=RuntimeWarning)
 
     ### Exclude ###
     exclude_cols = ['Y', 'ClusterLabels', 'd_nX']
-    X_Candidate = df_Candidate[df_Candidate.columns.difference(exclude_cols)].values
 
     ### Predicted Values ###
     ## Rashomon Classification ##
     if 'TREEFARMS' in str(type(Model)):
+
+        # Set Up #
+        X_Candidate = df_Candidate[df_Candidate.columns.difference(exclude_cols)]
         TreeCounts = Model.get_tree_count()
 
         # Duplicate #
@@ -56,6 +58,7 @@ def TreeEnsembleQBCFunction(Model, df_Candidate, df_Train, UniqueErrorsInput):
 
     ## Random Forest Classification ###
     elif 'RandomForestClassifier' in str(type(Model)):
+        X_Candidate = df_Candidate[df_Candidate.columns.difference(exclude_cols)].values
         PredictedValues = [Model.estimators_[tree].predict(X_Candidate) for tree in range(Model.n_estimators)] 
         PredictedValues = np.vstack(PredictedValues)
         Output = {}
