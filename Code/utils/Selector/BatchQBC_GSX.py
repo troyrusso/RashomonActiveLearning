@@ -18,15 +18,11 @@ from scipy import stats
 from scipy.spatial.distance import cdist
 
 ### Function ###
-def TreeEnsembleQBCFunction(Model, df_Candidate, df_Train, UniqueErrorsInput):
+def BatchQBC_GSX(Model, df_Candidate, df_Train, UniqueErrorsInput, BatchSize, l_parameter, distance = "euclidean"):
 
-    # ### Ignore warning (taken care of) ###
-    # np.seterr(all = 'ignore') 
-    # warnings.filterwarnings("ignore", category=UserWarning)
-
-    ### Exclude ###
-    exclude_cols = ['Y', 'ClusterLabels', 'd_nX']
-    X_Candidate = df_Candidate[df_Candidate.columns.difference(exclude_cols)].values
+    ### Ignore warning (taken care of) ###
+    np.seterr(all = 'ignore') 
+    warnings.filterwarnings("ignore", category=UserWarning)
 
     ### Predicted Values ###
     ## Rashomon Classification ##
@@ -34,7 +30,7 @@ def TreeEnsembleQBCFunction(Model, df_Candidate, df_Train, UniqueErrorsInput):
         TreeCounts = Model.get_tree_count()
 
         # Duplicate #
-        PredictionArray_Duplicate = pd.DataFrame(np.array([Model[i].predict(X_Candidate) for i in range(TreeCounts)]))
+        PredictionArray_Duplicate = pd.DataFrame(np.array([Model[i].predict(df_Candidate.loc[:, df_Candidate.columns != "Y"]) for i in range(TreeCounts)]))
         PredictionArray_Duplicate.columns = df_Candidate.index.astype(str)
         EnsemblePrediction_Duplicate = pd.Series(stats.mode(PredictionArray_Duplicate)[0])
         EnsemblePrediction_Duplicate.index = df_Candidate["Y"].index
@@ -56,7 +52,7 @@ def TreeEnsembleQBCFunction(Model, df_Candidate, df_Train, UniqueErrorsInput):
 
     ## Random Forest Classification ###
     elif 'RandomForestClassifier' in str(type(Model)):
-        PredictedValues = [Model.estimators_[tree].predict(X_Candidate) for tree in range(Model.n_estimators)] 
+        PredictedValues = [Model.estimators_[tree].predict(df_Candidate.loc[:, df_Candidate.columns != "Y"]) for tree in range(Model.n_estimators)] 
         PredictedValues = np.vstack(PredictedValues)
         Output = {}
 
@@ -78,7 +74,7 @@ def TreeEnsembleQBCFunction(Model, df_Candidate, df_Train, UniqueErrorsInput):
     VoteEntropyFinal = np.sum(VoteEntropyMatrix, axis=1)
 
     ### Uncertainty Metric ###
-    df_Candidate["UncertaintyMetric"] = VoteEntropyFinal
+    df_Candidate["UncertaintyMetric"] = (1-l_parameter)*VoteEntropyFinal + l_parameter*
     IndexRecommendation = int(df_Candidate.sort_values(by = "UncertaintyMetric", ascending = False).index[0])
     df_Candidate.drop('UncertaintyMetric', axis=1, inplace=True)
 

@@ -8,9 +8,7 @@
 # import pandas as pd
 
 def PassiveLearning(df_Candidate):
-    ### Passive Sampling ###
     QueryObservation = df_Candidate.sample(n=1)
     IndexRecommendation = QueryObservation.index[0]
-
-    Output = {"IndexRecommendation": float(IndexRecommendation)}
+    Output = {"IndexRecommendation": [float(IndexRecommendation)]}
     return(Output)

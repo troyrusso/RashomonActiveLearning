@@ -58,7 +58,8 @@ def LearningProcedure(SimulationConfigInputUpdated):
         SelectorArgsFiltered = FilterArguments(SelectorType, SimulationConfigInputUpdated)
         SelectorFuncOutput = SelectorType(**SelectorArgsFiltered)
         QueryObservationIndex = SelectorFuncOutput["IndexRecommendation"]
-        QueryObservation = SimulationConfigInputUpdated["df_Candidate"].loc[[QueryObservationIndex]]
+        # QueryObservation = SimulationConfigInputUpdated["df_Candidate"].loc[[QueryObservationIndex]]
+        QueryObservation = SimulationConfigInputUpdated["df_Candidate"].loc[QueryObservationIndex]
         SelectedObservationHistory.append(QueryObservationIndex)
         
         ### Update Train and Candidate Sets ###

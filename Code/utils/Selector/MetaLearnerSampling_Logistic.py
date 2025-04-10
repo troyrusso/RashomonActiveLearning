@@ -27,6 +27,11 @@ def MetaLearnerFunction(Model, df_Candidate, df_Train, UniqueErrorsInput):
     np.seterr(all = 'ignore') 
     warnings.filterwarnings("ignore", category=UserWarning)
 
+    ### Variables ###
+    columns_to_remove = ['Y', "d_nX", "ClusterLabels"]
+    X_Candidate = df_Candidate[df_Candidate.columns.difference(columns_to_remove)]
+    y_Candidate =  df_Candidate["Y"]
+
     ### Predicted Values ###
 
     ## Rashomon Classification ##
@@ -52,16 +57,16 @@ def MetaLearnerFunction(Model, df_Candidate, df_Train, UniqueErrorsInput):
 
         ## CANDIDATE SET ##
         # Duplicate #
-        PredictionArray_Duplicate_Candidate = pd.DataFrame(np.array([Model[i].predict(df_Candidate.loc[:, df_Candidate.columns != "Y"]) for i in range(TreeCounts)]))
+        PredictionArray_Duplicate_Candidate = pd.DataFrame(np.array([Model[i].predict(X_Candidate) for i in range(TreeCounts)]))
         PredictionArray_Duplicate_Candidate.columns = df_Candidate.index.astype(str)
         EnsemblePrediction_Duplicate_Candidate = pd.Series(stats.mode(PredictionArray_Duplicate_Candidate)[0])
-        EnsemblePrediction_Duplicate_Candidate.index = df_Candidate["Y"].index
+        EnsemblePrediction_Duplicate_Candidate.index = y_Candidate.index
         AllTreeCount_Candidate = PredictionArray_Duplicate_Candidate.shape[0]
 
         # Unique #
         PredictionArray_Unique_Candidate = pd.DataFrame(PredictionArray_Duplicate_Candidate).drop_duplicates()
         EnsemblePrediction_Unique_Candidate = pd.Series(stats.mode(PredictionArray_Unique_Candidate)[0])
-        EnsemblePrediction_Unique_Candidate.index = df_Candidate["Y"].index
+        EnsemblePrediction_Unique_Candidate.index = y_Candidate.index
         UniqueTreeCount_Candidate = PredictionArray_Unique_Candidate.shape[0]
 
         ### Duplicate or Unique
@@ -77,7 +82,7 @@ def MetaLearnerFunction(Model, df_Candidate, df_Train, UniqueErrorsInput):
 
     ### Random Forest Classification ###
     elif 'RandomForestClassifier' in str(type(Model)):
-        PredictedValues = [Model.estimators_[tree].predict(df_Candidate.loc[:, df_Candidate.columns != "Y"]) for tree in range(Model.n_estimators)] 
+        PredictedValues = [Model.estimators_[tree].predict(X_Candidate) for tree in range(Model.n_estimators)] 
         PredictedValues = np.vstack(PredictedValues)
         Output = {}
 
@@ -88,7 +93,7 @@ def MetaLearnerFunction(Model, df_Candidate, df_Train, UniqueErrorsInput):
     LogisticModel.fit(X = PredictedValues_Training.T,
                     y = df_Train["Y"])
     # CandidatePrediction = LogisticModel.predict(X = PredictedValues_Candidate.T)
-    # np.mean(CandidatePrediction == df_Candidate["Y"])
+    # np.mean(CandidatePrediction == y_Candidate)
 
     ### Confidence Score ###
 
@@ -109,6 +114,6 @@ def MetaLearnerFunction(Model, df_Candidate, df_Train, UniqueErrorsInput):
     df_Candidate.drop('UncertaintyMetric', axis=1, inplace=True)
 
     # Output #
-    Output["IndexRecommendation"] = IndexRecommendation
+    Output["IndexRecommendation"] = [IndexRecommendation]
 
     return Output
