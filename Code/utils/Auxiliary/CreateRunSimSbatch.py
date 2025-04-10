@@ -35,6 +35,8 @@ for i, row in ParameterVector.iterrows():
     RashomonThresholdType = row['RashomonThresholdType']
     RashomonThreshold = row['RashomonThreshold']
     Type = row['Type']
+    BatchSize = row["BatchSize"]
+    DiversityWeight = row["DiversityWeight"]
     Output = row['Output']
     Partition = row["Partition"]
     Time = row["Time"]
@@ -73,6 +75,8 @@ for i, row in ParameterVector.iterrows():
         f"    --RashomonThresholdType {RashomonThresholdType} \\",
         f"    --RashomonThreshold {RashomonThreshold} \\",
         f"    --Type {Type} \\",
+        f"    --BatchSize {BatchSize} \\",
+        f"    --DiversityWeight {DiversityWeight} \\",
         f"    --Output {Output}"
     ]
 
