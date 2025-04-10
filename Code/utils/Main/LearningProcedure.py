@@ -31,13 +31,15 @@ import pandas as pd
 def LearningProcedure(SimulationConfigInputUpdated):
 
     ### Set Up ###
+    i=0
     ErrorVec = []
     SelectedObservationHistory = []
     TreeCount = {"AllTreeCount": [], "UniqueTreeCount": []}
 
     ### Algorithm ###
-    for i in range(len(SimulationConfigInputUpdated["df_Candidate"])):
-
+    # for i in range(len(SimulationConfigInputUpdated["df_Candidate"])):
+    while len(SimulationConfigInputUpdated["df_Candidate"])>0:
+        
         ### Prediction Model ###
         print("Iteration: " + str(i))
         ModelType = globals().get(SimulationConfigInputUpdated["ModelType"], None)
@@ -70,6 +72,9 @@ def LearningProcedure(SimulationConfigInputUpdated):
         if('TREEFARMS' in str(type(Model))):
             TreeCount["AllTreeCount"].append(SelectorFuncOutput["AllTreeCount"])          # Store number of trees
             TreeCount["UniqueTreeCount"].append(SelectorFuncOutput["UniqueTreeCount"])    # Store number of unique/duplicate trees
+
+        # Increase iteration #
+        i +=1 
 
     ### RETURN ###
     LearningProcedureOutput = {"ErrorVec": ErrorVec,

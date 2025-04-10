@@ -20,7 +20,7 @@ from scipy.spatial.distance import cdist
 ### Function ###
 def TreeEnsembleQBCFunction(Model, df_Candidate, df_Train, UniqueErrorsInput):
 
-    # ### Ignore warning (taken care of) ###
+    ### Ignore warning (taken care of) ###
     warnings.filterwarnings("ignore", message="divide by zero encountered in log", category=RuntimeWarning)
     warnings.filterwarnings("ignore", message="invalid value encountered in multiply", category=RuntimeWarning)
 

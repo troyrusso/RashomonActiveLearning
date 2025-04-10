@@ -99,8 +99,7 @@ def OneIterationFunction(SimulationConfigInput):
     ### Return Dictionary ###
     SimulationResults = {"ErrorVec" : pd.DataFrame(LearningProcedureOutput["ErrorVec"], columns =["Error"]),
                          "TreeCount": LearningProcedureOutput["TreeCount"],
-                         "SelectionHistory" : pd.DataFrame(LearningProcedureOutput["SelectedObservationHistory"], 
-                                                           columns = ["ObservationID"]),
+                         "SelectionHistory" : LearningProcedureOutput["SelectedObservationHistory"],
                          "SimulationParameters" : SimulationParameters,
                          "ElapsedTime" : ElapsedTime}
 

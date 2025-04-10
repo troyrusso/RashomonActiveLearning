@@ -18,19 +18,27 @@ from scipy import stats
 from scipy.spatial.distance import cdist
 
 ### Function ###
-def BatchQBC_GSX(Model, df_Candidate, df_Train, UniqueErrorsInput, BatchSize, l_parameter, distance = "euclidean"):
+def BatchQBCDiversityFuncion(Model, df_Candidate, df_Train, UniqueErrorsInput, DiversityWeight = 0.4, BatchSize=5):
+
+    print("df_Candidate obs: " + str(df_Candidate.shape[0]))
 
     ### Ignore warning (taken care of) ###
-    np.seterr(all = 'ignore') 
-    warnings.filterwarnings("ignore", category=UserWarning)
+    warnings.filterwarnings("ignore", message="divide by zero encountered in log", category=RuntimeWarning)
+    warnings.filterwarnings("ignore", message="invalid value encountered in multiply", category=RuntimeWarning)
+
+    ### Exclude ###
+    exclude_cols = ['Y', 'ClusterLabels', 'd_nX']
 
     ### Predicted Values ###
     ## Rashomon Classification ##
     if 'TREEFARMS' in str(type(Model)):
+
+        # Set Up #
+        X_Candidate = df_Candidate[df_Candidate.columns.difference(exclude_cols)]
         TreeCounts = Model.get_tree_count()
 
         # Duplicate #
-        PredictionArray_Duplicate = pd.DataFrame(np.array([Model[i].predict(df_Candidate.loc[:, df_Candidate.columns != "Y"]) for i in range(TreeCounts)]))
+        PredictionArray_Duplicate = pd.DataFrame(np.array([Model[i].predict(X_Candidate) for i in range(TreeCounts)]))
         PredictionArray_Duplicate.columns = df_Candidate.index.astype(str)
         EnsemblePrediction_Duplicate = pd.Series(stats.mode(PredictionArray_Duplicate)[0])
         EnsemblePrediction_Duplicate.index = df_Candidate["Y"].index
@@ -52,7 +60,8 @@ def BatchQBC_GSX(Model, df_Candidate, df_Train, UniqueErrorsInput, BatchSize, l_
 
     ## Random Forest Classification ###
     elif 'RandomForestClassifier' in str(type(Model)):
-        PredictedValues = [Model.estimators_[tree].predict(df_Candidate.loc[:, df_Candidate.columns != "Y"]) for tree in range(Model.n_estimators)] 
+        X_Candidate = df_Candidate[df_Candidate.columns.difference(exclude_cols)].values
+        PredictedValues = [Model.estimators_[tree].predict(X_Candidate) for tree in range(Model.n_estimators)] 
         PredictedValues = np.vstack(PredictedValues)
         Output = {}
 
@@ -74,11 +83,14 @@ def BatchQBC_GSX(Model, df_Candidate, df_Train, UniqueErrorsInput, BatchSize, l_
     VoteEntropyFinal = np.sum(VoteEntropyMatrix, axis=1)
 
     ### Uncertainty Metric ###
-    df_Candidate["UncertaintyMetric"] = (1-l_parameter)*VoteEntropyFinal + l_parameter*
-    IndexRecommendation = int(df_Candidate.sort_values(by = "UncertaintyMetric", ascending = False).index[0])
+    df_Candidate["UncertaintyMetric"] = (1-DiversityWeight)*VoteEntropyFinal + DiversityWeight*df_Candidate["d_nX"]
+    if df_Candidate.shape[0] >= BatchSize:
+        IndexRecommendation = list(df_Candidate.sort_values(by = "UncertaintyMetric", ascending = False).index[0:BatchSize])
+    else:
+        IndexRecommendation = list(df_Candidate.index)
     df_Candidate.drop('UncertaintyMetric', axis=1, inplace=True)
 
     # Output #
-    Output["IndexRecommendation"] = [IndexRecommendation]
+    Output["IndexRecommendation"] = IndexRecommendation
 
     return Output

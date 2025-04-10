@@ -7,8 +7,14 @@
 ### Libraries ###
 # import pandas as pd
 
-def PassiveLearning(df_Candidate):
-    QueryObservation = df_Candidate.sample(n=1)
-    IndexRecommendation = QueryObservation.index[0]
-    Output = {"IndexRecommendation": [float(IndexRecommendation)]}
+def PassiveLearning(df_Candidate, BatchSize=5):
+
+    if df_Candidate.shape[0] >= BatchSize:
+         QueryObservation = df_Candidate.sample(n=BatchSize)
+         IndexRecommendation = list(QueryObservation.index)
+    else:
+        IndexRecommendation = list(df_Candidate.index)
+
+    ### Output ###
+    Output = {"IndexRecommendation": IndexRecommendation}
     return(Output)
