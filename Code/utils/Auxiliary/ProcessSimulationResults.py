@@ -37,7 +37,7 @@ def ExtractInformation(files):
                 UniqueTreeCountVec.append(data["TreeCount"]["UniqueTreeCount"])
         except Exception as e:
             print(f"Error loading file {file}: {e}")
-    return np.array(ErrorVec), np.array(TimeVec), np.array(SelectionHistoryVec), np.array(AllTreeCountVec), np.array(UniqueTreeCountVec)
+    return np.array(ErrorVec), np.array(TimeVec), list(SelectionHistoryVec)[0], np.array(AllTreeCountVec), np.array(UniqueTreeCountVec)
 
 ### Parser ###
 parser = argparse.ArgumentParser(description="Aggregate simulation results.")
@@ -67,7 +67,7 @@ print(f"Processing category: {Category} with {len(CategoryFileNames)} files")
 ErrorVec, TimeVec, SelectionHistoryVec, AllTreeCountVec, UniqueTreeCountVec = ExtractInformation(CategoryFileNames)
 ErrorMatrix = pd.DataFrame(ErrorVec.squeeze())
 TimeMatrix = pd.DataFrame(TimeVec.squeeze())
-SelectionHistoryVec = pd.DataFrame(SelectionHistoryVec.squeeze())
+# SelectionHistoryVec = pd.DataFrame(SelectionHistoryVec.squeeze())
 AllTreeCountVec = pd.DataFrame(AllTreeCountVec.squeeze())
 UniqueTreeCountVec = pd.DataFrame(UniqueTreeCountVec.squeeze())
 
