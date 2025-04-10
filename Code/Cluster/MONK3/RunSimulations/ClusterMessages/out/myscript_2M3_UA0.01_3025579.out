@@ -1,0 +1,149 @@
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "feature": 4,
+      "name": "a3_1",
+      "reference": "True",
+      "relation": "==",
+      "true": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "feature": 0,
+        "name": "a1_1",
+        "reference": "True",
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "type": "categorical"
+      },
+      "type": "categorical"
+    },
+    "feature": 3,
+    "name": "a2_2",
+    "reference": "True",
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 4,
+      "name": "a3_1",
+      "reference": "True",
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "categorical"
+    },
+    "type": "categorical"
+  },
+  "feature": 8,
+  "model_objective": 0.059999994933605194,
+  "name": "a5_2",
+  "reference": "True",
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "True"
+  },
+  "type": "categorical"
+}
+{
+  "false": {
+    "false": {
+      "false": {
+        "false": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "False"
+        },
+        "feature": 4,
+        "name": "a3_1",
+        "reference": "True",
+        "relation": "==",
+        "true": {
+          "complexity": 0.009999999776482582,
+          "loss": 0.0,
+          "name": "Y",
+          "prediction": "True"
+        },
+        "type": "categorical"
+      },
+      "feature": 0,
+      "name": "a1_1",
+      "reference": "True",
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "categorical"
+    },
+    "feature": 3,
+    "name": "a2_2",
+    "reference": "True",
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "True"
+      },
+      "feature": 4,
+      "name": "a3_1",
+      "reference": "True",
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0,
+        "name": "Y",
+        "prediction": "False"
+      },
+      "type": "categorical"
+    },
+    "type": "categorical"
+  },
+  "feature": 8,
+  "model_objective": 0.059999994933605194,
+  "name": "a5_2",
+  "reference": "True",
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0,
+    "name": "Y",
+    "prediction": "True"
+  },
+  "type": "categorical"
+}
+Iteration: 0
+treefarms reported successful execution
+training completed. Number of trees in the Rashomon set: 6

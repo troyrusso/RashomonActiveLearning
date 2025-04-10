@@ -1,0 +1,4 @@
+/mnt/beegfs/homes/simondn/RashomonActiveLearning/Code/utils/Selector/TreeEnsembleQBCFunction.py:72: RuntimeWarning: divide by zero encountered in log
+  LogVoteC[classes] = np.log(VoteC[classes])
+/mnt/beegfs/homes/simondn/RashomonActiveLearning/Code/utils/Selector/TreeEnsembleQBCFunction.py:73: RuntimeWarning: invalid value encountered in multiply
+  VoteEntropy[classes] =  - VoteC[classes] * LogVoteC[classes]

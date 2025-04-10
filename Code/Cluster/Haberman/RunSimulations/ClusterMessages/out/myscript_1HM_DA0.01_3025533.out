@@ -1,0 +1,71 @@
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0625,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 3,
+    "name": "Year_leq_1960",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 7,
+  "model_objective": 0.2175000011920929,
+  "name": "PositiveNodes_leq_8",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.125,
+    "name": "Y",
+    "prediction": 0
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0625,
+      "name": "Y",
+      "prediction": 1
+    },
+    "feature": 7,
+    "name": "PositiveNodes_leq_8",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0625,
+      "name": "Y",
+      "prediction": 0
+    },
+    "type": "integral"
+  },
+  "feature": 3,
+  "model_objective": 0.2175000011920929,
+  "name": "Year_leq_1960",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.0625,
+    "name": "Y",
+    "prediction": 0
+  },
+  "type": "integral"
+}
+Iteration: 0
+treefarms reported successful execution
+training completed. Number of trees in the Rashomon set: 22
