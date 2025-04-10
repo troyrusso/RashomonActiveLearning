@@ -25,6 +25,8 @@ import numpy as np
 import math as math
 import pandas as pd
 import random as random
+from sklearn.cluster import AgglomerativeClustering
+
 
 ### Import functions ###
 from utils.Main import *
@@ -35,7 +37,6 @@ from utils.Prediction import *
 # import json
 # import networkx as nx
 # import matplotlib.pyplot as plt
-from sklearn.cluster import AgglomerativeClustering
 # from sklearn.model_selection import train_test_split
 
 ### Function ###
