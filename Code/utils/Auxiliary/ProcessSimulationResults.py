@@ -72,11 +72,10 @@ AllTreeCountVec = pd.DataFrame(AllTreeCountVec.squeeze())
 UniqueTreeCountVec = pd.DataFrame(UniqueTreeCountVec.squeeze())
 
 ### Save ###
-ErrorMatrix.to_csv(os.path.join(OutputDirectory, "ErrorVec", "ErrorMatrix.csv"), index=False)
-TimeMatrix.to_csv(os.path.join(OutputDirectory, "ElapsedTime", "TimeMatrix.csv"), index=False)
-AllTreeCountVec.to_csv(os.path.join(OutputDirectory, "TreeCount", "AllTreeCount.csv"), index=False)
-UniqueTreeCountVec.to_csv(os.path.join(OutputDirectory, "TreeCount", "UniqueTreeCount.csv"), index=False)
-# SelectionHistoryVec.to_csv(os.path.join(OutputDirectory, "SelectionHistory", "SelectionHistory.csv"), index=False)
-with open(os.path.join(OutputDirectory, "SelectionHistory", "SelectionHistory.pkl"), 'wb') as file:
+ErrorMatrix.to_csv(os.path.join(OutputDirectory, "ErrorVec", f"{Category}_ErrorMatrix.csv"), index=False)
+TimeMatrix.to_csv(os.path.join(OutputDirectory, "ElapsedTime", f"{Category}_TimeMatrix.csv"), index=False)
+AllTreeCountVec.to_csv(os.path.join(OutputDirectory, "TreeCount", f"{Category}_AllTreeCount.csv"), index=False)
+UniqueTreeCountVec.to_csv(os.path.join(OutputDirectory, "TreeCount", f"{Category}_UniqueTreeCount.csv"), index=False)
+with open(os.path.join(OutputDirectory, "SelectionHistory", f"{Category}_SelectionHistory.pkl"), 'wb') as file:
     pickle.dump(SelectionHistoryVec, file)
 print(f"Saved {Category} files!")
