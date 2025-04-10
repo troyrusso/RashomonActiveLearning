@@ -77,5 +77,6 @@ TimeMatrix.to_csv(os.path.join(OutputDirectory, "ElapsedTime", "TimeMatrix.csv")
 AllTreeCountVec.to_csv(os.path.join(OutputDirectory, "TreeCount", "AllTreeCount.csv"), index=False)
 UniqueTreeCountVec.to_csv(os.path.join(OutputDirectory, "TreeCount", "UniqueTreeCount.csv"), index=False)
 # SelectionHistoryVec.to_csv(os.path.join(OutputDirectory, "SelectionHistory", "SelectionHistory.csv"), index=False)
-SelectionHistoryVec.to_pickle(os.path.join(OutputDirectory, "SelectionHistory", "SelectionHistory.pkl"))
+with open(os.path.join(OutputDirectory, "SelectionHistory", "SelectionHistory.pkl"), 'wb') as file:
+    pickle.dump(SelectionHistoryVec, file)
 print(f"Saved {Category} files!")
