@@ -90,7 +90,9 @@ def OneIterationFunction(SimulationConfigInput):
                             'regularization': str(SimulationConfigInput["regularization"]),
                             'RashomonThresholdType': str(SimulationConfigInput["RashomonThresholdType"]),
                             'RashomonThreshold': str(SimulationConfigInput["RashomonThreshold"]),
-                            'Type': 'Classification'
+                            'Type': 'Classification',
+                            'DiversityWeight': str(SimulationConfigInput["DiversityWeight"]),
+                            'BatchSize': str(SimulationConfigInput["BatchSize"])
                             }
     
     ### Return Time ###
