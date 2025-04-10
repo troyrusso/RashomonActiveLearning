@@ -18,7 +18,7 @@ from scipy import stats
 from scipy.spatial.distance import cdist
 
 ### Function ###
-def BatchQBCDiversityFuncion(Model, df_Candidate, df_Train, UniqueErrorsInput, DiversityWeight = 0.4, BatchSize=5):
+def BatchQBCDiversityFunction(Model, df_Candidate, df_Train, UniqueErrorsInput, DiversityWeight = 0.4, BatchSize=5):
 
     print("df_Candidate obs: " + str(df_Candidate.shape[0]))
 
