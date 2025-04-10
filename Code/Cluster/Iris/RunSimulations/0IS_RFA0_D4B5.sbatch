@@ -17,7 +17,7 @@ python Code/RunSimulation.py \
     --Seed 0 \
     --TestProportion 0.2 \
     --CandidateProportion 0.8 \
-    --SelectorType TreeEnsembleQBCFunction \
+    --SelectorType BatchQBCDiversityFunction \
     --ModelType RandomForestClassificationFunction \
     --UniqueErrorsInput 0 \
     --n_estimators 100 \

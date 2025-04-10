@@ -17,7 +17,7 @@ python Code/RunSimulation.py \
     --Seed 1 \
     --TestProportion 0.2 \
     --CandidateProportion 0.8 \
-    --SelectorType TreeEnsembleQBCFunction \
+    --SelectorType BatchQBCDiversityFunction \
     --ModelType TreeFarmsFunction \
     --UniqueErrorsInput 1 \
     --n_estimators 100 \
