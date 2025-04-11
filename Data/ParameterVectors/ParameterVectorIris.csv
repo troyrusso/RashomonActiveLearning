@@ -11,3 +11,11 @@ Iris,2,0.2,0.8,BatchQBCDiversityFunction,TreeFarmsFunction,0,100,0.01,Adder,0.01
 Iris,2,0.2,0.8,BatchQBCDiversityFunction,TreeFarmsFunction,1,100,0.01,Adder,0.01,Classification,0.4,5,short,00:59:00,30000M,2IS_UA01_D4B5,Iris/TreeFarms/Raw/2IS_UA01_D4B5.pkl
 Iris,2,0.2,0.8,PassiveLearning,RandomForestClassificationFunction,1,100,0.01,Adder,0.0,Classification,0.0,5,short,00:59:00,1000,2IS_PLA0_D0B5,Iris/RandomForestClassification/Raw/2IS_PLA0_D0B5.pkl
 Iris,2,0.2,0.8,BatchQBCDiversityFunction,RandomForestClassificationFunction,0,100,0.01,Adder,0.0,Classification,0.4,5,short,00:59:00,1000,2IS_RFA0_D4B5,Iris/RandomForestClassification/Raw/2IS_RFA0_D4B5.pkl
+Iris,3,0.2,0.8,BatchQBCDiversityFunction,TreeFarmsFunction,0,100,0.01,Adder,0.01,Classification,0.4,5,short,00:59:00,30000M,3IS_DA01_D4B5,Iris/TreeFarms/Raw/3IS_DA01_D4B5.pkl
+Iris,3,0.2,0.8,PassiveLearning,RandomForestClassificationFunction,1,100,0.01,Adder,0.0,Classification,0.0,5,short,00:59:00,1000,3IS_PLA0_D0B5,Iris/RandomForestClassification/Raw/3IS_PLA0_D0B5.pkl
+Iris,3,0.2,0.8,BatchQBCDiversityFunction,TreeFarmsFunction,1,100,0.01,Adder,0.01,Classification,0.4,5,short,00:59:00,30000M,3IS_UA01_D4B5,Iris/TreeFarms/Raw/3IS_UA01_D4B5.pkl
+Iris,3,0.2,0.8,BatchQBCDiversityFunction,RandomForestClassificationFunction,0,100,0.01,Adder,0.0,Classification,0.4,5,short,00:59:00,1000,3IS_RFA0_D4B5,Iris/RandomForestClassification/Raw/3IS_RFA0_D4B5.pkl
+Iris,4,0.2,0.8,BatchQBCDiversityFunction,TreeFarmsFunction,1,100,0.01,Adder,0.01,Classification,0.4,5,short,00:59:00,30000M,4IS_UA01_D4B5,Iris/TreeFarms/Raw/4IS_UA01_D4B5.pkl
+Iris,4,0.2,0.8,PassiveLearning,RandomForestClassificationFunction,1,100,0.01,Adder,0.0,Classification,0.0,5,short,00:59:00,1000,4IS_PLA0_D0B5,Iris/RandomForestClassification/Raw/4IS_PLA0_D0B5.pkl
+Iris,4,0.2,0.8,BatchQBCDiversityFunction,TreeFarmsFunction,0,100,0.01,Adder,0.01,Classification,0.4,5,short,00:59:00,30000M,4IS_DA01_D4B5,Iris/TreeFarms/Raw/4IS_DA01_D4B5.pkl
+Iris,4,0.2,0.8,BatchQBCDiversityFunction,RandomForestClassificationFunction,0,100,0.01,Adder,0.0,Classification,0.4,5,short,00:59:00,1000,4IS_RFA0_D4B5,Iris/RandomForestClassification/Raw/4IS_RFA0_D4B5.pkl
