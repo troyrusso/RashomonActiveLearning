@@ -15,6 +15,10 @@ import math as math
 import pandas as pd 
 import random as random
 
+# Configure matplotlib for non-interactive backend (important for HPC environments)
+import matplotlib
+matplotlib.use('Agg')  # Use non-interactive backend
+
 # Try to import matplotlib - if it fails, provide installation instructions
 try:
     import matplotlib.pyplot as plt
@@ -23,9 +27,11 @@ except ImportError as e:
     module_name = str(e).split("'")[-2]
     print(f"Error: Missing required module '{module_name}'")
     print("\nPlease install the missing module with:")
-    print(f"  pip install {module_name}")
-    print("\nIf you're using a virtual environment, make sure it's activated:")
-    print("  source /path/to/your/venv/bin/activate")
+    print(f"  python -m pip install --user {module_name}")
+    print("\nFor HPC environments, you may need to use:")
+    print("  srun --pty --time=30 --mem-per-cpu=1000 --partition=build /bin/bash")
+    print("  module load Python")
+    print(f"  python -m pip install --user {module_name}")
     sys.exit(1)
 
 # Add the project root to the path so we can import from utils
