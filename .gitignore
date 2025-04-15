@@ -48,19 +48,10 @@ po/*~
 # RStudio Connect folder
 rsconnect/
 
-# All PDFs
-*.pdf
-Data/ComboDrugGrowth_Nov2017.csv
 
 # Ignore macOS system files
 .DS_Store
 
-# Ignore documents folder
-**/documents/
-**Results/PreICMLResults/
-**Presentations/
-**Images
-**MeetingUpdates/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
