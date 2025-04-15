@@ -4,12 +4,13 @@
 # Make sure the script is executable
 chmod +x parameter_vector_creator.py
 
-# Create output directory by default
-OUTPUT_DIR="./parameter_vectors"
+# Set project root directory and paths
+PROJECT_ROOT="/homes/simondn/RashomonActiveLearning"
+OUTPUT_DIR="$PROJECT_ROOT/Data/ParameterVectors"
 mkdir -p "$OUTPUT_DIR"
 
 # Default parameters
-DATA="BankNote"
+DATA="Iris"
 SEED_START=0
 SEED_END=49
 TEST_PROPORTION=0.2
@@ -20,7 +21,7 @@ UNIQUE_ERRORS_INPUT="0 1"
 N_ESTIMATORS=100
 REGULARIZATION=0.01
 RASHOMON_THRESHOLD_TYPE="Adder"
-RASHOMON_THRESHOLD="0.035 0.045"
+RASHOMON_THRESHOLD="0.025"
 CLASSIFICATION_TYPE="Classification"
 DIVERSITY_WEIGHT=0.4
 BATCH_SIZE=10
