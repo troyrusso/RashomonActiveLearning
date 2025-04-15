@@ -177,7 +177,7 @@ echo "Using seed range: $SEED_START to $SEED_END"
 echo "Output directory: $OUTPUT_DIR"
 
 # Run the Python script with all parameters
-./parameter_vector_creator.py \
+./CreateParameterVector.py \
   --data "$DATA" \
   --seed-start "$SEED_START" \
   --seed-end "$SEED_END" \
