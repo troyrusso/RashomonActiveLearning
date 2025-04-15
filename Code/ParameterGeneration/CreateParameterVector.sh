@@ -1,8 +1,8 @@
 #!/bin/bash
-# This script runs the parameter_vector_creator.py with custom parameters
+# This script runs the CreateParameterVector.py with custom parameters
 
 # Make sure the script is executable
-chmod +x parameter_vector_creator.py
+chmod +x CreateParameterVector.py
 
 # Set project root directory and paths
 PROJECT_ROOT="/homes/simondn/RashomonActiveLearning"
