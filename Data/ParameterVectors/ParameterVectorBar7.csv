@@ -1,1 +1,14 @@
 Data,Seed,TestProportion,CandidateProportion,SelectorType,ModelType,UniqueErrorsInput,n_estimators,regularization,RashomonThresholdType,RashomonThreshold,Type,DiversityWeight,BatchSize,Partition,Time,Memory,JobName,Output
+Bar7,10,0.2,0.8,BatchQBCDiversityFunction,TreeFarmsFunction,0,100,0.01,Adder,0.02,Classification,0.4,10,medium,2-23:59:00,30000M,10B7_DA02_D4B10,Bar7/TreeFarms/Raw/10B7_DA02_D4B10.pkl
+Bar7,10,0.2,0.8,BatchQBCDiversityFunction,TreeFarmsFunction,1,100,0.01,Adder,0.02,Classification,0.4,10,medium,2-23:59:00,30000M,10B7_UA02_D4B10,Bar7/TreeFarms/Raw/10B7_UA02_D4B10.pkl
+Bar7,15,0.2,0.8,BatchQBCDiversityFunction,TreeFarmsFunction,1,100,0.01,Adder,0.02,Classification,0.4,10,medium,2-23:59:00,30000M,15B7_UA02_D4B10,Bar7/TreeFarms/Raw/15B7_UA02_D4B10.pkl
+Bar7,23,0.2,0.8,BatchQBCDiversityFunction,TreeFarmsFunction,0,100,0.01,Adder,0.02,Classification,0.4,10,medium,2-23:59:00,30000M,23B7_DA02_D4B10,Bar7/TreeFarms/Raw/23B7_DA02_D4B10.pkl
+Bar7,23,0.2,0.8,BatchQBCDiversityFunction,TreeFarmsFunction,1,100,0.01,Adder,0.02,Classification,0.4,10,medium,2-23:59:00,30000M,23B7_UA02_D4B10,Bar7/TreeFarms/Raw/23B7_UA02_D4B10.pkl
+Bar7,26,0.2,0.8,BatchQBCDiversityFunction,TreeFarmsFunction,0,100,0.01,Adder,0.02,Classification,0.4,10,medium,2-23:59:00,30000M,26B7_DA02_D4B10,Bar7/TreeFarms/Raw/26B7_DA02_D4B10.pkl
+Bar7,26,0.2,0.8,BatchQBCDiversityFunction,TreeFarmsFunction,1,100,0.01,Adder,0.02,Classification,0.4,10,medium,2-23:59:00,30000M,26B7_UA02_D4B10,Bar7/TreeFarms/Raw/26B7_UA02_D4B10.pkl
+Bar7,33,0.2,0.8,BatchQBCDiversityFunction,TreeFarmsFunction,0,100,0.01,Adder,0.02,Classification,0.4,10,medium,2-23:59:00,30000M,33B7_DA02_D4B10,Bar7/TreeFarms/Raw/33B7_DA02_D4B10.pkl
+Bar7,36,0.2,0.8,BatchQBCDiversityFunction,TreeFarmsFunction,0,100,0.01,Adder,0.02,Classification,0.4,10,medium,2-23:59:00,30000M,36B7_DA02_D4B10,Bar7/TreeFarms/Raw/36B7_DA02_D4B10.pkl
+Bar7,36,0.2,0.8,BatchQBCDiversityFunction,TreeFarmsFunction,1,100,0.01,Adder,0.02,Classification,0.4,10,medium,2-23:59:00,30000M,36B7_UA02_D4B10,Bar7/TreeFarms/Raw/36B7_UA02_D4B10.pkl
+Bar7,42,0.2,0.8,BatchQBCDiversityFunction,TreeFarmsFunction,0,100,0.01,Adder,0.02,Classification,0.4,10,medium,2-23:59:00,30000M,42B7_DA02_D4B10,Bar7/TreeFarms/Raw/42B7_DA02_D4B10.pkl
+Bar7,42,0.2,0.8,BatchQBCDiversityFunction,TreeFarmsFunction,1,100,0.01,Adder,0.02,Classification,0.4,10,medium,2-23:59:00,30000M,42B7_UA02_D4B10,Bar7/TreeFarms/Raw/42B7_UA02_D4B10.pkl
+Bar7,49,0.2,0.8,BatchQBCDiversityFunction,TreeFarmsFunction,1,100,0.01,Adder,0.02,Classification,0.4,10,medium,2-23:59:00,30000M,49B7_UA02_D4B10,Bar7/TreeFarms/Raw/49B7_UA02_D4B10.pkl
