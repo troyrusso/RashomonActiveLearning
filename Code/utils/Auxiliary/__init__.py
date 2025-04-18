@@ -10,3 +10,4 @@ from .WilcoxonRankSignedTest import *
 from .PreProcessData import *
 from .FindMissingSimulations import *
 from .CreateParameterVector import *
+from .AnalyzeResultsFunction import *
