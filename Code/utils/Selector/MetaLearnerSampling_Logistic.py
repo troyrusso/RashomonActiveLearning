@@ -28,7 +28,7 @@ def MetaLearnerFunction(Model, df_Candidate, df_Train, UniqueErrorsInput):
     warnings.filterwarnings("ignore", category=UserWarning)
 
     ### Variables ###
-    columns_to_remove = ['Y', "d_nX", "ClusterLabels"]
+    columns_to_remove = ['Y', "DiversityScores", "DensityScores"]
     X_Candidate = df_Candidate[df_Candidate.columns.difference(columns_to_remove)]
     y_Candidate =  df_Candidate["Y"]
 

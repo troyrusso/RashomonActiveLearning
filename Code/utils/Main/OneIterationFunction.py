@@ -25,19 +25,12 @@ import numpy as np
 import math as math
 import pandas as pd
 import random as random
-from sklearn.cluster import AgglomerativeClustering
-
 
 ### Import functions ###
 from utils.Main import *
 from utils.Selector import *
 from utils.Auxiliary import *
 from utils.Prediction import *
-
-# import json
-# import networkx as nx
-# import matplotlib.pyplot as plt
-# from sklearn.model_selection import train_test_split
 
 ### Function ###
 def OneIterationFunction(SimulationConfigInput):
@@ -54,20 +47,8 @@ def OneIterationFunction(SimulationConfigInput):
     from utils.Main import TrainTestCandidateSplit                           ### NOTE: Why is this not imported from utils.Main import *
     df_Train, df_Test, df_Candidate = TrainTestCandidateSplit(df, SimulationConfigInput["TestProportion"], SimulationConfigInput["CandidateProportion"])
 
-    ### Batch Active Learning Metrics ###
-    # Set Up #
-    X_Candidate = df_Candidate.loc[:, df_Candidate.columns!= "Y"]
-    X_Train = df_Train.loc[:,df_Train.columns!= "Y"]
-
-    # Clustering #
-    cluster = AgglomerativeClustering(n_clusters=5, linkage="average")
-    ClusterLabels = cluster.fit_predict(X_Candidate)
-    df_Candidate["ClusterLabels"] = ClusterLabels
-
-    # Diversity Metric #
-    d_nmX = cdist(X_Candidate, X_Train, metric = "euclidean")
-    d_nX = d_nmX.min(axis=1)
-    df_Candidate["d_nX"] = d_nX
+    ### Add Batch Active Learning Metrics ###
+    df_Candidate = DiversityMetricsFunction(df_Candidate, df_Train, k=10)
 
     ### Update SimulationConfig Arguments ###
     SimulationConfigInput['df_Train'] = df_Train

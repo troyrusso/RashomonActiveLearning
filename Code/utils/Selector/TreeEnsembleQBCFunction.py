@@ -25,7 +25,7 @@ def TreeEnsembleQBCFunction(Model, df_Candidate, df_Train, UniqueErrorsInput):
     warnings.filterwarnings("ignore", message="invalid value encountered in multiply", category=RuntimeWarning)
 
     ### Exclude ###
-    exclude_cols = ['Y', 'ClusterLabels', 'd_nX']
+    exclude_cols = ['Y', "DiversityScores", "DensityScores"]
 
     ### Predicted Values ###
     ## Rashomon Classification ##

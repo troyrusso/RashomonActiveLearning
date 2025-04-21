@@ -37,7 +37,6 @@ def LearningProcedure(SimulationConfigInputUpdated):
     TreeCount = {"AllTreeCount": [], "UniqueTreeCount": []}
 
     ### Algorithm ###
-    # for i in range(len(SimulationConfigInputUpdated["df_Candidate"])):
     while len(SimulationConfigInputUpdated["df_Candidate"])>0:
         
         ### Prediction Model ###
@@ -60,7 +59,6 @@ def LearningProcedure(SimulationConfigInputUpdated):
         SelectorArgsFiltered = FilterArguments(SelectorType, SimulationConfigInputUpdated)
         SelectorFuncOutput = SelectorType(**SelectorArgsFiltered)
         QueryObservationIndex = SelectorFuncOutput["IndexRecommendation"]
-        # QueryObservation = SimulationConfigInputUpdated["df_Candidate"].loc[[QueryObservationIndex]]
         QueryObservation = SimulationConfigInputUpdated["df_Candidate"].loc[QueryObservationIndex]
         SelectedObservationHistory.append(QueryObservationIndex)
         
@@ -74,7 +72,7 @@ def LearningProcedure(SimulationConfigInputUpdated):
             TreeCount["UniqueTreeCount"].append(SelectorFuncOutput["UniqueTreeCount"])    # Store number of unique/duplicate trees
 
         # Increase iteration #
-        i +=1 
+        i+=1 
 
     ### RETURN ###
     LearningProcedureOutput = {"ErrorVec": ErrorVec,

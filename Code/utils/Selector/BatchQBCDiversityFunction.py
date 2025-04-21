@@ -15,7 +15,8 @@ import warnings
 import numpy as np
 import pandas as pd
 from scipy import stats
-from scipy.spatial.distance import cdist
+# from scipy.spatial.distance import cdist
+from sklearn.preprocessing import MinMaxScaler
 
 ### Function ###
 def BatchQBCDiversityFunction(Model, df_Candidate, df_Train, UniqueErrorsInput, DiversityWeight = 0.4, BatchSize=5):
@@ -27,7 +28,7 @@ def BatchQBCDiversityFunction(Model, df_Candidate, df_Train, UniqueErrorsInput, 
     warnings.filterwarnings("ignore", message="invalid value encountered in multiply", category=RuntimeWarning)
 
     ### Exclude ###
-    exclude_cols = ['Y', 'ClusterLabels', 'd_nX']
+    exclude_cols = ['Y', "DiversityScores", "DensityScores"]
 
     ### Predicted Values ###
     ## Rashomon Classification ##
@@ -82,8 +83,18 @@ def BatchQBCDiversityFunction(Model, df_Candidate, df_Train, UniqueErrorsInput, 
     VoteEntropyMatrix = np.stack(list(VoteEntropy.values()), axis=1)
     VoteEntropyFinal = np.sum(VoteEntropyMatrix, axis=1)
 
+    # Measures #
+    DiversityValues = np.array([metrics['diversity'] for metrics in df_Candidate['metrics']])
+    DensityValues = np.array([metrics['density'] for metrics in df_Candidate['metrics']])
+
+    # Normalize #
+    scaler = MinMaxScaler()
+    DiversityValues = scaler.fit_transform(DiversityValues.reshape(-1, 1)).flatten()
+    DensityValues = scaler.fit_transform(DensityValues.reshape(-1, 1)).flatten()
+    VoteEntropyFinal = scaler.fit_transform(VoteEntropyFinal.reshape(-1, 1)).flatten()
+
     ### Uncertainty Metric ###
-    df_Candidate["UncertaintyMetric"] = (1-DiversityWeight)*VoteEntropyFinal + DiversityWeight*df_Candidate["d_nX"]
+    df_Candidate["UncertaintyMetric"] = (1-DiversityWeight)*VoteEntropyFinal + DiversityWeight*df_Candidate["DiversityScores"]
     if df_Candidate.shape[0] >= BatchSize:
         IndexRecommendation = list(df_Candidate.sort_values(by = "UncertaintyMetric", ascending = False).index[0:BatchSize])
     else:

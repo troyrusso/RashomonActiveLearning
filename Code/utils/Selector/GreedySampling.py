@@ -18,7 +18,7 @@ from scipy.spatial.distance import cdist
 def GSxFunction(df_Train, df_Candidate, distance = "euclidean"):
 
     # Variables #
-    columns_to_remove = ['Y', "d_nX", "ClusterLabels"]
+    columns_to_remove = ['Y', "DiversityScores", "DensityScores"]
     X_Candidate = df_Candidate[df_Candidate.columns.difference(columns_to_remove)]
 
     ### Calculate n*m distance from df_Candidate_n to df_Train_m
@@ -39,7 +39,7 @@ def GSxFunction(df_Train, df_Candidate, distance = "euclidean"):
 def GSyFunction(df_Train, df_Candidate, Model, distance = "euclidean"): 
 
     ### Variables ###
-    columns_to_remove = ['Y', "d_nX", "ClusterLabels"]
+    columns_to_remove = ['Y', "DiversityScores", "DensityScores"]
     X_Candidate = df_Candidate[df_Candidate.columns.difference(columns_to_remove)]
 
     ### Prediction ###
@@ -61,7 +61,7 @@ def GSyFunction(df_Train, df_Candidate, Model, distance = "euclidean"):
 def iGSFunction(df_Train, df_Candidate, Model, distance = "euclidean"):
 
     ### Variables ###
-    columns_to_remove = ['Y', "d_nX", "ClusterLabels"]
+    columns_to_remove = ['Y', "DiversityScores", "DensityScores"]
     X_Candidate = df_Candidate[df_Candidate.columns.difference(columns_to_remove)]
 
     ### GSx ###
