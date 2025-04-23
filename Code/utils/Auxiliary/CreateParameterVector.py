@@ -68,7 +68,7 @@ def CreateParameterVectorFunction(Data,
                             "Type": ["Classification"],
                             "DiversityWeight": [0],
                             "BatchSize": [BatchSize],
-                            "Partition": ["short"],                                                        # [short, medium, long, largemem, or compute]
+                            "Partition": [Partition],                                                        # [short, medium, long, largemem, or compute]
                             "Time": ["00:59:00"],                                                            # [00:59:00, 11:59:00, 6-23:59:00]
                             "Memory": [1000]}                                                                # [1000, 30000, 100000]
 
@@ -93,7 +93,7 @@ def CreateParameterVectorFunction(Data,
                             "Type": ["Classification"],
                             "DiversityWeight": [DiversityWeight],
                             "BatchSize": [BatchSize],
-                            "Partition": ["short"],                                                        # [short, medium, long, largemem, or compute]
+                            "Partition": [Partition],                                                        # [short, medium, long, largemem, or compute]
                             "Time": ["00:59:00"],                                                            # [00:59:00, 11:59:00, 6-23:59:00]
                             "Memory": [1000]}                                                                # [1000, 30000, 100000]
 

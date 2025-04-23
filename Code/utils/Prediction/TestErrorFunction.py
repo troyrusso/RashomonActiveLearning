@@ -45,7 +45,6 @@ def TestErrorFunction(InputModel, df_Test, Type):
             # UniqueTreeIndices= PredictionArray_Unique.index
             # UniqueTreeCount = PredictionArray_Unique.shape[0]
 
-
             # Output #
             Output = {"Error_Duplicate": Error_Duplicate,
                     #   "Error_Unique": Error_Unique,

@@ -69,19 +69,21 @@ BestAccuracy = float(np.max(TreeClassificationAccuracy))
 
 # Threshold Values #
 EpsilonVec = BestAccuracy - TreeClassificationAccuracy
-MinEpsilon = float(np.min(EpsilonVec))
-MaxEpsilon = float(np.max(EpsilonVec))
-ThresholdValues = np.arange(MinEpsilon, MaxEpsilon + 0.000001, 0.000001)
+# MinEpsilon = float(np.min(EpsilonVec))
+# MaxEpsilon = float(np.max(EpsilonVec))
+# ThresholdValues = np.arange(MinEpsilon, MaxEpsilon + 0.000001, 0.000001)
+ThresholdValues = np.arange(0, rashomon_bound_adder + 0.000001, 0.000001)
 
 ### TEST ACCURACY ###
 # Set Up #
 ModelIndicesVec = []
 Epsilon_F1Score = []
 Epsilon_ClassAccuracy = []
-ModelIndicesOld = []  # Initialize as empty list
+ModelIndicesOld = []
 F1ScoreOld = None
 ClassAccuracyOld = None
 
+# Search #
 for Threshold in ThresholdValues:
 
     # Filter Models Based on Threshold

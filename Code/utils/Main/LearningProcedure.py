@@ -63,7 +63,7 @@ def LearningProcedure(SimulationConfigInputUpdated):
         SelectedObservationHistory.append(QueryObservationIndex)
         
         ### Update Train and Candidate Sets ###
-        SimulationConfigInputUpdated["df_Train"] = pd.concat([SimulationConfigInputUpdated["df_Train"], QueryObservation]).drop(columns=['ClusterLabels', 'd_nX'])
+        SimulationConfigInputUpdated["df_Train"] = pd.concat([SimulationConfigInputUpdated["df_Train"], QueryObservation]).drop(columns=['DiversityScores', 'DensityScores'])
         SimulationConfigInputUpdated["df_Candidate"] = SimulationConfigInputUpdated["df_Candidate"].drop(QueryObservationIndex) 
 
         ### Store Number of (Unique) Trees ###

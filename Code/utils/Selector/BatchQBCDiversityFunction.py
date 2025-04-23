@@ -21,7 +21,7 @@ from sklearn.preprocessing import MinMaxScaler
 ### Function ###
 def BatchQBCDiversityFunction(Model, df_Candidate, df_Train, UniqueErrorsInput, DiversityWeight = 0.4, BatchSize=5):
 
-    print("df_Candidate obs: " + str(df_Candidate.shape[0]))
+    # print("df_Candidate obs: " + str(df_Candidate.shape[0]))
 
     ### Ignore warning (taken care of) ###
     warnings.filterwarnings("ignore", message="divide by zero encountered in log", category=RuntimeWarning)
@@ -84,14 +84,14 @@ def BatchQBCDiversityFunction(Model, df_Candidate, df_Train, UniqueErrorsInput, 
     VoteEntropyFinal = np.sum(VoteEntropyMatrix, axis=1)
 
     # Measures #
-    DiversityValues = np.array([metrics['diversity'] for metrics in df_Candidate['metrics']])
-    DensityValues = np.array([metrics['density'] for metrics in df_Candidate['metrics']])
+    DiversityValues = df_Candidate["DiversityScores"]
+    # DensityValues = np.array([metrics['density'] for metrics in df_Candidate['metrics']])
 
     # Normalize #
     scaler = MinMaxScaler()
-    DiversityValues = scaler.fit_transform(DiversityValues.reshape(-1, 1)).flatten()
-    DensityValues = scaler.fit_transform(DensityValues.reshape(-1, 1)).flatten()
-    VoteEntropyFinal = scaler.fit_transform(VoteEntropyFinal.reshape(-1, 1)).flatten()
+    DiversityValues = scaler.fit_transform(np.array(DiversityValues).reshape(-1, 1)).flatten()
+    # DensityValues = scaler.fit_transform(np.array(DensityValues).reshape(-1, 1)).flatten()
+    VoteEntropyFinal = scaler.fit_transform(np.array(VoteEntropyFinal).reshape(-1, 1)).flatten()
 
     ### Uncertainty Metric ###
     df_Candidate["UncertaintyMetric"] = (1-DiversityWeight)*VoteEntropyFinal + DiversityWeight*df_Candidate["DiversityScores"]
