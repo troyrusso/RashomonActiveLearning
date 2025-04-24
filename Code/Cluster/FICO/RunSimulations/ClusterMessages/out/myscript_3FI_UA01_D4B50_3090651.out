@@ -1,0 +1,88 @@
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.21040049195289612,
+    "name": "Y",
+    "prediction": 0
+  },
+  "feature": 0,
+  "model_objective": 0.3176688849925995,
+  "name": "ExternalRiskEstimate<0.49",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.08726838231086731,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.21590249240398407,
+    "name": "Y",
+    "prediction": 0
+  },
+  "feature": 0,
+  "model_objective": 0.3235403597354889,
+  "name": "ExternalRiskEstimate<0.49",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.08763784170150757,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.21714608371257782,
+    "name": "Y",
+    "prediction": 0
+  },
+  "feature": 0,
+  "model_objective": 0.32626059651374817,
+  "name": "ExternalRiskEstimate<0.49",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.08911450207233429,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.2144816368818283,
+    "name": "Y",
+    "prediction": 0
+  },
+  "feature": 0,
+  "model_objective": 0.32938018441200256,
+  "name": "ExternalRiskEstimate<0.49",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.094898521900177,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}

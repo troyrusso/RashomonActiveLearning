@@ -1,0 +1,376 @@
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.10520024597644806,
+      "name": "Y",
+      "prediction": 0
+    },
+    "feature": 3,
+    "name": "NumSatisfactoryTrades<0.5",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.04781829193234444,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 12,
+      "name": "Inquiry<0.75",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.032875075936317444,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.3131619989871979,
+  "name": "ExternalRiskEstimate<0.49",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.08726838231086731,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.09862522780895233,
+      "name": "Y",
+      "prediction": 0
+    },
+    "feature": 12,
+    "name": "Inquiry<0.75",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.054393306374549866,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 3,
+      "name": "NumSatisfactoryTrades<0.5",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.032875075936317444,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.3131619989871979,
+  "name": "ExternalRiskEstimate<0.49",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.08726838231086731,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.10562971979379654,
+      "name": "Y",
+      "prediction": 0
+    },
+    "feature": 3,
+    "name": "NumSatisfactoryTrades<0.5",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.04875217750668526,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 12,
+      "name": "Inquiry<0.75",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.034242600202560425,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.3151015639305115,
+  "name": "ExternalRiskEstimate<0.49",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.08647707849740982,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.09924550354480743,
+      "name": "Y",
+      "prediction": 0
+    },
+    "feature": 12,
+    "name": "Inquiry<0.75",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.055136390030384064,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 3,
+      "name": "NumSatisfactoryTrades<0.5",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.034242600202560425,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.3151015639305115,
+  "name": "ExternalRiskEstimate<0.49",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.08647707849740982,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.10603497177362442,
+      "name": "Y",
+      "prediction": 0
+    },
+    "feature": 3,
+    "name": "NumSatisfactoryTrades<0.5",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.050761424005031586,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 12,
+      "name": "Inquiry<0.75",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.03553299605846405,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.3163677453994751,
+  "name": "ExternalRiskEstimate<0.49",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.08403835445642471,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.10039481520652771,
+      "name": "Y",
+      "prediction": 0
+    },
+    "feature": 12,
+    "name": "Inquiry<0.75",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.056401580572128296,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 3,
+      "name": "NumSatisfactoryTrades<0.5",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.03553299605846405,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.3163677453994751,
+  "name": "ExternalRiskEstimate<0.49",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.08403835445642471,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.10751508921384811,
+      "name": "Y",
+      "prediction": 0
+    },
+    "feature": 3,
+    "name": "NumSatisfactoryTrades<0.5",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.05320899933576584,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 12,
+      "name": "Inquiry<0.75",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.03949533775448799,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.32195281982421875,
+  "name": "ExternalRiskEstimate<0.49",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.08173341304063797,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.10367526859045029,
+      "name": "Y",
+      "prediction": 0
+    },
+    "feature": 12,
+    "name": "Inquiry<0.75",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.057048823684453964,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 3,
+      "name": "NumSatisfactoryTrades<0.5",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.03949533775448799,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "type": "integral"
+  },
+  "feature": 0,
+  "model_objective": 0.32195281982421875,
+  "name": "ExternalRiskEstimate<0.49",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.08173341304063797,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}

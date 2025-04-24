@@ -1,0 +1,278 @@
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.13508667051792145,
+    "name": "Y",
+    "prediction": 0
+  },
+  "feature": 1,
+  "model_objective": 0.32543936371803284,
+  "name": "ExternalRiskEstimate<0.65",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.17035266757011414,
+    "name": "Y",
+    "prediction": 1
+  },
+  "type": "integral"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.10272780060768127,
+    "name": "Y",
+    "prediction": 0
+  },
+  "feature": 14,
+  "model_objective": 0.32831689715385437,
+  "name": "RevolvingBalance<0.6",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.07661056518554688,
+      "name": "Y",
+      "prediction": 0
+    },
+    "feature": 1,
+    "name": "ExternalRiskEstimate<0.65",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.11897853016853333,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.1369704008102417,
+    "name": "Y",
+    "prediction": 0
+  },
+  "feature": 1,
+  "model_objective": 0.32831689715385437,
+  "name": "ExternalRiskEstimate<0.65",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "false": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.04236796498298645,
+      "name": "Y",
+      "prediction": 0
+    },
+    "feature": 14,
+    "name": "RevolvingBalance<0.6",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.11897853016853333,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "type": "integral"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.13592781126499176,
+    "name": "Y",
+    "prediction": 0
+  },
+  "feature": 1,
+  "model_objective": 0.3293401300907135,
+  "name": "ExternalRiskEstimate<0.65",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.021996617317199707,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 14,
+      "name": "RevolvingBalance<0.6",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.08855048567056656,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "feature": 12,
+    "name": "Inquiry<0.75",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.04286520183086395,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.13592781126499176,
+    "name": "Y",
+    "prediction": 0
+  },
+  "feature": 1,
+  "model_objective": 0.3293401002883911,
+  "name": "ExternalRiskEstimate<0.65",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.021996617317199707,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 12,
+      "name": "Inquiry<0.75",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.011280316859483719,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "feature": 14,
+    "name": "RevolvingBalance<0.6",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.1201353669166565,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "type": "integral"
+}
+null
+Finding Optimal Objective...
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.1349424123764038,
+    "name": "Y",
+    "prediction": 0
+  },
+  "feature": 1,
+  "model_objective": 0.33072957396507263,
+  "name": "ExternalRiskEstimate<0.65",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.02139330841600895,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 14,
+      "name": "RevolvingBalance<0.6",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.0916072428226471,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "feature": 12,
+    "name": "Inquiry<0.75",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.0427866168320179,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "type": "integral"
+}
+{
+  "false": {
+    "complexity": 0.009999999776482582,
+    "loss": 0.1349424123764038,
+    "name": "Y",
+    "prediction": 0
+  },
+  "feature": 1,
+  "model_objective": 0.33072957396507263,
+  "name": "ExternalRiskEstimate<0.65",
+  "reference": 1,
+  "relation": "==",
+  "true": {
+    "false": {
+      "false": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.02139330841600895,
+        "name": "Y",
+        "prediction": 0
+      },
+      "feature": 12,
+      "name": "Inquiry<0.75",
+      "reference": 1,
+      "relation": "==",
+      "true": {
+        "complexity": 0.009999999776482582,
+        "loss": 0.010970927774906158,
+        "name": "Y",
+        "prediction": 1
+      },
+      "type": "integral"
+    },
+    "feature": 14,
+    "name": "RevolvingBalance<0.6",
+    "reference": 1,
+    "relation": "==",
+    "true": {
+      "complexity": 0.009999999776482582,
+      "loss": 0.12342293560504913,
+      "name": "Y",
+      "prediction": 1
+    },
+    "type": "integral"
+  },
+  "type": "integral"
+}

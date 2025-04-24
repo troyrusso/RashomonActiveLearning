@@ -21,10 +21,10 @@ python Code/utils/Auxiliary/ProcessSimulationResults.py \
 python Code/utils/Auxiliary/ProcessSimulationResults.py \
     --DataType "$CURRENT_DIR" \
     --ModelType "TreeFarms" \
-    --Categories "DA01"
+    --Categories "DA02"
 
 ### Extract Unique TREEFARMS Results ###
 python Code/utils/Auxiliary/ProcessSimulationResults.py \
     --DataType "$CURRENT_DIR" \
     --ModelType "TreeFarms" \
-    --Categories "UA01"
+    --Categories "UA02"
