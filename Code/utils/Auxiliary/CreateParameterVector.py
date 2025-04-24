@@ -7,7 +7,8 @@ from utils.Auxiliary import FindMissingSimulations
 def CreateParameterVectorFunction(Data, 
                                   Seed,                     # range(0,50)
                                   RashomonThreshold,
-                                  DiversityWeight,          # 0.4
+                                  DiversityWeight,
+                                  DensityWeight,
                                   BatchSize,
                                   Partition,                # [short, medium, long, largemem, compute, cpu-g2-mem2x]
                                   Time,                     # [00:59:00, 11:59:00, 6-23:59:00]
@@ -31,7 +32,6 @@ def CreateParameterVectorFunction(Data,
     # Input Parameters #
     ParameterDictionary = {"Data":[Data],
                            "Seed":list(Seed),
-                           #  "Seed":list([]),                       
                            "TestProportion":[0.2],
                            "CandidateProportion":[0.8],
                            "SelectorType":["BatchQBCDiversityFunction"],
@@ -43,6 +43,7 @@ def CreateParameterVectorFunction(Data,
                            "RashomonThreshold": [RashomonThreshold],
                            "Type": ["Classification"],
                            "DiversityWeight": [DiversityWeight],
+                           "DensityWeight": [DensityWeight],
                            "BatchSize": [BatchSize],
                            "Partition": [Partition],                                                        # [short, medium, long, largemem, compute, cpu-g2-mem2x]
                            "Time": [Time],                                                            # [00:59:00, 11:59:00, 6-23:59:00]
@@ -67,6 +68,7 @@ def CreateParameterVectorFunction(Data,
                             "RashomonThreshold": [0],
                             "Type": ["Classification"],
                             "DiversityWeight": [0],
+                            "DensityWeight": [0],
                             "BatchSize": [BatchSize],
                             "Partition": [Partition],                                                        # [short, medium, long, largemem, or compute]
                             "Time": ["00:59:00"],                                                            # [00:59:00, 11:59:00, 6-23:59:00]
@@ -92,6 +94,7 @@ def CreateParameterVectorFunction(Data,
                             "RashomonThreshold": [0],
                             "Type": ["Classification"],
                             "DiversityWeight": [DiversityWeight],
+                            "DensityWeight": [DensityWeight],
                             "BatchSize": [BatchSize],
                             "Partition": [Partition],                                                        # [short, medium, long, largemem, or compute]
                             "Time": ["00:59:00"],                                                            # [00:59:00, 11:59:00, 6-23:59:00]
@@ -112,8 +115,8 @@ def CreateParameterVectorFunction(Data,
     "_UEI" + ParameterVector["UniqueErrorsInput"].astype(str) +
     "_" + ParameterVector["RashomonThresholdType"].astype(str) + 
     ParameterVector["RashomonThreshold"].astype(str)+
-    "_D" + ParameterVector["DiversityWeight"].astype(str) + 
-    "B" + ParameterVector["BatchSize"].astype(str))
+    # "_D" + ParameterVector["DiversityWeight"].astype(str) + 
+    "_B" + ParameterVector["BatchSize"].astype(str))
 
     # Replace Job Name #
     ParameterVector["JobName"] = (

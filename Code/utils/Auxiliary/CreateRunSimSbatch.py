@@ -37,6 +37,7 @@ for i, row in ParameterVector.iterrows():
     Type = row['Type']
     BatchSize = row["BatchSize"]
     DiversityWeight = row["DiversityWeight"]
+    DensityWeight = row["DensityWeight"]
     Output = row['Output']
     Partition = row["Partition"]
     Time = row["Time"]
@@ -77,6 +78,7 @@ for i, row in ParameterVector.iterrows():
         f"    --Type {Type} \\",
         f"    --BatchSize {BatchSize} \\",
         f"    --DiversityWeight {DiversityWeight} \\",
+        f"    --DensityWeight {DensityWeight} \\",
         f"    --Output {Output}"
     ]
 

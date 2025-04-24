@@ -19,7 +19,7 @@ def TestErrorFunction(InputModel, df_Test, Type):
     if(Type == "Regression"):
         Prediction = InputModel.predict(df_Test.loc[:, df_Test.columns != "Y"])
         ErrorVal = np.mean((Prediction - df_Test["Y"])**2)
-        ErrorVal = [ErrorVal.tolist()]
+        ErrorVal = ErrorVal.tolist()
         Output = {"ErrorVal": ErrorVal}
 
     ### Classification Error ###

@@ -73,6 +73,7 @@ def OneIterationFunction(SimulationConfigInput):
                             'RashomonThreshold': str(SimulationConfigInput["RashomonThreshold"]),
                             'Type': 'Classification',
                             'DiversityWeight': str(SimulationConfigInput["DiversityWeight"]),
+                            'DensityWeight': str(SimulationConfigInput["DensityWeight"]),
                             'BatchSize': str(SimulationConfigInput["BatchSize"])
                             }
     

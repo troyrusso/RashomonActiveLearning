@@ -35,6 +35,7 @@ parser.add_argument("--RashomonThresholdType", type=str, default="-1", help="Add
 parser.add_argument("--RashomonThreshold", type=float, default="-1.0", help="Rashomon threshold (adder/multiplier) epislon for TreeFarms.")
 parser.add_argument("--Type", type=str, default="-1", help="Regression vs. Classification (currently only classification offered).")
 parser.add_argument("--DiversityWeight", type=float, default="-1.0", help="Parameter for the weight of diversity in uncertainty metric.")
+parser.add_argument("--DensityWeight", type=float, default="-1.0", help="Parameter for the weight of density in uncertainty metric.")
 parser.add_argument("--BatchSize", type=int, default="-1", help="Batch size for active learning")
 parser.add_argument("--Output", type=str, default="-1", help="Output.")
 args = parser.parse_args()
@@ -53,6 +54,7 @@ SimulationConfigInput = {"DataFileInput": args.Data,
                         "RashomonThreshold":float(args.RashomonThreshold),
                         "Type": args.Type,
                         "DiversityWeight": args.DiversityWeight,
+                        "DensityWeight": args.DensityWeight,
                         "BatchSize": args.BatchSize
                         }
 
