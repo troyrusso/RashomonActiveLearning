@@ -19,7 +19,7 @@ from scipy import stats
 from sklearn.preprocessing import MinMaxScaler
 
 ### Function ###
-def BatchQBCDiversityFunction(Model, df_Candidate, df_Train, UniqueErrorsInput, DiversityWeight = 0.4, BatchSize=5):
+def BatchQBCDiversityFunction(Model, df_Candidate, df_Train, UniqueErrorsInput, DiversityWeight, DensityWeight, BatchSize):
 
     # print("df_Candidate obs: " + str(df_Candidate.shape[0]))
 
@@ -85,16 +85,16 @@ def BatchQBCDiversityFunction(Model, df_Candidate, df_Train, UniqueErrorsInput, 
 
     # Measures #
     DiversityValues = df_Candidate["DiversityScores"]
-    # DensityValues = np.array([metrics['density'] for metrics in df_Candidate['metrics']])
+    DensityValues = df_Candidate["DensityScores"]
 
     # Normalize #
     scaler = MinMaxScaler()
     DiversityValues = scaler.fit_transform(np.array(DiversityValues).reshape(-1, 1)).flatten()
-    # DensityValues = scaler.fit_transform(np.array(DensityValues).reshape(-1, 1)).flatten()
+    DensityValues = scaler.fit_transform(np.array(DensityValues).reshape(-1, 1)).flatten()
     VoteEntropyFinal = scaler.fit_transform(np.array(VoteEntropyFinal).reshape(-1, 1)).flatten()
 
     ### Uncertainty Metric ###
-    df_Candidate["UncertaintyMetric"] = (1-DiversityWeight)*VoteEntropyFinal + DiversityWeight*df_Candidate["DiversityScores"]
+    df_Candidate["UncertaintyMetric"] = (1-DiversityWeight - DensityWeight)*VoteEntropyFinal + DiversityWeight*DiversityValues + DensityWeight*DensityValues
     if df_Candidate.shape[0] >= BatchSize:
         IndexRecommendation = list(df_Candidate.sort_values(by = "UncertaintyMetric", ascending = False).index[0:BatchSize])
     else:
