@@ -38,7 +38,7 @@ DataFile = args.Data
 rashomon_bound_adder = float(args.RashomonThreshold)
 regularization = float(args.regularization)
 TestProportion = float(args.TestProportion)
-CandidateProportion = float(args.CandidateProportion)
+# CandidateProportion = float(args.CandidateProportion)
 Seed = args.Seed
 
 # Load Data #
