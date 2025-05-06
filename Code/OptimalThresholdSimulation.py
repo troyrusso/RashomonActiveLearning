@@ -84,7 +84,7 @@ EpsilonVec = np.max(TrainingAccuracy) - TrainingAccuracy
 # MinEpsilon = float(np.min(EpsilonVec))
 # MaxEpsilon = float(np.max(EpsilonVec))
 # ThresholdValues = np.arange(MinEpsilon, MaxEpsilon + 0.000001, 0.000001)
-ThresholdValues = np.arange(0, 1.5*rashomon_bound_adder, 0.000001)
+ThresholdValues = np.arange(0, 1.25*rashomon_bound_adder, 0.000001)
 
 ### TEST ACCURACY ###
 # Set Up #
