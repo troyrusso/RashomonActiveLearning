@@ -18,8 +18,8 @@ cwd = os.getcwd()
 # Input Parameters #
 ParameterDictionary = {"Data":[args.DataType],
                        "Seed":list(range(0,100)),
-                       "TestProportion":[0.2],
-                       "CandidateProportion":[0.8],
+                       "TestProportion":[0.25],
+                    #    "CandidateProportion":[0.8],
                        "regularization": [0.01],
                        "RashomonThresholdType": ["Adder"],                                         # ["Adder", "Multiplier"]
                        "RashomonThreshold": [args.RashomonThreshold],
@@ -47,7 +47,7 @@ for i, row in ParameterVector.iterrows():
     Data = row['Data']
     Seed = row['Seed']
     TestProportion = row['TestProportion']
-    CandidateProportion = row['CandidateProportion']
+    # CandidateProportion = row['CandidateProportion']
     regularization = row['regularization']
     RashomonThresholdType = row['RashomonThresholdType']
     RashomonThreshold = row['RashomonThreshold']
@@ -80,7 +80,7 @@ for i, row in ParameterVector.iterrows():
         f"    --Data {Data} \\",
         f"    --Seed {Seed} \\",
         f"    --TestProportion {TestProportion} \\",
-        f"    --CandidateProportion {CandidateProportion} \\",
+        # f"    --CandidateProportion {CandidateProportion} \\",
         f"    --regularization {regularization} \\",
         f"    --RashomonThresholdType {RashomonThresholdType} \\",
         f"    --RashomonThreshold {RashomonThreshold} \\",
