@@ -29,7 +29,8 @@ def MetaLearnerFunction(Model, df_Candidate, df_Train, UniqueErrorsInput):
 
     ### Variables ###
     columns_to_remove = ['Y', "DiversityScores", "DensityScores"]
-    X_Candidate = df_Candidate[df_Candidate.columns.difference(columns_to_remove)]
+    # X_Candidate = df_Candidate[df_Candidate.columns.difference(columns_to_remove)]
+    X_Candidate = df_Candidate.drop(columns=columns_to_remove)
     y_Candidate =  df_Candidate["Y"]
 
     ### Predicted Values ###

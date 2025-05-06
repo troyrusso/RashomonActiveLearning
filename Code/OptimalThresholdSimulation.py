@@ -7,6 +7,7 @@ import pandas as pd
 from scipy import stats
 import random as random
 from sklearn.metrics import f1_score
+from sklearn.model_selection import train_test_split
 from treeFarms.treefarms.model.treefarms import TREEFARMS
 
 ### IMPORT FUNCTIONS ###
@@ -46,8 +47,15 @@ random.seed(Seed)
 np.random.seed(Seed)
 
 # Train Test Candidate Split #
-from utils.Main import TrainTestCandidateSplit
-df_Train, df_Test, df_Candidate = TrainTestCandidateSplit(df, TestProportion, CandidateProportion)
+# from utils.Main import TrainTestCandidateSplit
+# df_Train, df_Test, df_Candidate = TrainTestCandidateSplit(df, TestProportion, CandidateProportion)
+# Train Test Split #
+X_Train, X_Test, y_Train, y_Test = train_test_split(df.loc[:, df.columns != "Y"], df["Y"], test_size=TestProportion)
+df_Train = X_Train.copy()
+df_Train.insert(0, 'Y', y_Train)
+df_Test = X_Test.copy()
+df_Test.insert(0, 'Y', y_Test)
+
 
 ### TRAIN TREEFARMS ###
 # TreeFarms #
@@ -57,22 +65,26 @@ TreeFarmsModel.fit(df_Train.loc[:, df_Train.columns != "Y"], df_Train["Y"])
 TreeCount = TreeFarmsModel.get_tree_count()
 
 # Duplicate and Unique #
-PredictionArray_Duplicate = pd.DataFrame(np.array([TreeFarmsModel[i].predict(df_Train.loc[:, df_Train.columns != "Y"]) for i in range(TreeCount)]))
-PredictionArray_Unique = pd.DataFrame(PredictionArray_Duplicate).drop_duplicates(keep='first', ignore_index=False)
-TrueValues = df_Train["Y"].to_numpy()
-PredictionArray = PredictionArray_Unique
+# PredictionArray_Duplicate = pd.DataFrame(np.array([TreeFarmsModel[i].predict(df_Train.loc[:, df_Train.columns != "Y"]) for i in range(TreeCount)]))
+# PredictionArray_Unique = pd.DataFrame(PredictionArray_Duplicate).drop_duplicates(keep='first', ignore_index=False)
+# TrueValues = df_Train["Y"].to_numpy()
+# PredictionArray = PredictionArray_Unique
+
 
 ### TRAINING ACCURACY ###
 # Training Accuracy #
-TreeClassificationAccuracy = PredictionArray.eq(TrueValues, axis=1).mean(axis=1)
-BestAccuracy = float(np.max(TreeClassificationAccuracy))
+# TreeClassificationAccuracy = PredictionArray.eq(TrueValues, axis=1).mean(axis=1)
+# BestAccuracy = float(np.max(TreeClassificationAccuracy))
+TrainingAccuracy = [1-TreeFarmsModel[i].error(df_Train.loc[:, df_Train.columns != "Y"], df_Train["Y"]) for i in range(TreeCount)]
+
 
 # Threshold Values #
-EpsilonVec = BestAccuracy - TreeClassificationAccuracy
+# EpsilonVec = BestAccuracy - TreeClassificationAccuracy
+EpsilonVec = np.max(TrainingAccuracy) - TrainingAccuracy
 # MinEpsilon = float(np.min(EpsilonVec))
 # MaxEpsilon = float(np.max(EpsilonVec))
 # ThresholdValues = np.arange(MinEpsilon, MaxEpsilon + 0.000001, 0.000001)
-ThresholdValues = np.arange(0, rashomon_bound_adder + 0.000001, 0.000001)
+ThresholdValues = np.arange(0, 1.5*rashomon_bound_adder, 0.000001)
 
 ### TEST ACCURACY ###
 # Set Up #

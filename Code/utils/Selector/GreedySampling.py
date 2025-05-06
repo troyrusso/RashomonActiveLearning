@@ -19,7 +19,9 @@ def GSxFunction(df_Train, df_Candidate, distance = "euclidean"):
 
     # Variables #
     columns_to_remove = ['Y', "DiversityScores", "DensityScores"]
-    X_Candidate = df_Candidate[df_Candidate.columns.difference(columns_to_remove)]
+    # X_Candidate = df_Candidate[df_Candidate.columns.difference(columns_to_remove)]
+    X_Candidate = df_Candidate.drop(columns=columns_to_remove)
+
 
     ### Calculate n*m distance from df_Candidate_n to df_Train_m
     d_nmX = cdist(X_Candidate, df_Train.loc[:,df_Train.columns!= "Y"], metric = distance)
@@ -40,7 +42,8 @@ def GSyFunction(df_Train, df_Candidate, Model, distance = "euclidean"):
 
     ### Variables ###
     columns_to_remove = ['Y', "DiversityScores", "DensityScores"]
-    X_Candidate = df_Candidate[df_Candidate.columns.difference(columns_to_remove)]
+    # X_Candidate = df_Candidate[df_Candidate.columns.difference(columns_to_remove)]
+    X_Candidate = df_Candidate.drop(columns=columns_to_remove)
 
     ### Prediction ###
     Predictions = Model.predict(X_Candidate)
@@ -62,7 +65,9 @@ def iGSFunction(df_Train, df_Candidate, Model, distance = "euclidean"):
 
     ### Variables ###
     columns_to_remove = ['Y', "DiversityScores", "DensityScores"]
-    X_Candidate = df_Candidate[df_Candidate.columns.difference(columns_to_remove)]
+    # X_Candidate = df_Candidate[df_Candidate.columns.difference(columns_to_remove)]
+    X_Candidate = df_Candidate.drop(columns=columns_to_remove)
+
 
     ### GSx ###
     d_nmX = cdist(X_Candidate, df_Train.loc[:,df_Train.columns!= "Y"], metric = distance)

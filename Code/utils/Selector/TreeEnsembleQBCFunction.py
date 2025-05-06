@@ -32,7 +32,8 @@ def TreeEnsembleQBCFunction(Model, df_Candidate, df_Train, UniqueErrorsInput):
     if 'TREEFARMS' in str(type(Model)):
 
         # Set Up #
-        X_Candidate = df_Candidate[df_Candidate.columns.difference(exclude_cols)]
+        # X_Candidate = df_Candidate[df_Candidate.columns.difference(exclude_cols)]
+        X_Candidate = df_Candidate.drop(columns=exclude_cols)
         TreeCounts = Model.get_tree_count()
 
         # Duplicate #

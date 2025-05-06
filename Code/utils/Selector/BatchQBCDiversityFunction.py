@@ -35,7 +35,8 @@ def BatchQBCDiversityFunction(Model, df_Candidate, df_Train, UniqueErrorsInput, 
     if 'TREEFARMS' in str(type(Model)):
 
         # Set Up #
-        X_Candidate = df_Candidate[df_Candidate.columns.difference(exclude_cols)]
+        # X_Candidate = df_Candidate[df_Candidate.columns.difference(exclude_cols)]
+        X_Candidate = df_Candidate.drop(columns=exclude_cols)
         TreeCounts = Model.get_tree_count()
 
         # Duplicate #
@@ -61,7 +62,8 @@ def BatchQBCDiversityFunction(Model, df_Candidate, df_Train, UniqueErrorsInput, 
 
     ## Random Forest Classification ###
     elif 'RandomForestClassifier' in str(type(Model)):
-        X_Candidate = df_Candidate[df_Candidate.columns.difference(exclude_cols)].values
+        # X_Candidate = df_Candidate[df_Candidate.columns.difference(exclude_cols)].values
+        X_Candidate = df_Candidate.drop(columns=exclude_cols).values
         PredictedValues = [Model.estimators_[tree].predict(X_Candidate) for tree in range(Model.n_estimators)] 
         PredictedValues = np.vstack(PredictedValues)
         Output = {}
