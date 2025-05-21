@@ -49,6 +49,7 @@ def OneIterationFunction(SimulationConfigInput):
 
     ### Add Batch Active Learning Metrics ###
     df_Candidate = DiversityMetricsFunction(df_Candidate, df_Train, k=10)
+    SimulationConfigInput['auxiliary_data_cols'] = ['DiversityScores', 'DensityScores']
 
     ### Update SimulationConfig Arguments ###
     SimulationConfigInput['df_Train'] = df_Train

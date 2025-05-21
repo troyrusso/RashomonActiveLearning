@@ -21,11 +21,11 @@
 #                          the number of trees in the Rashomon set from TreeFarms and the number of unique classification patterns.
 
 ### Import functions ###
+import pandas as pd
 from utils.Main import *
 from utils.Selector import *
 from utils.Auxiliary import *
 from utils.Prediction import *
-import pandas as pd
 
 ### Function ###
 def LearningProcedure(SimulationConfigInputUpdated):
@@ -37,17 +37,33 @@ def LearningProcedure(SimulationConfigInputUpdated):
     TreeCount = {"AllTreeCount": [], "UniqueTreeCount": []}
 
     ### Algorithm ###
-    while len(SimulationConfigInputUpdated["df_Candidate"])>0:
+    while len(SimulationConfigInputUpdated["df_Candidate"]) > 0:
         
-        ### Prediction Model ###
+        ### Set Up Prediction Model ###
         print("Iteration: " + str(i))
         ModelType = globals().get(SimulationConfigInputUpdated["ModelType"], None)
         ModelArgsFiltered = FilterArguments(ModelType, SimulationConfigInputUpdated)
-        Model = ModelType(**ModelArgsFiltered)
+
+        X_train_df, y_train_series = get_features_and_target(
+            df=SimulationConfigInputUpdated["df_Train"],
+            target_column_name="Y",
+            auxiliary_columns=SimulationConfigInputUpdated.get('auxiliary_data_cols', [])
+        )
+        
+        ### Train Prediction Model ###
+        if 'Seed' in ModelArgsFiltered:
+            del ModelArgsFiltered['Seed']
+        Model = ModelType(X_train_df = X_train_df, 
+                          y_train_series = y_train_series,
+                          Seed=SimulationConfigInputUpdated["Seed"], 
+                          **ModelArgsFiltered)
         SimulationConfigInputUpdated['Model'] = Model
 
         ### Test Error ###
-        TestErrorOutput = TestErrorFunction(InputModel = Model, df_Test = SimulationConfigInputUpdated["df_Test"], Type = SimulationConfigInputUpdated["Type"])
+        TestErrorOutput = TestErrorFunction(InputModel=Model,
+                                            df_Test=SimulationConfigInputUpdated["df_Test"],
+                                            Type=SimulationConfigInputUpdated["Type"],
+                                            auxiliary_columns=SimulationConfigInputUpdated.get('auxiliary_data_cols', [])) # Pass aux cols
         if('TREEFARMS' in str(type(Model))):                                                       # If Rashomon
             CurrentError = TestErrorOutput["Error_Duplicate"]
         else: 
@@ -57,6 +73,7 @@ def LearningProcedure(SimulationConfigInputUpdated):
         ### Sampling Procedure ###
         SelectorType = globals().get(SimulationConfigInputUpdated["SelectorType"], None)
         SelectorArgsFiltered = FilterArguments(SelectorType, SimulationConfigInputUpdated)
+        SelectorArgsFiltered['auxiliary_columns'] = SimulationConfigInputUpdated.get('auxiliary_data_cols', [])
         SelectorFuncOutput = SelectorType(**SelectorArgsFiltered)
         QueryObservationIndex = SelectorFuncOutput["IndexRecommendation"]
         QueryObservation = SimulationConfigInputUpdated["df_Candidate"].loc[QueryObservationIndex]
@@ -64,8 +81,8 @@ def LearningProcedure(SimulationConfigInputUpdated):
         
         ### Update Train and Candidate Sets ###
         SimulationConfigInputUpdated["df_Train"] = pd.concat([SimulationConfigInputUpdated["df_Train"], QueryObservation]).drop(columns=['DiversityScores', 'DensityScores'])
-        SimulationConfigInputUpdated["df_Candidate"] = SimulationConfigInputUpdated["df_Candidate"].drop(QueryObservationIndex) 
-
+        SimulationConfigInputUpdated["df_Candidate"] = SimulationConfigInputUpdated["df_Candidate"].drop(QueryObservationIndex)
+        
         ### Store Number of (Unique) Trees ###
         if('TREEFARMS' in str(type(Model))):
             TreeCount["AllTreeCount"].append(SelectorFuncOutput["AllTreeCount"])          # Store number of trees
