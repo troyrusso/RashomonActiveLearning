@@ -1,6 +1,7 @@
 # Summary: Initializes and fits a linear regression model.
 # Input:
-#   df_Train: The training data.
+#   X_train_df: The training features (DataFrame).
+#   y_train_series: The training target (Series).
 # Output:
 # LinearRegressionModel: A linear regression model.
 
@@ -8,7 +9,7 @@
 from sklearn.linear_model import LinearRegression
 
 ### Function ###
-def LinearRegressionFunction(df_Train):
+def LinearRegressionFunction(X_train_df, y_train_series, **kwargs):
     LinearRegressionModel = LinearRegression()
-    LinearRegressionModel.fit(df_Train.loc[:, df_Train.columns != "Y"], df_Train["Y"])
+    LinearRegressionModel.fit(X_train_df, y_train_series)
     return LinearRegressionModel

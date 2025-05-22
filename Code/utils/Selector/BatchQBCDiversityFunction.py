@@ -19,7 +19,7 @@ from scipy import stats
 from sklearn.preprocessing import MinMaxScaler
 
 ### Function ###
-def BatchQBCDiversityFunction(Model, df_Candidate, df_Train, UniqueErrorsInput, DiversityWeight, DensityWeight, BatchSize):
+def BatchQBCDiversityFunction(Model, df_Candidate, df_Train, UniqueErrorsInput, DiversityWeight, DensityWeight, BatchSize, auxiliary_columns=None):
 
     # print("df_Candidate obs: " + str(df_Candidate.shape[0]))
 

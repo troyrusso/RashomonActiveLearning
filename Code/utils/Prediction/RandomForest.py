@@ -1,8 +1,9 @@
 # Summary: Initializes and fits a random forest regressor/classifier model.
 # Input:
-#   df_Train: The training data.
+#   X_train_df: The training features (DataFrame).
+#   y_train_series: The training target (Series).
 #   n_estimators: The number of trees for a random forest.
-#   Seed: Seed for reproducability.
+#   Seed: Seed for reproducibility.
 # Output:
 # RandomForestModel: A random forest regressor/classifier model.
 
@@ -12,14 +13,13 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.ensemble import RandomForestClassifier
 
 ### Regression ###
-def RandomForestRegressorFunction(df_Train, n_estimators, Seed):
+def RandomForestRegressorFunction(X_train_df, y_train_series, n_estimators, Seed, **kwargs):
     RandomForestRegressorModel = RandomForestRegressor(n_estimators=n_estimators, random_state=Seed)
-    RandomForestRegressorModel.fit(df_Train.loc[:, df_Train.columns != "Y"], df_Train["Y"])
+    RandomForestRegressorModel.fit(X_train_df, y_train_series)
     return RandomForestRegressorModel
 
 ### Classification ###
-def RandomForestClassificationFunction(df_Train, n_estimators, Seed):
+def RandomForestClassificationFunction(X_train_df, y_train_series, n_estimators, Seed, **kwargs):
     RandomForestClassificationModel = RandomForestClassifier(n_estimators=n_estimators, random_state=Seed)
-    RandomForestClassificationModel.fit(df_Train.loc[:, df_Train.columns != "Y"], df_Train["Y"])
+    RandomForestClassificationModel.fit(X_train_df, y_train_series)
     return RandomForestClassificationModel
-

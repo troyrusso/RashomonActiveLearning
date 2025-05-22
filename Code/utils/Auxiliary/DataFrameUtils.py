@@ -1,6 +1,7 @@
 import pandas as pd
 
-def get_features_and_target(df: pd.DataFrame, target_column_name: str = "Y",
+def get_features_and_target(df: pd.DataFrame, 
+                            target_column_name: str = "Y",
                             auxiliary_columns: list = None):
     if auxiliary_columns is None:
         auxiliary_columns = []

@@ -3,7 +3,7 @@ import math
 import torch
 import numpy as np
 from typing import List
-from tqdm.auto import tqdm 
+# from tqdm.auto import tqdm 
 from dataclasses import dataclass
 from utils.Auxiliary.DataFrameUtils import get_features_and_target # Import the new function
 
@@ -33,14 +33,14 @@ def ComputeConditionalEntropyFunction(log_probs_N_K_C: torch.Tensor) -> torch.Te
     """
     N, K, C = log_probs_N_K_C.shape
     entropies_N = torch.empty(N, dtype=torch.double)
-    pbar = tqdm(total=N, desc="Conditional Entropy", leave=False) # Initialize pbar
+    # pbar = tqdm(total=N, desc="Conditional Entropy", leave=False) # Initialize pbar
 
     @toma.execute.chunked(log_probs_N_K_C, 1024)
     def compute(log_probs_n_K_C, start: int, end: int):
         EntropyVals = log_probs_n_K_C * torch.exp(log_probs_n_K_C)
         entropies_N[start:end].copy_(-torch.sum(EntropyVals, dim=(1, 2)) / K)
-        pbar.update(end - start) # Update pbar inside the compute function
-    pbar.close() # Close pbar after all chunks are processed
+        # pbar.update(end - start) # Update pbar inside the compute function
+    # pbar.close() # Close pbar after all chunks are processed
 
     return entropies_N
 
@@ -51,15 +51,15 @@ def ComputeEntropyFunction(log_probs_N_K_C: torch.Tensor) -> torch.Tensor:
     """
     N, K, C = log_probs_N_K_C.shape
     entropies_N = torch.empty(N, dtype=torch.double)
-    pbar = tqdm(total=N, desc="Entropy", leave=False) # Initialize pbar
+    # pbar = tqdm(total=N, desc="Entropy", leave=False) # Initialize pbar
 
     @toma.execute.chunked(log_probs_N_K_C, 1024)
     def compute(log_probs_n_K_C, start: int, end: int):
         mean_log_probs_n_C = torch.logsumexp(log_probs_n_K_C, dim=1) - math.log(K)
         nats_n_C = mean_log_probs_n_C * torch.exp(mean_log_probs_n_C)
         entropies_N[start:end].copy_(-torch.sum(nats_n_C, dim=1))
-        pbar.update(end - start) # Update pbar inside the compute function
-    pbar.close() # Close pbar after all chunks are processed
+        # pbar.update(end - start) # Update pbar inside the compute function
+    # pbar.close() # Close pbar after all chunks are processed
 
     return entropies_N
 
@@ -121,4 +121,5 @@ def BaldSelectorFunction(Model, df_Candidate, BatchSize, K_BALD_Samples=20, auxi
     IndexRecommendation = candidate_df_indices[top_local_indices.cpu().numpy().astype(int)].tolist()
 
     # Return the selected batch
-    return CandidateBatch(top_scores.tolist(), IndexRecommendation)
+    Output = {"IndexRecommendation": IndexRecommendation}
+    return Output
