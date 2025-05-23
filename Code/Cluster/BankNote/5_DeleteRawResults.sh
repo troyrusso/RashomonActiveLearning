@@ -49,4 +49,25 @@ else
     echo "TreeFarms directory not found at expected path."
 fi
 
+# Check if the BayesianNeuralNetwork directory exists
+TF_DIR="../../BayesianNeuralNetwork/Raw/"
+if [ -d "$TF_DIR" ]; then
+    cd "$TF_DIR"
+    
+    # Remove BayesianNeuralNetwork Results #
+    if [ -f delete_results.sh ]; then
+        bash delete_results.sh
+    else
+        # Check if there are any .pkl files before trying to delete
+        if ls *.pkl 1> /dev/null 2>&1; then
+            rm *.pkl
+            echo "All .pkl results files in BayesianNeuralNetwork deleted."
+        else
+            echo "No .pkl files found in BayesianNeuralNetwork directory."
+        fi
+    fi
+else
+    echo "BayesianNeuralNetwork directory not found at expected path."
+fi
+
 echo "Raw results cleanup completed."

@@ -12,24 +12,27 @@ from utils.Auxiliary import *
 def AnalyzeResultsFunction(DataType, RashomonThreshold):
 
     ### Load Data ###
-    # plt.ioff()  # Turn interactive plotting off
-    BaseDirectory = "/Users/simondn/Documents/RashomonActiveLearning/Results/"
-    PassiveLearningRF = LoadAnalyzedData(DataType, BaseDirectory, "RandomForestClassification", "PLA0")
-    RandomForestResults = LoadAnalyzedData(DataType, BaseDirectory, "RandomForestClassification", "RFA0")
-    AnalyzedDataUNREALDUREAL = LoadAnalyzedData(DataType, BaseDirectory, "TreeFarms", RashomonThreshold)
+    BaseDirectory = "/Users/simondn/Documents/RashomonActiveLearning/Results/" # Make sure this path is correct
+    PassiveLearningRF = LoadAnalyzedData(DataType, BaseDirectory, "RandomForestClassification", "PLA0") # Updated category name
+    RandomForestResults = LoadAnalyzedData(DataType, BaseDirectory, "RandomForestClassification", "RFA0") # Updated category name
+    BALDResults = LoadAnalyzedData(DataType, BaseDirectory, "BayesianNeuralNetwork", "BALD_B") # New line for BALD
+    AnalyzedDataUNREALDUREAL = LoadAnalyzedData(DataType, BaseDirectory, "TreeFarms", f"A{str(RashomonThreshold).replace('0.', '').replace('.0', '')}") # Updated category name logic
 
     ### Shape ###
     ShapeTable = {"PassiveLearningRF": PassiveLearningRF["Error"].shape[0],
               "RandomForestResults": RandomForestResults["Error"].shape[0],
               "DUREAL":[AnalyzedDataUNREALDUREAL["Error_DUREAL"].shape[0]],
-              "UNREAL": [AnalyzedDataUNREALDUREAL["Error_UNREAL"].shape[0]]}
+              "UNREAL": [AnalyzedDataUNREALDUREAL["Error_UNREAL"].shape[0]],
+              "BALD": [BALDResults["Error"].shape[0]] 
+              }
     ShapeTable = pd.DataFrame(ShapeTable)
 
     ### Time Table ###
     TimeTable = {"DUREAL Mean":[str(round(np.mean(AnalyzedDataUNREALDUREAL["Time_DUREAL"])/60,2))],
               "UNREAL Mean": [str(round(np.mean(AnalyzedDataUNREALDUREAL["Time_UNREAL"])/60,2))],
                 "DUREAL max":[str(round(np.max(AnalyzedDataUNREALDUREAL["Time_DUREAL"])/60,2))],
-              "UNREAL max": [str(round(np.max(AnalyzedDataUNREALDUREAL["Time_UNREAL"])/60,2))]
+              "UNREAL max": [str(round(np.max(AnalyzedDataUNREALDUREAL["Time_UNREAL"])/60,2))],
+              "BALD Mean":[str(round(np.mean(BALDResults["Time"])/60,2))]
                          }
     TimeTable = pd.DataFrame(TimeTable)
 
@@ -40,19 +43,22 @@ def AnalyzeResultsFunction(DataType, RashomonThreshold):
         "PassiveLearning": "black",
         "RandomForest": "green",
         "DUREAL": "orange",
-        "UNREAL": "blue"
+        "UNREAL": "blue",
+        "BALD": "purple" 
     }
 
     linestyles = {
         "PassiveLearning": "solid",
         "RandomForest": "solid",
         "DUREAL": "solid",
-        "UNREAL": "solid"
+        "UNREAL": "solid",
+        "BALD": "solid"
     }
 
     LegendMapping = {
-        "DUREAL0": "DUREAL (ε = 0.xxx)",
-        "UNREAL0": "UNREAL (ε = 0.xxx)",
+        "DUREAL": "DUREAL (ε = 0.xxx)",
+        "UNREAL": "UNREAL (ε = 0.xxx)",
+        "BALD": "BALD (NN)" 
     }
 
     ### Figure ##
@@ -61,41 +67,39 @@ def AnalyzeResultsFunction(DataType, RashomonThreshold):
                     RandomForest = RandomForestResults["Error"],
                     DUREAL = AnalyzedDataUNREALDUREAL["Error_DUREAL"],
                     UNREAL = AnalyzedDataUNREALDUREAL["Error_UNREAL"],
+                    BALD = BALDResults["Error"], 
                     Colors = colors,
                     LegendMapping=LegendMapping,
                     Linestyles=linestyles,
-                    #  Markerstyles = markerstyles,
-                    # xlim = [20,25],
                     Y_Label = "F1 Score",
                     Subtitle = PlotSubtitle,
                     TransparencyVal = 0.05,
                     VarInput = True,
-                    #  FigSize = (10,5),
                     CriticalValue = 1.96)
-    plt.close(TracePlotMean)  
-    plt.close(TracePlotVariance)  
-    
+    plt.close(TracePlotMean)
+    plt.close(TracePlotVariance)
+
     ### Number of Trees ###
     TreePlot = MeanVariancePlot(RelativeError = None,
-                    DUREAL = np.log(AnalyzedDataUNREALDUREAL["TreeCounts_ALL_UNREAL"]),
+                    DUREAL = np.log(AnalyzedDataUNREALDUREAL["TreeCounts_ALL_DUREAL"]), # Fixed typo in original for consistency
                     UNREAL = np.log(AnalyzedDataUNREALDUREAL["TreeCounts_UNIQUE_UNREAL"]),
                     Colors = colors,
                     LegendMapping=LegendMapping,
                     Linestyles=linestyles,
-                    # xlim = [20,50],
                     Y_Label = "log(Number of Trees in the Rashomon Set)",
                     Subtitle = PlotSubtitle,
                     TransparencyVal = 0.05,
                     VarInput = False,
-                    #  FigSize = (10,5),
                     CriticalValue = 1.96)
-    plt.close(TreePlot) 
+    plt.close(TreePlot)
 
-    ### Wilcoxon Ranked Signed Test ### 
+    ### Wilcoxon Ranked Signed Test ###
     WRSTResults = WilcoxonRankSignedTest({"PassiveLearning" :PassiveLearningRF["Error"],
                                           "RandomForest" : RandomForestResults["Error"],
+                                        #   "BALD" : BALDResults["Error"],
                                           "UNREAL" : AnalyzedDataUNREALDUREAL["Error_UNREAL"],
-                                          "DUREAL" : AnalyzedDataUNREALDUREAL["Error_DUREAL"]},
+                                          "DUREAL" : AnalyzedDataUNREALDUREAL["Error_DUREAL"]
+                                          },
                                           5)
     ### Output ###
     return {"TracePlotMean" : TracePlotMean,
