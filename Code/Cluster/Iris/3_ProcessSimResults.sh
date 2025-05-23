@@ -9,22 +9,28 @@ cd ~/RashomonActiveLearning
 python Code/utils/Auxiliary/ProcessSimulationResults.py \
     --DataType "$CURRENT_DIR" \
     --ModelType "RandomForestClassification" \
-    --Categories "PLA0"
+    --Categories "PL_B"
 
 ### Extract Random Forests Results ###
 python Code/utils/Auxiliary/ProcessSimulationResults.py \
     --DataType "$CURRENT_DIR" \
     --ModelType "RandomForestClassification" \
-    --Categories "RFA0"
+    --Categories "RF_"
+
+### Extract BALD Results ###
+python Code/utils/Auxiliary/ProcessSimulationResults.py \
+    --DataType "$CURRENT_DIR" \
+    --ModelType "BayesianNeuralNetwork" \
+    --Categories "BALD_B"
 
 ### Extract Duplicate TREEFARMS Results ###
 python Code/utils/Auxiliary/ProcessSimulationResults.py \
     --DataType "$CURRENT_DIR" \
     --ModelType "TreeFarms" \
-    --Categories "DA02"
+    --Categories "DA025"
 
 ### Extract Unique TREEFARMS Results ###
 python Code/utils/Auxiliary/ProcessSimulationResults.py \
     --DataType "$CURRENT_DIR" \
     --ModelType "TreeFarms" \
-    --Categories "UA02"
+    --Categories "UA025"
