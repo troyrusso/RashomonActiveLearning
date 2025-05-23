@@ -43,7 +43,6 @@ def LearningProcedure(SimulationConfigInputUpdated):
         print("Iteration: " + str(i))
         ModelType = globals().get(SimulationConfigInputUpdated["ModelType"], None)
         ModelArgsFiltered = FilterArguments(ModelType, SimulationConfigInputUpdated)
-
         X_train_df, y_train_series = get_features_and_target(
             df=SimulationConfigInputUpdated["df_Train"],
             target_column_name="Y",
