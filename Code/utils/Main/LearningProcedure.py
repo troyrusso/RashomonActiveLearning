@@ -55,7 +55,7 @@ def LearningProcedure(SimulationConfigInputUpdated):
         Model = ModelType(X_train_df = X_train_df, 
                           y_train_series = y_train_series,
                           Seed=SimulationConfigInputUpdated["Seed"], 
-                          **ModelArgsFiltered)
+                          **ModelArgsFiltered) # TODO: change to be a retrain call if iteration > 1, maybe based on a flag in simulationconfiginputupdated
         SimulationConfigInputUpdated['Model'] = Model
 
         ### Test Error ###
