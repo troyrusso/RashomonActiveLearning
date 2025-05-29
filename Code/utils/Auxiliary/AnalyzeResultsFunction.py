@@ -94,20 +94,21 @@ def AnalyzeResultsFunction(DataType, RashomonThreshold):
     plt.close(TreePlot)
 
     ### Wilcoxon Ranked Signed Test ###
-    WRSTResults = WilcoxonRankSignedTest({"PassiveLearning" :PassiveLearningRF["Error"],
-                                          "RandomForest" : RandomForestResults["Error"],
-                                        #   "BALD" : BALDResults["Error"],
-                                          "UNREAL" : AnalyzedDataUNREALDUREAL["Error_UNREAL"],
-                                          "DUREAL" : AnalyzedDataUNREALDUREAL["Error_DUREAL"]
-                                          },
-                                          5)
+    # WRSTResults = WilcoxonRankSignedTest({"PassiveLearning" :PassiveLearningRF["Error"],
+    #                                       "RandomForest" : RandomForestResults["Error"],
+    #                                     #   "BALD" : BALDResults["Error"],
+    #                                       "UNREAL" : AnalyzedDataUNREALDUREAL["Error_UNREAL"],
+    #                                       "DUREAL" : AnalyzedDataUNREALDUREAL["Error_DUREAL"]
+    #                                       },
+    #                                       5)
     ### Output ###
     return {"TracePlotMean" : TracePlotMean,
             "TracePlotVariance" : TracePlotVariance,
             "TreePlot" : TreePlot,
             "ShapeTable" : ShapeTable,
-            "TimeTable" : TimeTable,
-            "WRSTResults_LatexTable" : WRSTResults}
+            "TimeTable" : TimeTable
+            # "WRSTResults_LatexTable" : WRSTResults
+            }
 
 
 ### SELECTION HISTORY ###

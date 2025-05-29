@@ -1,6 +1,8 @@
-from .LinearRegression import *
-from .RandomForest import *
-from .RidgeRegression import *
+
+from .BayesianNeuralNetworkPredictor import *
+from .LinearRegressionPredictor import *
+from .RandomForestClassifierPredictor import *
+from .RandomForestRegressorPredictor import *
+from .RidgeRegressionPredictor import *
 from .TestErrorFunction import *
-from .TreeFARMS import *
-from .BayesianNeuralNetworkFunction import *
+from .TreeFarmsPredictor import *

@@ -5,7 +5,7 @@ import numpy as np
 from typing import List
 # from tqdm.auto import tqdm 
 from dataclasses import dataclass
-from utils.Auxiliary.DataFrameUtils import get_features_and_target # Import the new function
+from utils.Auxiliary.DataFrameUtils import get_features_and_target
 
 
 ### Toma ###
@@ -72,33 +72,31 @@ class CandidateBatch:
 
 
 ### BALD Selector Function ###
-def BaldSelectorFunction(Model, df_Candidate, BatchSize, K_BALD_Samples=20, auxiliary_columns = None):
+def BaldSelectorFunction(Model, df_Candidate, BatchSize, K_BALD_Samples=20, auxiliary_columns=None):
     """
     Selects the most informative observations using the BALD (Bayesian Active Learning by Disagreement) criterion.
 
     Args:
-        Model: The trained Bayesian Neural Network (or similar) model with a .predict_proba_K method.
+        Model: The trained model instance with a .predict_proba_K method (e.g., BayesianNeuralNetworkPredictor).
         df_Candidate (pd.DataFrame): The DataFrame of unlabeled candidate observations.
         BatchSize (int): The number of observations to recommend.
         K_BALD_Samples (int): The number of samples to draw from the model's posterior
                               for BALD calculation (K in log_probs_N_K_C).
+        auxiliary_columns (list, optional): Columns to exclude from features.
 
     Returns:
-        CandidateBatch: A dataclass containing the BALD scores and original DataFrame indices
-                        of the recommended observations.
+        dict: Contains "IndexRecommendation" (List[int]).
     """
 
-    # Extract features from df_Candidate (assuming 'Y' is the label column if present)
-    # Ensure X_candidate_np is a NumPy array for Model.predict_proba_K
-    X_candidate_df, _ = get_features_and_target( # No need for target here, so _
+    # Extract features from df_Candidate
+    X_candidate_df, _ = get_features_and_target( 
             df=df_Candidate,
-            target_column_name="Y", # Still need this to identify the Y column
-            auxiliary_columns=auxiliary_columns # Use the passed aux cols
+            target_column_name="Y", 
+            auxiliary_columns=auxiliary_columns 
         )
     X_candidate_np = X_candidate_df.values
 
-    # Generate log_probs_N_K_C using the BNN's prediction method
-    # This tensor will have shape (N_candidate_obs, K_BALD_Samples, num_classes)
+    # Generate log_probs_N_K_C using the model's predict_proba_K method
     log_probs_N_K_C = Model.predict_proba_K(X_candidate_np, K_BALD_Samples)
 
     # Determine dimensions
@@ -106,18 +104,15 @@ def BaldSelectorFunction(Model, df_Candidate, BatchSize, K_BALD_Samples=20, auxi
     batch_size_actual = min(BatchSize, N_candidate)
 
     # Compute Uncertainty Metrics (BALD scores)
-    # BALD Score = H(y|x,D) - E_theta[H(y|x,theta)]
     EnsembleEntropy = ComputeEntropyFunction(log_probs_N_K_C)
     ConditionalEntropy = ComputeConditionalEntropyFunction(log_probs_N_K_C)
     UncertaintyMetrics = EnsembleEntropy - ConditionalEntropy
 
     # Get the top BatchSize observations based on BALD scores
-    # torch.topk returns values and indices
     top_scores, top_local_indices = torch.topk(UncertaintyMetrics, batch_size_actual)
 
-    # Convert the local indices (within the log_probs_N_K_C tensor)
-    # back to the original DataFrame indices of df_Candidate
-    candidate_df_indices = df_Candidate.index.values # This gets the actual pandas index as a NumPy array
+    # Convert the local indices back to the original DataFrame indices
+    candidate_df_indices = df_Candidate.index.values 
     IndexRecommendation = candidate_df_indices[top_local_indices.cpu().numpy().astype(int)].tolist()
 
     # Return the selected batch
