@@ -12,64 +12,36 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 from sklearn.metrics import f1_score
-from utils.Auxiliary.DataFrameUtils import get_features_and_target # Import the new function
+from utils.Auxiliary.DataFrameUtils import get_features_and_target
+
+
+### Function ###
 
 ### Function ###
 def TestErrorFunction(InputModel, df_Test, Type, auxiliary_columns=None):
 
+    X_test_df, y_test_series = get_features_and_target(
+        df=df_Test,
+        target_column_name="Y",
+        auxiliary_columns=auxiliary_columns 
+    )
+    X_test_np = X_test_df.values
+    y_test_np = y_test_series.values 
+    
     ### RMSE ###
-    if(Type == "Regression"):
-        Prediction = InputModel.predict(df_Test.loc[:, df_Test.columns != "Y"])
-        ErrorVal = np.mean((Prediction - df_Test["Y"])**2)
-        ErrorVal = ErrorVal.tolist()
-        Output = {"ErrorVal": ErrorVal}
+    if Type == "Regression":
+        Prediction = InputModel.predict(X_test_df)
+        ErrorVal = np.mean((Prediction - y_test_series)**2)
+        Output = {"ErrorVal": ErrorVal.tolist()}
 
     ### Classification Error ###
-    if(Type == "Classification"):
-
-        X_test_df, y_test_series = get_features_and_target(
-            df=df_Test,
-            target_column_name="Y",
-            auxiliary_columns=auxiliary_columns 
-        )
-        X_test_np = X_test_df.values
-        y_test_np = y_test_series.values 
+    elif Type == "Classification":
         
-        ## Rashomon Classification ##
-        if 'TREEFARMS' in str(type(InputModel)):
-            TreeCounts = InputModel.get_tree_count()
-
-            # Duplicate #
-            PredictionArray_Duplicate = pd.DataFrame(np.array([InputModel[i].predict(X_test_df) for i in range(TreeCounts)]))
-            PredictionArray_Duplicate.columns = df_Test.index.astype(str)
-            EnsemblePrediction_Duplicate = pd.Series(stats.mode(PredictionArray_Duplicate)[0])
-            EnsemblePrediction_Duplicate.index = df_Test["Y"].index
-            Error_Duplicate = float(f1_score(df_Test["Y"], EnsemblePrediction_Duplicate, average='micro'))
-            # AllTreeCount = PredictionArray_Duplicate.shape[0]
-
-            # Unique #
-            PredictionArray_Unique = pd.DataFrame(PredictionArray_Duplicate).drop_duplicates()
-            EnsemblePrediction_Unique = pd.Series(stats.mode(PredictionArray_Unique)[0])
-            EnsemblePrediction_Unique.index = df_Test["Y"].index
-            # Error_Unique = float(f1_score(df_Test["Y"], EnsemblePrediction_Unique, average='micro'))
-            # UniqueTreeIndices= PredictionArray_Unique.index
-            # UniqueTreeCount = PredictionArray_Unique.shape[0]
-
-            # Output #
-            Output = {"Error_Duplicate": Error_Duplicate,
-                    #   "Error_Unique": Error_Unique,
-                    #   "PredictionArray_Duplicate" : PredictionArray_Duplicate,
-                    #   "PredictionArray_Unique" : PredictionArray_Unique,
-                    #   "UniqueTreeIndices": UniqueTreeIndices,
-                    #   "AllTreeCount": AllTreeCount,
-                    #   "UniqueTreeCount": UniqueTreeCount
-                      }
+        if hasattr(InputModel, 'predict_proba_K'):
+            K_for_test_eval = 100 
             
-        elif 'BayesianNeuralNetwork' in str(type(InputModel)):
-            K_BALD_for_test_eval = 100
-
             # Pass the already correctly filtered X_test_np
-            log_probs_N_K_C_test = InputModel.predict_proba_K(X_test_np, K_BALD_for_test_eval)
+            log_probs_N_K_C_test = InputModel.predict_proba_K(X_test_np, K_for_test_eval)
 
             # Convert log-probabilities to probabilities for ensemble prediction
             probs_N_K_C_test = torch.exp(log_probs_N_K_C_test)
@@ -83,12 +55,18 @@ def TestErrorFunction(InputModel, df_Test, Type, auxiliary_columns=None):
             # Calculate F1 score
             ErrorVal = float(f1_score(y_test_np, ensemble_prediction_test, average='micro'))
             Output = {"ErrorVal": ErrorVal}
-
+            
+            # If the model is a TreeFARMS-like model that provides tree counts, include them
+            if hasattr(InputModel, 'get_tree_counts'): 
+                 tree_counts = InputModel.get_tree_counts() 
+                 Output["AllTreeCount"] = tree_counts["AllTreeCount"]
+                 Output["UniqueTreeCount"] = tree_counts["UniqueTreeCount"]
         else:
-            Prediction = InputModel.predict(X_test_df)
+            Prediction = InputModel.predict(X_test_df) 
             ErrorVal = float(f1_score(y_test_np, Prediction, average='micro'))
             Output = {"ErrorVal": ErrorVal}
 
     ### Return ###
     return Output
+
             

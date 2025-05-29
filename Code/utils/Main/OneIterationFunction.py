@@ -57,7 +57,7 @@ def OneIterationFunction(SimulationConfigInput):
     SimulationConfigInput["df_Candidate"] = df_Candidate
     
     ### Learning Process ###
-    from utils.Main import LearningProcedure                                 ### NOTE: Why is this not imported from utils.Main import *
+    from utils.Main import LearningProcedure                                  ### NOTE: Why is this not imported from utils.Main import *
     LearningProcedureOutput = LearningProcedure(SimulationConfigInputUpdated = SimulationConfigInput)
     
     ### Return Simulation Parameters ###
