@@ -26,6 +26,6 @@ def DataGeneratingProcess(N, K):
 
     ### Generate df Frame ###
     df = pd.DataFrame(X, columns = [f'X{i+1}' for i in range(K)])
-    df.insert(0, 'Y', Y)  # Insert Y as the first column
+    df.insert(0, 'Y', Y) 
 
     return df

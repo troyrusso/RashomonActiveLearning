@@ -1,23 +1,28 @@
 # Summary: Runs one full iteration of the active learning process.
 # Input: A dictionary SimulationConfigInput with the following keys and values:
-#   DataFileInput: A string that indicates either "Simulate" for the simulation or the name of the DataFrame in the Data folder.
+#   DataFileInput: A string that indicates the name of the DataFrame in the Data folder.
 #   Seed: Seed for reproducability.
 #   TestProportion: Proportion of the data that is reserved for testing.
-#   CandidateProportion: Proportion of the data that is initially "unseen" and later added to the training set.
-#   SelectorType: Selector type. Examples can be GSx, GSy, or PassiveLearning.
-#   ModelType: Predictive model. Examples can be LinearRegression or RandomForestRegresso.
-#   UniqueErrorsInput: A binary input indicating whether to prune duplicate trees in TreeFarms.
-#   n_estimators: The number of trees for a random forest.
+#   CandidateProportion: Proportion of the data that is initially unlabelled and later added to the training set.
+#   SelectorType: Selector mechanism in the active learning framework.
+#   ModelType: Predictive model.
+#   UniqueErrorsInput: A binary input indicating whether to prune duplicate trees in TreeFARMS.
+#   n_estimators: The number of weak learners used for a random forest.
 #   regularization: Penalty on the number of splits in a tree.
-#   RashomonThreshold: A float indicating the Rashomon threshold: (1+\epsilon)*OptimalLoss
+#   RashomonThresholdType: A string {"Adder", "Multiplier"} indicating whether the Rashomon threshold is added or multiplied.
+#   RashomonThreshold: A float indicating the Rashomon threshold in TreeFARMS.
 #   Type: A string {"Regression", "Classification"} indicating the prediction objective.
+#   DiversityWeight: The weight placed on the diversity of the data inputs for the selection mechanism in batch active learning.
+#   DensityWeight: The weight placed on the density of the data inputs for the selection mechanism in batch active learning.
+#   BatchSize: The number of observations to be queried in batch active learning.
 # Output: A dictionary SimulationResults with the following keys and values:
 #   ErrorVec: Vector of errors at each iteration of the learning process.
 #   TreeCount: A dictionary that contains two keys: {AllModelsInRashomonSet, UniqueModelsInRashomonSet} indicating
-#                          the number of trees in the Rashomon set from TreeFarms and the number of unique classification patterns.
+#                          the number of trees in the Rashomon set from TreeFARMS and the number of unique classification patterns.
 #   SelectionHistory: Vector of recommended index for query at each iteration of the learning process.
 #   SimulationParameters: Parameters used in the simulation.
 #   ElapsedTime: Time for the entire learning process.
+
 
 ### Import packages ###
 import time
@@ -27,10 +32,10 @@ import pandas as pd
 import random as random
 
 ### Import functions ###
-from utils.Main import *
-from utils.Selector import *
-from utils.Auxiliary import *
-from utils.Prediction import *
+from utils.Auxiliary import LoadData
+from utils.Main import TrainTestCandidateSplit
+from utils.Auxiliary import DiversityMetricsFunction
+from utils.Main import LearningProcedure
 
 ### Function ###
 def OneIterationFunction(SimulationConfigInput):
@@ -44,8 +49,9 @@ def OneIterationFunction(SimulationConfigInput):
     df = LoadData(SimulationConfigInput["DataFileInput"])
 
     ### Train Test Candidate Split ###
-    from utils.Main import TrainTestCandidateSplit                           ### NOTE: Why is this not imported from utils.Main import *
-    df_Train, df_Test, df_Candidate = TrainTestCandidateSplit(df, SimulationConfigInput["TestProportion"], SimulationConfigInput["CandidateProportion"])
+    df_Train, df_Test, df_Candidate = TrainTestCandidateSplit(df, 
+                                                              SimulationConfigInput["TestProportion"], 
+                                                              SimulationConfigInput["CandidateProportion"])
 
     ### Add Batch Active Learning Metrics ###
     df_Candidate = DiversityMetricsFunction(df_Candidate, df_Train, k=10)
@@ -57,7 +63,6 @@ def OneIterationFunction(SimulationConfigInput):
     SimulationConfigInput["df_Candidate"] = df_Candidate
     
     ### Learning Process ###
-    from utils.Main import LearningProcedure                                  ### NOTE: Why is this not imported from utils.Main import *
     LearningProcedureOutput = LearningProcedure(SimulationConfigInputUpdated = SimulationConfigInput)
     
     ### Return Simulation Parameters ###
