@@ -33,9 +33,10 @@ import random as random
 
 ### Import functions ###
 from utils.Auxiliary import LoadData
-from utils.Main import TrainTestCandidateSplit
 from utils.Auxiliary import DiversityMetricsFunction
-from utils.Main import LearningProcedure
+from utils.Main.LearningProcedure import LearningProcedure 
+from utils.Main.TrainTestCandidateSplit import TrainTestCandidateSplit 
+
 
 ### Function ###
 def OneIterationFunction(SimulationConfigInput):
