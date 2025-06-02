@@ -6,3 +6,4 @@ from .RandomForestRegressorPredictor import *
 from .RidgeRegressionPredictor import *
 from .TestErrorFunction import *
 from .TreeFarmsPredictor import *
+from .GaussianProcessClassifierPredictor import *
