@@ -43,6 +43,7 @@ def LearningProcedure(SimulationConfigInputUpdated):
     ErrorVec = []
     SelectedObservationHistory = []
     TreeCount = {"AllTreeCount": [], "UniqueTreeCount": []}
+    refit_frequency = SimulationConfigInputUpdated.get("RefitFrequency", 1)
 
     ### Initialize Mdodel ###
     ModelClass = globals().get(SimulationConfigInputUpdated["ModelType"], None)       # Initialize the model instance
@@ -50,6 +51,10 @@ def LearningProcedure(SimulationConfigInputUpdated):
                        if k in inspect.signature(ModelClass.__init__).parameters}
     predictor_model = ModelClass(**model_init_args)                                   # Create the model instance
     SimulationConfigInputUpdated['Model'] = predictor_model                           # Store this instance of the model
+
+    ### Last batch of observations added (LFR) ###
+    last_added_X_batch = None
+    last_added_y_batch = None
 
     ### Algorithm ###
     while len(SimulationConfigInputUpdated["df_Candidate"]) > 0:
@@ -63,9 +68,22 @@ def LearningProcedure(SimulationConfigInputUpdated):
             target_column_name="Y",
             auxiliary_columns=SimulationConfigInputUpdated.get('auxiliary_data_cols', [])
         )
-        
-        ## Train Prediction Model ##
-        predictor_model.fit(X_train_df=X_train_df, y_train_series=y_train_series)
+
+        ## REFIT VS. UPDATE ###
+        if i == 0:                                                                  # Always fit on the first iteration
+            predictor_model.fit(X_train_df=X_train_df, y_train_series=y_train_series)
+        else:                                                                       # Subsequence iterations
+            ### Check if model is LFR ###
+            if isinstance(predictor_model, TreefarmsLFRPredictor) and (i % refit_frequency == 0):
+                predictor_model.refit(
+                    X_to_add=last_added_X_batch,
+                    y_to_add=last_added_y_batch,
+                    epsilon=SimulationConfigInputUpdated["RashomonThreshold"], 
+                    verbose=True 
+                )
+            ### If not LFR, refit ###
+            else:
+                predictor_model.fit(X_train_df=X_train_df, y_train_series=y_train_series)
 
         ### Test Error ###
         TestErrorOutput = TestErrorFunction(InputModel=predictor_model,
@@ -93,6 +111,13 @@ def LearningProcedure(SimulationConfigInputUpdated):
         QueryObservationIndex = SelectorFuncOutput["IndexRecommendation"]
         QueryObservation = SimulationConfigInputUpdated["df_Candidate"].loc[QueryObservationIndex]
         SelectedObservationHistory.append(QueryObservationIndex)
+
+        ## Store Newly Queried Observations for LFR ##
+        last_added_X_batch, last_added_y_batch = get_features_and_target(
+            df=QueryObservation,
+            target_column_name="Y",
+            auxiliary_columns=SimulationConfigInputUpdated.get('auxiliary_data_cols', []))
+
         
         ## Update Train and Candidate Sets ##
         SimulationConfigInputUpdated["df_Train"] = pd.concat([SimulationConfigInputUpdated["df_Train"], QueryObservation]).drop(columns=['DiversityScores', 'DensityScores'])

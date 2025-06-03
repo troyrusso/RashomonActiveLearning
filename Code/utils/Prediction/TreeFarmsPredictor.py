@@ -15,6 +15,20 @@ import numpy as np
 from scipy import stats 
 import torch
 
+
+### Predict Single Tree ##
+def _predict_single_tree(tree_model, X_df: pd.DataFrame):
+    predictions = []
+    data = X_df.values 
+    for i in range(data.shape[0]):
+        prediction, _ = tree_model.classify(data[i, :])
+        predictions.append(prediction)
+    return pd.Series(predictions, index=X_df.index)
+
+### Score Single Tree ##
+def _score_single_tree(tree_model, X: pd.DataFrame, y: pd.Series):
+    return (_predict_single_tree(tree_model, X) == y).mean()
+
 class TreeFarmsPredictor:
 
     ### Initialize Model ###

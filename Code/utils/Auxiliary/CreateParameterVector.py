@@ -1,10 +1,7 @@
-# utils/Auxiliary/CreateParameterVector.py (assuming this is the file)
-
 ### Import packages ###
 import itertools
 import pandas as pd
 import numpy as np
-# from utils.Auxiliary import FindMissingSimulations # Assuming this is a separate file/function
 
 # Data: Iris  MONK1  MONK3  Bar7 (10)  COMPAS (50) | BankNote (10)  BreastCancer (5)  CarEvaluation (10)  FICO (50)  Haberman
 def CreateParameterVectorFunction(Data,
@@ -41,20 +38,17 @@ def CreateParameterVectorFunction(Data,
                               "MONK3":"M3"}
     JobNameAbbrev = AbbreviationDictionary[Data]
 
-    # Initialize an empty list to store all parameter dictionaries
+    # Parameter Dictionary #
     all_parameter_dicts = []
 
     ### Base Parameter Dictionary (Example: Default TreeFarms QBC) ###
-    # This can be set to whatever your primary simulation type is.
-    # For now, let's make it flexible or remove it if all configs are driven by Include flags.
-    # Let's assume the "base" is QBC with TreeFarms (UniqueErrorsInput=0) if no other flags are set.
     base_params = {
         "Data": [Data],
         "Seed": list(Seed),
         "TestProportion": [0.2],
         "CandidateProportion": [0.8],
-        "SelectorType": ["BatchQBCSelector"], # Changed to class name
-        "ModelType": ["TreeFarmsPredictor"],           # Changed to class name
+        "SelectorType": ["BatchQBCDiversitySelector"], # Consistent class name
+        "ModelType": ["TreeFarmsPredictor"],           # Consistent class name
         "UniqueErrorsInput": [0],
         "n_estimators": [100], # Keep for consistency, though TreeFarms doesn't use it
         "regularization": [0.01],
@@ -68,10 +62,6 @@ def CreateParameterVectorFunction(Data,
         "Time": [Time],
         "Memory": [Memory]
     }
-    # Add base_params to the list if you want it to always be included or if it's the default
-    # For now, let's build all configs via the Include flags for clarity.
-    # ParameterVector = pd.DataFrame.from_records(itertools.product(*base_params.values()), columns=base_params.keys())
-    # all_parameter_dicts.append(base_params) # If you want this as a default run
 
     ### 1. PassiveLearningSelector and RandomForestClassifierPredictor ###
     if IncludePL_RF:
@@ -80,8 +70,8 @@ def CreateParameterVectorFunction(Data,
             "Seed": list(Seed),
             "TestProportion": [0.2],
             "CandidateProportion": [0.8],
-            "SelectorType": ["PassiveLearningSelector"], # Changed to class name
-            "ModelType": ["RandomForestClassifierPredictor"], # Changed to class name
+            "SelectorType": ["PassiveLearningSelector"],
+            "ModelType": ["RandomForestClassifierPredictor"],
             "UniqueErrorsInput": [0], # Not used by PL or RF, but keep for consistency
             "n_estimators": [100],
             "regularization": [0.01], # Not used by RF, but keep for consistency
@@ -104,8 +94,8 @@ def CreateParameterVectorFunction(Data,
             "Seed": list(Seed),
             "TestProportion": [0.2],
             "CandidateProportion": [0.8],
-            "SelectorType": ["PassiveLearningSelector"], # Changed to class name
-            "ModelType": ["GaussianProcessClassifierPredictor"], # Changed to class name
+            "SelectorType": ["PassiveLearningSelector"],
+            "ModelType": ["GaussianProcessClassifierPredictor"],
             "UniqueErrorsInput": [0], # Not used by PL or GPC
             "n_estimators": [0], # Not used by GPC
             "regularization": [0.0], # Not used by GPC
@@ -135,8 +125,8 @@ def CreateParameterVectorFunction(Data,
             "Seed": list(Seed),
             "TestProportion": [0.2],
             "CandidateProportion": [0.8],
-            "SelectorType": ["PassiveLearningSelector"], # Changed to class name
-            "ModelType": ["BayesianNeuralNetworkPredictor"], # Changed to class name
+            "SelectorType": ["PassiveLearningSelector"],
+            "ModelType": ["BayesianNeuralNetworkPredictor"],
             "UniqueErrorsInput": [0], # Not used by PL or BNN
             "n_estimators": [0], # Not used by BNN
             "regularization": [0.0], # Not used by BNN
@@ -166,8 +156,8 @@ def CreateParameterVectorFunction(Data,
             "Seed": list(Seed),
             "TestProportion": [0.2],
             "CandidateProportion": [0.8],
-            "SelectorType": ["BALDSelector"], # Changed to class name
-            "ModelType": ["BayesianNeuralNetworkPredictor"], # Changed to class name
+            "SelectorType": ["BALDSelector"],
+            "ModelType": ["BayesianNeuralNetworkPredictor"],
             "UniqueErrorsInput": [0], # Not used by BALD or BNN
             "n_estimators": [0], # Not used by BNN
             "regularization": [0.0], # Not used by BNN
@@ -197,8 +187,8 @@ def CreateParameterVectorFunction(Data,
             "Seed": list(Seed),
             "TestProportion": [0.2],
             "CandidateProportion": [0.8],
-            "SelectorType": ["BALDSelector"], # Changed to class name
-            "ModelType": ["GaussianProcessClassifierPredictor"], # Changed to class name
+            "SelectorType": ["BALDSelector"],
+            "ModelType": ["GaussianProcessClassifierPredictor"],
             "UniqueErrorsInput": [0], # Not used by BALD or GPC
             "n_estimators": [0], # Not used by GPC
             "regularization": [0.0], # Not used by GPC
@@ -222,15 +212,15 @@ def CreateParameterVectorFunction(Data,
         }
         all_parameter_dicts.append(BALD_GPC_ParameterDictionary)
 
-    ### 6. BatchQBCSelector and TreeFarmsPredictor with UniqueErrorsInput=1 ###
+    ### 6. BatchQBCSelector and TreeFarmsPredictor with UniqueErrorsInput=1 (UNREAL) ###
     if IncludeQBC_TreeFarms_Unique:
         QBC_TF_Unique_ParameterDictionary = {
             "Data": [Data],
             "Seed": list(Seed),
             "TestProportion": [0.2],
             "CandidateProportion": [0.8],
-            "SelectorType": ["BatchQBCSelector"], # Changed to class name
-            "ModelType": ["TreeFarmsPredictor"], # Changed to class name
+            "SelectorType": ["BatchQBCDiversitySelector"],
+            "ModelType": ["TreeFarmsPredictor"],
             "UniqueErrorsInput": [1], # Unique errors input for QBC
             "n_estimators": [100], # Keep for consistency, though TreeFarms doesn't use it
             "regularization": [0.01],
@@ -246,15 +236,15 @@ def CreateParameterVectorFunction(Data,
         }
         all_parameter_dicts.append(QBC_TF_Unique_ParameterDictionary)
 
-    ### 7. BatchQBCSelector and TreeFarmsPredictor with UniqueErrorsInput=0 ###
+    ### 7. BatchQBCSelector and TreeFarmsPredictor with UniqueErrorsInput=0 (DUREAL) ###
     if IncludeQBC_TreeFarms_Duplicate:
         QBC_TF_Duplicate_ParameterDictionary = {
             "Data": [Data],
             "Seed": list(Seed),
             "TestProportion": [0.2],
             "CandidateProportion": [0.8],
-            "SelectorType": ["BatchQBCSelector"], # Changed to class name
-            "ModelType": ["TreeFarmsPredictor"], # Changed to class name
+            "SelectorType": ["BatchQBCDiversitySelector"],
+            "ModelType": ["TreeFarmsPredictor"],
             "UniqueErrorsInput": [0], # Duplicate errors input for QBC
             "n_estimators": [100], # Keep for consistency, though TreeFarms doesn't use it
             "regularization": [0.01],
@@ -277,9 +267,9 @@ def CreateParameterVectorFunction(Data,
             "Seed": list(Seed),
             "TestProportion": [0.2],
             "CandidateProportion": [0.8],
-            "SelectorType": ["BatchQBCSelector"], # Changed to class name
+            "SelectorType": ["BatchQBCDiversitySelector"], # Changed to class name
             "ModelType": ["RandomForestClassifierPredictor"], # Changed to class name
-            "UniqueErrorsInput": [0], # Not directly used by RF, but QBC might use it for committee pruning
+            "UniqueErrorsInput": [0], # Fixed to 0 for RF as it's not relevant
             "n_estimators": [100],
             "regularization": [0.01], # Not used by RF
             "RashomonThresholdType": ["Adder"], # Not used by RF
@@ -301,7 +291,7 @@ def CreateParameterVectorFunction(Data,
             "Seed": list(Seed),
             "TestProportion": [0.2],
             "CandidateProportion": [0.8],
-            "SelectorType": ["BatchQBCSelector"], # Or other selectors compatible with TreefarmsLFRPredictor
+            "SelectorType": ["BatchQBCDiversitySelector"], # Or other selectors compatible with TreefarmsLFRPredictor
             "ModelType": ["TreefarmsLFRPredictor"], # The LFR model
             "UniqueErrorsInput": [0], # How QBC handles unique errors
             "n_estimators": [100], # Not used by TreefarmsLFRPredictor
@@ -321,35 +311,21 @@ def CreateParameterVectorFunction(Data,
 
 
     # Combine all parameter dictionaries into a single DataFrame
-    # Use pd.DataFrame.from_dict for each dict, then concat
-    # This approach is more flexible than itertools.product on a single large dict
     if not all_parameter_dicts:
         return pd.DataFrame() # Return empty if no configs are selected
 
-    # Create a list of DataFrames, one for each config
     list_of_dfs = []
     for p_dict in all_parameter_dicts:
-        # Ensure all keys are present in each dict for consistent columns
-        # Fill missing keys with a default (e.g., None or 0) if they are not relevant to a specific model
-        # This is important if you have model-specific params like 'kernel_type' that other models don't have.
-        # For now, let's assume itertools.product will handle missing keys by creating columns for all.
         list_of_dfs.append(pd.DataFrame.from_records(itertools.product(*p_dict.values()), columns=p_dict.keys()))
     
-    # Concatenate all generated DataFrames
     ParameterVector = pd.concat(list_of_dfs, ignore_index=True)
 
     # Ensure all possible columns are present in the final DataFrame, filling NaNs for missing model-specific params
-    # This step is crucial if different parameter dictionaries have different sets of keys.
     all_possible_columns = sorted(list(set(col for d in all_parameter_dicts for col in d.keys())))
     ParameterVector = ParameterVector.reindex(columns=all_possible_columns)
     
-    # Fill NaN values for parameters not relevant to a specific model/selector
-    # For example, n_estimators might be NaN for BNN, fill with 0 or a placeholder.
-    # This depends on how downstream functions handle these parameters.
-    # A robust way is to fill NaNs for numeric parameters with 0 or a sensible default.
     numeric_cols = ParameterVector.select_dtypes(include=np.number).columns
     ParameterVector[numeric_cols] = ParameterVector[numeric_cols].fillna(0)
-    # For string/object columns that might be NaN, fill with '' or 'N/A'
     object_cols = ParameterVector.select_dtypes(include='object').columns
     ParameterVector[object_cols] = ParameterVector[object_cols].fillna('')
 
@@ -361,7 +337,6 @@ def CreateParameterVectorFunction(Data,
     ### Job and Output Name ###
 
     # Generate initial JobName string #
-    # Make sure to use the new class names for string replacement
     ParameterVector["JobName"] = (
         ParameterVector["Seed"].astype(str) +
         ParameterVector["Data"].map(AbbreviationDictionary).astype(str) + # Use map for abbreviation
@@ -375,49 +350,34 @@ def CreateParameterVectorFunction(Data,
         "_B" + ParameterVector["BatchSize"].astype(str) 
     )
 
-    # Add model-specific parameters to JobName if they exist and are not 0/empty
-    # This makes JobName more descriptive for BNN, GPC, etc.
-    if 'hidden_size' in ParameterVector.columns:
-        ParameterVector["JobName"] += "_HS" + ParameterVector["hidden_size"].astype(str)
-    if 'dropout_rate' in ParameterVector.columns:
-        ParameterVector["JobName"] += "_DR" + ParameterVector["dropout_rate"].astype(str)
-    if 'epochs' in ParameterVector.columns:
-        ParameterVector["JobName"] += "_E" + ParameterVector["epochs"].astype(str)
-    if 'learning_rate' in ParameterVector.columns:
-        ParameterVector["JobName"] += "_LR" + ParameterVector["learning_rate"].astype(str)
-    if 'batch_size_train' in ParameterVector.columns:
-        ParameterVector["JobName"] += "_BST" + ParameterVector["batch_size_train"].astype(str)
-    if 'K_BALD_Samples' in ParameterVector.columns:
-        ParameterVector["JobName"] += "_K" + ParameterVector["K_BALD_Samples"].astype(str)
-    if 'kernel_type' in ParameterVector.columns:
-        ParameterVector["JobName"] += "_KT" + ParameterVector["kernel_type"].astype(str)
-    if 'kernel_length_scale' in ParameterVector.columns:
-        ParameterVector["JobName"] += "_KLS" + ParameterVector["kernel_length_scale"].astype(str)
-    if 'kernel_nu' in ParameterVector.columns:
-        ParameterVector["JobName"] += "_KNU" + ParameterVector["kernel_nu"].astype(str)
-    if 'RefitFrequency' in ParameterVector.columns:
-        ParameterVector["JobName"] += "_RFREQ" + ParameterVector["RefitFrequency"].astype(str)
-
-
     ParameterVector["JobName"] = (
         ParameterVector["JobName"]
         .str.replace(r"0\.(?=\d)", "", regex=True) 
         .str.replace(r"\.0(?!\d)", "", regex=True) 
     )
 
-    # Update JobName abbreviations for new class names
+    # Reorder and refine JobName abbreviations for new class names
+    # Apply more specific/desired replacements first.
     ParameterVector["JobName"] = (
         ParameterVector["JobName"]
-        .str.replace(r"(_MTBayesianNeuralNetworkPredictor_STBALDSelector).*(_B\d+)", r"_BALD\2", regex=True)
-        .str.replace(r"(_MTRandomForestClassifierPredictor_STPassiveLearningSelector).*(_B\d+)", r"_PL\2", regex=True)
-        .str.replace(r"(_MTGaussianProcessClassifierPredictor_STPassiveLearningSelector).*(_B\d+)", r"_PL_GPC\2", regex=True) # New PL_GPC
-        .str.replace(r"(_MTBayesianNeuralNetworkPredictor_STPassiveLearningSelector).*(_B\d+)", r"_PL_BNN\2", regex=True) # New PL_BNN
-        .str.replace(r"(_MTGaussianProcessClassifierPredictor_STBALDSelector).*(_B\d+)", r"_BALD_GPC\2", regex=True) # New BALD_GPC
-        .str.replace(r"_MTRandomForestClassifierPredictor_STBatchQBCSelector_DW(\d+)_DEW(\d+)(_B\d+)", r"_RF_DW\1_DEW\2\3", regex=True)
-        .str.replace(r"_MTRandomForestClassifierPredictor_STBatchQBCSelector_DW0_DEW0(_B\d+)", r"_RF\1", regex=True)
-        .str.replace(r"_MTTreeFarmsPredictor_STBatchQBCSelector_UEI0_", "_D", regex=True) # TreeFarmsPredictor UniqueErrorsInput=0
-        .str.replace(r"_MTTreeFarmsPredictor_STBatchQBCSelector_UEI1_", "_U", regex=True) # TreeFarmsPredictor UniqueErrorsInput=1
-        .str.replace(r"_MTTreefarmsLFRPredictor_STBatchQBCSelector_UEI0_A0_RFREQ(\d+)(_B\d+)", r"_LFR_RFREQ\1\2", regex=True) # LFR specific
+        # UNREAL/DUREAL for TreeFarms with QBC
+        .str.replace(r"_MTTreeFarmsPredictor_STBatchQBCDiversitySelector_UEI1A", r"_UNREAL_UEI1A", regex=True) # Catches UEI1A...
+        .str.replace(r"_MTTreeFarmsPredictor_STBatchQBCDiversitySelector_UEI0A", r"_DUREAL_UEI0A", regex=True) # Catches UEI0A...
+        # PL_RF
+        .str.replace(r"(_MTRandomForestClassifierPredictor_STPassiveLearningSelector)(.*_B\d+)", r"_PL_RF\2", regex=True) # Capture from batchsize
+        # PL_GPC (already correct)
+        .str.replace(r"(_MTGaussianProcessClassifierPredictor_STPassiveLearningSelector)(.*_B\d+)", r"_PL_GPC\2", regex=True)
+        # PL_BNN (already correct)
+        .str.replace(r"(_MTBayesianNeuralNetworkPredictor_STPassiveLearningSelector)(.*_B\d+)", r"_PL_BNN\2", regex=True)
+        # BALD_BNN
+        .str.replace(r"(_MTBayesianNeuralNetworkPredictor_STBALDSelector)(.*_B\d+)", r"_BALD_BNN\2", regex=True)
+        # BALD_GPC (already correct)
+        .str.replace(r"(_MTGaussianProcessClassifierPredictor_STBALDSelector)(.*_B\d+)", r"_BALD_GPC\2", regex=True)
+        # QBC_RF (ensure this captures the rest of the string for specific parameters)
+        # This needs to replace the MT...ST part, and leave the UEI...DW...DEW...B part.
+        .str.replace(r"(_MTRandomForestClassifierPredictor_STBatchQBCDiversitySelector)(_UEI.*)", r"_QBC_RF\2", regex=True)
+        # LFR specific (already correct, but ensure consistency with BatchQBCDiversitySelector if changed to BatchQBCSelector)
+        .str.replace(r"(_MTTreefarmsLFRPredictor_STBatchQBCDiversitySelector_UEI0_A0_RFREQ)(\d+)(_B\d+)", r"_LFR_RFREQ\2\3", regex=True) 
     )
 
     ParameterVector["JobName"] = (
@@ -431,7 +391,7 @@ def CreateParameterVectorFunction(Data,
     # Output Name #
     ParameterVector["Output"] = (
         ParameterVector["Data"].astype(str) + "/" +
-        ParameterVector["ModelType"].astype(str) + "/Raw/" + # No more Function suffix
+        ParameterVector["ModelType"].astype(str) + "/Raw/" +
         ParameterVector["JobName"] + ".pkl"
     )
 

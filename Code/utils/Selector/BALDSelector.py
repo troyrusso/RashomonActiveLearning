@@ -1,5 +1,3 @@
-# utils/Selector/BALDSelector.py
-
 ### Libraries ###
 import math
 import torch
@@ -10,8 +8,6 @@ from dataclasses import dataclass
 from utils.Auxiliary.DataFrameUtils import get_features_and_target
 
 ### Toma ###
-# This mock class mimics the structure expected by the decorator @toma.execute.chunked
-# In a production environment, you would 'pip install toma' and 'import toma'
 class TomaExecute:
     def chunked(self, data, chunk_size):
         def decorator(func):
@@ -27,11 +23,8 @@ class Toma:
         self.execute = TomaExecute()
 toma = Toma()
 
-### Conditional Entropy Function (kept as standalone, or could be static method) ###
+### Conditional Entropy Function ###
 def ComputeConditionalEntropyFunction(log_probs_N_K_C: torch.Tensor) -> torch.Tensor:
-    """
-    Computes the Expected Conditional Entropy (E_theta[H(y|x,theta)]) for each data point.
-    """
     N, K, C = log_probs_N_K_C.shape
     entropies_N = torch.empty(N, dtype=torch.double)
 
@@ -42,11 +35,8 @@ def ComputeConditionalEntropyFunction(log_probs_N_K_C: torch.Tensor) -> torch.Te
     
     return entropies_N
 
-### Entropy Function (kept as standalone, or could be static method) ###
+### Marginal Entropy Function ###
 def ComputeEntropyFunction(log_probs_N_K_C: torch.Tensor) -> torch.Tensor:
-    """
-    Computes the Marginal Entropy (H(y|x,D)) for each data point.
-    """
     N, K, C = log_probs_N_K_C.shape
     entropies_N = torch.empty(N, dtype=torch.double)
 
@@ -58,7 +48,7 @@ def ComputeEntropyFunction(log_probs_N_K_C: torch.Tensor) -> torch.Tensor:
     
     return entropies_N
 
-### Data Class for Output (not strictly needed in class design but kept for consistency) ###
+### Data Class for Output ###
 @dataclass
 class CandidateBatch:
     scores: List[float]
@@ -66,62 +56,41 @@ class CandidateBatch:
 
 
 class BALDSelector:
-    def __init__(self, BatchSize: int, K_BALD_Samples: int = 20, Seed: int = None, **kwargs):
-        """
-        Initializes the BALDSelector.
 
-        Args:
-            BatchSize (int): The number of observations to recommend.
-            K_BALD_Samples (int, optional): The number of samples to draw from the model's posterior
-                                           for BALD calculation. Defaults to 20.
-            Seed (int, optional): Seed for reproducibility. (BALD itself isn't random, but passed for consistency)
-            **kwargs: Catches any other arguments not used by this selector's init.
-        """
+    ### Initialize ###
+    def __init__(self, BatchSize: int, K_BALD_Samples: int = 20, Seed: int = None, **kwargs):
         self.BatchSize = BatchSize
         self.K_BALD_Samples = K_BALD_Samples
         self.Seed = Seed 
 
+    ### Selection ###
     def select(self, df_Candidate: pd.DataFrame, Model, df_Train: pd.DataFrame = None, auxiliary_columns: list = None) -> dict:
-        """
-        Selects the most informative observations using the BALD (Bayesian Active Learning by Disagreement) criterion.
-
-        Args:
-            df_Candidate (pd.DataFrame): The DataFrame of unlabeled candidate observations.
-            Model: The trained predictive model instance, expected to have a .predict_proba_K method.
-            df_Train (pd.DataFrame, optional): The current training set (not directly used by BALD, but kept for consistent interface). Defaults to None.
-            auxiliary_columns (list, optional): A list of column names that are not features.
-
-        Returns:
-            dict: Contains "IndexRecommendation" (List[int]) of the recommended observations.
-        """
         if not hasattr(Model, 'predict_proba_K'):
             raise AttributeError("BALDSelector requires the provided Model to have a 'predict_proba_K' method.")
 
-        # Extract features from df_Candidate
+        ## Set up df_Candidate features ##
         X_candidate_df, _ = get_features_and_target(
             df=df_Candidate,
             target_column_name="Y", 
-            auxiliary_columns=auxiliary_columns
-        )
+            auxiliary_columns=auxiliary_columns)
         X_candidate_np = X_candidate_df.values
 
-        # Generate log_probs_N_K_C using the model's prediction method
+        ## Generate log_probs_N_K_C using the model's prediction method ##
         log_probs_N_K_C = Model.predict_proba_K(X_candidate_np, self.K_BALD_Samples)
 
-        # Determine dimensions
+        #$ Determine dimensions ##
         N_candidate = X_candidate_np.shape[0]
         batch_size_actual = min(self.BatchSize, N_candidate)
 
-        # Compute Uncertainty Metrics (BALD scores)
-        # BALD Score = H(y|x,D) - E_theta[H(y|x,theta)]
+        ## Compute BALD scores ##
         EnsembleEntropy = ComputeEntropyFunction(log_probs_N_K_C)
         ConditionalEntropy = ComputeConditionalEntropyFunction(log_probs_N_K_C)
         UncertaintyMetrics = EnsembleEntropy - ConditionalEntropy
 
-        # Get the top BatchSize observations based on BALD scores
+        ## Get the top observations ##
         top_scores, top_local_indices = torch.topk(UncertaintyMetrics, batch_size_actual, largest=True, sorted=False)
 
-        # Convert the local indices (within the log_probs_N_K_C tensor) back to the original DataFrame indices of df_Candidate
+        ## Convert the local indices ##
         candidate_df_indices = df_Candidate.index.values 
         IndexRecommendation = candidate_df_indices[top_local_indices.cpu().numpy().astype(int)].tolist()
 
