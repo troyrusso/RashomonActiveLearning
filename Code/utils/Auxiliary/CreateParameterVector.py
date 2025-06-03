@@ -53,7 +53,7 @@ def CreateParameterVectorFunction(Data,
         "Seed": list(Seed),
         "TestProportion": [0.2],
         "CandidateProportion": [0.8],
-        "SelectorType": ["BatchQBCDiversitySelector"], # Changed to class name
+        "SelectorType": ["BatchQBCSelector"], # Changed to class name
         "ModelType": ["TreeFarmsPredictor"],           # Changed to class name
         "UniqueErrorsInput": [0],
         "n_estimators": [100], # Keep for consistency, though TreeFarms doesn't use it
@@ -229,7 +229,7 @@ def CreateParameterVectorFunction(Data,
             "Seed": list(Seed),
             "TestProportion": [0.2],
             "CandidateProportion": [0.8],
-            "SelectorType": ["BatchQBCDiversitySelector"], # Changed to class name
+            "SelectorType": ["BatchQBCSelector"], # Changed to class name
             "ModelType": ["TreeFarmsPredictor"], # Changed to class name
             "UniqueErrorsInput": [1], # Unique errors input for QBC
             "n_estimators": [100], # Keep for consistency, though TreeFarms doesn't use it
@@ -253,7 +253,7 @@ def CreateParameterVectorFunction(Data,
             "Seed": list(Seed),
             "TestProportion": [0.2],
             "CandidateProportion": [0.8],
-            "SelectorType": ["BatchQBCDiversitySelector"], # Changed to class name
+            "SelectorType": ["BatchQBCSelector"], # Changed to class name
             "ModelType": ["TreeFarmsPredictor"], # Changed to class name
             "UniqueErrorsInput": [0], # Duplicate errors input for QBC
             "n_estimators": [100], # Keep for consistency, though TreeFarms doesn't use it
@@ -277,7 +277,7 @@ def CreateParameterVectorFunction(Data,
             "Seed": list(Seed),
             "TestProportion": [0.2],
             "CandidateProportion": [0.8],
-            "SelectorType": ["BatchQBCDiversitySelector"], # Changed to class name
+            "SelectorType": ["BatchQBCSelector"], # Changed to class name
             "ModelType": ["RandomForestClassifierPredictor"], # Changed to class name
             "UniqueErrorsInput": [0], # Not directly used by RF, but QBC might use it for committee pruning
             "n_estimators": [100],
@@ -301,7 +301,7 @@ def CreateParameterVectorFunction(Data,
             "Seed": list(Seed),
             "TestProportion": [0.2],
             "CandidateProportion": [0.8],
-            "SelectorType": ["BatchQBCDiversitySelector"], # Or other selectors compatible with TreefarmsLFRPredictor
+            "SelectorType": ["BatchQBCSelector"], # Or other selectors compatible with TreefarmsLFRPredictor
             "ModelType": ["TreefarmsLFRPredictor"], # The LFR model
             "UniqueErrorsInput": [0], # How QBC handles unique errors
             "n_estimators": [100], # Not used by TreefarmsLFRPredictor
@@ -413,11 +413,11 @@ def CreateParameterVectorFunction(Data,
         .str.replace(r"(_MTGaussianProcessClassifierPredictor_STPassiveLearningSelector).*(_B\d+)", r"_PL_GPC\2", regex=True) # New PL_GPC
         .str.replace(r"(_MTBayesianNeuralNetworkPredictor_STPassiveLearningSelector).*(_B\d+)", r"_PL_BNN\2", regex=True) # New PL_BNN
         .str.replace(r"(_MTGaussianProcessClassifierPredictor_STBALDSelector).*(_B\d+)", r"_BALD_GPC\2", regex=True) # New BALD_GPC
-        .str.replace(r"_MTRandomForestClassifierPredictor_STBatchQBCDiversitySelector_DW(\d+)_DEW(\d+)(_B\d+)", r"_RF_DW\1_DEW\2\3", regex=True)
-        .str.replace(r"_MTRandomForestClassifierPredictor_STBatchQBCDiversitySelector_DW0_DEW0(_B\d+)", r"_RF\1", regex=True)
-        .str.replace(r"_MTTreeFarmsPredictor_STBatchQBCDiversitySelector_UEI0_", "_D", regex=True) # TreeFarmsPredictor UniqueErrorsInput=0
-        .str.replace(r"_MTTreeFarmsPredictor_STBatchQBCDiversitySelector_UEI1_", "_U", regex=True) # TreeFarmsPredictor UniqueErrorsInput=1
-        .str.replace(r"_MTTreefarmsLFRPredictor_STBatchQBCDiversitySelector_UEI0_A0_RFREQ(\d+)(_B\d+)", r"_LFR_RFREQ\1\2", regex=True) # LFR specific
+        .str.replace(r"_MTRandomForestClassifierPredictor_STBatchQBCSelector_DW(\d+)_DEW(\d+)(_B\d+)", r"_RF_DW\1_DEW\2\3", regex=True)
+        .str.replace(r"_MTRandomForestClassifierPredictor_STBatchQBCSelector_DW0_DEW0(_B\d+)", r"_RF\1", regex=True)
+        .str.replace(r"_MTTreeFarmsPredictor_STBatchQBCSelector_UEI0_", "_D", regex=True) # TreeFarmsPredictor UniqueErrorsInput=0
+        .str.replace(r"_MTTreeFarmsPredictor_STBatchQBCSelector_UEI1_", "_U", regex=True) # TreeFarmsPredictor UniqueErrorsInput=1
+        .str.replace(r"_MTTreefarmsLFRPredictor_STBatchQBCSelector_UEI0_A0_RFREQ(\d+)(_B\d+)", r"_LFR_RFREQ\1\2", regex=True) # LFR specific
     )
 
     ParameterVector["JobName"] = (
