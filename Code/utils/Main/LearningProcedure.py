@@ -74,12 +74,11 @@ def LearningProcedure(SimulationConfigInputUpdated):
             predictor_model.fit(X_train_df=X_train_df, y_train_series=y_train_series)
         else:                                                                       # Subsequence iterations
             ### Check if model is LFR ###
-            if isinstance(predictor_model, TreefarmsLFRPredictor) and (i % refit_frequency == 0):
+            if isinstance(predictor_model, LFRPredictor) and (i % refit_frequency == 0):
                 predictor_model.refit(
                     X_to_add=last_added_X_batch,
                     y_to_add=last_added_y_batch,
                     epsilon=SimulationConfigInputUpdated["RashomonThreshold"], 
-                    verbose=True 
                 )
             ### If not LFR, refit ###
             else:

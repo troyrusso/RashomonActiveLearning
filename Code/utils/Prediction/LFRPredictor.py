@@ -25,7 +25,7 @@ def _score_single_tree(tree_model, X: pd.DataFrame, y: pd.Series):
     return (_predict_single_tree(tree_model, X) == y).mean()
 
 ### LFR Predictor ###
-class TreefarmsLFRPredictor:
+class LFRPredictor:
 
     ### Initialize Model ###
     def __init__(self, regularization: float, RashomonThreshold: float,

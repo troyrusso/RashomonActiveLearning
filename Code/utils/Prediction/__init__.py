@@ -7,3 +7,4 @@ from .RidgeRegressionPredictor import *
 from .TestErrorFunction import *
 from .TreeFarmsPredictor import *
 from .GaussianProcessClassifierPredictor import *
+from .LFRPredictor import *
