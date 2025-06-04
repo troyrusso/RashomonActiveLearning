@@ -72,7 +72,7 @@ def LearningProcedure(SimulationConfigInputUpdated):
         ## REFIT VS. UPDATE ###
         if i == 0:                                                                  # Always fit on the first iteration
             predictor_model.fit(X_train_df=X_train_df, y_train_series=y_train_series)
-        else:                                                                       # Subsequence iterations
+        else:                                                                       # Subsequent iterations
             ### Check if model is LFR ###
             if isinstance(predictor_model, LFRPredictor) and (i % refit_frequency == 0):
                 predictor_model.refit(
@@ -80,7 +80,7 @@ def LearningProcedure(SimulationConfigInputUpdated):
                     y_to_add=last_added_y_batch,
                     epsilon=SimulationConfigInputUpdated["RashomonThreshold"], 
                 )
-            ### If not LFR, refit ###
+            ### If not LFR, just refit ###
             else:
                 predictor_model.fit(X_train_df=X_train_df, y_train_series=y_train_series)
 
@@ -111,7 +111,7 @@ def LearningProcedure(SimulationConfigInputUpdated):
         QueryObservation = SimulationConfigInputUpdated["df_Candidate"].loc[QueryObservationIndex]
         SelectedObservationHistory.append(QueryObservationIndex)
 
-        ## Store Newly Queried Observations for LFR ##
+        ## Store newly queried observations for LFR ##
         last_added_X_batch, last_added_y_batch = get_features_and_target(
             df=QueryObservation,
             target_column_name="Y",
