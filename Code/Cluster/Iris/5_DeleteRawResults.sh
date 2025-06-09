@@ -13,7 +13,7 @@ MODEL_DIRS=(
     "GaussianProcessClassifierPredictor"
     "RandomForestClassifierPredictor"
     "TreeFarmsPredictor"   
-    "TreefarmsLFRPredictor" 
+    "LFRPredictor" 
 )
 
 echo "--- Starting Raw Results Deletion for $CURRENT_DATASET ---"
