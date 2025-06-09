@@ -1,3 +1,5 @@
+# utils/Auxiliary/CreateParameterVector.py
+
 ### Import packages ###
 import itertools
 import pandas as pd
@@ -41,16 +43,16 @@ def CreateParameterVectorFunction(Data,
     # Parameter Dictionary #
     all_parameter_dicts = []
 
-    ### Base Parameter Dictionary (Example: Default TreeFarms QBC) ###
+    ### Base Parameter Dictionary ###
     base_params = {
         "Data": [Data],
         "Seed": list(Seed),
         "TestProportion": [0.2],
         "CandidateProportion": [0.8],
-        "SelectorType": ["BatchQBCDiversitySelector"], # Consistent class name
-        "ModelType": ["TreeFarmsPredictor"],           # Consistent class name
+        "SelectorType": ["BatchQBCSelector"], 
+        "ModelType": ["TreeFarmsPredictor"],        
         "UniqueErrorsInput": [0],
-        "n_estimators": [100], # Keep for consistency, though TreeFarms doesn't use it
+        "n_estimators": [100], 
         "regularization": [0.01],
         "RashomonThresholdType": ["Adder"],
         "RashomonThreshold": [RashomonThreshold],
@@ -72,18 +74,18 @@ def CreateParameterVectorFunction(Data,
             "CandidateProportion": [0.8],
             "SelectorType": ["PassiveLearningSelector"],
             "ModelType": ["RandomForestClassifierPredictor"],
-            "UniqueErrorsInput": [0], # Not used by PL or RF, but keep for consistency
+            "UniqueErrorsInput": [0], 
             "n_estimators": [100],
-            "regularization": [0.01], # Not used by RF, but keep for consistency
-            "RashomonThresholdType": ["Adder"], # Not used by RF, but keep for consistency
-            "RashomonThreshold": [0], # Not used by RF, but keep for consistency
+            "regularization": [0.01], 
+            "RashomonThresholdType": ["Adder"], 
+            "RashomonThreshold": [0], 
             "Type": ["Classification"],
-            "DiversityWeight": [0], # Not used by PL, but keep for consistency
-            "DensityWeight": [0], # Not used by PL, but keep for consistency
+            "DiversityWeight": [0], 
+            "DensityWeight": [0], 
             "BatchSize": [BatchSize],
             "Partition": [Partition],
-            "Time": ["00:59:00"], # Default time for simpler runs
-            "Memory": ["1000M"] # Default memory for simpler runs
+            "Time": ["00:59:00"], 
+            "Memory": ["1000M"] 
         }
         all_parameter_dicts.append(PL_RF_ParameterDictionary)
 
@@ -96,19 +98,18 @@ def CreateParameterVectorFunction(Data,
             "CandidateProportion": [0.8],
             "SelectorType": ["PassiveLearningSelector"],
             "ModelType": ["GaussianProcessClassifierPredictor"],
-            "UniqueErrorsInput": [0], # Not used by PL or GPC
-            "n_estimators": [0], # Not used by GPC
-            "regularization": [0.0], # Not used by GPC
-            "RashomonThresholdType": ["Adder"], # Not used by GPC
-            "RashomonThreshold": [0], # Not used by GPC
+            "UniqueErrorsInput": [0], 
+            "n_estimators": [0], 
+            "regularization": [0.0], 
+            "RashomonThresholdType": ["Adder"], 
+            "RashomonThreshold": [0], 
             "Type": ["Classification"],
-            "DiversityWeight": [0], # Not used by PL
-            "DensityWeight": [0], # Not used by PL
+            "DiversityWeight": [0], 
+            "DensityWeight": [0], 
             "BatchSize": [BatchSize],
             "Partition": [Partition],
-            "Time": [Time], # GPC can be slow, use provided Time
-            "Memory": [Memory], # GPC can be memory intensive, use provided Memory
-            # GPC specific parameters
+            "Time": [Time], 
+            "Memory": [Memory], 
             "kernel_type": ['RBF'],
             "kernel_length_scale": [1.0],
             "kernel_nu": [1.5],
@@ -127,25 +128,24 @@ def CreateParameterVectorFunction(Data,
             "CandidateProportion": [0.8],
             "SelectorType": ["PassiveLearningSelector"],
             "ModelType": ["BayesianNeuralNetworkPredictor"],
-            "UniqueErrorsInput": [0], # Not used by PL or BNN
-            "n_estimators": [0], # Not used by BNN
-            "regularization": [0.0], # Not used by BNN
-            "RashomonThresholdType": ["Adder"], # Not used by BNN
-            "RashomonThreshold": [0], # Not used by BNN
+            "UniqueErrorsInput": [0], 
+            "n_estimators": [0], 
+            "regularization": [0.0], 
+            "RashomonThresholdType": ["Adder"], 
+            "RashomonThreshold": [0], 
             "Type": ["Classification"],
-            "DiversityWeight": [0], # Not used by PL
-            "DensityWeight": [0], # Not used by PL
+            "DiversityWeight": [0], 
+            "DensityWeight": [0], 
             "BatchSize": [BatchSize],
             "Partition": [Partition],
             "Time": [Time],
             "Memory": [Memory],
-            # BNN specific parameters
             "hidden_size": [50],
             "dropout_rate": [0.2],
             "epochs": [100],
             "learning_rate": [0.001],
             "batch_size_train": [32],
-            "K_BALD_Samples": [20] # This is used by BNN's predict_proba_K, even if not for BALD selector
+            "K_BALD_Samples": [20] 
         }
         all_parameter_dicts.append(PL_BNN_ParameterDictionary)
 
@@ -158,25 +158,24 @@ def CreateParameterVectorFunction(Data,
             "CandidateProportion": [0.8],
             "SelectorType": ["BALDSelector"],
             "ModelType": ["BayesianNeuralNetworkPredictor"],
-            "UniqueErrorsInput": [0], # Not used by BALD or BNN
-            "n_estimators": [0], # Not used by BNN
-            "regularization": [0.0], # Not used by BNN
-            "RashomonThresholdType": ["Adder"], # Not used by BNN
-            "RashomonThreshold": [0], # Not used by BNN
+            "UniqueErrorsInput": [0], 
+            "n_estimators": [0], 
+            "regularization": [0.0], 
+            "RashomonThresholdType": ["Adder"], 
+            "RashomonThreshold": [0], 
             "Type": ["Classification"],
-            "DiversityWeight": [0], # Not used by BALD
-            "DensityWeight": [0], # Not used by BALD
+            "DiversityWeight": [0], 
+            "DensityWeight": [0], 
             "BatchSize": [BatchSize],
             "Partition": [Partition],
             "Time": [Time],
             "Memory": [Memory],
-            # BNN specific parameters
             "hidden_size": [50],
             "dropout_rate": [0.2],
             "epochs": [100],
             "learning_rate": [0.001],
             "batch_size_train": [32],
-            "K_BALD_Samples": [20] # This is used by BALDSelector
+            "K_BALD_Samples": [20] 
         }
         all_parameter_dicts.append(BALD_BNN_ParameterDictionary)
 
@@ -189,26 +188,25 @@ def CreateParameterVectorFunction(Data,
             "CandidateProportion": [0.8],
             "SelectorType": ["BALDSelector"],
             "ModelType": ["GaussianProcessClassifierPredictor"],
-            "UniqueErrorsInput": [0], # Not used by BALD or GPC
-            "n_estimators": [0], # Not used by GPC
-            "regularization": [0.0], # Not used by GPC
-            "RashomonThresholdType": ["Adder"], # Not used by GPC
-            "RashomonThreshold": [0], # Not used by GPC
+            "UniqueErrorsInput": [0], 
+            "n_estimators": [0], 
+            "regularization": [0.0], 
+            "RashomonThresholdType": ["Adder"], 
+            "RashomonThreshold": [0], 
             "Type": ["Classification"],
-            "DiversityWeight": [0], # Not used by BALD
-            "DensityWeight": [0], # Not used by BALD
+            "DiversityWeight": [0], 
+            "DensityWeight": [0], 
             "BatchSize": [BatchSize],
             "Partition": [Partition],
             "Time": [Time],
             "Memory": [Memory],
-            # GPC specific parameters
             "kernel_type": ['RBF'],
             "kernel_length_scale": [1.0],
             "kernel_nu": [1.5],
             "optimizer": ['fmin_l_bfgs_b'],
             "n_restarts_optimizer": [0],
             "max_iter_predict": [100],
-            "K_BALD_Samples": [20] # This is used by BALDSelector
+            "K_BALD_Samples": [20] 
         }
         all_parameter_dicts.append(BALD_GPC_ParameterDictionary)
 
@@ -219,10 +217,10 @@ def CreateParameterVectorFunction(Data,
             "Seed": list(Seed),
             "TestProportion": [0.2],
             "CandidateProportion": [0.8],
-            "SelectorType": ["BatchQBCDiversitySelector"],
+            "SelectorType": ["BatchQBCSelector"],
             "ModelType": ["TreeFarmsPredictor"],
-            "UniqueErrorsInput": [1], # Unique errors input for QBC
-            "n_estimators": [100], # Keep for consistency, though TreeFarms doesn't use it
+            "UniqueErrorsInput": [1], 
+            "n_estimators": [100], 
             "regularization": [0.01],
             "RashomonThresholdType": ["Adder"],
             "RashomonThreshold": [RashomonThreshold],
@@ -243,10 +241,10 @@ def CreateParameterVectorFunction(Data,
             "Seed": list(Seed),
             "TestProportion": [0.2],
             "CandidateProportion": [0.8],
-            "SelectorType": ["BatchQBCDiversitySelector"],
+            "SelectorType": ["BatchQBCSelector"], 
             "ModelType": ["TreeFarmsPredictor"],
-            "UniqueErrorsInput": [0], # Duplicate errors input for QBC
-            "n_estimators": [100], # Keep for consistency, though TreeFarms doesn't use it
+            "UniqueErrorsInput": [0], 
+            "n_estimators": [100], 
             "regularization": [0.01],
             "RashomonThresholdType": ["Adder"],
             "RashomonThreshold": [RashomonThreshold],
@@ -267,13 +265,13 @@ def CreateParameterVectorFunction(Data,
             "Seed": list(Seed),
             "TestProportion": [0.2],
             "CandidateProportion": [0.8],
-            "SelectorType": ["BatchQBCDiversitySelector"], # Changed to class name
-            "ModelType": ["RandomForestClassifierPredictor"], # Changed to class name
-            "UniqueErrorsInput": [0], # Fixed to 0 for RF as it's not relevant
+            "SelectorType": ["BatchQBCSelector"],
+            "ModelType": ["RandomForestClassifierPredictor"], 
+            "UniqueErrorsInput": [0], 
             "n_estimators": [100],
-            "regularization": [0.01], # Not used by RF
-            "RashomonThresholdType": ["Adder"], # Not used by RF
-            "RashomonThreshold": [0], # Not used by RF
+            "regularization": [0.01], 
+            "RashomonThresholdType": ["Adder"], 
+            "RashomonThreshold": [0], 
             "Type": ["Classification"],
             "DiversityWeight": [DiversityWeight],
             "DensityWeight": [DensityWeight],
@@ -284,17 +282,17 @@ def CreateParameterVectorFunction(Data,
         }
         all_parameter_dicts.append(QBC_RF_ParameterDictionary)
 
-    # NEW: Include LFR TreeFarms (TreefarmsLFRPredictor)
+    # NEW: Include LFR TreeFarms (LFRPredictor)
     if IncludeLFR_TreeFarms:
         LFR_TF_ParameterDictionary = {
             "Data": [Data],
             "Seed": list(Seed),
             "TestProportion": [0.2],
             "CandidateProportion": [0.8],
-            "SelectorType": ["BatchQBCDiversitySelector"], # Or other selectors compatible with TreefarmsLFRPredictor
-            "ModelType": ["TreefarmsLFRPredictor"], # The LFR model
-            "UniqueErrorsInput": [0], # How QBC handles unique errors
-            "n_estimators": [100], # Not used by TreefarmsLFRPredictor
+            "SelectorType": ["BatchQBCSelector"], 
+            "ModelType": ["LFRPredictor"], 
+            "UniqueErrorsInput": [0], 
+            "n_estimators": [100], 
             "regularization": [0.01],
             "RashomonThresholdType": ["Adder"],
             "RashomonThreshold": [RashomonThreshold],
@@ -305,14 +303,14 @@ def CreateParameterVectorFunction(Data,
             "Partition": [Partition],
             "Time": [Time],
             "Memory": [Memory],
-            "RefitFrequency": [RefitFrequency] # Crucial for LFR
+            "RefitFrequency": [RefitFrequency] 
         }
         all_parameter_dicts.append(LFR_TF_ParameterDictionary)
 
 
     # Combine all parameter dictionaries into a single DataFrame
     if not all_parameter_dicts:
-        return pd.DataFrame() # Return empty if no configs are selected
+        return pd.DataFrame() 
 
     list_of_dfs = []
     for p_dict in all_parameter_dicts:
@@ -339,9 +337,9 @@ def CreateParameterVectorFunction(Data,
     # Generate initial JobName string #
     ParameterVector["JobName"] = (
         ParameterVector["Seed"].astype(str) +
-        ParameterVector["Data"].map(AbbreviationDictionary).astype(str) + # Use map for abbreviation
-        "_MT" + ParameterVector["ModelType"].astype(str) + # No more Function suffix
-        "_ST" + ParameterVector["SelectorType"].astype(str) + # No more Function suffix
+        ParameterVector["Data"].map(AbbreviationDictionary).astype(str) + 
+        "_MT" + ParameterVector["ModelType"].astype(str) + 
+        "_ST" + ParameterVector["SelectorType"].astype(str) + 
         "_UEI" + ParameterVector["UniqueErrorsInput"].astype(str) +
         ParameterVector["RashomonThresholdType"].astype(str) +
         ParameterVector["RashomonThreshold"].astype(str) + 
@@ -356,27 +354,61 @@ def CreateParameterVectorFunction(Data,
         .str.replace(r"\.0(?!\d)", "", regex=True) 
     )
 
+    # Conditionally add model-specific parameters to JobName for clarity without clutter    
+    # BNN-specific parameters
+    bnn_mask = ParameterVector["ModelType"] == "BayesianNeuralNetworkPredictor"
+    if 'hidden_size' in ParameterVector.columns:
+        ParameterVector.loc[bnn_mask, "JobName"] += "_HS" + ParameterVector.loc[bnn_mask, "hidden_size"].astype(str)
+    if 'dropout_rate' in ParameterVector.columns:
+        ParameterVector.loc[bnn_mask, "JobName"] += "_DR" + ParameterVector.loc[bnn_mask, "dropout_rate"].astype(str)
+    if 'epochs' in ParameterVector.columns:
+        ParameterVector.loc[bnn_mask, "JobName"] += "_E" + ParameterVector.loc[bnn_mask, "epochs"].astype(str)
+    if 'learning_rate' in ParameterVector.columns:
+        ParameterVector.loc[bnn_mask, "JobName"] += "_LR" + ParameterVector.loc[bnn_mask, "learning_rate"].astype(str)
+    if 'batch_size_train' in ParameterVector.columns:
+        ParameterVector.loc[bnn_mask, "JobName"] += "_BST" + ParameterVector.loc[bnn_mask, "batch_size_train"].astype(str)
+    
+    # GPC-specific parameters
+    gpc_mask = ParameterVector["ModelType"] == "GaussianProcessClassifierPredictor"
+    if 'kernel_type' in ParameterVector.columns:
+        ParameterVector.loc[gpc_mask, "JobName"] += "_KT" + ParameterVector.loc[gpc_mask, "kernel_type"].astype(str)
+    if 'kernel_length_scale' in ParameterVector.columns:
+        ParameterVector.loc[gpc_mask, "JobName"] += "_KLS" + ParameterVector.loc[gpc_mask, "kernel_length_scale"].astype(str)
+    if 'kernel_nu' in ParameterVector.columns:
+        ParameterVector.loc[gpc_mask, "JobName"] += "_KNU" + ParameterVector.loc[gpc_mask, "kernel_nu"].astype(str)
+
+    # Parameters common to BNN and GPC (if K_BALD_Samples is passed to selector or model)
+    if 'K_BALD_Samples' in ParameterVector.columns:
+        bald_relevant_mask = (ParameterVector["ModelType"] == "BayesianNeuralNetworkPredictor") | \
+                             (ParameterVector["ModelType"] == "GaussianProcessClassifierPredictor")
+        ParameterVector.loc[bald_relevant_mask, "JobName"] += "_K" + ParameterVector.loc[bald_relevant_mask, "K_BALD_Samples"].astype(str)
+    
+    # LFR-specific parameter
+    lfr_mask = ParameterVector["ModelType"] == "LFRPredictor" # <--- CHANGED TO SHORTER NAME
+    if 'RefitFrequency' in ParameterVector.columns:
+        ParameterVector.loc[lfr_mask, "JobName"] += "_RFREQ" + ParameterVector.loc[lfr_mask, "RefitFrequency"].astype(str)
+
+
     # Reorder and refine JobName abbreviations for new class names
     # Apply more specific/desired replacements first.
     ParameterVector["JobName"] = (
         ParameterVector["JobName"]
         # UNREAL/DUREAL for TreeFarms with QBC
-        .str.replace(r"_MTTreeFarmsPredictor_STBatchQBCDiversitySelector_UEI1A", r"_UNREAL_UEI1A", regex=True) # Catches UEI1A...
-        .str.replace(r"_MTTreeFarmsPredictor_STBatchQBCDiversitySelector_UEI0A", r"_DUREAL_UEI0A", regex=True) # Catches UEI0A...
+        .str.replace(r"_MTTreeFarmsPredictor_STBatchQBCDiversitySelector_UEI1(A\d+)", r"_UNREAL_UEI1\1", regex=True) # Catches UEI1A...
+        .str.replace(r"_MTTreeFarmsPredictor_STBatchQBCDiversitySelector_UEI0(A\d+)", r"_DUREAL_UEI0\1", regex=True) # Catches UEI0A...
         # PL_RF
-        .str.replace(r"(_MTRandomForestClassifierPredictor_STPassiveLearningSelector)(.*_B\d+)", r"_PL_RF\2", regex=True) # Capture from batchsize
-        # PL_GPC (already correct)
-        .str.replace(r"(_MTGaussianProcessClassifierPredictor_STPassiveLearningSelector)(.*_B\d+)", r"_PL_GPC\2", regex=True)
-        # PL_BNN (already correct)
-        .str.replace(r"(_MTBayesianNeuralNetworkPredictor_STPassiveLearningSelector)(.*_B\d+)", r"_PL_BNN\2", regex=True)
+        .str.replace(r"(_MTRandomForestClassifierPredictor_STPassiveLearningSelector_UEI0A0_DW0_DEW0)(_B\d+)", r"_PL_RF\2", regex=True)
+        # PL_GPC
+        .str.replace(r"(_MTGaussianProcessClassifierPredictor_STPassiveLearningSelector_UEI0A0_DW0_DEW0)(_B\d+)", r"_PL_GPC\2", regex=True)
+        # PL_BNN
+        .str.replace(r"(_MTBayesianNeuralNetworkPredictor_STPassiveLearningSelector_UEI0A0_DW0_DEW0)(_B\d+)", r"_PL_BNN\2", regex=True)
         # BALD_BNN
-        .str.replace(r"(_MTBayesianNeuralNetworkPredictor_STBALDSelector)(.*_B\d+)", r"_BALD_BNN\2", regex=True)
-        # BALD_GPC (already correct)
-        .str.replace(r"(_MTGaussianProcessClassifierPredictor_STBALDSelector)(.*_B\d+)", r"_BALD_GPC\2", regex=True)
-        # QBC_RF (ensure this captures the rest of the string for specific parameters)
-        # This needs to replace the MT...ST part, and leave the UEI...DW...DEW...B part.
+        .str.replace(r"(_MTBayesianNeuralNetworkPredictor_STBALDSelector_UEI0A0_DW0_DEW0)(_B\d+)", r"_BALD_BNN\2", regex=True)
+        # BALD_GPC
+        .str.replace(r"(_MTGaussianProcessClassifierPredictor_STBALDSelector_UEI0A0_DW0_DEW0)(_B\d+)", r"_BALD_GPC\2", regex=True)
+        # QBC_RF 
         .str.replace(r"(_MTRandomForestClassifierPredictor_STBatchQBCDiversitySelector)(_UEI.*)", r"_QBC_RF\2", regex=True)
-        # LFR specific (already correct, but ensure consistency with BatchQBCDiversitySelector if changed to BatchQBCSelector)
+        # LFR specific 
         .str.replace(r"(_MTTreefarmsLFRPredictor_STBatchQBCDiversitySelector_UEI0_A0_RFREQ)(\d+)(_B\d+)", r"_LFR_RFREQ\2\3", regex=True) 
     )
 
@@ -396,9 +428,6 @@ def CreateParameterVectorFunction(Data,
     )
 
     ### Find Missing Simulations (Optional) ###
-    # If you have a FindMissingSimulations function, you can call it here.
-    # ParameterVector = FindMissingSimulations(ParameterVector)
-
     ### Return ###
     return ParameterVector
 

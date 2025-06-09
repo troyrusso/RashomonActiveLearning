@@ -1,73 +1,55 @@
 #!/bin/bash
 
-### Get the current directory name ###
-CURRENT_DIR=$(basename "$PWD")
-echo "Current directory is: $CURRENT_DIR"
+### Get the current directory name (e.g., BankNote) ###
+CURRENT_DATASET=$(basename "$PWD")
+echo "Processing delete for dataset: $CURRENT_DATASET"
 
-### Delete all Unprocessed Results files ##
+# Define the root results directory
+RESULTS_ROOT_DIR="$HOME/RashomonActiveLearning/Results"
 
-# Check if the Random Forest Results directory exists
-RF_DIR="../../../Results/$CURRENT_DIR/RandomForestClassification/Raw"
-if [ -d "$RF_DIR" ]; then
-    cd "$RF_DIR"
-    
-    # Remove Random Forest Results #
-    if [ -f delete_results.sh ]; then
-        bash delete_results.sh
-    else
-        # Check if there are any .pkl files before trying to delete
-        if ls *.pkl 1> /dev/null 2>&1; then
-            rm *.pkl
-            echo "All .pkl results files in RandomForests deleted."
+# Define the list 
+MODEL_DIRS=(
+    "BayesianNeuralNetworkPredictor"
+    "GaussianProcessClassifierPredictor"
+    "RandomForestClassifierPredictor"
+    "TreeFarmsPredictor"   
+    "TreefarmsLFRPredictor" 
+)
+
+echo "--- Starting Raw Results Deletion for $CURRENT_DATASET ---"
+
+# Loop through each new model directory name
+for MODEL_DIR in "${MODEL_DIRS[@]}"; do
+    TARGET_RAW_DIR="$RESULTS_ROOT_DIR/$CURRENT_DATASET/$MODEL_DIR/Raw"
+
+    echo "Attempting to delete .pkl files in: $TARGET_RAW_DIR"
+
+    # Check if the target Raw directory exists
+    if [ -d "$TARGET_RAW_DIR" ]; then
+        # Navigate into the Raw directory. Using pushd/popd to manage directory stack.
+        pushd "$TARGET_RAW_DIR" > /dev/null || { echo "Error: Could not change directory to $TARGET_RAW_DIR"; exit 1; }
+
+        # Execute the delete_results.sh script within that Raw directory
+        if [ -f "./delete_results.sh" ]; then
+            bash ./delete_results.sh
+            # The delete_results.sh should ideally output confirmation itself
         else
-            echo "No .pkl files found in RandomForests directory."
+            echo "Warning: './delete_results.sh' not found in $TARGET_RAW_DIR. Attempting 'rm *.pkl' directly."
+            # Check if there are any .pkl files before trying to remove them to avoid 'No such file' error
+            if ls *.pkl 1> /dev/null 2>&1; then
+                rm *.pkl
+                echo "All .pkl files deleted from $TARGET_RAW_DIR."
+            else
+                echo "No .pkl files found in $TARGET_RAW_DIR."
+            fi
         fi
-    fi
-else
-    echo "RandomForestClassification directory not found at expected path."
-    exit 1
-fi
-
-# Check if the TreeFarms directory exists
-TF_DIR="../../TreeFarms/Raw/"
-if [ -d "$TF_DIR" ]; then
-    cd "$TF_DIR"
-    
-    # Remove TreeFarms Results #
-    if [ -f delete_results.sh ]; then
-        bash delete_results.sh
+        
+        # Navigate back to the previous directory (where pushd was called from)
+        popd > /dev/null
+        
     else
-        # Check if there are any .pkl files before trying to delete
-        if ls *.pkl 1> /dev/null 2>&1; then
-            rm *.pkl
-            echo "All .pkl results files in TreeFarms deleted."
-        else
-            echo "No .pkl files found in TreeFarms directory."
-        fi
+        echo "Skipping: Model directory '$MODEL_DIR' not found for dataset '$CURRENT_DATASET' at path: $TARGET_RAW_DIR"
     fi
-else
-    echo "TreeFarms directory not found at expected path."
-fi
+done
 
-# Check if the BayesianNeuralNetwork directory exists
-TF_DIR="../../BayesianNeuralNetwork/Raw/"
-if [ -d "$TF_DIR" ]; then
-    cd "$TF_DIR"
-    
-    # Remove BayesianNeuralNetwork Results #
-    if [ -f delete_results.sh ]; then
-        bash delete_results.sh
-    else
-        # Check if there are any .pkl files before trying to delete
-        if ls *.pkl 1> /dev/null 2>&1; then
-            rm *.pkl
-            echo "All .pkl results files in BayesianNeuralNetwork deleted."
-        else
-            echo "No .pkl files found in BayesianNeuralNetwork directory."
-        fi
-    fi
-else
-    echo "BayesianNeuralNetwork directory not found at expected path."
-fi
-
-echo "Raw results cleanup completed."
+echo "--- Deletion of Raw Results Completed for $CURRENT_DATASET ---"
