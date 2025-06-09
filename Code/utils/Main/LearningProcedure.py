@@ -103,8 +103,7 @@ def LearningProcedure(SimulationConfigInputUpdated):
             df_Candidate=SimulationConfigInputUpdated["df_Candidate"],
             df_Train=SimulationConfigInputUpdated["df_Train"], 
             Model=predictor_model, 
-            auxiliary_columns=SimulationConfigInputUpdated.get('auxiliary_data_cols', [])
-        )
+            auxiliary_columns=SimulationConfigInputUpdated.get('auxiliary_data_cols', []))
 
         ## Query selected observation ##
         QueryObservationIndex = SelectorFuncOutput["IndexRecommendation"]
@@ -116,7 +115,6 @@ def LearningProcedure(SimulationConfigInputUpdated):
             df=QueryObservation,
             target_column_name="Y",
             auxiliary_columns=SimulationConfigInputUpdated.get('auxiliary_data_cols', []))
-
         
         ## Update Train and Candidate Sets ##
         SimulationConfigInputUpdated["df_Train"] = pd.concat([SimulationConfigInputUpdated["df_Train"], QueryObservation]).drop(columns=['DiversityScores', 'DensityScores'])
