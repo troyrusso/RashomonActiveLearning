@@ -56,8 +56,8 @@ class tuning_Treefarms_LFR(Treefarms_LFR):
         # then changing the corresponding ordering 
         # there *must* be cool algorithms for this that have already been studied
         predictions_to_add = np.zeros((X_to_add.shape[0], self.predictions.shape[1]))
-        self.y = np.concatenate([self.y, y_to_add.copy()])
-        self.X = np.concatenate([self.X, X_to_add.copy()])
+        self.y = pd.concatenate([self.y, y_to_add], ignore_index=True)
+        self.X = pd.concatenate([self.X, X_to_add], ignore_index=True)
 
         for j in range(len(self.all_trees)): 
             predictions_to_add[:, j] = _predict(self.all_trees[self.accuracy_ordering[j]], X_to_add).values
