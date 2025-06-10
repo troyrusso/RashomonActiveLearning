@@ -9,32 +9,37 @@ import warnings # For warnings if no trees found
 DEFAULT_STATIC_CONFIG = {
     "depth_budget": 3,
     "rashomon_ignore_trivial_extensions": True,
+    "verbose": False
 }
 
 ### Predict Single Tree ##
-def _predict_single_tree(tree_model, X_df: pd.DataFrame):
+def _predict_single_tree(tree_model, X_np: np.ndarray): 
     predictions = []
-    data = X_df.values 
-    for i in range(data.shape[0]):
-        prediction, _ = tree_model.classify(data[i, :])
+    for i in range(X_np.shape[0]):
+        prediction, _ = tree_model.classify(X_np[i, :])
         predictions.append(prediction)
-    return pd.Series(predictions, index=X_df.index)
+    return predictions
 
 ### Score Single Tree ##
-def _score_single_tree(tree_model, X: pd.DataFrame, y: pd.Series):
-    return (_predict_single_tree(tree_model, X) == y).mean()
+def _score_single_tree(tree_model, X_np: np.ndarray, y_np: np.ndarray): 
+    return (np.array(_predict_single_tree(tree_model, X_np)) == y_np).mean()
+
 
 ### LFR Predictor ###
 class LFRPredictor:
 
     ### Initialize Model ###
-    def __init__(self, regularization: float, RashomonThreshold: float,
-                 RashomonThresholdType: str = "Adder", Seed: int = None, **kwargs):
+    def __init__(self, 
+                 regularization: float,
+                 RashomonThreshold: float,
+                 RashomonThresholdType: str = "Adder",
+                #  Seed: int = None,
+                 **kwargs):
         self.regularization = regularization
         self.full_epsilon = RashomonThreshold 
         self.epsilon = RashomonThreshold 
         self.RashomonThresholdType = RashomonThresholdType
-        self.Seed = Seed
+        # self.Seed = Seed
         self.static_config = DEFAULT_STATIC_CONFIG.copy()
         self.static_config["regularization"] = self.regularization
         self.tf = None 
@@ -60,7 +65,7 @@ class LFRPredictor:
             warnings.warn(f"Unsupported RashomonThresholdType: {self.RashomonThresholdType}. Defaulting to 'Adder' logic.")
             config['rashomon_bound_adder'] = self.full_epsilon
 
-        ## Refit TREEFARMS ##
+        ## Fit TREEFARMS ##
         self.tf = tf(config)
         self.tf.fit(self.X_train_current, self.y_train_current)
 
@@ -83,12 +88,12 @@ class LFRPredictor:
         ## Set epsilon ##
         self.epsilon = epsilon
 
-        ## LFR Logic: Decide between full refit and subsetting based on epsilon change ##
-        if self.full_epsilon < self.epsilon:
+        ## Decide between full refit and subsetting based on epsilon change ##
+        if self.full_epsilon < self.epsilon: # TODO: This is probably not directly the condition we want to check, since it's looser than the bound Hayden proved.
             self.full_epsilon = self.epsilon 
             self.fit(self.X_train_current, self.y_train_current) 
         else:
-            objectives = np.array([_score_single_tree(tree, self.X_train_current, self.y_train_current) for tree in self.all_trees])
+            objectives = np.array([_score_single_tree(tree, self.X_train_current.values, self.y_train_current.values) for tree in self.all_trees]) 
             errors = 1 - objectives 
             min_error = np.min(errors)
             self.trees_in_scope = [self.all_trees[i] for i, err in enumerate(errors) if err <= min_error + self.epsilon]
@@ -96,16 +101,19 @@ class LFRPredictor:
                 self.trees_in_scope = self.all_trees.copy() 
 
     ### Helper to get predictions from all trees currently in scope ###
-    def _get_ensemble_predictions_df(self, X_data_df: pd.DataFrame) -> pd.DataFrame:
+    def _get_ensemble_predictions_df(self, X_data_df: pd.DataFrame) -> pd.DataFrame: 
         if not self.trees_in_scope:
             warnings.warn("No trees currently in scope for ensemble predictions. Returning empty DataFrame.")
-            return pd.DataFrame(index=X_data_df.index)
+            return pd.DataFrame(index=X_data_df.index, columns=[])
 
-        predictions_list = [_predict_single_tree(tree, X_data_df) for tree in self.trees_in_scope]
-        ensemble_predictions_df = pd.concat(predictions_list, axis=1)
+        X_data_np = X_data_df.values
+
+        # Pass NumPy array to _predict_single_tree
+        predictions_list_of_lists = [_predict_single_tree(tree, X_data_np) for tree in self.trees_in_scope] 
+        ensemble_predictions_df = pd.DataFrame(predictions_list_of_lists).T 
         ensemble_predictions_df.columns = [f"Tree_{i}" for i in range(ensemble_predictions_df.shape[1])]
+        ensemble_predictions_df.index = X_data_df.index 
         return ensemble_predictions_df
-
 
     ### Predict Model (Ensemble Mode Prediction) ###
     def predict(self, X_data_df: pd.DataFrame) -> np.ndarray:
