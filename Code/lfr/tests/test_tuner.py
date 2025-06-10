@@ -28,6 +28,7 @@ def test_refit_larger_eps():
     model = tuning_Treefarms_LFR(static_config={'verbose': True})
     model.fit(X, y, 0.01)
     model.refit(X, y, 0.02)
+    model.tuned_refit(X, y)
     predictions = model.all_predictions(X)
     assert((predictions.iloc[:, 0] == y).all())
 
@@ -35,5 +36,6 @@ def test_refit_smaller_eps():
     model = tuning_Treefarms_LFR({'verbose': True})
     model.fit(X, y, 0.01)
     model.refit(X, y, 0)
+    model.tuned_refit(X, y)
     predictions = model.all_predictions(X)
     assert((predictions.iloc[:, 0] == y).all())

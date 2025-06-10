@@ -88,6 +88,8 @@ class Treefarms_LFR:
     def refit(self, X_to_add, y_to_add, epsilon, verbose=True):
         '''
         Assumes self.all_trees is length at least 1
+        returns True if did fresh fit call, 
+        False if filtered existing rset
         '''
         all_X = pd.concat([self.X, X_to_add], ignore_index=True)
         all_y = pd.concat([self.y, y_to_add], ignore_index=True)
@@ -95,6 +97,7 @@ class Treefarms_LFR:
             if verbose:
                 print("new epsilon larger than current epsilon, fitting fresh RSet")
             self.fit(all_X, all_y, epsilon)
+            return True
         else:
             objectives = np.array([_score(tree, all_X, all_y) for tree in self.all_trees])
             indices = np.argsort(objectives)
@@ -104,3 +107,4 @@ class Treefarms_LFR:
             self.X = all_X
             self.y = all_y
             self.epsilon = epsilon
+            return False

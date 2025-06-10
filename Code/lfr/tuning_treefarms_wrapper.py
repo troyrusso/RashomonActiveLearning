@@ -50,21 +50,35 @@ class tuning_Treefarms_LFR(Treefarms_LFR):
             lower = self.all_accuracies[best_num_trees-1]
             upper = self.all_accuracies[best_num_trees]
             self.epsilon = (upper + lower) / 2 - self.all_accuracies[0]
-    
+            
+    def refit(self, X_to_add, y_to_add, epsilon, verbose=True):
+        if not super().refit(X_to_add, y_to_add, epsilon, verbose=verbose): 
+            # if we didn't do a fresh fit call, have to update predictions and accuracy order: 
+            predictions_to_add = np.zeros((X_to_add.shape[0], self.predictions.shape[1]))
+            for j in range(len(self.all_trees)): 
+                predictions_to_add[:, j] = _predict(self.all_trees[self.accuracy_ordering[j]], X_to_add).values
+            self.predictions = np.concatenate([self.predictions, predictions_to_add])
+            
+            # get accuracies for matrix and resort matrix/accuracies accordingly
+            accuracies = (self.predictions == self.y.values[:, np.newaxis]).mean(axis=0) #accuracies for current accuracy ordering
+            map_cur_to_new_ordering = accuracies.argsort()
+            self.accuracy_ordering = self.accuracy_ordering[map_cur_to_new_ordering]
+            self.predictions = self.predictions[:, map_cur_to_new_ordering]
+        
     def tuned_refit(self, X_to_add, y_to_add):
         # online update of accuracies, 
         # then changing the corresponding ordering 
         # there *must* be cool algorithms for this that have already been studied
         predictions_to_add = np.zeros((X_to_add.shape[0], self.predictions.shape[1]))
-        self.y = pd.concatenate([self.y, y_to_add], ignore_index=True)
-        self.X = pd.concatenate([self.X, X_to_add], ignore_index=True)
+        self.y = pd.concat([self.y, y_to_add], ignore_index=True)
+        self.X = pd.concat([self.X, X_to_add], ignore_index=True)
 
         for j in range(len(self.all_trees)): 
             predictions_to_add[:, j] = _predict(self.all_trees[self.accuracy_ordering[j]], X_to_add).values
         self.predictions = np.concatenate([self.predictions, predictions_to_add])
 
         # get accuracies for matrix and resort matrix/accuracies accordingly
-        accuracies = (self.predictions == self.y).mean(axis=0) #accuracies for current accuracy ordering
+        accuracies = (self.predictions == self.y.values[:, np.newaxis]).mean(axis=0) #accuracies for current accuracy ordering
         map_cur_to_new_ordering = accuracies.argsort()
         self.accuracy_ordering = self.accuracy_ordering[map_cur_to_new_ordering]
         self.predictions = self.predictions[:, map_cur_to_new_ordering]
