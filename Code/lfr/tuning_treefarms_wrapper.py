@@ -15,21 +15,25 @@ class tuning_Treefarms_LFR(Treefarms_LFR):
         if 'verbose' in self.static_config and self.static_config['verbose']: 
             print("Calling regular Treefarms_LFR with provided maximum value of {epsilon} for epsilon")
         super().fit(X, y, epsilon)
-        self.all_accuracies = np.array([_score(tree, X, y) for tree in self.all_trees])
-        self.accuracy_ordering = np.argsort(self.all_accuracies)
+        all_accuracies = np.array([_score(tree, X, y) for tree in self.all_trees])
+        self.accuracy_ordering = np.argsort(all_accuracies)
 
-        predictions = np.zeros((X.shape[0], len(self.all_trees)))
+        self.predictions = np.zeros((X.shape[0], len(self.all_trees)))
         for j in range(len(self.all_trees)): 
-            predictions[:, j] = _predict(self.all_trees[self.accuracy_ordering[j]], X).values
-
+            self.predictions[:, j] = _predict(self.all_trees[self.accuracy_ordering[j]], X).values
+        self._tune_eps(sorted_accs=all_accuracies[self.accuracy_ordering])
+    
+    def _tune_eps(self, sorted_accs): 
         # todo: improve efficiency of scan
         best_num_trees = 1
         best_acc = 0
         for i in range(len(self.all_trees)):
+            if i < len(self.all_trees)-1 and sorted_accs[i] == sorted_accs[i+1]: 
+                continue #split not valid for any epsilon threshold
             # take the i+1 best trees
             # and compute the majority vote of those trees
-            y_hat = predictions[:,:i+1].mean(axis=1)>0.5
-            acc = np.mean(y_hat == y)
+            y_hat = self.predictions[:,:i+1].mean(axis=1)>0.5
+            acc = np.mean(y_hat == self.y)
             if acc > best_acc: 
                 best_num_trees = i+1
                 best_acc = acc
@@ -46,4 +50,23 @@ class tuning_Treefarms_LFR(Treefarms_LFR):
             lower = self.all_accuracies[best_num_trees-1]
             upper = self.all_accuracies[best_num_trees]
             self.epsilon = (upper + lower) / 2 - self.all_accuracies[0]
+    
+    def tuned_refit(self, X_to_add, y_to_add):
+        # online update of accuracies, 
+        # then changing the corresponding ordering 
+        # there *must* be cool algorithms for this that have already been studied
+        predictions_to_add = np.zeros((X_to_add.shape[0], self.predictions.shape[1]))
+        self.y = np.concatenate([self.y, y_to_add.copy()])
+        self.X = np.concatenate([self.X, X_to_add.copy()])
+
+        for j in range(len(self.all_trees)): 
+            predictions_to_add[:, j] = _predict(self.all_trees[self.accuracy_ordering[j]], X_to_add).values
+        self.predictions = np.concatenate([self.predictions, predictions_to_add])
+
+        # get accuracies for matrix and resort matrix/accuracies accordingly
+        accuracies = (self.predictions == self.y).mean(axis=0) #accuracies for current accuracy ordering
+        map_cur_to_new_ordering = accuracies.argsort()
+        self.accuracy_ordering = self.accuracy_ordering[map_cur_to_new_ordering]
+        self.predictions = self.predictions[:, map_cur_to_new_ordering]
+        self._tune_eps(accuracies[map_cur_to_new_ordering])
 
