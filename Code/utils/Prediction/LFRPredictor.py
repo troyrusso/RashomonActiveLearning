@@ -2,9 +2,9 @@
 from treefarms import TREEFARMS as tf
 import pandas as pd
 import numpy as np
-import torch # Needed for predict_proba_K output consistency
-from scipy import stats # For mode calculation in predict
-import warnings # For warnings if no trees found
+import torch 
+from scipy import stats 
+import warnings 
 
 DEFAULT_STATIC_CONFIG = {
     "depth_budget": 3,
@@ -13,40 +13,48 @@ DEFAULT_STATIC_CONFIG = {
 }
 
 ### Predict Single Tree ##
-def _predict_single_tree(tree_model, X_np: np.ndarray): 
+def _predict_single_tree(tree_model, X_np: np.ndarray):
+    """
+    Predicts labels for a NumPy array of data using a single TreeFarms tree model.
+    """
     predictions = []
     for i in range(X_np.shape[0]):
         prediction, _ = tree_model.classify(X_np[i, :])
         predictions.append(prediction)
-    return predictions
+    return predictions 
 
 ### Score Single Tree ##
-def _score_single_tree(tree_model, X_np: np.ndarray, y_np: np.ndarray): 
+def _score_single_tree(tree_model, X_np: np.ndarray, y_np: np.ndarray):
+    """
+    Calculates the accuracy of a single TreeFarms tree model on NumPy arrays.
+    """
     return (np.array(_predict_single_tree(tree_model, X_np)) == y_np).mean()
-
 
 ### LFR Predictor ###
 class LFRPredictor:
 
     ### Initialize Model ###
-    def __init__(self, 
+    def __init__(self,
                  regularization: float,
-                 RashomonThreshold: float,
+                 RashomonThreshold: float, # id est, the max_epsilon for tuning
                  RashomonThresholdType: str = "Adder",
-                #  Seed: int = None,
                  **kwargs):
         self.regularization = regularization
-        self.full_epsilon = RashomonThreshold 
-        self.epsilon = RashomonThreshold 
+        self.full_epsilon = RashomonThreshold # max_epsilon
+        self.epsilon = RashomonThreshold      # current epsilon
         self.RashomonThresholdType = RashomonThresholdType
-        # self.Seed = Seed
+        # self.Seed = Seed # 
         self.static_config = DEFAULT_STATIC_CONFIG.copy()
         self.static_config["regularization"] = self.regularization
-        self.tf = None 
-        self.all_trees = [] 
-        self.trees_in_scope = [] 
+        self.tf = None
+        self.all_trees = []
+        self.trees_in_scope = []
         self.X_train_current = pd.DataFrame() 
         self.y_train_current = pd.Series() 
+
+        # Attributes for epsilon tuning
+        self.predictions_all_trees = None  # Store predictions of all_trees on X_train_current (NumPy array)
+        self.accuracy_ordering = None      # Stores indices of all_trees sorted by accuracy (descending)
 
     ### Fit Model ###
     def fit(self, X_train_df: pd.DataFrame, y_train_series: pd.Series):
@@ -57,8 +65,10 @@ class LFRPredictor:
 
         ## Configure TreeFarms for a full fit ##
         config = self.static_config.copy()
+
+        # For a full fit, use max_epsilon to enumerate the set
         if self.RashomonThresholdType == "Adder":
-            config['rashomon_bound_adder'] = self.full_epsilon 
+            config['rashomon_bound_adder'] = self.full_epsilon
         elif self.RashomonThresholdType == "Multiplier":
             config['rashomon_bound_multiplier'] = self.full_epsilon
         else:
@@ -72,78 +82,161 @@ class LFRPredictor:
         ## Store all trees ##
         self.all_trees = [self.tf[i] for i in range(self.tf.get_tree_count())]
         self.trees_in_scope = self.all_trees.copy() 
-        self.epsilon = self.full_epsilon 
+
+        ### Epsilon Tuning for Full Fit ##
+        if not self.all_trees:
+            warnings.warn(f"LFRPredictor.fit() completed but found no trees. Cannot tune epsilon.")
+            self.epsilon = self.full_epsilon 
+            self.predictions_all_trees = None
+            self.accuracy_ordering = None
+            return 
+
+        # Calculate accuracies of all trees on the current training data.
+        all_accuracies = np.array([_score_single_tree(tree, self.X_train_current.values, self.y_train_current.values) for tree in self.all_trees])
+
+        # Store indices of trees sorted by accuracy in DESCENDING order (best to worst)
+        self.accuracy_ordering = np.argsort(all_accuracies)[::-1]
+
+        # Compute and store predictions for all_trees on X_train_current.
+        predictions_raw_list = [np.array(_predict_single_tree(self.all_trees[idx], self.X_train_current.values)) for idx in self.accuracy_ordering]
+        self.predictions_all_trees = np.array(predictions_raw_list).T 
+
+        # Tune epsilon and update trees_in_scope based on these accuracies
+        self._tune_eps(all_accuracies[self.accuracy_ordering]) 
 
     ### Refit ###
-    def refit(self, X_to_add: pd.DataFrame, y_to_add: pd.Series, epsilon: float):
-        
+    def refit(self, X_to_add: pd.DataFrame, y_to_add: pd.Series, epsilon: float, verbose: bool = False):
+
         ## Concatenate new data with existing cumulative training data ##
         all_X = pd.concat([self.X_train_current, X_to_add], ignore_index=True)
         all_y = pd.concat([self.y_train_current, y_to_add], ignore_index=True)
 
         ## Update the cumulative training data stored internally ##
-        self.X_train_current = all_X
-        self.y_train_current = all_y
+        self.X_train_current = all_X 
+        self.y_train_current = all_y 
 
         ## Set epsilon ##
         self.epsilon = epsilon
 
         ## Decide between full refit and subsetting based on epsilon change ##
-        if self.full_epsilon < self.epsilon: # TODO: This is probably not directly the condition we want to check, since it's looser than the bound Hayden proved.
-            self.full_epsilon = self.epsilon 
+        if self.full_epsilon < self.epsilon:
+            if verbose:
+                print("New epsilon larger than current full_epsilon, performing fresh Rashomon Set fit.")
+            self.full_epsilon = self.epsilon
             self.fit(self.X_train_current, self.y_train_current) 
         else:
-            objectives = np.array([_score_single_tree(tree, self.X_train_current.values, self.y_train_current.values) for tree in self.all_trees]) 
-            errors = 1 - objectives 
-            min_error = np.min(errors)
-            self.trees_in_scope = [self.all_trees[i] for i, err in enumerate(errors) if err <= min_error + self.epsilon]
-            if not self.trees_in_scope: 
-                self.trees_in_scope = self.all_trees.copy() 
+            # If not a full refit, update accuracies and re-tune epsilon
+            # Recalculate accuracies of all trees on the new cumulative data
+            objectives = np.array([_score_single_tree(tree, self.X_train_current.values, self.y_train_current.values) for tree in self.all_trees])
 
-    ### Helper to get predictions from all trees currently in scope ###
-    def _get_ensemble_predictions_df(self, X_data_df: pd.DataFrame) -> pd.DataFrame: 
+            # Update accuracy ordering to reflect new data's performance (descending order)
+            map_cur_to_new_ordering = np.argsort(objectives)[::-1]
+            self.accuracy_ordering = self.accuracy_ordering[map_cur_to_new_ordering] # Re-order global accuracy_ordering
+            self.predictions_all_trees = self.predictions_all_trees[:, map_cur_to_new_ordering] # Re-order global predictions_all_trees
+
+            # Tune epsilon based on updated accuracies
+            self._tune_eps(objectives[self.accuracy_ordering]) 
+
+            errors = 1 - objectives
+            min_error = np.min(errors) 
+
+
+    ### Epsilon Tuning Helper ###
+    def _tune_eps(self, sorted_accs: np.ndarray):
+        """
+        Tunes epsilon by finding the ensemble size that maximizes accuracy on training data.
+        Updates self.trees_in_scope and self.epsilon.
+        Assumes sorted_accs are accuracies of all_trees, sorted DESCENDINGLY (best to worst).
+        """
+        if not sorted_accs.size > 0:
+            warnings.warn("Cannot tune epsilon on an empty set of accuracies. Defaulting to max epsilon.")
+            self.trees_in_scope = [] 
+            self.epsilon = self.full_epsilon 
+            return
+
+        # Set up #
+        best_num_trees = 0
+        best_acc = -1.0
+
+        # Iterate through possible numbers of trees, forming ensembles from the best #
+        for i in range(sorted_accs.size):
+
+            # Compute ensemble prediction 
+            if len(np.unique(self.y_train_current)) > 2:    # Multi-class
+                y_hat_val, _ = stats.mode(self.predictions_all_trees[:, :i+1], axis=1, keepdims=False)
+                y_hat = y_hat_val.squeeze()
+            else:                                           # Binary 
+                y_hat = (self.predictions_all_trees[:, :i+1].mean(axis=1) > 0.5).astype(int)
+
+            # Calculate accuracy of this ensemble on the training data
+            acc = np.mean(y_hat == self.y_train_current.values)
+
+            # Update best_num_trees if current ensemble yields higher accuracy
+            if acc > best_acc:
+                best_acc = acc
+                best_num_trees = i + 1 # Number of trees (1-indexed)
+
+        # Update trees_in_scope based on the best number of trees found
+        if best_num_trees > 0:
+            self.trees_in_scope = [self.all_trees[k] for k in self.accuracy_ordering[:best_num_trees]]
+        else:
+            # Fallback: if no valid ensemble found, default to a sensible state
+            warnings.warn("Epsilon tuning resulted in 0 optimal trees. Retaining all trees from full fit.")
+            self.trees_in_scope = self.all_trees.copy()
+            best_num_trees = len(self.all_trees) 
+
+        # Compute epsilon based on the selected trees_in_scope.
+        if best_num_trees == len(self.all_trees):
+            self.epsilon = self.full_epsilon 
+        else:
+            self.epsilon = sorted_accs[0] - sorted_accs[best_num_trees - 1] 
+            self.epsilon = max(0.0, min(self.epsilon, self.full_epsilon)) 
+
+
+    ### Helper to get predictions from all trees ###
+    def _get_ensemble_predictions_df(self, X_data_df: pd.DataFrame) -> pd.DataFrame:
         if not self.trees_in_scope:
             warnings.warn("No trees currently in scope for ensemble predictions. Returning empty DataFrame.")
             return pd.DataFrame(index=X_data_df.index, columns=[])
 
         X_data_np = X_data_df.values
-
-        # Pass NumPy array to _predict_single_tree
-        predictions_list_of_lists = [_predict_single_tree(tree, X_data_np) for tree in self.trees_in_scope] 
-        ensemble_predictions_df = pd.DataFrame(predictions_list_of_lists).T 
+        predictions_list_of_lists = [_predict_single_tree(tree, X_data_np) for tree in self.trees_in_scope]
+        ensemble_predictions_df = pd.DataFrame(predictions_list_of_lists).T
         ensemble_predictions_df.columns = [f"Tree_{i}" for i in range(ensemble_predictions_df.shape[1])]
-        ensemble_predictions_df.index = X_data_df.index 
+        ensemble_predictions_df.index = X_data_df.index
         return ensemble_predictions_df
 
     ### Predict Model (Ensemble Mode Prediction) ###
     def predict(self, X_data_df: pd.DataFrame) -> np.ndarray:
-        if self.tf is None: 
+        if self.tf is None:
             raise RuntimeError("Model has not been fitted yet. Call .fit() first.")
-        if not self.trees_in_scope: 
+        if not self.trees_in_scope:
              warnings.warn("No trees in scope for prediction. Returning zeros.")
-             return np.zeros(X_data_df.shape[0], dtype=int) 
+             return np.zeros(X_data_df.shape[0], dtype=int)
         ensemble_predictions_df = self._get_ensemble_predictions_df(X_data_df)
         mode_predictions = stats.mode(ensemble_predictions_df, axis=1)[0].squeeze()
-        return mode_predictions.astype(int) 
+        return mode_predictions.astype(int)
 
     ### Get prediction probabilities ###
     def predict_proba_K(self, X_data_np: np.ndarray, K_samples: int = None) -> torch.Tensor:
-        if not self.trees_in_scope: 
+        if self.tf is None:
+            raise RuntimeError("Model has not been fitted yet. Call .fit() first.")
+        if not self.trees_in_scope:
             num_samples = X_data_np.shape[0]
-            num_classes = len(np.unique(self.y_train_current)) if self.y_train_current is not None else 2 # Default to 2 classes
+            num_classes = len(np.unique(self.y_train_current)) if self.y_train_current is not None and not self.y_train_current.empty else 2
             warnings.warn("No trees in scope for predict_proba_K. Returning default tensor.")
             return torch.full((num_samples, 0, num_classes), -float('inf'), dtype=torch.float32)
 
-        X_data_df = pd.DataFrame(X_data_np, columns=self.X_train_current.columns) # Use stored train columns
+        X_data_df = pd.DataFrame(X_data_np, columns=self.X_train_current.columns)
         ensemble_predictions_df = self._get_ensemble_predictions_df(X_data_df)
-        
+
         num_samples = ensemble_predictions_df.shape[0]
         num_trees_in_ensemble = ensemble_predictions_df.shape[1]
-        
-        unique_classes_sorted = np.sort(np.unique(self.y_train_current)) # Ensure order for mapping
+
+        unique_classes_sorted = np.sort(np.unique(self.y_train_current))
         num_classes = len(unique_classes_sorted)
         class_mapping = {cls: i for i, cls in enumerate(unique_classes_sorted)}
-        
+
         log_probs_N_K_C = torch.full((num_samples, num_trees_in_ensemble, num_classes), -float('inf'), dtype=torch.float32)
 
         for sample_idx in range(num_samples):
@@ -160,11 +253,17 @@ class LFRPredictor:
         if self.tf is None:
             return {"AllTreeCount": 0, "UniqueTreeCount": 0}
 
-        all_tree_count = self.tf.get_tree_count() 
+        all_tree_count = self.tf.get_tree_count()
         unique_tree_count = len(self.trees_in_scope)
 
         return {"AllTreeCount": all_tree_count, "UniqueTreeCount": unique_tree_count}
-    
+
     ### Get predictions from each individual tree ###
     def get_raw_ensemble_predictions(self, X_data_df: pd.DataFrame) -> pd.DataFrame:
+        if self.tf is None:
+            raise RuntimeError("Model has not been fitted yet. Call .fit() first.")
+        if not self.trees_in_scope:
+            warnings.warn("No trees found in the Rashomon set for raw ensemble predictions. Returning empty DataFrame.")
+            return pd.DataFrame(index=X_data_df.index, columns=[])
+
         return self._get_ensemble_predictions_df(X_data_df)
