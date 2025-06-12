@@ -22,13 +22,15 @@
 #   auxiliary_data_cols: Columns to exclude when training the model.
 # Output:
 #   ErrorVec: A 1xM vector of errors with M being the number of observations in df_Candidate. 
+#   EpsilonVec: Vector of Rashomon threshold values at each iteration.
 #   SelectedObservationHistory: The index of the queried candidate observation at each iteration
 #   TreeCount: A dictionary that contains two keys: {AllTreeCount, UniqueTreeCount} indicating
 #                          the number of trees in the Rashomon set from TreeFarms and the number of unique classification patterns.
 
 ### Import functions ###
-import pandas as pd
 import inspect 
+import numpy as np
+import pandas as pd
 
 ### Functions ###
 from utils.Selector import *
@@ -41,6 +43,7 @@ def LearningProcedure(SimulationConfigInputUpdated):
     ### Set Up ###
     i = 0
     ErrorVec = []
+    EpsilonVec = []
     SelectedObservationHistory = []
     TreeCount = {"AllTreeCount": [], "UniqueTreeCount": []}
     refit_frequency = SimulationConfigInputUpdated.get("RefitFrequency", 1)
@@ -66,23 +69,31 @@ def LearningProcedure(SimulationConfigInputUpdated):
         X_train_df, y_train_series = get_features_and_target(
             df=SimulationConfigInputUpdated["df_Train"],
             target_column_name="Y",
-            auxiliary_columns=SimulationConfigInputUpdated.get('auxiliary_data_cols', [])
-        )
+            auxiliary_columns=SimulationConfigInputUpdated.get('auxiliary_data_cols', []))
 
         ## REFIT VS. UPDATE ###
         if i == 0:                                                                  # Always fit on the first iteration
             predictor_model.fit(X_train_df=X_train_df, y_train_series=y_train_series)
-        else:                                                                       # Subsequent iterations
-            ### Check if model is LFR ###
-            if isinstance(predictor_model, LFRPredictor) and (i % refit_frequency == 0):
+            if isinstance(predictor_model, LFRPredictor): # For LFRPredictor, ensure its internal current_iteration_from_lp is set for first fit
+                predictor_model.current_iteration_from_lp = i
+        else:
+            if isinstance(predictor_model, LFRPredictor):
                 predictor_model.refit(
                     X_to_add=last_added_X_batch,
                     y_to_add=last_added_y_batch,
-                    epsilon=SimulationConfigInputUpdated["RashomonThreshold"], 
+                    nominal_rashomon_threshold_input=SimulationConfigInputUpdated["RashomonThreshold"],
+                    current_iteration=i, 
+                    current_train_set_size=len(X_train_df),
+                    verbose=False
                 )
-            ### If not LFR, just refit ###
             else:
                 predictor_model.fit(X_train_df=X_train_df, y_train_series=y_train_series)
+                
+        ## Store Rashomon Threshold ##
+        if hasattr(predictor_model, 'epsilon'):
+            EpsilonVec.append(predictor_model.epsilon)
+        else:
+            EpsilonVec.append(np.nan)
 
         ### Test Error ###
         TestErrorOutput = TestErrorFunction(InputModel=predictor_model,
@@ -134,6 +145,7 @@ def LearningProcedure(SimulationConfigInputUpdated):
 
     ### Output ###
     LearningProcedureOutput = {"ErrorVec": ErrorVec,
+                               "EpsilonVec": EpsilonVec,
                                "TreeCount": TreeCount,
                                "SelectedObservationHistory": SelectedObservationHistory}
                               
