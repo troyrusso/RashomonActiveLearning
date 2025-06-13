@@ -20,11 +20,11 @@ def CreateParameterVectorFunction(Data,
                                   IncludePL_BNN=False,      # Passive Learning with BayesianNeuralNetworkPredictor
                                   IncludeBALD_BNN=False,    # BALD with BayesianNeuralNetworkPredictor
                                   IncludeBALD_GPC=False,    # BALD with GaussianProcessClassifierPredictor
-                                  IncludeQBC_TreeFarms_Unique=False, # BatchQBC with TreeFarmsPredictor (UniqueErrorsInput=1)
-                                  IncludeQBC_TreeFarms_Duplicate=False, # BatchQBC with TreeFarmsPredictor (UniqueErrorsInput=0)
+                                  IncludeQBC_TreeFarms_Unique=False, # BatchQBC with TreeFarmsPredictor (UniqueErrorsInput=1) -> UNREAL
+                                  IncludeQBC_TreeFarms_Duplicate=False, # BatchQBC with TreeFarmsPredictor (UniqueErrorsInput=0) -> DUREAL
                                   IncludeQBC_RF=False,      # BatchQBC with RandomForestClassifierPredictor
-                                  IncludeLFR_TreeFarms=False, # NEW: For TreefarmsLFRPredictor (requires RefitFrequency)
-                                  RefitFrequency=1          # Default refit frequency for LFR (1 = every iter)
+                                  IncludeLFR_TreeFarms_Unique=False, # NEW: BatchQBC with LFRPredictor (UniqueErrorsInput=1) -> UNREAL_LFR
+                                  IncludeLFR_TreeFarms_Duplicate=False # NEW: BatchQBC with LFRPredictor (UniqueErrorsInput=0) -> DUREAL_LFR
                                   ):
 
     ### Data Abbreviations ###
@@ -44,6 +44,7 @@ def CreateParameterVectorFunction(Data,
     all_parameter_dicts = []
 
     ### Base Parameter Dictionary ###
+    # This block is currently unused if all flags are False. It could be removed or used as a default if no flags are set.
     base_params = {
         "Data": [Data],
         "Seed": list(Seed),
@@ -84,8 +85,8 @@ def CreateParameterVectorFunction(Data,
             "DensityWeight": [0], 
             "BatchSize": [BatchSize],
             "Partition": [Partition],
-            "Time": ["00:59:00"], 
-            "Memory": ["1000M"] 
+            "Time": [Time],
+            "Memory": [Memory]
         }
         all_parameter_dicts.append(PL_RF_ParameterDictionary)
 
@@ -210,16 +211,16 @@ def CreateParameterVectorFunction(Data,
         }
         all_parameter_dicts.append(BALD_GPC_ParameterDictionary)
 
-    ### 6. BatchQBCSelector and TreeFarmsPredictor with UniqueErrorsInput=1 (UNREAL) ###
+    ### UNREAL: BatchQBCSelector and TreeFarmsPredictor with UniqueErrorsInput=1 ###
     if IncludeQBC_TreeFarms_Unique:
-        QBC_TF_Unique_ParameterDictionary = {
+        UNREAL_ParameterDictionary = { # Renamed variable for clarity
             "Data": [Data],
             "Seed": list(Seed),
             "TestProportion": [0.2],
             "CandidateProportion": [0.8],
             "SelectorType": ["BatchQBCSelector"],
             "ModelType": ["TreeFarmsPredictor"],
-            "UniqueErrorsInput": [1], 
+            "UniqueErrorsInput": [1], # Unique errors input for QBC
             "n_estimators": [100], 
             "regularization": [0.01],
             "RashomonThresholdType": ["Adder"],
@@ -232,18 +233,18 @@ def CreateParameterVectorFunction(Data,
             "Time": [Time],
             "Memory": [Memory]
         }
-        all_parameter_dicts.append(QBC_TF_Unique_ParameterDictionary)
+        all_parameter_dicts.append(UNREAL_ParameterDictionary)
 
-    ### 7. BatchQBCSelector and TreeFarmsPredictor with UniqueErrorsInput=0 (DUREAL) ###
+    ### DUREAL: BatchQBCSelector and TreeFarmsPredictor with UniqueErrorsInput=0 ###
     if IncludeQBC_TreeFarms_Duplicate:
-        QBC_TF_Duplicate_ParameterDictionary = {
+        DUREAL_ParameterDictionary = { # Renamed variable for clarity
             "Data": [Data],
             "Seed": list(Seed),
             "TestProportion": [0.2],
             "CandidateProportion": [0.8],
             "SelectorType": ["BatchQBCSelector"], 
             "ModelType": ["TreeFarmsPredictor"],
-            "UniqueErrorsInput": [0], 
+            "UniqueErrorsInput": [0], # Duplicate errors input for QBC
             "n_estimators": [100], 
             "regularization": [0.01],
             "RashomonThresholdType": ["Adder"],
@@ -256,18 +257,18 @@ def CreateParameterVectorFunction(Data,
             "Time": [Time],
             "Memory": [Memory]
         }
-        all_parameter_dicts.append(QBC_TF_Duplicate_ParameterDictionary)
+        all_parameter_dicts.append(DUREAL_ParameterDictionary)
 
-    ### 8. BatchQBCSelector with RandomForestClassifierPredictor ###
+    ### BatchQBCSelector with RandomForestClassifierPredictor ###
     if IncludeQBC_RF:
         QBC_RF_ParameterDictionary = {
             "Data": [Data],
             "Seed": list(Seed),
             "TestProportion": [0.2],
             "CandidateProportion": [0.8],
-            "SelectorType": ["BatchQBCSelector"],
+            "SelectorType": ["BatchQBCSelector"], 
             "ModelType": ["RandomForestClassifierPredictor"], 
-            "UniqueErrorsInput": [0], 
+            "UniqueErrorsInput": [0], # Fixed to 0 for RF as it's not relevant
             "n_estimators": [100],
             "regularization": [0.01], 
             "RashomonThresholdType": ["Adder"], 
@@ -277,21 +278,45 @@ def CreateParameterVectorFunction(Data,
             "DensityWeight": [DensityWeight],
             "BatchSize": [BatchSize],
             "Partition": [Partition],
-            "Time": ["00:59:00"],
-            "Memory": ["1000M"]
+            "Time": [Time],
+            "Memory": [Memory]
         }
         all_parameter_dicts.append(QBC_RF_ParameterDictionary)
 
-    # NEW: Include LFR TreeFarms (LFRPredictor)
-    if IncludeLFR_TreeFarms:
-        LFR_TF_ParameterDictionary = {
+    ### UNREAL_LFR: BatchQBCSelector with LFRPredictor (UniqueErrorsInput=1) ###
+    if IncludeLFR_TreeFarms_Unique: # NEW FLAG
+        UNREAL_LFR_ParameterDictionary = { # NEW DICTIONARY
             "Data": [Data],
             "Seed": list(Seed),
             "TestProportion": [0.2],
             "CandidateProportion": [0.8],
             "SelectorType": ["BatchQBCSelector"], 
             "ModelType": ["LFRPredictor"], 
-            "UniqueErrorsInput": [0], 
+            "UniqueErrorsInput": [1], # Unique errors input for QBC
+            "n_estimators": [100], # Not used by LFRPredictor
+            "regularization": [0.01],
+            "RashomonThresholdType": ["Adder"],
+            "RashomonThreshold": [RashomonThreshold],
+            "Type": ["Classification"],
+            "DiversityWeight": [DiversityWeight],
+            "DensityWeight": [DensityWeight],
+            "BatchSize": [BatchSize],
+            "Partition": [Partition],
+            "Time": [Time],
+            "Memory": [Memory]
+        }
+        all_parameter_dicts.append(UNREAL_LFR_ParameterDictionary)
+
+    ### DUREAL_LFR: BatchQBCSelector with LFRPredictor (UniqueErrorsInput=0) ###
+    if IncludeLFR_TreeFarms_Duplicate: # NEW FLAG
+        DUREAL_LFR_ParameterDictionary = { # NEW DICTIONARY
+            "Data": [Data],
+            "Seed": list(Seed),
+            "TestProportion": [0.2],
+            "CandidateProportion": [0.8],
+            "SelectorType": ["BatchQBCSelector"], 
+            "ModelType": ["LFRPredictor"], 
+            "UniqueErrorsInput": [0], # Duplicate errors input for QBC
             "n_estimators": [100], 
             "regularization": [0.01],
             "RashomonThresholdType": ["Adder"],
@@ -302,10 +327,9 @@ def CreateParameterVectorFunction(Data,
             "BatchSize": [BatchSize],
             "Partition": [Partition],
             "Time": [Time],
-            "Memory": [Memory],
-            "RefitFrequency": [RefitFrequency] 
+            "Memory": [Memory]
         }
-        all_parameter_dicts.append(LFR_TF_ParameterDictionary)
+        all_parameter_dicts.append(DUREAL_LFR_ParameterDictionary)
 
 
     # Combine all parameter dictionaries into a single DataFrame
@@ -382,12 +406,6 @@ def CreateParameterVectorFunction(Data,
         bald_relevant_mask = (ParameterVector["ModelType"] == "BayesianNeuralNetworkPredictor") | \
                              (ParameterVector["ModelType"] == "GaussianProcessClassifierPredictor")
         ParameterVector.loc[bald_relevant_mask, "JobName"] += "_K" + ParameterVector.loc[bald_relevant_mask, "K_BALD_Samples"].astype(str)
-    
-    # LFR-specific parameter
-    lfr_mask = ParameterVector["ModelType"] == "LFRPredictor" # <--- CHANGED TO SHORTER NAME
-    if 'RefitFrequency' in ParameterVector.columns:
-        ParameterVector.loc[lfr_mask, "JobName"] += "_RFREQ" + ParameterVector.loc[lfr_mask, "RefitFrequency"].astype(str)
-
 
     # Reorder and refine JobName abbreviations for new class names
     # Apply more specific/desired replacements first.
@@ -406,18 +424,18 @@ def CreateParameterVectorFunction(Data,
         .str.replace(r"(_MTBayesianNeuralNetworkPredictor_STBALDSelector_UEI0A0_DW0_DEW0)(_B\d+)", r"_BALD_BNN\2", regex=True)
         # BALD_GPC
         .str.replace(r"(_MTGaussianProcessClassifierPredictor_STBALDSelector_UEI0A0_DW0_DEW0)(_B\d+)", r"_BALD_GPC\2", regex=True)
-        # QBC_RF 
+        # QBC_RF
         .str.replace(r"(_MTRandomForestClassifierPredictor_STBatchQBCDiversitySelector)(_UEI.*)", r"_QBC_RF\2", regex=True)
-        # LFR specific 
-        .str.replace(r"(_MTTreefarmsLFRPredictor_STBatchQBCDiversitySelector_UEI0_A0_RFREQ)(\d+)(_B\d+)", r"_LFR_RFREQ\2\3", regex=True) 
+        # LFR specific
+        .str.replace(r"(_MTLFRPredictor_STBatchQBCDiversitySelector_UEI0_A0_RFREQ)(\d+)(_B\d+)", r"_LFR_RFREQ\2\3", regex=True)
     )
 
     ParameterVector["JobName"] = (
         ParameterVector["JobName"]
-        .str.replace(r"Adder", "A", regex=True) 
-        .str.replace(r"Multiplier", "M", regex=True) 
-        .str.replace(r"__+", "_", regex=True) 
-        .str.strip("_") 
+        .str.replace(r"Adder", "A", regex=True)
+        .str.replace(r"Multiplier", "M", regex=True)
+        .str.replace(r"__+", "_", regex=True)
+        .str.strip("_")
     )
 
     # Output Name #
