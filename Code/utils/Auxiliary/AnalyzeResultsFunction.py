@@ -1,212 +1,156 @@
 ### Packages ###
 import numpy as np
-import math as math
-import pandas as pd 
-import random as random
+import math
+import pandas as pd
+import random
 import matplotlib.pyplot as plt
 import sys
-sys.path.append('..')
-from utils.Auxiliary import *
+import os
+import warnings
+
+# --- Make sure the new LoadAnalyzedData is importable ---
+# This might require adjusting your Python path or project structure.
+# For example, if utils is in the parent directory:
+# sys.path.append('..')
+from utils.Auxiliary.LoadAnalyzedData import LoadAnalyzedData
+from utils.Auxiliary.MeanVariancePlot import MeanVariancePlot
 
 ### Analyze Results Function ###
 def AnalyzeResultsFunction(DataType, RashomonThreshold):
+    """
+    Analyzes and plots results for various active learning simulation methods
+    based on the new directory structure.
+
+    Args:
+        DataType (str): The name of the data set (e.g., "Iris").
+        RashomonThreshold (float): The Rashomon Threshold for labeling plots.
+                                   Note: This is now only for labeling purposes.
+
+    Returns:
+        dict: A dictionary containing generated plots, summary tables, and raw data.
+    """
 
     ### Load Data ###
-    BaseDirectory = "/Users/simondn/Documents/RashomonActiveLearning/Results/" # Make sure this path is correct
-    PassiveLearningRF = LoadAnalyzedData(DataType, BaseDirectory, "RandomForestClassification", "PLA0") # Updated category name
-    RandomForestResults = LoadAnalyzedData(DataType, BaseDirectory, "RandomForestClassification", "RFA0") # Updated category name
-    BALDResults = LoadAnalyzedData(DataType, BaseDirectory, "BayesianNeuralNetwork", "BALD_B") # New line for BALD
-    AnalyzedDataUNREALDUREAL = LoadAnalyzedData(DataType, BaseDirectory, "TreeFarms", f"A{str(RashomonThreshold).replace('0.', '').replace('.0', '')}") # Updated category name logic
+    BaseDirectory = os.path.join(os.path.expanduser("~"), "Documents", "RashomonActiveLearning", "Results")
 
-    ### Shape ###
-    ShapeTable = {"PassiveLearningRF": PassiveLearningRF["Error"].shape[0],
-              "RandomForestResults": RandomForestResults["Error"].shape[0],
-              "DUREAL":[AnalyzedDataUNREALDUREAL["Error_DUREAL"].shape[0]],
-              "UNREAL": [AnalyzedDataUNREALDUREAL["Error_UNREAL"].shape[0]],
-              "BALD": [BALDResults["Error"].shape[0]] 
-              }
-    ShapeTable = pd.DataFrame(ShapeTable)
+    # --- Updated Method Configurations ---
+    # Maps a short key to the parameters needed by LoadAnalyzedData.
+    # "ModelDir" is the parent folder (e.g., 'BayesianNeuralNetworkPredictor').
+    # "FilePrefix" is the unique identifier in the filename (e.g., '_BNN_BALD').
+    method_configs = {
+        "RF_PL":      {"ModelDir": "RandomForestClassifierPredictor", "FilePrefix": "_RF_PL"},
+        "RF_QBC":     {"ModelDir": "RandomForestClassifierPredictor", "FilePrefix": "_RF_QBC"},
+        "GPC_PL":     {"ModelDir": "GaussianProcessClassifierPredictor", "FilePrefix": "_GPC_PL"},
+        "GPC_BALD":   {"ModelDir": "GaussianProcessClassifierPredictor", "FilePrefix": "_GPC_BALD"},
+        "BNN_PL":     {"ModelDir": "BayesianNeuralNetworkPredictor", "FilePrefix": "_BNN_PL"},
+        "BNN_BALD":   {"ModelDir": "BayesianNeuralNetworkPredictor", "FilePrefix": "_BNN_BALD"},
+        "UNREAL_LFR": {"ModelDir": "LFRPredictor", "FilePrefix": "_Ulfr"},
+        "DUREAL_LFR": {"ModelDir": "LFRPredictor", "FilePrefix": "_Dlfr"},
+    }
+
+    loaded_data_by_method = {}
+    raw_data_tables = {}
+    for method_key, config in method_configs.items():
+        print(f"Loading {method_key} results for {DataType}...")
+        data = LoadAnalyzedData(
+            data_type=DataType,
+            base_directory=BaseDirectory,
+            model_directory=config["ModelDir"],
+            file_prefix=config["FilePrefix"]
+        )
+        loaded_data_by_method[method_key] = data
+        raw_data_tables[method_key] = data # Store for output
+
+        # Warning if core "Error" data is missing
+        if data.get("Error") is None:
+            warnings.warn(f"No 'Error' data loaded for {method_key}. This method will be excluded from plots.")
+
+    ### Shape Table (Number of Simulation Runs) ###
+    ShapeTable = {key: data["Error"].shape[0] for key, data in loaded_data_by_method.items() if data.get("Error") is not None}
+    ShapeTable = pd.DataFrame([ShapeTable]) if ShapeTable else pd.DataFrame()
 
     ### Time Table ###
-    TimeTable = {"DUREAL Mean":[str(round(np.mean(AnalyzedDataUNREALDUREAL["Time_DUREAL"])/60,2))],
-              "UNREAL Mean": [str(round(np.mean(AnalyzedDataUNREALDUREAL["Time_UNREAL"])/60,2))],
-                "DUREAL max":[str(round(np.max(AnalyzedDataUNREALDUREAL["Time_DUREAL"])/60,2))],
-              "UNREAL max": [str(round(np.max(AnalyzedDataUNREALDUREAL["Time_UNREAL"])/60,2))],
-              "BALD Mean":[str(round(np.mean(BALDResults["Time"])/60,2))]
-                         }
-    TimeTable = pd.DataFrame(TimeTable)
+    TimeTable = {}
+    for key, data in loaded_data_by_method.items():
+        if data.get("Time") is not None:
+            time_in_seconds = data["Time"].iloc[:, 0] # Assuming time is in the first column
+            TimeTable[key + " Mean (min)"] = f"{time_in_seconds.mean() / 60:.2f}"
+            TimeTable[key + " Max (min)"] = f"{time_in_seconds.max() / 60:.2f}"
+        else:
+            TimeTable[key + " Mean (min)"] = "N/A"
+            TimeTable[key + " Max (min)"] = "N/A"
+    TimeTable = pd.DataFrame([TimeTable]) if TimeTable else pd.DataFrame()
 
-    ### Trace Plot ###
-    ### Set Up ###
+    ### Trace Plot (F1 Score) ###
     PlotSubtitle = f"Dataset: {DataType}"
     colors = {
-        "PassiveLearning": "black",
-        "RandomForest": "green",
-        "DUREAL": "orange",
-        "UNREAL": "blue",
-        "BALD": "purple" 
+        "RF_PL": "black", "GPC_PL": "gray", "BNN_PL": "silver",
+        "BNN_BALD": "darkviolet", "GPC_BALD": "mediumorchid",
+        "RF_QBC": "green",
+        "UNREAL_LFR": "dodgerblue", "DUREAL_LFR": "darkorange"
     }
-
-    linestyles = {
-        "PassiveLearning": "solid",
-        "RandomForest": "solid",
-        "DUREAL": "solid",
-        "UNREAL": "solid",
-        "BALD": "solid"
-    }
-
+    linestyles = {method: "solid" for method in method_configs.keys()}
     LegendMapping = {
-        "DUREAL": "DUREAL (ε = 0.xxx)",
-        "UNREAL": "UNREAL (ε = 0.xxx)",
-        "BALD": "BALD (NN)" 
+        "RF_PL": "Passive Learning (RF)", "GPC_PL": "Passive Learning (GPC)", "BNN_PL": "Passive Learning (BNN)",
+        "BNN_BALD": "BALD (BNN)", "GPC_BALD": "BALD (GPC)",
+        "RF_QBC": "QBC (RF)",
+        "UNREAL_LFR": f"UNREAL_LFR (ε = {RashomonThreshold})",
+        "DUREAL_LFR": f"DUREAL_LFR (ε = {RashomonThreshold})"
     }
 
-    ### Figure ##
-    TracePlotMean, TracePlotVariance = MeanVariancePlot(RelativeError = None,
-                    PassiveLearning = PassiveLearningRF["Error"],
-                    RandomForest = RandomForestResults["Error"],
-                    DUREAL = AnalyzedDataUNREALDUREAL["Error_DUREAL"],
-                    UNREAL = AnalyzedDataUNREALDUREAL["Error_UNREAL"],
-                    BALD = BALDResults["Error"], 
-                    Colors = colors,
-                    LegendMapping=LegendMapping,
-                    Linestyles=linestyles,
-                    Y_Label = "F1 Score",
-                    Subtitle = PlotSubtitle,
-                    TransparencyVal = 0.05,
-                    VarInput = True,
-                    CriticalValue = 1.96)
-    plt.close(TracePlotMean)
-    plt.close(TracePlotVariance)
+    # Dynamically prepare error data for plotting
+    error_data_for_plot = {key: data["Error"] for key, data in loaded_data_by_method.items() if data.get("Error") is not None}
 
-    ### Number of Trees ###
-    TreePlot = MeanVariancePlot(RelativeError = None,
-                    DUREAL = np.log(AnalyzedDataUNREALDUREAL["TreeCounts_ALL_DUREAL"]), # Fixed typo in original for consistency
-                    UNREAL = np.log(AnalyzedDataUNREALDUREAL["TreeCounts_UNIQUE_UNREAL"]),
-                    Colors = colors,
-                    LegendMapping=LegendMapping,
-                    Linestyles=linestyles,
-                    Y_Label = "log(Number of Trees in the Rashomon Set)",
-                    Subtitle = PlotSubtitle,
-                    TransparencyVal = 0.05,
-                    VarInput = False,
-                    CriticalValue = 1.96)
-    plt.close(TreePlot)
+    TracePlotMean, TracePlotVariance = None, None
+    if not error_data_for_plot:
+        warnings.warn("No error data available for any method. Skipping TracePlot.")
+    else:
+        TracePlotMean, TracePlotVariance = MeanVariancePlot(
+            RelativeError=None, Colors=colors, LegendMapping=LegendMapping, Linestyles=linestyles,
+            Y_Label="F1 Score", Subtitle=PlotSubtitle, TransparencyVal=0.05,
+            VarInput=True, CriticalValue=1.96, **error_data_for_plot
+        )
+        plt.close(TracePlotMean)
+        plt.close(TracePlotVariance)
+
+    ### Number of Trees Plot (Dynamic) ###
+    tree_count_data = {}
+    tree_legend = {}
+    tree_colors = {}
+    
+    for key, data in loaded_data_by_method.items():
+        if data.get("AllTreeCount") is not None:
+            plot_key_all = f"{key}_All"
+            tree_count_data[plot_key_all] = np.log(data["AllTreeCount"].replace(0, 1)) # Use log(1) for 0 trees
+            tree_legend[plot_key_all] = f"{LegendMapping.get(key, key)} (Total)"
+            tree_colors[plot_key_all] = "darkorange"
+        if data.get("UniqueTreeCount") is not None:
+            plot_key_unique = f"{key}_Unique"
+            tree_count_data[plot_key_unique] = np.log(data["UniqueTreeCount"].replace(0, 1)) # Use log(1) for 0 trees
+            tree_legend[plot_key_unique] = f"{LegendMapping.get(key, key)} (Unique)"
+            tree_colors[plot_key_unique] = "dodgerblue"
+
+    TreePlot = None
+    if not tree_count_data:
+        warnings.warn("No tree count data found for any method. Skipping TreePlot.")
+    else:
+        TreePlot = MeanVariancePlot(
+            RelativeError=None, Colors=tree_colors, LegendMapping=tree_legend,
+            Linestyles={key: 'solid' for key in tree_count_data},
+            Y_Label="log(Number of Trees in Rashomon Set)", Subtitle=PlotSubtitle,
+            TransparencyVal=0.05, VarInput=False, CriticalValue=1.96, **tree_count_data
+        )
+        plt.close(TreePlot)
 
     ### Wilcoxon Ranked Signed Test ###
-    # WRSTResults = WilcoxonRankSignedTest({"PassiveLearning" :PassiveLearningRF["Error"],
-    #                                       "RandomForest" : RandomForestResults["Error"],
-    #                                     #   "BALD" : BALDResults["Error"],
-    #                                       "UNREAL" : AnalyzedDataUNREALDUREAL["Error_UNREAL"],
-    #                                       "DUREAL" : AnalyzedDataUNREALDUREAL["Error_DUREAL"]
-    #                                       },
-    #                                       5)
+    # WRSTResults = ... # This can be implemented next
+
     ### Output ###
-    return {"TracePlotMean" : TracePlotMean,
-            "TracePlotVariance" : TracePlotVariance,
-            "TreePlot" : TreePlot,
-            "ShapeTable" : ShapeTable,
-            "TimeTable" : TimeTable
-            # "WRSTResults_LatexTable" : WRSTResults
-            }
-
-
-### SELECTION HISTORY ###
-
-
-# SelectionHistoryRank_RF = SelectionHistoryRankFunction(RandomForestResults["SelectionHistory_RF"], DataType = DataType)
-# SelectionHistoryRank_UNREAL = SelectionHistoryRankFunction(AnalyzedDataUNREALDUREAL["SelectionHistory_UNREAL"], DataType = DataType)
-# SelectionHistoryRank_DUREAL = SelectionHistoryRankFunction(AnalyzedDataUNREALDUREAL["SelectionHistory_DUREAL"], DataType = DataType)
-# SelectionHistoryRank_RF.sort_values(by = "AverageRank").head()
-# SelectionHistoryRank_UNREAL.sort_values(by = "AverageRank").head()
-# SelectionHistoryRank_DUREAL.sort_values(by = "AverageRank").head()
-### SET UP ###
-
-# UNREAL_Average_TreeCountsRatioSmall = np.mean(AnalyzedDataSmall["TreeCounts_UNIQUE_UNREAL"].div(AnalyzedDataSmall["TreeCounts_ALL_UNREAL"]), axis = 0)
-# DUREAL_Average_TreeCountsRatioSmall = np.mean(AnalyzedDataSmall["TreeCounts_UNIQUE_DUREAL"].div(AnalyzedDataSmall["TreeCounts_ALL_DUREAL"]), axis = 0)
-# AverageTreeCountRatioSmall = pd.DataFrame(np.column_stack((UNREAL_Average_TreeCountsRatioSmall, 
-#                               DUREAL_Average_TreeCountsRatioSmall,
-#                               np.round(UNREAL_Average_TreeCountsRatioSmall - DUREAL_Average_TreeCountsRatioSmall,5))), 
-#                              columns = ["UNREAL", "DUREAL", "Difference"])
-
-# UNREAL_Average_TreeCountsRatioLarge = np.mean(AnalyzedDataLarge["TreeCounts_UNIQUE_UNREAL"].div(AnalyzedDataLarge["TreeCounts_ALL_UNREAL"]), axis = 0)
-# DUREAL_Average_TreeCountsRatioLarge = np.mean(AnalyzedDataLarge["TreeCounts_UNIQUE_DUREAL"].div(AnalyzedDataLarge["TreeCounts_ALL_DUREAL"]), axis = 0)
-# AverageTreeCountRatioLarge = pd.DataFrame(np.column_stack((UNREAL_Average_TreeCountsRatioLarge, 
-#                               DUREAL_Average_TreeCountsRatioLarge,
-#                               np.round(UNREAL_Average_TreeCountsRatioLarge - DUREAL_Average_TreeCountsRatioLarge,5))), 
-#                              columns = ["UNREAL", "DUREAL", "Difference"])
-
-### NUMBER OF ALL TREES ###
-
-# ### Line Styles ###
-# linestyles = {"DUREAL005" : "solid",
-# "DUREAL010" : "solid",
-# "DUREAL015" : "solid",
-# "DUREAL020" : "solid",
-# "DUREAL025" : "solid"
-# }
-
-# ### Figure ##
-# MeanPlot = MeanVariancePlot(RelativeError = None,
-#                  DUREAL010 = np.log(AnalyzedData010["TreeCounts_ALL_UNREAL"]),
-#                  DUREAL015 = np.log(AnalyzedData015["TreeCounts_ALL_UNREAL"]),
-#                  DUREAL020 = np.log(AnalyzedData020["TreeCounts_ALL_UNREAL"]),
-#                  DUREAL025 = np.log(AnalyzedData025["TreeCounts_ALL_UNREAL"]),
-#                 # Colors = colors,
-#                  LegendMapping=LegendMapping,
-#                  Linestyles=linestyles,
-#                 # xlim = [20,50],
-#                 Y_Label = "log(Number of All Trees)",
-#                  Subtitle = PlotSubtitle,
-#                  TransparencyVal = 0.2,
-#                  VarInput = False,
-#                  CriticalValue = 1.96)
-### NUMBER OF UNIQUE TREES ###
-
-# ### Linetype ###
-# linestyles = {"UNREAL010" : "solid",
-# "UNREAL015" : "solid",
-# "UNREAL020" : "solid",
-# "UNREAL025" : "solid"
-# }
-
-# ### Figure ##
-# MeanPlot = MeanVariancePlot(RelativeError = None,
-#                  UNREAL010 = np.log(AnalyzedData010["TreeCounts_UNIQUE_UNREAL"]),
-#                  UNREAL015 = np.log(AnalyzedData015["TreeCounts_UNIQUE_UNREAL"]),
-#                  UNREAL020 = np.log(AnalyzedData020["TreeCounts_UNIQUE_UNREAL"]),
-#                  UNREAL025 = np.log(AnalyzedData025["TreeCounts_UNIQUE_UNREAL"]),
-#                 # Colors = colors,
-#                  LegendMapping=LegendMapping,
-#                  Linestyles=linestyles,
-#                 # xlim = [20,50],
-#                 Y_Label = "log(Number of Unique Trees)",
-#                  Subtitle = PlotSubtitle,
-#                  TransparencyVal = 0.05,
-#                  VarInput = False,
-#                  CriticalValue = 1.96)
-
-### NUMBER OF UNIQUE TREES ###
-
-# ### Linetype ###
-# linestyles = {"UNREAL010" : "solid",
-# "UNREAL015" : "solid",
-# "UNREAL020" : "solid",
-# "UNREAL025" : "solid"
-# }
-
-# ### Figure ##
-# MeanPlot = MeanVariancePlot(RelativeError = None,
-#                  UNREAL010 = np.log(AnalyzedData010["TreeCounts_UNIQUE_UNREAL"]),
-#                  UNREAL015 = np.log(AnalyzedData015["TreeCounts_UNIQUE_UNREAL"]),
-#                  UNREAL020 = np.log(AnalyzedData020["TreeCounts_UNIQUE_UNREAL"]),
-#                  UNREAL025 = np.log(AnalyzedData025["TreeCounts_UNIQUE_UNREAL"]),
-#                 # Colors = colors,
-#                  LegendMapping=LegendMapping,
-#                  Linestyles=linestyles,
-#                 # xlim = [20,50],
-#                 Y_Label = "log(Number of Unique Trees)",
-#                  Subtitle = PlotSubtitle,
-#                  TransparencyVal = 0.05,
-#                  VarInput = False,
-#                  CriticalValue = 1.96)
+    return {
+        "TracePlotMean": TracePlotMean,
+        "TracePlotVariance": TracePlotVariance,
+        "TreePlot": TreePlot,
+        "ShapeTable": ShapeTable,
+        "TimeTable": TimeTable,
+        "RawData": raw_data_tables # Include all loaded dataframes
+    }
