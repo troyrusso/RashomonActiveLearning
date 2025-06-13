@@ -4,7 +4,7 @@
 # ~/RashomonActiveLearning/Code/Cluster/BankNote/
 # It then navigates to the project root to run the Python script.
 
-### Get Current Directory Name (e.g., BankNote) ###
+### Get Current Directory Name (e.g., BankNote or Iris) ###
 CURRENT_DATASET=$(basename "$PWD")
 echo "Processing results for dataset: $CURRENT_DATASET"
 
@@ -17,74 +17,77 @@ PROCESS_SCRIPT="Code/utils/Auxiliary/ProcessSimulationResults.py"
 
 echo "--- Extracting Results for $CURRENT_DATASET ---"
 
+# The ModelType argument must match the exact directory name under Results/<DATASET>/
+# The Categories argument must be a unique substring that matches the JobName suffix in the .pkl files.
+
 # 1. RF_PL: RandomForestClassifierPredictor + PassiveLearningSelector
-#    JobName: 0BN_PL_RF_B<BatchSize>
+#    Example JobName: 0IS_RF_PL_B1.pkl
 python "$PROCESS_SCRIPT" \
     --DataType "$CURRENT_DATASET" \
     --ModelType "RandomForestClassifierPredictor" \
-    --Categories "_PL_RF_"
+    --Categories "_RF_PL_"
 
 # 2. GPC_PL: GaussianProcessClassifierPredictor + PassiveLearningSelector
-#    JobName: 0BN_PL_GPC_B<BatchSize>_KTRBF_KLS1.0_KNU1.5_K0.0 (etc.)
+#    Example JobName: 0IS_GPC_PL_B1_KTRBF_KLS1_KNU1.5.pkl
 python "$PROCESS_SCRIPT" \
     --DataType "$CURRENT_DATASET" \
     --ModelType "GaussianProcessClassifierPredictor" \
-    --Categories "_PL_GPC_"
+    --Categories "_GPC_PL_"
 
 # 3. BNN_PL: BayesianNeuralNetworkPredictor + PassiveLearningSelector
-#    JobName: 0BN_PL_BNN_B<BatchSize>_HS...
+#    Example JobName: 0IS_BNN_PL_B1_HS50_DR2_E100_LR001_BST32.pkl
 python "$PROCESS_SCRIPT" \
     --DataType "$CURRENT_DATASET" \
     --ModelType "BayesianNeuralNetworkPredictor" \
-    --Categories "_PL_BNN_"
+    --Categories "_BNN_PL_"
 
 # 4. BNN_BALD: BayesianNeuralNetworkPredictor + BALDSelector
-#    JobName: 0BN_BALD_BNN_B<BatchSize>_HS...
+#    Example JobName: 0IS_BNN_BALD_B1_HS50_DR2_E100_LR001_BST32_K20.pkl
 python "$PROCESS_SCRIPT" \
     --DataType "$CURRENT_DATASET" \
     --ModelType "BayesianNeuralNetworkPredictor" \
-    --Categories "_BALD_BNN_"
+    --Categories "_BNN_BALD_"
 
 # 5. GPC_BALD: GaussianProcessClassifierPredictor + BALDSelector
-#    JobName: 0BN_BALD_GPC_B<BatchSize>_KTRBF...
+#    Example JobName: 0IS_GPC_BALD_B1_KTRBF_KLS1_KNU1.5_K20.pkl
 python "$PROCESS_SCRIPT" \
     --DataType "$CURRENT_DATASET" \
     --ModelType "GaussianProcessClassifierPredictor" \
-    --Categories "_BALD_GPC_"
+    --Categories "_GPC_BALD_"
 
 # # 6. UNREAL: TreeFarmsPredictor + BatchQBCSelector + UniqueErrorsInput=1
-# #    JobName: 0BN_UNREAL_UEI1A<Threshold>_DW<Weight>_DEW<Weight>_B<BatchSize>
+# #    Example JobName: 0IS_UNREAL_UEI1A5_DW0_DEW0_B1.pkl
 # python "$PROCESS_SCRIPT" \
 #     --DataType "$CURRENT_DATASET" \
 #     --ModelType "TreeFarmsPredictor" \
-#     --Categories "_UNREAL_UEI1A" # Match start of category including UEI1A
+#     --Categories "_UNREAL_" # Match start of category including UEI1A
 
 # # 7. DUREAL: TreeFarmsPredictor + BatchQBCSelector + UniqueErrorsInput=0
-# #    JobName: 0BN_DUREAL_UEI0A<Threshold>_DW<Weight>_DEW<Weight>_B<BatchSize>
+# #    Example JobName: 0IS_DUREAL_UEI0A5_DW0_DEW0_B1.pkl
 # python "$PROCESS_SCRIPT" \
 #     --DataType "$CURRENT_DATASET" \
 #     --ModelType "TreeFarmsPredictor" \
-    # --Categories "_DUREAL_UEI0A" # Match start of category including UEI0A
+#     --Categories "_DUREAL_" # Match start of category including UEI0A
 
 # 8. RF_QBC: RandomForestClassifierPredictor + BatchQBCSelector
-#    JobName: 0BN_QBC_RF_UEI0A0_DW<Weight>_DEW<Weight>_B<BatchSize>
+#    Example JobName: 0IS_RF_QBC_DW0_DEW0_B1.pkl
 python "$PROCESS_SCRIPT" \
     --DataType "$CURRENT_DATASET" \
     --ModelType "RandomForestClassifierPredictor" \
-    --Categories "_QBC_RF_" # Match start of category including UEI0A
+    --Categories "_QBC_RF_" # Match start of category including UEI0A (assuming default for RF_QBC)
 
 # 9. UNREAL_LFR: LFRPredictor + BatchQBCSelector + UniqueErrorsInput=1
-#    JobName: 0BN_UNREAL_LFR_UEI1A<Threshold>_DW<Weight>_DEW<Weight>_B<BatchSize>
+#    Example JobName: 0IS_Ulfr_A5_DW0_DEW0_B1.pkl (your tree output showed Ulfr)
 python "$PROCESS_SCRIPT" \
     --DataType "$CURRENT_DATASET" \
     --ModelType "LFRPredictor" \
-    --Categories "_UNREAL_LFR_" # Match start of category including UEI1A
+    --Categories "_Ulfr_" # Match start of category including Ulfr and A for Adder
 
 # 10. DUREAL_LFR: LFRPredictor + BatchQBCSelector + UniqueErrorsInput=0
-#     JobName: 0BN_DUREAL_LFR_UEI0A<Threshold>_DW<Weight>_DEW<Weight>_B<BatchSize>
+#     Example JobName: 0IS_Dlfr_A5_DW0_DEW0_B1.pkl (your tree output showed Dlfr)
 python "$PROCESS_SCRIPT" \
     --DataType "$CURRENT_DATASET" \
     --ModelType "LFRPredictor" \
-    --Categories "_DUREAL_LFR_" # Match start of category including UEI0A
+    --Categories "_Dlfr_" # Match start of category including Dlfr and A for Adder
 
 echo "--- All Extraction Commands Submitted ---"
