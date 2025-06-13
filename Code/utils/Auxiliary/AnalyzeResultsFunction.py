@@ -8,35 +8,24 @@ import sys
 import os
 import warnings
 
-# --- Make sure the new LoadAnalyzedData is importable ---
-# This might require adjusting your Python path or project structure.
-# For example, if utils is in the parent directory:
-# sys.path.append('..')
 from utils.Auxiliary.LoadAnalyzedData import LoadAnalyzedData
 from utils.Auxiliary.MeanVariancePlot import MeanVariancePlot
 
 ### Analyze Results Function ###
-def AnalyzeResultsFunction(DataType, RashomonThreshold):
+def AnalyzeResultsFunction(DataType, methods_to_plot=None):
     """
-    Analyzes and plots results for various active learning simulation methods
-    based on the new directory structure.
+    Analyzes and plots results for various active learning simulation methods.
 
     Args:
         DataType (str): The name of the data set (e.g., "Iris").
-        RashomonThreshold (float): The Rashomon Threshold for labeling plots.
-                                   Note: This is now only for labeling purposes.
-
-    Returns:
-        dict: A dictionary containing generated plots, summary tables, and raw data.
+        methods_to_plot (list, optional): A list of method keys to include in the
+                                          trace plots. If None, all available methods
+                                          are plotted. Defaults to None.
     """
 
     ### Load Data ###
     BaseDirectory = os.path.join(os.path.expanduser("~"), "Documents", "RashomonActiveLearning", "Results")
 
-    # --- Updated Method Configurations ---
-    # Maps a short key to the parameters needed by LoadAnalyzedData.
-    # "ModelDir" is the parent folder (e.g., 'BayesianNeuralNetworkPredictor').
-    # "FilePrefix" is the unique identifier in the filename (e.g., '_BNN_BALD').
     method_configs = {
         "RF_PL":      {"ModelDir": "RandomForestClassifierPredictor", "FilePrefix": "_RF_PL"},
         "RF_QBC":     {"ModelDir": "RandomForestClassifierPredictor", "FilePrefix": "_RF_QBC"},
@@ -51,106 +40,138 @@ def AnalyzeResultsFunction(DataType, RashomonThreshold):
     loaded_data_by_method = {}
     raw_data_tables = {}
     for method_key, config in method_configs.items():
-        print(f"Loading {method_key} results for {DataType}...")
-        data = LoadAnalyzedData(
-            data_type=DataType,
-            base_directory=BaseDirectory,
-            model_directory=config["ModelDir"],
-            file_prefix=config["FilePrefix"]
-        )
+        data = LoadAnalyzedData(data_type=DataType, base_directory=BaseDirectory, model_directory=config["ModelDir"], file_prefix=config["FilePrefix"])
         loaded_data_by_method[method_key] = data
-        raw_data_tables[method_key] = data # Store for output
+        raw_data_tables[method_key] = data 
 
-        # Warning if core "Error" data is missing
         if data.get("Error") is None:
-            warnings.warn(f"No 'Error' data loaded for {method_key}. This method will be excluded from plots.")
+            warnings.warn(f"No 'Error' data loaded for {method_key}.")
 
-    ### Shape Table (Number of Simulation Runs) ###
+    ### Shape Table ###
     ShapeTable = {key: data["Error"].shape[0] for key, data in loaded_data_by_method.items() if data.get("Error") is not None}
     ShapeTable = pd.DataFrame([ShapeTable]) if ShapeTable else pd.DataFrame()
 
     ### Time Table ###
-    TimeTable = {}
-    for key, data in loaded_data_by_method.items():
-        if data.get("Time") is not None:
-            time_in_seconds = data["Time"].iloc[:, 0] # Assuming time is in the first column
-            TimeTable[key + " Mean (min)"] = f"{time_in_seconds.mean() / 60:.2f}"
-            TimeTable[key + " Max (min)"] = f"{time_in_seconds.max() / 60:.2f}"
+    time_data_list = []
+    for key in method_configs.keys():
+        data = loaded_data_by_method[key]
+        row_data = {"Method": key}
+        
+        if data.get("Time") is not None and not data["Time"].empty:
+            time_in_seconds = data["Time"].iloc[:, 0]
+            row_data["Mean (minutes)"] = float(f"{time_in_seconds.mean() / 60:.2f}")
+            row_data["Max (minutes)"] = float(f"{time_in_seconds.max() / 60:.2f}")
         else:
-            TimeTable[key + " Mean (min)"] = "N/A"
-            TimeTable[key + " Max (min)"] = "N/A"
-    TimeTable = pd.DataFrame([TimeTable]) if TimeTable else pd.DataFrame()
+            row_data["Mean (minutes)"] = np.nan
+            row_data["Max (minutes)"] = np.nan
+        time_data_list.append(row_data)
+
+    if time_data_list:
+        TimeTable = pd.DataFrame(time_data_list).set_index("Method")
+    else:
+        TimeTable = pd.DataFrame()
+
+    ### Legend and Styling Definitions ###
+    PlotSubtitle = f"Dataset: {DataType}"
+    colors = {"RF_PL": "black", "GPC_PL": "gray", "BNN_PL": "silver", "BNN_BALD": "darkviolet", "GPC_BALD": "mediumorchid", "RF_QBC": "green", "UNREAL_LFR": "dodgerblue", "DUREAL_LFR": "darkorange"}
+    linestyles = {method: "solid" for method in method_configs.keys()}
+    LegendMapping = {"RF_PL": "Passive Learning (RF)", "GPC_PL": "Passive Learning (GPC)", "BNN_PL": "Passive Learning (BNN)", "BNN_BALD": "BALD (BNN)", "GPC_BALD": "BALD (GPC)", "RF_QBC": "QBC (RF)", "UNREAL_LFR": "UNREAL_LFR", "DUREAL_LFR": "DUREAL_LFR"}
 
     ### Trace Plot (F1 Score) ###
-    PlotSubtitle = f"Dataset: {DataType}"
-    colors = {
-        "RF_PL": "black", "GPC_PL": "gray", "BNN_PL": "silver",
-        "BNN_BALD": "darkviolet", "GPC_BALD": "mediumorchid",
-        "RF_QBC": "green",
-        "UNREAL_LFR": "dodgerblue", "DUREAL_LFR": "darkorange"
-    }
-    linestyles = {method: "solid" for method in method_configs.keys()}
-    LegendMapping = {
-        "RF_PL": "Passive Learning (RF)", "GPC_PL": "Passive Learning (GPC)", "BNN_PL": "Passive Learning (BNN)",
-        "BNN_BALD": "BALD (BNN)", "GPC_BALD": "BALD (GPC)",
-        "RF_QBC": "QBC (RF)",
-        "UNREAL_LFR": f"UNREAL_LFR (ε = {RashomonThreshold})",
-        "DUREAL_LFR": f"DUREAL_LFR (ε = {RashomonThreshold})"
-    }
-
-    # Dynamically prepare error data for plotting
-    error_data_for_plot = {key: data["Error"] for key, data in loaded_data_by_method.items() if data.get("Error") is not None}
+    if methods_to_plot is None:
+        methods_to_include = [key for key, data in loaded_data_by_method.items() if data.get("Error") is not None]
+    else:
+        methods_to_include = []
+        for method in methods_to_plot:
+            if method in loaded_data_by_method and loaded_data_by_method[method].get("Error") is not None:
+                methods_to_include.append(method)
+            else:
+                warnings.warn(f"Requested method '{method}' for F1 plot not found or has no 'Error' data. It will be skipped.")
+    
+    error_data_for_plot = {key: loaded_data_by_method[key]["Error"] for key in methods_to_include}
 
     TracePlotMean, TracePlotVariance = None, None
     if not error_data_for_plot:
-        warnings.warn("No error data available for any method. Skipping TracePlot.")
+        warnings.warn("No valid data to plot for F1 score after filtering.")
     else:
-        TracePlotMean, TracePlotVariance = MeanVariancePlot(
-            RelativeError=None, Colors=colors, LegendMapping=LegendMapping, Linestyles=linestyles,
-            Y_Label="F1 Score", Subtitle=PlotSubtitle, TransparencyVal=0.05,
-            VarInput=True, CriticalValue=1.96, **error_data_for_plot
-        )
-        plt.close(TracePlotMean)
-        plt.close(TracePlotVariance)
+        TracePlotMean, TracePlotVariance = MeanVariancePlot(RelativeError=None, Colors=colors, LegendMapping=LegendMapping, Linestyles=linestyles, Y_Label="F1 Score", Subtitle=PlotSubtitle, TransparencyVal=0.05, VarInput=True, CriticalValue=1.96, **error_data_for_plot)
+        if TracePlotMean: TracePlotMean.get_axes()[0].legend(loc="best"); plt.close(TracePlotMean)
+        if TracePlotVariance: TracePlotVariance.get_axes()[0].legend(loc="best"); plt.close(TracePlotVariance)
 
-    ### Number of Trees Plot (Dynamic) ###
-    tree_count_data = {}
-    tree_legend = {}
-    tree_colors = {}
+    ### Refit Frequency Plot ###
+    refit_plot_data = {}
     
-    for key, data in loaded_data_by_method.items():
-        if data.get("AllTreeCount") is not None:
-            plot_key_all = f"{key}_All"
-            tree_count_data[plot_key_all] = np.log(data["AllTreeCount"].replace(0, 1)) # Use log(1) for 0 trees
-            tree_legend[plot_key_all] = f"{LegendMapping.get(key, key)} (Total)"
-            tree_colors[plot_key_all] = "darkorange"
-        if data.get("UniqueTreeCount") is not None:
-            plot_key_unique = f"{key}_Unique"
-            tree_count_data[plot_key_unique] = np.log(data["UniqueTreeCount"].replace(0, 1)) # Use log(1) for 0 trees
-            tree_legend[plot_key_unique] = f"{LegendMapping.get(key, key)} (Unique)"
-            tree_colors[plot_key_unique] = "dodgerblue"
+    # MODIFIED: Define a specific list of methods for this plot only
+    refit_methods_to_plot = ["UNREAL_LFR", "DUREAL_LFR"]
 
-    TreePlot = None
-    if not tree_count_data:
-        warnings.warn("No tree count data found for any method. Skipping TreePlot.")
+    # Iterate over the specific list for the refit plot
+    for key in refit_methods_to_plot:
+        if key in loaded_data_by_method and loaded_data_by_method[key].get("RefitDecision") is not None:
+            refit_plot_data[key] = loaded_data_by_method[key]["RefitDecision"]
+        else:
+            warnings.warn(f"RefitDecision data for '{key}' not found. It will be skipped in the RefitFrequencyPlot.")
+
+    RefitFrequencyPlot = None
+    if not refit_plot_data:
+        warnings.warn("No RefitDecision data found for UNREAL_LFR or DUREAL_LFR.")
     else:
-        TreePlot = MeanVariancePlot(
-            RelativeError=None, Colors=tree_colors, LegendMapping=tree_legend,
-            Linestyles={key: 'solid' for key in tree_count_data},
-            Y_Label="log(Number of Trees in Rashomon Set)", Subtitle=PlotSubtitle,
-            TransparencyVal=0.05, VarInput=False, CriticalValue=1.96, **tree_count_data
+        RefitFrequencyPlot = MeanVariancePlot(
+            RelativeError=None, 
+            Colors=colors, 
+            LegendMapping=LegendMapping, 
+            Linestyles=linestyles, 
+            Y_Label="Refit Frequency", 
+            Subtitle=f"Dataset: {DataType} - Refit Behavior",
+            TransparencyVal=0.05, 
+            VarInput=False,
+            CriticalValue=1.96, 
+            **refit_plot_data
         )
-        plt.close(TreePlot)
+        if RefitFrequencyPlot:
+            RefitFrequencyPlot.get_axes()[0].legend(loc="best")
+            plt.close(RefitFrequencyPlot)
 
-    ### Wilcoxon Ranked Signed Test ###
-    # WRSTResults = ... # This can be implemented next
+    ### Number of Trees Plots ###
+    unreal_plot_data, unreal_plot_legend, unreal_plot_colors = {}, {}, {}
+    TreePlot_UNREAL = None
+    unreal_data = loaded_data_by_method.get("UNREAL_LFR")
+    if unreal_data:
+        if unreal_data.get("AllTreeCount") is not None and not unreal_data["AllTreeCount"].empty:
+            unreal_plot_data["Total"] = np.log(unreal_data["AllTreeCount"].replace(0, 1))
+            unreal_plot_legend["Total"] = "Total Trees"
+            unreal_plot_colors["Total"] = "darkorange"
+        if unreal_data.get("UniqueTreeCount") is not None and not unreal_data["UniqueTreeCount"].empty:
+            unreal_plot_data["Unique"] = np.log(unreal_data["UniqueTreeCount"].replace(0, 1))
+            unreal_plot_legend["Unique"] = "Unique Trees"
+            unreal_plot_colors["Unique"] = "dodgerblue"
+        if unreal_plot_data:
+            TreePlot_UNREAL = MeanVariancePlot(RelativeError=None, Colors=unreal_plot_colors, LegendMapping=unreal_plot_legend, Linestyles={'Total':'solid', 'Unique':'solid'}, Y_Label="log(Number of Trees)", Subtitle=f"Dataset: {DataType} - UNREAL_LFR", TransparencyVal=0.05, VarInput=False, CriticalValue=1.96, **unreal_plot_data)
+            if TreePlot_UNREAL: TreePlot_UNREAL.get_axes()[0].legend(loc="best"); plt.close(TreePlot_UNREAL)
+
+    dureal_plot_data, dureal_plot_legend, dureal_plot_colors = {}, {}, {}
+    TreePlot_DUREAL = None
+    dureal_data = loaded_data_by_method.get("DUREAL_LFR")
+    if dureal_data:
+        if dureal_data.get("AllTreeCount") is not None and not dureal_data["AllTreeCount"].empty:
+            dureal_plot_data["Total"] = np.log(dureal_data["AllTreeCount"].replace(0, 1))
+            dureal_plot_legend["Total"] = "Total Trees"
+            dureal_plot_colors["Total"] = "darkorange"
+        if dureal_data.get("UniqueTreeCount") is not None and not dureal_data["UniqueTreeCount"].empty:
+            dureal_plot_data["Unique"] = np.log(dureal_data["UniqueTreeCount"].replace(0, 1))
+            dureal_plot_legend["Unique"] = "Unique Trees"
+            dureal_plot_colors["Unique"] = "dodgerblue"
+        if dureal_plot_data:
+            TreePlot_DUREAL = MeanVariancePlot(RelativeError=None, Colors=dureal_plot_colors, LegendMapping=dureal_plot_legend, Linestyles={'Total':'solid', 'Unique':'solid'}, Y_Label="log(Number of Trees)", Subtitle=f"Dataset: {DataType} - DUREAL_LFR", TransparencyVal=0.05, VarInput=False, CriticalValue=1.96, **dureal_plot_data)
+            if TreePlot_DUREAL: TreePlot_DUREAL.get_axes()[0].legend(loc="best"); plt.close(TreePlot_DUREAL)
 
     ### Output ###
     return {
         "TracePlotMean": TracePlotMean,
         "TracePlotVariance": TracePlotVariance,
-        "TreePlot": TreePlot,
+        "RefitFrequencyPlot": RefitFrequencyPlot,
+        "TreePlot_UNREAL": TreePlot_UNREAL,
+        "TreePlot_DUREAL": TreePlot_DUREAL,
         "ShapeTable": ShapeTable,
         "TimeTable": TimeTable,
-        "RawData": raw_data_tables # Include all loaded dataframes
+        "RawData": raw_data_tables
     }
