@@ -74,7 +74,7 @@ python "$PROCESS_SCRIPT" \
 python "$PROCESS_SCRIPT" \
     --DataType "$CURRENT_DATASET" \
     --ModelType "RandomForestClassifierPredictor" \
-    --Categories "_QBC_RF_" # Match start of category including UEI0A (assuming default for RF_QBC)
+    --Categories "_RF_QBC_" # Match start of category including UEI0A (assuming default for RF_QBC)
 
 # 9. UNREAL_LFR: LFRPredictor + BatchQBCSelector + UniqueErrorsInput=1
 #    Example JobName: 0IS_Ulfr_A5_DW0_DEW0_B1.pkl (your tree output showed Ulfr)
