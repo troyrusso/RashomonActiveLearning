@@ -65,6 +65,7 @@ def LearningProcedure(SimulationConfigInputUpdated):
 
         ## Print iteration ##
         print(f"Iteration: {i}")
+        current_iter_refit_decision = 1 
 
         ## Get features and target for the current training set ##
         X_train_df, y_train_series = get_features_and_target(
