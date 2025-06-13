@@ -12,7 +12,13 @@ from utils.Auxiliary.DataFrameUtils import get_features_and_target
 class BatchQBCSelector:
 
     ### Initialize ###
-    def __init__(self, UniqueErrorsInput: int, DiversityWeight: float, DensityWeight: float, BatchSize: int, Seed: int = None, **kwargs):
+    def __init__(self, 
+                 UniqueErrorsInput: int, 
+                 DiversityWeight: float, 
+                 DensityWeight: float, 
+                 BatchSize: int, 
+                 Seed: int = None, 
+                 **kwargs):
         self.UniqueErrorsInput = UniqueErrorsInput
         self.DiversityWeight = DiversityWeight
         self.DensityWeight = DensityWeight
@@ -26,35 +32,56 @@ class BatchQBCSelector:
     ### Select ###
     def select(self, df_Candidate: pd.DataFrame, Model, df_Train: pd.DataFrame, auxiliary_columns: list = None) -> dict:
         
-        ## Set Up ##
+        ## Candidate and Training datasets Set Up ##
         X_Candidate_df, _ = get_features_and_target(
             df=df_Candidate,
             target_column_name="Y",
             auxiliary_columns=auxiliary_columns)
+        
+        X_Train_df, _ = get_features_and_target( 
+            df=df_Train,
+            target_column_name="Y", 
+            auxiliary_columns=auxiliary_columns)
 
         ## Predicted Values (Committee Votes) ##
-        PredictedValues_df = Model.get_raw_ensemble_predictions(X_Candidate_df)
-        PredictedValues = PredictedValues_df.values 
+        preds_candidate_raw_df = Model.get_raw_ensemble_predictions(X_Candidate_df)
+        preds_train_raw_df = Model.get_raw_ensemble_predictions(X_Train_df) 
+        all_preds_combined_df = pd.concat([preds_candidate_raw_df, preds_train_raw_df], axis=0, ignore_index=True) 
+
+        ## Unique Classification Patterns ##
+        unique_trees_preds_combined_df = all_preds_combined_df.T.drop_duplicates().T 
 
         ## Initialize Output ##
         Output = {}
 
         ## Store tree counts ##
-        if hasattr(Model, 'get_tree_counts'):
+        if hasattr(Model, 'get_tree_counts'): 
             tree_counts = Model.get_tree_counts()
-            Output["AllTreeCount"] = tree_counts.get("AllTreeCount", 0)
-            Output["UniqueTreeCount"] = tree_counts.get("UniqueTreeCount", 0)
+            Output["AllTreeCount"] = tree_counts.get("AllTreeCount", preds_candidate_raw_df.shape[1])
+            Output["UniqueTreeCount"] = unique_trees_preds_combined_df.shape[1] # Use the shape of the derived unique patterns
         else: 
-            Output["AllTreeCount"] = PredictedValues_df.shape[1] 
-            Output["UniqueTreeCount"] = PredictedValues_df.T.drop_duplicates().shape[0] 
+            Output["AllTreeCount"] = preds_candidate_raw_df.shape[1] # Total estimators from model
+            Output["UniqueTreeCount"] = unique_trees_preds_combined_df.shape[1] # Actual unique patterns found
 
-        ## Unique vs. Duplicate ##
-        if self.UniqueErrorsInput and Output["UniqueTreeCount"] > 0: 
-            PredictedValues_df_unique = PredictedValues_df.T.drop_duplicates().T
-            PredictedValues = PredictedValues_df_unique.values
-            num_estimators_for_entropy = PredictedValues_df_unique.shape[1]
-        else:
-            num_estimators_for_entropy = PredictedValues_df.shape[1]
+
+        ## Select Committee for Vote Entropy based on UniqueErrorsInput ##
+        committee_preds_df = None
+        num_estimators_for_entropy = 0
+
+        if self.UniqueErrorsInput: # UNREAL
+            committee_preds_df = preds_candidate_raw_df[unique_trees_preds_combined_df.columns] 
+            num_estimators_for_entropy = committee_preds_df.shape[1]
+        else: # DUREAL
+            committee_preds_df = preds_candidate_raw_df
+            num_estimators_for_entropy = committee_preds_df.shape[1]
+
+        # Convert to NumPy array
+        PredictedValues = committee_preds_df.values 
+
+        # Defensive check for empty predictions
+        if PredictedValues is None or PredictedValues.size == 0 or num_estimators_for_entropy == 0:
+            Output["IndexRecommendation"] = []
+            return Output
 
         ## Vote Entropy Calculation ##
         UniqueClasses = np.unique(df_Train["Y"])

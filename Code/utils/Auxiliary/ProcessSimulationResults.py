@@ -21,11 +21,13 @@ import pandas as pd
 def ExtractInformation(files):
 
     ### Set Up ###
-    ErrorVec = []
     TimeVec = []
-    SelectionHistoryVec = []
+    ErrorVec = []
+    EpsilonVec = []
     AllTreeCountVec = []
+    RefitDecisionVec = [] 
     UniqueTreeCountVec = []
+    SelectionHistoryVec = []
     for file in files:
         try:
             with open(file, "rb") as f:
@@ -35,9 +37,30 @@ def ExtractInformation(files):
                 SelectionHistoryVec.append(data["SelectionHistory"])
                 AllTreeCountVec.append(data["TreeCount"]["AllTreeCount"])
                 UniqueTreeCountVec.append(data["TreeCount"]["UniqueTreeCount"])
+
+                if "EpsilonVec" in data and data["EpsilonVec"] is not None:
+                    EpsilonVec.append(data["EpsilonVec"])
+                else:
+                    if ErrorVec:
+                        num_iterations = len(ErrorVec[-1])
+                        EpsilonVec.append(np.full(num_iterations, np.nan))
+                    else:
+                        EpsilonVec.append(np.array([]))
+                
+                # <--- NEW: Safely extract RefitDecisionVec if it exists in the data
+                if "RefitDecisionVec" in data and data["RefitDecisionVec"] is not None:
+                    RefitDecisionVec.append(data["RefitDecisionVec"])
+                else:
+                    if ErrorVec: # Use ErrorVec length as a fallback for iterations
+                        num_iterations = len(ErrorVec[-1])
+                        RefitDecisionVec.append(np.full(num_iterations, np.nan))
+                    else:
+                        RefitDecisionVec.append(np.array([]))
+
         except Exception as e:
             print(f"Error loading file {file}: {e}")
-    return np.array(ErrorVec), np.array(TimeVec), list(SelectionHistoryVec)[0], np.array(AllTreeCountVec), np.array(UniqueTreeCountVec)
+    
+    return np.array(ErrorVec), np.array(TimeVec), list(SelectionHistoryVec)[0], np.array(AllTreeCountVec), np.array(UniqueTreeCountVec), np.array(EpsilonVec), np.array(RefitDecisionVec)
 
 ### Parser ###
 parser = argparse.ArgumentParser(description="Aggregate simulation results.")
@@ -64,18 +87,31 @@ if not CategoryFileNames:
     print(f"Warning: No files found for category {Category}. Exiting.")
     exit(1)
 print(f"Processing category: {Category} with {len(CategoryFileNames)} files")
-ErrorVec, TimeVec, SelectionHistoryVec, AllTreeCountVec, UniqueTreeCountVec = ExtractInformation(CategoryFileNames)
+ErrorVec, TimeVec, SelectionHistoryVec, AllTreeCountVec, UniqueTreeCountVec, EpsilonVec, RefitDecisionVec = ExtractInformation(CategoryFileNames)
 ErrorMatrix = pd.DataFrame(ErrorVec.squeeze())
 TimeMatrix = pd.DataFrame(TimeVec.squeeze())
-# SelectionHistoryVec = pd.DataFrame(SelectionHistoryVec.squeeze())
 AllTreeCountVec = pd.DataFrame(AllTreeCountVec.squeeze())
 UniqueTreeCountVec = pd.DataFrame(UniqueTreeCountVec.squeeze())
+EpsilonMatrix = pd.DataFrame(EpsilonVec.squeeze())
+RefitDecisionMatrix = pd.DataFrame(RefitDecisionVec.squeeze())
+
 
 ### Save ###
+os.makedirs(os.path.join(OutputDirectory, "ErrorVec"), exist_ok=True)
+os.makedirs(os.path.join(OutputDirectory, "ElapsedTime"), exist_ok=True)
+os.makedirs(os.path.join(OutputDirectory, "TreeCount"), exist_ok=True)
+os.makedirs(os.path.join(OutputDirectory, "SelectionHistory"), exist_ok=True)
+os.makedirs(os.path.join(OutputDirectory, "EpsilonVec"), exist_ok=True)
+os.makedirs(os.path.join(OutputDirectory, "RefitDecisionVec"), exist_ok=True)
+
 ErrorMatrix.to_csv(os.path.join(OutputDirectory, "ErrorVec", f"{Category}_ErrorMatrix.csv"), index=False)
 TimeMatrix.to_csv(os.path.join(OutputDirectory, "ElapsedTime", f"{Category}_TimeMatrix.csv"), index=False)
 AllTreeCountVec.to_csv(os.path.join(OutputDirectory, "TreeCount", f"{Category}_AllTreeCount.csv"), index=False)
 UniqueTreeCountVec.to_csv(os.path.join(OutputDirectory, "TreeCount", f"{Category}_UniqueTreeCount.csv"), index=False)
+EpsilonMatrix.to_csv(os.path.join(OutputDirectory, "EpsilonVec", f"{Category}_EpsilonMatrix.csv"), index=False)
+RefitDecisionMatrix.to_csv(os.path.join(OutputDirectory, "RefitDecisionVec", f"{Category}_RefitDecisionMatrix.csv"), index=False) # <--- NEW: Save RefitDecisionMatrix
+
+
 with open(os.path.join(OutputDirectory, "SelectionHistory", f"{Category}_SelectionHistory.pkl"), 'wb') as file:
     pickle.dump(SelectionHistoryVec, file)
 print(f"Saved {Category} files!")

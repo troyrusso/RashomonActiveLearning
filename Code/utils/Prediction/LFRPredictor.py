@@ -40,7 +40,7 @@ class LFRPredictor:
                  RashomonThresholdType: str = "Adder",
                  **kwargs):
         self.regularization = regularization
-        self.full_epsilon = RashomonThreshold # max_epsilon for initial enumeration
+        self.full_epsilon = RashomonThreshold # full_epsilon is the last threshold used in the last full enumeration of the RSet
         self.epsilon = RashomonThreshold      # current tuned epsilon (will be updated)
         self.RashomonThresholdType = RashomonThresholdType
         self.static_config = DEFAULT_STATIC_CONFIG.copy()
@@ -64,7 +64,7 @@ class LFRPredictor:
     ### Fit Model ###
     def fit(self, X_train_df: pd.DataFrame, y_train_series: pd.Series):
         """
-        Performs a full fit of the TreeFarms model (full enumeration of Rashomon set).
+        Performs a full fit of the TreeFarms model using the maximum epsilon (full enumeration of Rashomon set).
         This also updates the current cumulative training data.
         """
 
@@ -97,9 +97,11 @@ class LFRPredictor:
             self.accuracy_ordering = None
             return
 
+        # Get and sort accuracies descendingly
         all_accuracies = np.array([_score_single_tree(tree, self.X_train_current.values, self.y_train_current.values) for tree in self.all_trees])
-        self.accuracy_ordering = np.argsort(all_accuracies)[::-1] # Store indices of trees sorted by accuracy DESCENDINGLY
+        self.accuracy_ordering = np.argsort(all_accuracies)[::-1] 
 
+        # Get predictions
         predictions_raw_list = [np.array(_predict_single_tree(self.all_trees[idx], self.X_train_current.values)) for idx in self.accuracy_ordering]
         self.predictions_all_trees = np.array(predictions_raw_list).T
 
@@ -110,10 +112,9 @@ class LFRPredictor:
         self.epsilon_at_last_full_refit = self.epsilon                          # Store the tuned epsilon from this full refit
         self.last_full_refit_iteration_count = self.current_iteration_from_lp # Store the iteration when this full refit happened
 
-
     ### Refit ###
     def refit(self, X_to_add: pd.DataFrame, y_to_add: pd.Series,
-              nominal_rashomon_threshold_input: float, # The fixed epsilon value from SimulationConfigInput
+              nominal_rashomon_threshold_input: float, # The fixed epsilon input from SimulationConfigInput
               current_iteration: int, # The iteration from LP.py
               current_train_set_size: int, # len(df_Train) from LP.py
               verbose: bool = False):
@@ -134,29 +135,24 @@ class LFRPredictor:
 
         perform_full_refit_this_time = False
 
-        ## If the input RashomonThreshold has explicitly increased ##
-        if self.full_epsilon < nominal_rashomon_threshold_input:
-            if verbose:
-                print(f"LFR Decision: Full refit due to increased nominal epsilon ({self.full_epsilon:.4f} -> {nominal_rashomon_threshold_input:.4f}).")
+        # Defensive check to prevent division by zero for very small training sets
+        if current_train_set_size == 0:
+            if verbose: print("LFR Decision: Full refit due to empty training set (division by zero avoided).")
             perform_full_refit_this_time = True
         else:
-            # Defensive check to prevent division by zero for very small training sets
-            if current_train_set_size == 0:
-                if verbose: print("LFR Decision: Full refit due to empty training set (division by zero avoided).")
+            # LHS and RHS #
+            alg1_lhs = nominal_rashomon_threshold_input - self.epsilon_at_last_full_refit
+            iteration_difference = max(1, current_iteration - self.last_full_refit_iteration_count)
+            alg1_rhs = 2 * (iteration_difference / current_train_set_size)
+
+            # If LHS >= RHS, it implies the Rashomon set is likely to change substantially, so perform FULL REFIT.
+            if alg1_lhs >= alg1_rhs:
+                if verbose:
+                    print(f"LFR Decision: Full refit due to Theorem 5.1 (Alg 1 condition LHS={alg1_lhs:.4f} >= RHS={alg1_rhs:.4f}).")
                 perform_full_refit_this_time = True
             else:
-                # LHS and RHS #
-                alg1_lhs = nominal_rashomon_threshold_input - self.epsilon_at_last_full_refit
-                alg1_rhs = 2 * (1 / current_train_set_size)
-
-                # If LHS >= RHS, it implies the Rashomon set is likely to change substantially, so perform FULL REFIT.
-                if alg1_lhs >= alg1_rhs:
-                    if verbose:
-                        print(f"LFR Decision: Full refit due to Theorem 5.1 (Alg 1 condition LHS={alg1_lhs:.4f} >= RHS={alg1_rhs:.4f}).")
-                    perform_full_refit_this_time = True
-                else:
-                    if verbose:
-                        print(f"LFR Decision: Online update (subsetting) due to Theorem 5.1 (Alg 1 condition LHS={alg1_lhs:.4f} < RHS={alg1_rhs:.4f}).")
+                if verbose:
+                    print(f"LFR Decision: Online update (subsetting) due to Theorem 5.1 (Alg 1 condition LHS={alg1_lhs:.4f} < RHS={alg1_rhs:.4f}).")
 
         # Execute the decision: full refit or online update (subsetting)
         if perform_full_refit_this_time:
@@ -164,7 +160,6 @@ class LFRPredictor:
             self.fit(self.X_train_current, self.y_train_current) # Call self.fit for a full retraining
         else:
             # Online update: recalculate accuracies of all trees on the new cumulative data
-
             predictions_raw_list = []
             if self.all_trees: # Only attempt to predict if there are trees
                 predictions_raw_list = [np.array(_predict_single_tree(tree, self.X_train_current.values)) for tree in self.all_trees]
@@ -192,6 +187,9 @@ class LFRPredictor:
 
             # Tune epsilon based on updated accuracies
             self._tune_eps(objectives[self.accuracy_ordering])
+
+        ### Return Decision ro refit or not ###
+        return perform_full_refit_this_time 
 
     ### Epsilon Tuning Helper ###
     def _tune_eps(self, sorted_accs: np.ndarray):

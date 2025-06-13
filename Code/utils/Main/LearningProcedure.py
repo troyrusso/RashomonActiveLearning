@@ -44,6 +44,7 @@ def LearningProcedure(SimulationConfigInputUpdated):
     i = 0
     ErrorVec = []
     EpsilonVec = []
+    RefitDecisionVec = []
     SelectedObservationHistory = []
     TreeCount = {"AllTreeCount": [], "UniqueTreeCount": []}
     refit_frequency = SimulationConfigInputUpdated.get("RefitFrequency", 1)
@@ -72,23 +73,34 @@ def LearningProcedure(SimulationConfigInputUpdated):
             auxiliary_columns=SimulationConfigInputUpdated.get('auxiliary_data_cols', []))
 
         ## REFIT VS. UPDATE ###
-        if i == 0:                                                                  # Always fit on the first iteration
+        # Always fit on the first iteration
+        if i == 0:                                                                  
             predictor_model.fit(X_train_df=X_train_df, y_train_series=y_train_series)
             if isinstance(predictor_model, LFRPredictor): # For LFRPredictor, ensure its internal current_iteration_from_lp is set for first fit
                 predictor_model.current_iteration_from_lp = i
+        # All other iterations
         else:
+            # Go through LFR logic if the predictor model is LFR
             if isinstance(predictor_model, LFRPredictor):
-                predictor_model.refit(
+                performed_full_refit = predictor_model.refit(
                     X_to_add=last_added_X_batch,
                     y_to_add=last_added_y_batch,
                     nominal_rashomon_threshold_input=SimulationConfigInputUpdated["RashomonThreshold"],
                     current_iteration=i, 
                     current_train_set_size=len(X_train_df),
-                    verbose=False
-                )
+                    verbose=False)
+                if performed_full_refit: # If LFRPredictor's refit decided a full refit
+                    current_iter_refit_decision = 1
+                else: # Otherwise, it was an online update
+                    current_iter_refit_decision = 0
+            # Just refit as normal if predictor model is not LFR
             else:
                 predictor_model.fit(X_train_df=X_train_df, y_train_series=y_train_series)
-                
+                current_iter_refit_decision = 1 # Regular fit for non-LFR models counts as a full refit
+        
+        ## Store refit decision ##
+        RefitDecisionVec.append(current_iter_refit_decision)
+
         ## Store Rashomon Threshold ##
         if hasattr(predictor_model, 'epsilon'):
             EpsilonVec.append(predictor_model.epsilon)
@@ -145,8 +157,9 @@ def LearningProcedure(SimulationConfigInputUpdated):
 
     ### Output ###
     LearningProcedureOutput = {"ErrorVec": ErrorVec,
-                               "EpsilonVec": EpsilonVec,
                                "TreeCount": TreeCount,
+                               "EpsilonVec": EpsilonVec,
+                               "RefitDecisionVec" : RefitDecisionVec,
                                "SelectedObservationHistory": SelectedObservationHistory}
                               
     return LearningProcedureOutput

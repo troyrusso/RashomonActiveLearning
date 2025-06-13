@@ -84,13 +84,32 @@ def OneIterationFunction(SimulationConfigInput):
                             'DensityWeight': str(SimulationConfigInput["DensityWeight"]),
                             'BatchSize': str(SimulationConfigInput["BatchSize"])
                             }
+    # Add model-specific parameters to SimulationParameters if they exist in the config
+    for key in ['hidden_size', 
+                'dropout_rate', 
+                'epochs', 
+                'learning_rate', 
+                'batch_size_train',
+                'K_BALD_Samples', 
+                'kernel_type', 
+                'kernel_length_scale', 
+                'kernel_nu',
+                'optimizer', 
+                'n_restarts_optimizer', 
+                'max_iter_predict', 
+                'RefitFrequency']: 
+        
+        if key in SimulationConfigInput:
+            SimulationParameters[key] = str(SimulationConfigInput[key])
     
+
     ### Return Time ###
     ElapsedTime = time.time() - StartTime
 
     ### Return Dictionary ###
     SimulationResults = {"ErrorVec" : pd.DataFrame(LearningProcedureOutput["ErrorVec"], columns =["Error"]),
-                        "EpsilonVec" : pd.DataFrame(LearningProcedureOutput["EpsilonVec"], columns =["Epsilon"]), 
+                         "EpsilonVec" : pd.DataFrame(LearningProcedureOutput["EpsilonVec"], columns =["Epsilon"]),
+                         "RefitDecisionVec" : pd.DataFrame(LearningProcedureOutput["RefitDecisionVec"], columns=["RefitDecision"]), 
                          "TreeCount": LearningProcedureOutput["TreeCount"],
                          "SelectionHistory" : LearningProcedureOutput["SelectedObservationHistory"],
                          "SimulationParameters" : SimulationParameters,
