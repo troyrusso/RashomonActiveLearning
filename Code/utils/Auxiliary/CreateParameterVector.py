@@ -59,7 +59,8 @@ def CreateParameterVectorFunction(Data,
             "UniqueErrorsInput": [0], "n_estimators": [100], "regularization": [0.01],
             "RashomonThresholdType": ["Adder"], "RashomonThreshold": [0], "Type": ["Classification"],
             "DiversityWeight": [0], "DensityWeight": [0], "BatchSize": [BatchSize],
-            "Partition": [Partition], "Time": [Time], "Memory": [Memory]
+            "Partition": [Partition], "Time": [Time], "Memory": [Memory],
+            "auto_tune_epsilon": [False]
         }
         all_parameter_dicts.append(PL_RF_ParameterDictionary)
 
@@ -73,7 +74,8 @@ def CreateParameterVectorFunction(Data,
             "DiversityWeight": [0], "DensityWeight": [0], "BatchSize": [BatchSize],
             "Partition": [Partition], "Time": [Time], "Memory": [Memory],
             "kernel_type": ['RBF'], "kernel_length_scale": [1.0], "kernel_nu": [1.5],
-            "optimizer": ['fmin_l_bfgs_b'], "n_restarts_optimizer": [0], "max_iter_predict": [100]
+            "optimizer": ['fmin_l_bfgs_b'], "n_restarts_optimizer": [0], "max_iter_predict": [100],
+            "auto_tune_epsilon": [False]
         }
         all_parameter_dicts.append(PL_GPC_ParameterDictionary)
 
@@ -87,7 +89,8 @@ def CreateParameterVectorFunction(Data,
             "DiversityWeight": [0], "DensityWeight": [0], "BatchSize": [BatchSize],
             "Partition": [Partition], "Time": [Time], "Memory": [Memory],
             "hidden_size": [50], "dropout_rate": [0.2], "epochs": [100],
-            "learning_rate": [0.001], "batch_size_train": [32], "K_BALD_Samples": [20]
+            "learning_rate": [0.001], "batch_size_train": [32], "K_BALD_Samples": [20],
+            "auto_tune_epsilon": [False]
         }
         all_parameter_dicts.append(PL_BNN_ParameterDictionary)
 
@@ -101,7 +104,8 @@ def CreateParameterVectorFunction(Data,
             "DiversityWeight": [0], "DensityWeight": [0], "BatchSize": [BatchSize],
             "Partition": [Partition], "Time": [Time], "Memory": [Memory],
             "hidden_size": [50], "dropout_rate": [0.2], "epochs": [100],
-            "learning_rate": [0.001], "batch_size_train": [32], "K_BALD_Samples": [20]
+            "learning_rate": [0.001], "batch_size_train": [32], "K_BALD_Samples": [20],
+            "auto_tune_epsilon": [False]
         }
         all_parameter_dicts.append(BALD_BNN_ParameterDictionary)
 
@@ -116,7 +120,8 @@ def CreateParameterVectorFunction(Data,
             "Partition": [Partition], "Time": [Time], "Memory": [Memory],
             "kernel_type": ['RBF'], "kernel_length_scale": [1.0], "kernel_nu": [1.5],
             "optimizer": ['fmin_l_bfgs_b'], "n_restarts_optimizer": [0], "max_iter_predict": [100],
-            "K_BALD_Samples": [20]
+            "K_BALD_Samples": [20],
+            "auto_tune_epsilon": [False]
         }
         all_parameter_dicts.append(BALD_GPC_ParameterDictionary)
 
@@ -128,7 +133,8 @@ def CreateParameterVectorFunction(Data,
             "UniqueErrorsInput": [1], "n_estimators": [100], "regularization": [0.01],
             "RashomonThresholdType": ["Adder"], "RashomonThreshold": [RashomonThreshold],
             "Type": ["Classification"], "DiversityWeight": [DiversityWeight], "DensityWeight": [DensityWeight],
-            "BatchSize": [BatchSize], "Partition": [Partition], "Time": [Time], "Memory": [Memory]
+            "BatchSize": [BatchSize], "Partition": [Partition], "Time": [Time], "Memory": [Memory],
+            "auto_tune_epsilon": [False]
         }
         all_parameter_dicts.append(UNREAL_ParameterDictionary)
 
@@ -140,7 +146,8 @@ def CreateParameterVectorFunction(Data,
             "UniqueErrorsInput": [0], "n_estimators": [100], "regularization": [0.01],
             "RashomonThresholdType": ["Adder"], "RashomonThreshold": [RashomonThreshold],
             "Type": ["Classification"], "DiversityWeight": [DiversityWeight], "DensityWeight": [DensityWeight],
-            "BatchSize": [BatchSize], "Partition": [Partition], "Time": [Time], "Memory": [Memory]
+            "BatchSize": [BatchSize], "Partition": [Partition], "Time": [Time], "Memory": [Memory],
+            "auto_tune_epsilon": [False]
         }
         all_parameter_dicts.append(DUREAL_ParameterDictionary)
 
@@ -152,7 +159,8 @@ def CreateParameterVectorFunction(Data,
             "UniqueErrorsInput": [0], "n_estimators": [100], "regularization": [0.01],
             "RashomonThresholdType": ["Adder"], "RashomonThreshold": [0], "Type": ["Classification"],
             "DiversityWeight": [DiversityWeight], "DensityWeight": [DensityWeight], "BatchSize": [BatchSize],
-            "Partition": [Partition], "Time": [Time], "Memory": [Memory]
+            "Partition": [Partition], "Time": [Time], "Memory": [Memory],
+            "auto_tune_epsilon": [False]
         }
         all_parameter_dicts.append(QBC_RF_ParameterDictionary)
 
@@ -165,7 +173,7 @@ def CreateParameterVectorFunction(Data,
             "RashomonThresholdType": ["Adder"], "RashomonThreshold": [RashomonThreshold],
             "Type": ["Classification"], "DiversityWeight": [DiversityWeight], "DensityWeight": [DensityWeight],
             "BatchSize": [BatchSize], "Partition": [Partition], "Time": [Time], "Memory": [Memory],
-            "auto_tune_epsilon": [auto_tune_epsilon_for_lfr] 
+            "auto_tune_epsilon": [auto_tune_epsilon_for_lfr]
         }
         all_parameter_dicts.append(UNREAL_LFR_ParameterDictionary)
 
@@ -178,7 +186,7 @@ def CreateParameterVectorFunction(Data,
             "RashomonThresholdType": ["Adder"], "RashomonThreshold": [RashomonThreshold],
             "Type": ["Classification"], "DiversityWeight": [DiversityWeight], "DensityWeight": [DensityWeight],
             "BatchSize": [BatchSize], "Partition": [Partition], "Time": [Time], "Memory": [Memory],
-            "auto_tune_epsilon": [auto_tune_epsilon_for_lfr] 
+            "auto_tune_epsilon": [auto_tune_epsilon_for_lfr]
         }
         all_parameter_dicts.append(DUREAL_LFR_ParameterDictionary)
 
@@ -251,37 +259,37 @@ def CreateParameterVectorFunction(Data,
 
     # LFR-specific parameter (auto_tune_epsilon)
     lfr_model_mask = (ParameterVector["ModelType"] == "LFRPredictor")
-    if 'auto_tune_epsilon' in ParameterVector.columns: 
+    if 'auto_tune_epsilon' in ParameterVector.columns:
         ParameterVector.loc[lfr_model_mask, "JobName"] += "_AT" + ParameterVector.loc[lfr_model_mask, "auto_tune_epsilon"].astype(int).astype(str)
 
-    # # BNN-specific hyperparameters
-    # bnn_mask = ParameterVector["ModelType"] == "BayesianNeuralNetworkPredictor"
-    # if 'hidden_size' in ParameterVector.columns:
-    #     ParameterVector.loc[bnn_mask, "JobName"] += "_HS" + ParameterVector.loc[bnn_mask, "hidden_size"].astype(str)
-    # if 'dropout_rate' in ParameterVector.columns:
-    #     ParameterVector.loc[bnn_mask, "JobName"] += "_DR" + ParameterVector.loc[bnn_mask, "dropout_rate"].astype(str)
-    # if 'epochs' in ParameterVector.columns:
-    #     ParameterVector.loc[bnn_mask, "JobName"] += "_E" + ParameterVector.loc[bnn_mask, "epochs"].astype(str)
-    # if 'learning_rate' in ParameterVector.columns:
-    #     ParameterVector.loc[bnn_mask, "JobName"] += "_LR" + ParameterVector.loc[bnn_mask, "learning_rate"].astype(str)
-    # if 'batch_size_train' in ParameterVector.columns:
-    #     ParameterVector.loc[bnn_mask, "JobName"] += "_BST" + ParameterVector.loc[bnn_mask, "batch_size_train"].astype(str)
+    # BNN-specific hyperparameters
+    bnn_mask = ParameterVector["ModelType"] == "BayesianNeuralNetworkPredictor"
+    if 'hidden_size' in ParameterVector.columns:
+        ParameterVector.loc[bnn_mask, "JobName"] += "_HS" + ParameterVector.loc[bnn_mask, "hidden_size"].astype(str)
+    if 'dropout_rate' in ParameterVector.columns:
+        ParameterVector.loc[bnn_mask, "JobName"] += "_DR" + ParameterVector.loc[bnn_mask, "dropout_rate"].astype(str)
+    if 'epochs' in ParameterVector.columns:
+        ParameterVector.loc[bnn_mask, "JobName"] += "_E" + ParameterVector.loc[bnn_mask, "epochs"].astype(str)
+    if 'learning_rate' in ParameterVector.columns:
+        ParameterVector.loc[bnn_mask, "JobName"] += "_LR" + ParameterVector.loc[bnn_mask, "learning_rate"].astype(str)
+    if 'batch_size_train' in ParameterVector.columns:
+        ParameterVector.loc[bnn_mask, "JobName"] += "_BST" + ParameterVector.loc[bnn_mask, "batch_size_train"].astype(str)
 
-    # # GPC-specific hyperparameters
-    # gpc_mask = ParameterVector["ModelType"] == "GaussianProcessClassifierPredictor"
-    # if 'kernel_type' in ParameterVector.columns:
-    #     ParameterVector.loc[gpc_mask, "JobName"] += "_KT" + ParameterVector.loc[gpc_mask, "kernel_type"].astype(str)
-    # if 'kernel_length_scale' in ParameterVector.columns:
-    #     ParameterVector.loc[gpc_mask, "JobName"] += "_KLS" + ParameterVector.loc[gpc_mask, "kernel_length_scale"].astype(str)
-    # if 'kernel_nu' in ParameterVector.columns:
-    #     ParameterVector.loc[gpc_mask, "JobName"] += "_KNU" + ParameterVector.loc[gpc_mask, "kernel_nu"].astype(str)
+    # GPC-specific hyperparameters
+    gpc_mask = ParameterVector["ModelType"] == "GaussianProcessClassifierPredictor"
+    if 'kernel_type' in ParameterVector.columns:
+        ParameterVector.loc[gpc_mask, "JobName"] += "_KT" + ParameterVector.loc[gpc_mask, "kernel_type"].astype(str)
+    if 'kernel_length_scale' in ParameterVector.columns:
+        ParameterVector.loc[gpc_mask, "JobName"] += "_KLS" + ParameterVector.loc[gpc_mask, "kernel_length_scale"].astype(str)
+    if 'kernel_nu' in ParameterVector.columns:
+        ParameterVector.loc[gpc_mask, "JobName"] += "_KNU" + ParameterVector.loc[gpc_mask, "kernel_nu"].astype(str)
 
-    # # BALD-specific `K_BALD_Samples`
-    # bald_mask = ParameterVector["SelectorType"] == "BALDSelector"
-    # if 'K_BALD_Samples' in ParameterVector.columns:
-    #     # Only add K if it's a non-zero value provided for BALD runs
-    #     k_mask = bald_mask & (ParameterVector['K_BALD_Samples'] > 0)
-    #     ParameterVector.loc[k_mask, "JobName"] += "_K" + ParameterVector.loc[k_mask, "K_BALD_Samples"].astype(str)
+    # BALD-specific `K_BALD_Samples`
+    bald_mask = ParameterVector["SelectorType"] == "BALDSelector"
+    if 'K_BALD_Samples' in ParameterVector.columns:
+        # Only add K if it's a non-zero value provided for BALD runs
+        k_mask = bald_mask & (ParameterVector['K_BALD_Samples'] > 0)
+        ParameterVector.loc[k_mask, "JobName"] += "_K" + ParameterVector.loc[k_mask, "K_BALD_Samples"].astype(str)
 
     # 4. Final cleaning of the JobName string
     ParameterVector["JobName"] = (
