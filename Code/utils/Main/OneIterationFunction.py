@@ -97,7 +97,8 @@ def OneIterationFunction(SimulationConfigInput):
                 'optimizer', 
                 'n_restarts_optimizer', 
                 'max_iter_predict', 
-                'RefitFrequency']: 
+                'RefitFrequency',
+                'auto_tune_epsilon']: 
         
         if key in SimulationConfigInput:
             SimulationParameters[key] = str(SimulationConfigInput[key])

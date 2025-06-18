@@ -38,11 +38,13 @@ class LFRPredictor:
                  regularization: float,
                  RashomonThreshold: float,      # max_epsilon for tuning
                  RashomonThresholdType: str = "Adder",
+                 auto_tune_epsilon: bool = True, # 
                  **kwargs):
         self.regularization = regularization
         self.full_epsilon = RashomonThreshold # full_epsilon is the last threshold used in the last full enumeration of the RSet
         self.epsilon = RashomonThreshold      # current tuned epsilon (will be updated)
         self.RashomonThresholdType = RashomonThresholdType
+        self.auto_tune_epsilon = auto_tune_epsilon 
         self.static_config = DEFAULT_STATIC_CONFIG.copy()
         self.static_config["regularization"] = self.regularization
         self.tf = None
@@ -95,19 +97,36 @@ class LFRPredictor:
             self.epsilon = self.full_epsilon # Default to max epsilon if no trees found
             self.predictions_all_trees = None
             self.accuracy_ordering = None
+            
+            # Update LFR state even if no trees are found, as this counts as a "full refit"
+            self.epsilon_at_last_full_refit = self.epsilon
+            self.last_full_refit_iteration_count = self.current_iteration_from_lp
             return
+        
+        ### Autotune or not ###
+        if self.auto_tune_epsilon:
+            # Get and sort accuracies descendingly for tuning
+            all_accuracies = np.array([_score_single_tree(tree, self.X_train_current.values, self.y_train_current.values) for tree in self.all_trees])
+            self.accuracy_ordering = np.argsort(all_accuracies)[::-1] 
 
-        # Get and sort accuracies descendingly
-        all_accuracies = np.array([_score_single_tree(tree, self.X_train_current.values, self.y_train_current.values) for tree in self.all_trees])
-        self.accuracy_ordering = np.argsort(all_accuracies)[::-1] 
+            # Get predictions
+            predictions_raw_list = [np.array(_predict_single_tree(self.all_trees[idx], self.X_train_current.values)) for idx in self.accuracy_ordering]
+            self.predictions_all_trees = np.array(predictions_raw_list).T
 
-        # Get predictions
-        predictions_raw_list = [np.array(_predict_single_tree(self.all_trees[idx], self.X_train_current.values)) for idx in self.accuracy_ordering]
-        self.predictions_all_trees = np.array(predictions_raw_list).T
-
-        # Tune epsilon and update trees_in_scope based on these accuracies
-        self._tune_eps(all_accuracies[self.accuracy_ordering]) 
-
+            # Tune epsilon and update trees_in_scope based on these accuracies
+            self._set_epsilon_and_scope(all_accuracies[self.accuracy_ordering], auto_tune_flag=True) 
+        else:
+            # If not auto-tuning, set epsilon to full_epsilon and filter scope based on it
+            all_accuracies = np.array([_score_single_tree(tree, self.X_train_current.values, self.y_train_current.values) for tree in self.all_trees])
+            
+            # For fixed epsilon, we still need sorted accuracies for predictions_all_trees for consistency
+            self.accuracy_ordering = np.argsort(all_accuracies)[::-1]
+            predictions_raw_list = [np.array(_predict_single_tree(self.all_trees[idx], self.X_train_current.values)) for idx in self.accuracy_ordering]
+            self.predictions_all_trees = np.array(predictions_raw_list).T
+            
+            # Call the renamed helper with auto_tune_flag=False
+            self._set_epsilon_and_scope(all_accuracies[self.accuracy_ordering], auto_tune_flag=False)
+        
         # Update epsilon and iteration
         self.epsilon_at_last_full_refit = self.epsilon                          # Store the tuned epsilon from this full refit
         self.last_full_refit_iteration_count = self.current_iteration_from_lp # Store the iteration when this full refit happened
@@ -186,13 +205,13 @@ class LFRPredictor:
             self.predictions_all_trees = self.predictions_all_trees[:, map_cur_to_new_ordering]
 
             # Tune epsilon based on updated accuracies
-            self._tune_eps(objectives[self.accuracy_ordering])
+            self._set_epsilon_and_scope(objectives[self.accuracy_ordering], auto_tune_flag=self.auto_tune_epsilon)
 
         ### Return Decision ro refit or not ###
         return perform_full_refit_this_time 
 
     ### Epsilon Tuning Helper ###
-    def _tune_eps(self, sorted_accs: np.ndarray):
+    def _set_epsilon_and_scope(self, sorted_accs: np.ndarray, auto_tune_flag: bool):
         """
         Tunes epsilon by finding the ensemble size that maximizes accuracy on training data.
         Updates self.trees_in_scope and self.epsilon.
@@ -204,50 +223,74 @@ class LFRPredictor:
             self.trees_in_scope = []
             self.epsilon = self.full_epsilon
             return
+        
+        # If auto-tuning is enabled
+        if auto_tune_flag: 
+            
+            # Set Up #
+            best_num_trees = 0
+            best_acc = -1.0
 
-        best_num_trees = 0
-        best_acc = -1.0
-
-        for i in range(sorted_accs.size):
-            if self.predictions_all_trees.shape[1] == 0: # Defensive check if predictions_all_trees somehow empty
-                warnings.warn("predictions_all_trees has no columns during _tune_eps. Cannot compute ensemble accuracy.")
-                y_hat = np.array([]) # Default to empty prediction
-            elif i >= self.predictions_all_trees.shape[1]: # Defensive: prevent index out of bounds
-                # If i+1 is beyond actual number of trees, use all available
-                current_ensemble_preds = self.predictions_all_trees
-            else:
-                current_ensemble_preds = self.predictions_all_trees[:, :i+1]
-
-            if current_ensemble_preds.size == 0:
-                acc = -1.0 # Cannot compute accuracy
-            else:
-                if len(np.unique(self.y_train_current)) > 2: # Multi-class
-                    y_hat_val, _ = stats.mode(current_ensemble_preds, axis=1, keepdims=False)
-                    y_hat = y_hat_val.squeeze()
-                else: # Binary classification (0/1)
-                    y_hat = (current_ensemble_preds.mean(axis=1) > 0.5).astype(int)
-
-                if self.y_train_current.empty: # Defensive: avoid comparing to empty y_train_current
-                    acc = -1.0
+            # For sorted accuracies #
+            for i in range(sorted_accs.size):
+                if self.predictions_all_trees.shape[1] == 0: # Defensive check if predictions_all_trees somehow empty
+                    warnings.warn("predictions_all_trees has no columns during _tune_eps. Cannot compute ensemble accuracy.")
+                    y_hat = np.array([]) # Default to empty prediction
+                elif i >= self.predictions_all_trees.shape[1]: # Defensive: prevent index out of bounds
+                    # If i+1 is beyond actual number of trees, use all available
+                    current_ensemble_preds = self.predictions_all_trees
                 else:
-                    acc = np.mean(y_hat == self.y_train_current.values)
+                    current_ensemble_preds = self.predictions_all_trees[:, :i+1]
 
-            if acc > best_acc:
-                best_acc = acc
-                best_num_trees = i + 1
+                if current_ensemble_preds.size == 0:
+                    acc = -1.0 # Cannot compute accuracy
+                else:
+                    if len(np.unique(self.y_train_current)) > 2: # Multi-class
+                        y_hat_val, _ = stats.mode(current_ensemble_preds, axis=1, keepdims=False)
+                        y_hat = y_hat_val.squeeze()
+                    else: # Binary classification (0/1)
+                        y_hat = (current_ensemble_preds.mean(axis=1) > 0.5).astype(int)
 
-        if best_num_trees > 0:
-            self.trees_in_scope = [self.all_trees[k] for k in self.accuracy_ordering[:best_num_trees]]
-        else:
-            warnings.warn("Epsilon tuning resulted in 0 optimal trees. Retaining all trees from full fit.")
-            self.trees_in_scope = self.all_trees.copy()
-            best_num_trees = len(self.all_trees)
+                    if self.y_train_current.empty: # Defensive: avoid comparing to empty y_train_current
+                        acc = -1.0
+                    else:
+                        acc = np.mean(y_hat == self.y_train_current.values)
 
-        if best_num_trees == len(self.all_trees):
-            self.epsilon = self.full_epsilon
-        else:
-            self.epsilon = sorted_accs[0] - sorted_accs[best_num_trees - 1]
-            self.epsilon = max(0.0, min(self.epsilon, self.full_epsilon))
+                if acc > best_acc:
+                    best_acc = acc
+                    best_num_trees = i + 1
+
+            if best_num_trees > 0:
+                self.trees_in_scope = [self.all_trees[k] for k in self.accuracy_ordering[:best_num_trees]]
+            else:
+                warnings.warn("Epsilon tuning resulted in 0 optimal trees. Retaining all trees from full fit.")
+                self.trees_in_scope = self.all_trees.copy()
+                best_num_trees = len(self.all_trees)
+
+            if best_num_trees == len(self.all_trees):
+                self.epsilon = self.full_epsilon
+            else:
+                self.epsilon = sorted_accs[0] - sorted_accs[best_num_trees - 1]
+                self.epsilon = max(0.0, min(self.epsilon, self.full_epsilon))
+        else: # Fixed Epsilon
+            self.epsilon = self.full_epsilon # Epsilon is fixed to the full_epsilon/RashomonThreshold input
+
+            # Set trees_in_scope based on this fixed epsilon
+            if sorted_accs.size == 0:
+                self.trees_in_scope = []
+                return
+
+            best_accuracy_overall = sorted_accs[0] # Best accuracy among all_trees
+            errors_relative_to_best = best_accuracy_overall - sorted_accs
+            
+            trees_meeting_epsilon = [self.all_trees[k] for i, k in enumerate(self.accuracy_ordering) 
+                                     if errors_relative_to_best[i] <= self.epsilon]
+            
+            if not trees_meeting_epsilon:
+                warnings.warn(f"Fixed epsilon ({self.epsilon}) resulted in 0 trees in scope. Retaining all trees from full fit.")
+                self.trees_in_scope = self.all_trees.copy()
+            else:
+                self.trees_in_scope = trees_meeting_epsilon
 
 
     ### Helper to get predictions from all trees ###

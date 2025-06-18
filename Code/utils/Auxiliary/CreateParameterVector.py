@@ -22,8 +22,8 @@ def CreateParameterVectorFunction(Data,
                                   IncludeQBC_TreeFarms_Duplicate=False, # BatchQBC with TreeFarmsPredictor (UniqueErrorsInput=0) -> DUREAL
                                   IncludeQBC_RF=False,      # BatchQBC with RandomForestClassifierPredictor
                                   IncludeLFR_TreeFarms_Unique=False, # NEW: BatchQBC with LFRPredictor (UniqueErrorsInput=1) -> UNREAL_LFR
-                                  IncludeLFR_TreeFarms_Duplicate=False # NEW: BatchQBC with LFRPredictor (UniqueErrorsInput=0) -> DUREAL_LFR
-                                  ):
+                                  IncludeLFR_TreeFarms_Duplicate=False, # NEW: BatchQBC with LFRPredictor (UniqueErrorsInput=0) -> DUREAL_LFR
+                                  auto_tune_epsilon_for_lfr=True):
 
     ### Data Abbreviations ###
     AbbreviationDictionary = {"BankNote": "BN",
@@ -164,7 +164,8 @@ def CreateParameterVectorFunction(Data,
             "UniqueErrorsInput": [1], "n_estimators": [100], "regularization": [0.01],
             "RashomonThresholdType": ["Adder"], "RashomonThreshold": [RashomonThreshold],
             "Type": ["Classification"], "DiversityWeight": [DiversityWeight], "DensityWeight": [DensityWeight],
-            "BatchSize": [BatchSize], "Partition": [Partition], "Time": [Time], "Memory": [Memory]
+            "BatchSize": [BatchSize], "Partition": [Partition], "Time": [Time], "Memory": [Memory],
+            "auto_tune_epsilon": [auto_tune_epsilon_for_lfr] 
         }
         all_parameter_dicts.append(UNREAL_LFR_ParameterDictionary)
 
@@ -176,7 +177,8 @@ def CreateParameterVectorFunction(Data,
             "UniqueErrorsInput": [0], "n_estimators": [100], "regularization": [0.01],
             "RashomonThresholdType": ["Adder"], "RashomonThreshold": [RashomonThreshold],
             "Type": ["Classification"], "DiversityWeight": [DiversityWeight], "DensityWeight": [DensityWeight],
-            "BatchSize": [BatchSize], "Partition": [Partition], "Time": [Time], "Memory": [Memory]
+            "BatchSize": [BatchSize], "Partition": [Partition], "Time": [Time], "Memory": [Memory],
+            "auto_tune_epsilon": [auto_tune_epsilon_for_lfr] 
         }
         all_parameter_dicts.append(DUREAL_LFR_ParameterDictionary)
 
@@ -222,7 +224,8 @@ def CreateParameterVectorFunction(Data,
     ]
     choices = [
         "RF_PL", "GPC_PL", "BNN_PL", "BNN_BALD", "GPC_BALD",
-        "UNREAL", "DUREAL", "RF_QBC", "Ulfr", "Dlfr"
+        "UNREAL_UEI1", "DUREAL_UEI0", "RF_QBC_UEI0",
+        "Ulfr_UEI1", "Dlfr_UEI0"
     ]
     ParameterVector["MethodName"] = np.select(conditions, choices, default="UNKNOWN")
 
@@ -245,6 +248,11 @@ def CreateParameterVectorFunction(Data,
 
     # All methods have a BatchSize
     ParameterVector["JobName"] += "_B" + ParameterVector["BatchSize"].astype(str)
+
+    # LFR-specific parameter (auto_tune_epsilon)
+    lfr_model_mask = (ParameterVector["ModelType"] == "LFRPredictor")
+    if 'auto_tune_epsilon' in ParameterVector.columns: 
+        ParameterVector.loc[lfr_model_mask, "JobName"] += "_AT" + ParameterVector.loc[lfr_model_mask, "auto_tune_epsilon"].astype(int).astype(str)
 
     # BNN-specific hyperparameters
     bnn_mask = ParameterVector["ModelType"] == "BayesianNeuralNetworkPredictor"
