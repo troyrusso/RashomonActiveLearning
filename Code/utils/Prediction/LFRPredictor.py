@@ -164,10 +164,10 @@ class LFRPredictor:
             iteration_difference = max(1, current_iteration - self.last_full_refit_iteration_count)
             alg1_rhs = 2 * (iteration_difference / current_train_set_size)
 
-            # If LHS >= RHS, it implies the Rashomon set is likely to change substantially, so perform FULL REFIT.
-            if alg1_lhs >= alg1_rhs:
+            # If LHS < RHS, it implies the Rashomon set is likely to change substantially, so perform FULL REFIT.
+            if alg1_lhs < alg1_rhs:
                 if verbose:
-                    print(f"LFR Decision: Full refit due to Theorem 5.1 (Alg 1 condition LHS={alg1_lhs:.4f} >= RHS={alg1_rhs:.4f}).")
+                    print(f"LFR Decision: Full refit due to Theorem 5.1 (Alg 1 condition LHS={alg1_lhs:.4f} < RHS={alg1_rhs:.4f}).")
                 perform_full_refit_this_time = True
             else:
                 if verbose:
