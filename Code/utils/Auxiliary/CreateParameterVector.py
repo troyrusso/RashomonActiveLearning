@@ -236,6 +236,16 @@ def CreateParameterVectorFunction(Data,
         "Ulfr_UEI1", "Dlfr_UEI0"
     ]
     ParameterVector["MethodName"] = np.select(conditions, choices, default="UNKNOWN")
+    
+    # 1b. ***NEW*** Inject the AT parameter into the MethodName for LFR models
+    lfr_model_mask = (ParameterVector["ModelType"] == "LFRPredictor")
+    if 'auto_tune_epsilon' in ParameterVector.columns and lfr_model_mask.any():
+        # Create the AT string (e.g., "_AT0" or "_AT1") for LFR rows
+        at_string = "_AT" + ParameterVector.loc[lfr_model_mask, "auto_tune_epsilon"].astype(int).astype(str)
+        # Split MethodName (e.g., "Ulfr_UEI1") and insert the AT string
+        method_parts = ParameterVector.loc[lfr_model_mask, "MethodName"].str.split('_', n=1, expand=True)
+        # Recombine to create the new name (e.g., "Ulfr_AT1_UEI1")
+        ParameterVector.loc[lfr_model_mask, "MethodName"] = method_parts[0] + at_string + "_" + method_parts[1]
 
     # 2. Build the JobName starting with Seed, Data, and the new MethodName
     ParameterVector["JobName"] = (
@@ -257,10 +267,7 @@ def CreateParameterVectorFunction(Data,
     # All methods have a BatchSize
     ParameterVector["JobName"] += "_B" + ParameterVector["BatchSize"].astype(str)
 
-    # LFR-specific parameter (auto_tune_epsilon)
-    lfr_model_mask = (ParameterVector["ModelType"] == "LFRPredictor")
-    if 'auto_tune_epsilon' in ParameterVector.columns:
-        ParameterVector.loc[lfr_model_mask, "JobName"] += "_AT" + ParameterVector.loc[lfr_model_mask, "auto_tune_epsilon"].astype(int).astype(str)
+    # ***REMOVED*** The old block for appending _AT at the end is no longer here.
 
     # BNN-specific hyperparameters
     bnn_mask = ParameterVector["ModelType"] == "BayesianNeuralNetworkPredictor"
