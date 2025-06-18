@@ -128,4 +128,19 @@ class TreeFarmsPredictor:
         ensemble_predictions_list = [self._predict_single_tree(tree, X_data_df) for tree in self.all_trees]
         ensemble_predictions_df = pd.concat(ensemble_predictions_list, axis=1)
         ensemble_predictions_df.columns = [f"tree_{i}" for i in range(ensemble_predictions_df.shape[1])]
+
+        # ### Save ###
+        # import os
+        # filename = "/Users/simondn/Downloads/TreeFarmsBase/"
+        # base_name, ext = os.path.splitext(filename)
+        # counter = 0
+        # new_filename = filename
+
+        # while os.path.exists(new_filename):
+        #     counter += 1
+        #     new_filename = f"{base_name}_{counter}{ext}"
+
+        # ensemble_predictions_df.to_csv(new_filename, index=False)
+        # print(f"File saved as: {new_filename}")
+        # ######
         return ensemble_predictions_df
