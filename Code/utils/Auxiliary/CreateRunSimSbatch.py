@@ -43,19 +43,19 @@ for i, row in ParameterVector.iterrows():
     Time = row["Time"]
     Memory = row["Memory"]
     auto_tune_epsilon = row.get('auto_tune_epsilon', "-1") # For LFRPredictor, Boolean True/False
-    
-    hidden_size = row.get('hidden_size', -1) # Default to -1 if not applicable
-    dropout_rate = row.get('dropout_rate', -1.0)
-    epochs = row.get('epochs', -1)
-    learning_rate = row.get('learning_rate', -1.0)
-    batch_size_train = row.get('batch_size_train', -1)
-    K_BALD_Samples = row.get('K_BALD_Samples', -1)
-    kernel_type = row.get('kernel_type', "-1")
-    kernel_length_scale = row.get('kernel_length_scale', -1.0)
-    kernel_nu = row.get('kernel_nu', -1.0)
-    optimizer = row.get('optimizer', "-1")
-    n_restarts_optimizer = row.get('n_restarts_optimizer', -1)
-    max_iter_predict = row.get('max_iter_predict', -1)
+
+    # hidden_size = row.get('hidden_size', -1) # Default to -1 if not applicable
+    # dropout_rate = row.get('dropout_rate', -1.0)
+    # epochs = row.get('epochs', -1)
+    # learning_rate = row.get('learning_rate', -1.0)
+    # batch_size_train = row.get('batch_size_train', -1)
+    # K_BALD_Samples = row.get('K_BALD_Samples', -1)
+    # kernel_type = row.get('kernel_type', "-1")
+    # kernel_length_scale = row.get('kernel_length_scale', -1.0)
+    # kernel_nu = row.get('kernel_nu', -1.0)
+    # optimizer = row.get('optimizer', "-1")
+    # n_restarts_optimizer = row.get('n_restarts_optimizer', -1)
+    # max_iter_predict = row.get('max_iter_predict', -1)
     
     # Path for .sbatch files ###
     TargetDirectory = os.path.join(cwd,"Code", "Cluster", Data, "RunSimulations")
@@ -97,20 +97,20 @@ for i, row in ParameterVector.iterrows():
     ]
 
 
-    # Conditionally add model-specific parameters to sbatch content
-    if hidden_size != -1: sbatch_content.append(f"    --hidden_size {hidden_size} \\")
-    if dropout_rate != -1.0: sbatch_content.append(f"    --dropout_rate {dropout_rate} \\")
-    if epochs != -1: sbatch_content.append(f"    --epochs {epochs} \\")
-    if learning_rate != -1.0: sbatch_content.append(f"    --learning_rate {learning_rate} \\")
-    if batch_size_train != -1: sbatch_content.append(f"    --batch_size_train {batch_size_train} \\")
-    if K_BALD_Samples != -1: sbatch_content.append(f"    --K_BALD_Samples {K_BALD_Samples} \\")
-    if kernel_type != "-1": sbatch_content.append(f"    --kernel_type \"{kernel_type}\" \\")
-    if kernel_length_scale != -1.0: sbatch_content.append(f"    --kernel_length_scale {kernel_length_scale} \\")
-    if kernel_nu != -1.0: sbatch_content.append(f"    --kernel_nu {kernel_nu} \\")
-    if optimizer != "-1": sbatch_content.append(f"    --optimizer \"{optimizer}\" \\")
-    if n_restarts_optimizer != -1: sbatch_content.append(f"    --n_restarts_optimizer {n_restarts_optimizer} \\")
-    if max_iter_predict != -1: sbatch_content.append(f"    --max_iter_predict {max_iter_predict} \\")
-    if auto_tune_epsilon != "-1": sbatch_content.append(f"    --auto_tune_epsilon {str(auto_tune_epsilon)} \\")
+    # # Conditionally add model-specific parameters to sbatch content
+    # if hidden_size != -1: sbatch_content.append(f"    --hidden_size {hidden_size} \\")
+    # if dropout_rate != -1.0: sbatch_content.append(f"    --dropout_rate {dropout_rate} \\")
+    # if epochs != -1: sbatch_content.append(f"    --epochs {epochs} \\")
+    # if learning_rate != -1.0: sbatch_content.append(f"    --learning_rate {learning_rate} \\")
+    # if batch_size_train != -1: sbatch_content.append(f"    --batch_size_train {batch_size_train} \\")
+    # if K_BALD_Samples != -1: sbatch_content.append(f"    --K_BALD_Samples {K_BALD_Samples} \\")
+    # if kernel_type != "-1": sbatch_content.append(f"    --kernel_type \"{kernel_type}\" \\")
+    # if kernel_length_scale != -1.0: sbatch_content.append(f"    --kernel_length_scale {kernel_length_scale} \\")
+    # if kernel_nu != -1.0: sbatch_content.append(f"    --kernel_nu {kernel_nu} \\")
+    # if optimizer != "-1": sbatch_content.append(f"    --optimizer \"{optimizer}\" \\")
+    # if n_restarts_optimizer != -1: sbatch_content.append(f"    --n_restarts_optimizer {n_restarts_optimizer} \\")
+    # if max_iter_predict != -1: sbatch_content.append(f"    --max_iter_predict {max_iter_predict} \\")
+    # if auto_tune_epsilon != "-1": sbatch_content.append(f"    --auto_tune_epsilon {str(auto_tune_epsilon)} \\")
 
 
 
