@@ -89,6 +89,7 @@ for i, row in ParameterVector.iterrows():
         f"    --regularization {regularization} \\",
         f"    --RashomonThresholdType {RashomonThresholdType} \\",
         f"    --RashomonThreshold {RashomonThreshold} \\",
+        f"    --auto_tune_epsilon {auto_tune_epsilon} \\"
         f"    --Type {Type} \\",
         f"    --BatchSize {BatchSize} \\",
         f"    --DiversityWeight {DiversityWeight} \\",
