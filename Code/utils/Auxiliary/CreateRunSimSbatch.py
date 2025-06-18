@@ -42,7 +42,13 @@ for i, row in ParameterVector.iterrows():
     Partition = row["Partition"]
     Time = row["Time"]
     Memory = row["Memory"]
-    auto_tune_epsilon = row["auto_tune_epsilon"]
+
+    # Extract auto_tune_epsilon only if ModelType is LFRPredictor
+    auto_tune_epsilon_val = "-1" # Default to a string that won't be appended
+    if ModelType == "LFRPredictor":
+        if 'auto_tune_epsilon' in row and pd.notna(row['auto_tune_epsilon']):
+            auto_tune_epsilon_val = str(bool(row['auto_tune_epsilon'])) 
+    
 
     # hidden_size = row.get('hidden_size', -1) # Default to -1 if not applicable
     # dropout_rate = row.get('dropout_rate', -1.0)
@@ -112,6 +118,9 @@ for i, row in ParameterVector.iterrows():
     # if n_restarts_optimizer != -1: sbatch_content.append(f"    --n_restarts_optimizer {n_restarts_optimizer} \\")
     # if max_iter_predict != -1: sbatch_content.append(f"    --max_iter_predict {max_iter_predict} \\")
     # if auto_tune_epsilon != "-1": sbatch_content.append(f"    --auto_tune_epsilon {str(auto_tune_epsilon)} \\")
+
+    if auto_tune_epsilon_val != "-1": # Check if it's been assigned a valid True/False string
+        sbatch_content.append(f"    --auto_tune_epsilon {auto_tune_epsilon_val} \\")
 
 
 

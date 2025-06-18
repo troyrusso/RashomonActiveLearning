@@ -254,34 +254,34 @@ def CreateParameterVectorFunction(Data,
     if 'auto_tune_epsilon' in ParameterVector.columns: 
         ParameterVector.loc[lfr_model_mask, "JobName"] += "_AT" + ParameterVector.loc[lfr_model_mask, "auto_tune_epsilon"].astype(int).astype(str)
 
-    # BNN-specific hyperparameters
-    bnn_mask = ParameterVector["ModelType"] == "BayesianNeuralNetworkPredictor"
-    if 'hidden_size' in ParameterVector.columns:
-        ParameterVector.loc[bnn_mask, "JobName"] += "_HS" + ParameterVector.loc[bnn_mask, "hidden_size"].astype(str)
-    if 'dropout_rate' in ParameterVector.columns:
-        ParameterVector.loc[bnn_mask, "JobName"] += "_DR" + ParameterVector.loc[bnn_mask, "dropout_rate"].astype(str)
-    if 'epochs' in ParameterVector.columns:
-        ParameterVector.loc[bnn_mask, "JobName"] += "_E" + ParameterVector.loc[bnn_mask, "epochs"].astype(str)
-    if 'learning_rate' in ParameterVector.columns:
-        ParameterVector.loc[bnn_mask, "JobName"] += "_LR" + ParameterVector.loc[bnn_mask, "learning_rate"].astype(str)
-    if 'batch_size_train' in ParameterVector.columns:
-        ParameterVector.loc[bnn_mask, "JobName"] += "_BST" + ParameterVector.loc[bnn_mask, "batch_size_train"].astype(str)
+    # # BNN-specific hyperparameters
+    # bnn_mask = ParameterVector["ModelType"] == "BayesianNeuralNetworkPredictor"
+    # if 'hidden_size' in ParameterVector.columns:
+    #     ParameterVector.loc[bnn_mask, "JobName"] += "_HS" + ParameterVector.loc[bnn_mask, "hidden_size"].astype(str)
+    # if 'dropout_rate' in ParameterVector.columns:
+    #     ParameterVector.loc[bnn_mask, "JobName"] += "_DR" + ParameterVector.loc[bnn_mask, "dropout_rate"].astype(str)
+    # if 'epochs' in ParameterVector.columns:
+    #     ParameterVector.loc[bnn_mask, "JobName"] += "_E" + ParameterVector.loc[bnn_mask, "epochs"].astype(str)
+    # if 'learning_rate' in ParameterVector.columns:
+    #     ParameterVector.loc[bnn_mask, "JobName"] += "_LR" + ParameterVector.loc[bnn_mask, "learning_rate"].astype(str)
+    # if 'batch_size_train' in ParameterVector.columns:
+    #     ParameterVector.loc[bnn_mask, "JobName"] += "_BST" + ParameterVector.loc[bnn_mask, "batch_size_train"].astype(str)
 
-    # GPC-specific hyperparameters
-    gpc_mask = ParameterVector["ModelType"] == "GaussianProcessClassifierPredictor"
-    if 'kernel_type' in ParameterVector.columns:
-        ParameterVector.loc[gpc_mask, "JobName"] += "_KT" + ParameterVector.loc[gpc_mask, "kernel_type"].astype(str)
-    if 'kernel_length_scale' in ParameterVector.columns:
-        ParameterVector.loc[gpc_mask, "JobName"] += "_KLS" + ParameterVector.loc[gpc_mask, "kernel_length_scale"].astype(str)
-    if 'kernel_nu' in ParameterVector.columns:
-        ParameterVector.loc[gpc_mask, "JobName"] += "_KNU" + ParameterVector.loc[gpc_mask, "kernel_nu"].astype(str)
+    # # GPC-specific hyperparameters
+    # gpc_mask = ParameterVector["ModelType"] == "GaussianProcessClassifierPredictor"
+    # if 'kernel_type' in ParameterVector.columns:
+    #     ParameterVector.loc[gpc_mask, "JobName"] += "_KT" + ParameterVector.loc[gpc_mask, "kernel_type"].astype(str)
+    # if 'kernel_length_scale' in ParameterVector.columns:
+    #     ParameterVector.loc[gpc_mask, "JobName"] += "_KLS" + ParameterVector.loc[gpc_mask, "kernel_length_scale"].astype(str)
+    # if 'kernel_nu' in ParameterVector.columns:
+    #     ParameterVector.loc[gpc_mask, "JobName"] += "_KNU" + ParameterVector.loc[gpc_mask, "kernel_nu"].astype(str)
 
-    # BALD-specific `K_BALD_Samples`
-    bald_mask = ParameterVector["SelectorType"] == "BALDSelector"
-    if 'K_BALD_Samples' in ParameterVector.columns:
-        # Only add K if it's a non-zero value provided for BALD runs
-        k_mask = bald_mask & (ParameterVector['K_BALD_Samples'] > 0)
-        ParameterVector.loc[k_mask, "JobName"] += "_K" + ParameterVector.loc[k_mask, "K_BALD_Samples"].astype(str)
+    # # BALD-specific `K_BALD_Samples`
+    # bald_mask = ParameterVector["SelectorType"] == "BALDSelector"
+    # if 'K_BALD_Samples' in ParameterVector.columns:
+    #     # Only add K if it's a non-zero value provided for BALD runs
+    #     k_mask = bald_mask & (ParameterVector['K_BALD_Samples'] > 0)
+    #     ParameterVector.loc[k_mask, "JobName"] += "_K" + ParameterVector.loc[k_mask, "K_BALD_Samples"].astype(str)
 
     # 4. Final cleaning of the JobName string
     ParameterVector["JobName"] = (
