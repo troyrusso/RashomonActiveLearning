@@ -33,6 +33,7 @@ parser.add_argument("--n_estimators", type=int, default="-1", help="Number of tr
 parser.add_argument("--regularization", type=float, default="-1.0", help="Regularization for TreeFarms.")
 parser.add_argument("--RashomonThresholdType", type=str, default="-1", help="Adder or multiplier.")
 parser.add_argument("--RashomonThreshold", type=float, default="-1.0", help="Rashomon threshold (adder/multiplier) epislon for TreeFarms.")
+parser.add_argument("--auto_tune_epsilon", type=ast.literal_eval, default=False, help="True to auto-tune epsilon, False for fixed.")
 parser.add_argument("--Type", type=str, default="-1", help="Regression vs. Classification (currently only classification offered).")
 parser.add_argument("--DiversityWeight", type=float, default="-1.0", help="Parameter for the weight of diversity in uncertainty metric.")
 parser.add_argument("--DensityWeight", type=float, default="-1.0", help="Parameter for the weight of density in uncertainty metric.")
@@ -55,7 +56,8 @@ SimulationConfigInput = {"DataFileInput": args.Data,
                         "Type": args.Type,
                         "DiversityWeight": args.DiversityWeight,
                         "DensityWeight": args.DensityWeight,
-                        "BatchSize": args.BatchSize
+                        "BatchSize": args.BatchSize,
+                        "auto_tune_epsilon": args.auto_tune_epsilon
                         }
 
 ### Run Code ###
