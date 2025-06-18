@@ -290,7 +290,7 @@ class LFRPredictor:
                 warnings.warn(f"Fixed epsilon ({self.epsilon}) resulted in 0 trees in scope. Retaining all trees from full fit.")
                 self.trees_in_scope = self.all_trees.copy()
             else:
-                self.trees_in_scope = trees_meeting_epsilon
+                self.trees_in_scope = self.all_trees.copy()#trees_meeting_epsilon
 
 
     ### Helper to get predictions from all trees ###
@@ -304,9 +304,9 @@ class LFRPredictor:
         # Get predictions from each individual tree.
         predictions_list_of_lists = [_predict_single_tree(tree, X_data_np) for tree in self.trees_in_scope]
         ensemble_predictions_df = pd.DataFrame(np.array(predictions_list_of_lists).T) 
-
         ensemble_predictions_df.columns = [f"Tree_{i}" for i in range(ensemble_predictions_df.shape[1])]
         ensemble_predictions_df.index = X_data_df.index
+
         return ensemble_predictions_df
     
     ### Predict Model (Ensemble Mode Prediction) ###
@@ -332,6 +332,21 @@ class LFRPredictor:
 
         X_data_df = pd.DataFrame(X_data_np, columns=self.X_train_current.columns)
         ensemble_predictions_df = self._get_ensemble_predictions_df(X_data_df)
+
+        # ### DEBUG Save ###
+        # import os
+        # filename = "/Users/simondn/Downloads/AutoTune1/"
+        # base_name, ext = os.path.splitext(filename)
+        # counter = 0
+        # new_filename = filename
+
+        # while os.path.exists(new_filename):
+        #     counter += 1
+        #     new_filename = f"{base_name}_{counter}{ext}"
+
+        # ensemble_predictions_df.to_csv(new_filename, index=False)
+        # print(f"File saved as: {new_filename}")
+        # ######
 
         num_samples = ensemble_predictions_df.shape[0]
         num_trees_in_ensemble = ensemble_predictions_df.shape[1]
@@ -368,5 +383,5 @@ class LFRPredictor:
         if not self.trees_in_scope:
             warnings.warn("No trees found in the Rashomon set for raw ensemble predictions. Returning empty DataFrame.")
             return pd.DataFrame(index=X_data_df.index, columns=[])
-
+        
         return self._get_ensemble_predictions_df(X_data_df)
