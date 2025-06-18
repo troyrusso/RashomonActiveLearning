@@ -42,7 +42,7 @@ for i, row in ParameterVector.iterrows():
     Partition = row["Partition"]
     Time = row["Time"]
     Memory = row["Memory"]
-    auto_tune_epsilon = row.get('auto_tune_epsilon', "-1") # For LFRPredictor, Boolean True/False
+    auto_tune_epsilon = row["auto_tune_epsilon"]
 
     # hidden_size = row.get('hidden_size', -1) # Default to -1 if not applicable
     # dropout_rate = row.get('dropout_rate', -1.0)
@@ -89,7 +89,7 @@ for i, row in ParameterVector.iterrows():
         f"    --regularization {regularization} \\",
         f"    --RashomonThresholdType {RashomonThresholdType} \\",
         f"    --RashomonThreshold {RashomonThreshold} \\",
-        f"    --auto_tune_epsilon {auto_tune_epsilon} \\"
+        f"    --auto_tune_epsilon {auto_tune_epsilon} \\",
         f"    --Type {Type} \\",
         f"    --BatchSize {BatchSize} \\",
         f"    --DiversityWeight {DiversityWeight} \\",
