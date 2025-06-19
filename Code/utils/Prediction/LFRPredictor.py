@@ -41,7 +41,7 @@ class LFRPredictor:
                  auto_tune_epsilon: bool = True, # 
                  **kwargs):
         self.regularization = regularization
-        self.full_epsilon = RashomonThreshold # full_epsilon is the last threshold used in the last full enumeration of the RSet
+        self.full_epsilon = 2*RashomonThreshold # full_epsilon is the last threshold used in the last full enumeration of the RSet
         self.epsilon = RashomonThreshold      # current tuned epsilon (will be updated)
         self.RashomonThresholdType = RashomonThresholdType
         self.auto_tune_epsilon = auto_tune_epsilon 
@@ -160,7 +160,9 @@ class LFRPredictor:
             perform_full_refit_this_time = True
         else:
             # LHS and RHS #
-            alg1_lhs = nominal_rashomon_threshold_input - self.epsilon_at_last_full_refit
+            import pdb
+            pdb.set_trace()
+            alg1_lhs = self.epsilon_at_last_full_refit - nominal_rashomon_threshold_input
             iteration_difference = max(1, current_iteration - self.last_full_refit_iteration_count)
             alg1_rhs = 2 * (iteration_difference / current_train_set_size)
 
@@ -175,7 +177,7 @@ class LFRPredictor:
 
         # Execute the decision: full refit or online update (subsetting)
         if perform_full_refit_this_time:
-            self.full_epsilon = nominal_rashomon_threshold_input # Update full_epsilon to the new input value
+            self.full_epsilon = 2*nominal_rashomon_threshold_input # Update full_epsilon to the new input value
             self.fit(self.X_train_current, self.y_train_current) # Call self.fit for a full retraining
         else:
             # Online update: recalculate accuracies of all trees on the new cumulative data
@@ -290,7 +292,8 @@ class LFRPredictor:
                 warnings.warn(f"Fixed epsilon ({self.epsilon}) resulted in 0 trees in scope. Retaining all trees from full fit.")
                 self.trees_in_scope = self.all_trees.copy()
             else:
-                self.trees_in_scope = trees_meeting_epsilon #self.all_trees.copy()
+                self.trees_in_scope = self.all_trees.copy()#trees_meeting_epsilon
+
 
     ### Helper to get predictions from all trees ###
     def _get_ensemble_predictions_df(self, X_data_df: pd.DataFrame) -> pd.DataFrame:

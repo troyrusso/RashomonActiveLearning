@@ -117,7 +117,7 @@ def AnalyzeResultsFunction(DataType, methods_to_plot=None):
     ### Refit Frequency Plot ###
     refit_plot_data = {}
     refit_methods_to_plot = [
-        # "UNREAL_LFR_AT1", 
+        "UNREAL_LFR_AT1", 
         # "DUREAL_LFR_AT1", 
         "UNREAL", 
         # "DUREAL", 
