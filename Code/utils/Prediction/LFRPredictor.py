@@ -290,8 +290,7 @@ class LFRPredictor:
                 warnings.warn(f"Fixed epsilon ({self.epsilon}) resulted in 0 trees in scope. Retaining all trees from full fit.")
                 self.trees_in_scope = self.all_trees.copy()
             else:
-                self.trees_in_scope = self.all_trees.copy()#trees_meeting_epsilon
-
+                self.trees_in_scope = trees_meeting_epsilon #self.all_trees.copy()
 
     ### Helper to get predictions from all trees ###
     def _get_ensemble_predictions_df(self, X_data_df: pd.DataFrame) -> pd.DataFrame:
