@@ -9,7 +9,7 @@
 # treeFarmsModel: A beautiful and amazing treefarms model yay.
 
 ### Libraries ###
-from treeFarms.treefarms.model.treefarms import TREEFARMS
+from treefarms import TREEFARMS
 import pandas as pd
 import numpy as np
 from scipy import stats 
